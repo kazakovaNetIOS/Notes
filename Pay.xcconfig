@@ -1,0 +1,15 @@
+//
+//  Pay.xcconfig
+//  Notes
+//
+//  Created by Natalia Kazakova on 25/06/2019.
+//  Copyright © 2019 Natalia Kazakova. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+Z_NOTES_LIMIT = 0
+Z_REMOTE_DATA_STORAGE = YES
+Z_APP_NAME = Notes
+Z_APP_ICON = AppIcon
