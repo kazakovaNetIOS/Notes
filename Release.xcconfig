@@ -9,6 +9,8 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
+#include "Pods/Target Support Files/Pods-Notes/Pods-Notes.release.xcconfig"
+
 Z_NOTES_LIMIT = 0
 Z_REMOTE_DATA_STORAGE = YES
 Z_APP_NAME = Notes
