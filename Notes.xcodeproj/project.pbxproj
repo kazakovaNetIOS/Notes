@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C95A94268AE058029B715AE8 /* libPods-Notes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F3B1B892B3EFDE97F80DAA /* libPods-Notes.a */; };
 		FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D91A222C0DFE1001210DE /* AppDelegate.swift */; };
 		FF2D91A522C0DFE1001210DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D91A422C0DFE1001210DE /* ViewController.swift */; };
 		FF2D91A822C0DFE1001210DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91A622C0DFE1001210DE /* Main.storyboard */; };
@@ -15,9 +16,34 @@
 		FF99661222C0E047004299F3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99660F22C0E047004299F3 /* Note.swift */; };
 		FF99661322C0E047004299F3 /* NoteExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99661022C0E047004299F3 /* NoteExtensions.swift */; };
 		FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99661122C0E047004299F3 /* FileNotebook.swift */; };
+		FFCC056222C774A4003E9191 /* NotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056122C774A4003E9191 /* NotesUITests.swift */; };
+		FFCC056E22C77AF4003E9191 /* NotebookTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056D22C77AF4003E9191 /* NotebookTestCase.swift */; };
+		FFCC057022C78BBF003E9191 /* NoteExtensionsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056F22C78BBF003E9191 /* NoteExtensionsTestCase.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FFCC055422C77481003E9191 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF2D919722C0DFE1001210DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF2D919E22C0DFE1001210DE;
+			remoteInfo = Notes;
+		};
+		FFCC056422C774A4003E9191 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF2D919722C0DFE1001210DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF2D919E22C0DFE1001210DE;
+			remoteInfo = Notes;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		049854DC6AD172AD4571EBCD /* Pods-Notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.release.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.release.xcconfig"; sourceTree = "<group>"; };
+		12F3B1B892B3EFDE97F80DAA /* libPods-Notes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Notes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84D4C3ED450208131F702602 /* Pods-Notes.pay.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.pay.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.pay.xcconfig"; sourceTree = "<group>"; };
+		8A3039440254E2AD6FFB1FEB /* Pods-Notes.free.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.free.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.free.xcconfig"; sourceTree = "<group>"; };
+		F5F5F8C2AF74A4AC283FF4B7 /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.debug.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		FF14418E22C22A5E005F5AF8 /* Free.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Free.xcconfig; sourceTree = "<group>"; };
 		FF14419122C22A9C005F5AF8 /* Pay.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Pay.xcconfig; sourceTree = "<group>"; };
 		FF14419222C22B7C005F5AF8 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -32,10 +58,32 @@
 		FF99660F22C0E047004299F3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		FF99661022C0E047004299F3 /* NoteExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteExtensions.swift; sourceTree = "<group>"; };
 		FF99661122C0E047004299F3 /* FileNotebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileNotebook.swift; sourceTree = "<group>"; };
+		FFCC054F22C77481003E9191 /* NotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFCC055322C77481003E9191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFCC055F22C774A4003E9191 /* NotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFCC056122C774A4003E9191 /* NotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesUITests.swift; sourceTree = "<group>"; };
+		FFCC056322C774A4003E9191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFCC056D22C77AF4003E9191 /* NotebookTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookTestCase.swift; sourceTree = "<group>"; };
+		FFCC056F22C78BBF003E9191 /* NoteExtensionsTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteExtensionsTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FF2D919C22C0DFE1001210DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C95A94268AE058029B715AE8 /* libPods-Notes.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCC054C22C77481003E9191 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCC055C22C774A4003E9191 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +93,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DCE9391728673762F6B0F84 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12F3B1B892B3EFDE97F80DAA /* libPods-Notes.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0418A21B48E9AB387C4F273 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F5F5F8C2AF74A4AC283FF4B7 /* Pods-Notes.debug.xcconfig */,
+				84D4C3ED450208131F702602 /* Pods-Notes.pay.xcconfig */,
+				8A3039440254E2AD6FFB1FEB /* Pods-Notes.free.xcconfig */,
+				049854DC6AD172AD4571EBCD /* Pods-Notes.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FF2D919622C0DFE1001210DE = {
 			isa = PBXGroup;
 			children = (
@@ -53,7 +121,11 @@
 				FF14419122C22A9C005F5AF8 /* Pay.xcconfig */,
 				FF14418E22C22A5E005F5AF8 /* Free.xcconfig */,
 				FF2D91A122C0DFE1001210DE /* Notes */,
+				FFCC055022C77481003E9191 /* NotesTests */,
+				FFCC056022C774A4003E9191 /* NotesUITests */,
 				FF2D91A022C0DFE1001210DE /* Products */,
+				F0418A21B48E9AB387C4F273 /* Pods */,
+				1DCE9391728673762F6B0F84 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				FF2D919F22C0DFE1001210DE /* Notes.app */,
+				FFCC054F22C77481003E9191 /* NotesTests.xctest */,
+				FFCC055F22C774A4003E9191 /* NotesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,6 +163,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FFCC055022C77481003E9191 /* NotesTests */ = {
+			isa = PBXGroup;
+			children = (
+				FFCC055322C77481003E9191 /* Info.plist */,
+				FFCC056D22C77AF4003E9191 /* NotebookTestCase.swift */,
+				FFCC056F22C78BBF003E9191 /* NoteExtensionsTestCase.swift */,
+			);
+			path = NotesTests;
+			sourceTree = "<group>";
+		};
+		FFCC056022C774A4003E9191 /* NotesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FFCC056122C774A4003E9191 /* NotesUITests.swift */,
+				FFCC056322C774A4003E9191 /* Info.plist */,
+			);
+			path = NotesUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,6 +189,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF2D91B122C0DFE2001210DE /* Build configuration list for PBXNativeTarget "Notes" */;
 			buildPhases = (
+				2E57BC165252E323007F63B4 /* [CP] Check Pods Manifest.lock */,
 				FF2D919B22C0DFE1001210DE /* Sources */,
 				FF2D919C22C0DFE1001210DE /* Frameworks */,
 				FF2D919D22C0DFE1001210DE /* Resources */,
@@ -109,6 +203,42 @@
 			productReference = FF2D919F22C0DFE1001210DE /* Notes.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FFCC054E22C77481003E9191 /* NotesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFCC055622C77481003E9191 /* Build configuration list for PBXNativeTarget "NotesTests" */;
+			buildPhases = (
+				FFCC054B22C77481003E9191 /* Sources */,
+				FFCC054C22C77481003E9191 /* Frameworks */,
+				FFCC054D22C77481003E9191 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFCC055522C77481003E9191 /* PBXTargetDependency */,
+			);
+			name = NotesTests;
+			productName = NotesTests;
+			productReference = FFCC054F22C77481003E9191 /* NotesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FFCC055E22C774A4003E9191 /* NotesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFCC056622C774A4003E9191 /* Build configuration list for PBXNativeTarget "NotesUITests" */;
+			buildPhases = (
+				FFCC055B22C774A4003E9191 /* Sources */,
+				FFCC055C22C774A4003E9191 /* Frameworks */,
+				FFCC055D22C774A4003E9191 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFCC056522C774A4003E9191 /* PBXTargetDependency */,
+			);
+			name = NotesUITests;
+			productName = NotesUITests;
+			productReference = FFCC055F22C774A4003E9191 /* NotesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -121,6 +251,14 @@
 				TargetAttributes = {
 					FF2D919E22C0DFE1001210DE = {
 						CreatedOnToolsVersion = 10.2.1;
+					};
+					FFCC054E22C77481003E9191 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = FF2D919E22C0DFE1001210DE;
+					};
+					FFCC055E22C774A4003E9191 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = FF2D919E22C0DFE1001210DE;
 					};
 				};
 			};
@@ -138,6 +276,8 @@
 			projectRoot = "";
 			targets = (
 				FF2D919E22C0DFE1001210DE /* Notes */,
+				FFCC054E22C77481003E9191 /* NotesTests */,
+				FFCC055E22C774A4003E9191 /* NotesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -153,7 +293,46 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFCC054D22C77481003E9191 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCC055D22C774A4003E9191 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E57BC165252E323007F63B4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Notes-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FF2D919B22C0DFE1001210DE /* Sources */ = {
@@ -168,7 +347,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFCC054B22C77481003E9191 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFCC057022C78BBF003E9191 /* NoteExtensionsTestCase.swift in Sources */,
+				FFCC056E22C77AF4003E9191 /* NotebookTestCase.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCC055B22C774A4003E9191 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFCC056222C774A4003E9191 /* NotesUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FFCC055522C77481003E9191 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF2D919E22C0DFE1001210DE /* Notes */;
+			targetProxy = FFCC055422C77481003E9191 /* PBXContainerItemProxy */;
+		};
+		FFCC056522C774A4003E9191 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF2D919E22C0DFE1001210DE /* Notes */;
+			targetProxy = FFCC056422C774A4003E9191 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FF2D91A622C0DFE1001210DE /* Main.storyboard */ = {
@@ -508,6 +717,154 @@
 			};
 			name = Release;
 		};
+		FFCC055722C77481003E9191 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NotesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kazakovanet.NotesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notes.app/Notes";
+			};
+			name = Debug;
+		};
+		FFCC055822C77481003E9191 /* Pay */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NotesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kazakovanet.NotesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notes.app/Notes";
+			};
+			name = Pay;
+		};
+		FFCC055922C77481003E9191 /* Free */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NotesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kazakovanet.NotesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notes.app/Notes";
+			};
+			name = Free;
+		};
+		FFCC055A22C77481003E9191 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NotesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kazakovanet.NotesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notes.app/Notes";
+			};
+			name = Release;
+		};
+		FFCC056722C774A4003E9191 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NotesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kazakovanet.NotesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Notes;
+			};
+			name = Debug;
+		};
+		FFCC056822C774A4003E9191 /* Pay */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NotesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kazakovanet.NotesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Notes;
+			};
+			name = Pay;
+		};
+		FFCC056922C774A4003E9191 /* Free */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NotesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kazakovanet.NotesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Notes;
+			};
+			name = Free;
+		};
+		FFCC056A22C774A4003E9191 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NotesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kazakovanet.NotesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Notes;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -529,6 +886,28 @@
 				FF14419022C22A8B005F5AF8 /* Pay */,
 				FF14418D22C229B1005F5AF8 /* Free */,
 				FF2D91B322C0DFE2001210DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFCC055622C77481003E9191 /* Build configuration list for PBXNativeTarget "NotesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFCC055722C77481003E9191 /* Debug */,
+				FFCC055822C77481003E9191 /* Pay */,
+				FFCC055922C77481003E9191 /* Free */,
+				FFCC055A22C77481003E9191 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFCC056622C774A4003E9191 /* Build configuration list for PBXNativeTarget "NotesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFCC056722C774A4003E9191 /* Debug */,
+				FFCC056822C774A4003E9191 /* Pay */,
+				FFCC056922C774A4003E9191 /* Free */,
+				FFCC056A22C774A4003E9191 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

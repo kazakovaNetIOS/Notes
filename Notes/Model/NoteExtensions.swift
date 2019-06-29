@@ -36,7 +36,8 @@ extension Note {
     }
     
     static func parse(json: [String: Any]) -> Note? {
-        guard json["uid"] != nil,
+        guard json.count != 0,
+            json["uid"] != nil,
             json["title"] != nil,
             json["content"] != nil else {
                 return nil
