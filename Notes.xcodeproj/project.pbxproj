@@ -109,7 +109,6 @@
 				8A3039440254E2AD6FFB1FEB /* Pods-Notes.free.xcconfig */,
 				049854DC6AD172AD4571EBCD /* Pods-Notes.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

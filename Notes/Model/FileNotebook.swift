@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import CocoaLumberjack
 
 class FileNotebook {
     public private (set) var notes: [Note] = [Note]()
     
     public func add(_ note: Note) {
         if self.notes.firstIndex(where: { $0.uid == note.uid }) != nil {
-            print("Note already exist")
+            DDLogWarn("Note already exist")
             
             return
         }
@@ -41,7 +42,7 @@ class FileNotebook {
             let jsdata = try JSONSerialization.data(withJSONObject: jsonArrayNotes, options: [])
             try jsdata.write(to: fileUrl)
         } catch {
-            print("Error save notes to file, \(error)")
+            DDLogError("Error save notes to file, \(error)")
         }
     }
     
@@ -63,7 +64,7 @@ class FileNotebook {
                 }
             }
         } catch {
-            print("Error reading data from a file, \(error)")
+            DDLogError("Error reading data from a file, \(error)")
         }
     }
     
@@ -79,7 +80,7 @@ class FileNotebook {
             do {
                 try FileManager.default.createDirectory(at: dirUrl, withIntermediateDirectories: true, attributes: nil)
             } catch {
-                print("Error creating directory \"notebooks\", \(error)")
+                DDLogError("Error creating directory \"notebooks\", \(error)")
                 return nil
             }
         }

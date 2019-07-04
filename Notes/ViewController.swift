@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let notebook = FileNotebook()
+        let note = Note(uid: "1", title: "", content: "", color: .white, importance: .important, dateOfSelfDestruction: nil)
+        
+        notebook.add(note)
+        notebook.add(note)
     }
 }
 
