@@ -12,9 +12,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNote" customModule="Notes" customModuleProvider="target">
             <connections>
+                <outlet property="colorPickerTile" destination="dEe-fK-gUb" id="csw-Ni-SG7"/>
+                <outlet property="colorViewsTopConstraint" destination="zGa-BW-0gp" id="lTe-FC-Cr5"/>
                 <outlet property="destroyDatePicker" destination="7ss-7j-ycQ" id="Lr2-it-AnX"/>
                 <outlet property="destroyDateSwitch" destination="m1p-I6-qdy" id="csN-iv-jKf"/>
-                <outlet property="destroyDateSwitchTopConstraint" destination="bzU-1v-0sK" id="dCX-o3-ywC"/>
+                <outlet property="firstColorTile" destination="epG-hV-6cY" id="oGH-Hn-nB8"/>
+                <outlet property="secondColorTile" destination="YAP-ty-pn8" id="VKj-cm-y2e"/>
+                <outlet property="thirdColorTile" destination="3mZ-RA-uz9" id="VgP-km-AwW"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -32,50 +36,86 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="m1p-I6-qdy">
-                            <rect key="frame" x="172" y="243" width="51" height="31"/>
+                            <rect key="frame" x="155" y="242.5" width="51" height="31"/>
                             <connections>
                                 <action selector="destroyDateSwitchChanged:" destination="-1" eventType="valueChanged" id="td4-up-t3L"/>
                             </connections>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Destroy Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqK-D6-LR4">
-                            <rect key="frame" x="17" y="248" width="139" height="21"/>
+                            <rect key="frame" x="0.0" y="248" width="139" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7ss-7j-ycQ">
-                            <rect key="frame" x="0.0" y="290" width="414" height="216"/>
+                            <rect key="frame" x="0.0" y="289.5" width="414" height="216"/>
                             <date key="date" timeIntervalSinceReferenceDate="584103734.839059">
                                 <!--2019-07-06 11:02:14 +0000-->
                             </date>
                         </datePicker>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gIg-DH-1cx">
-                            <rect key="frame" x="0.0" y="60" width="414" height="167"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="167" id="0Cw-gI-sy3"/>
-                            </constraints>
+                            <rect key="frame" x="0.0" y="60" width="414" height="166.5"/>
                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Kd2-1g-grr">
+                            <rect key="frame" x="8" y="289.5" width="398" height="70"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epG-hV-6cY">
+                                    <rect key="frame" x="0.0" y="0.0" width="96" height="70"/>
+                                    <color key="backgroundColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="colorTileTapped:" destination="-1" eventType="touchUpInside" id="cgx-kz-yHU"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAP-ty-pn8">
+                                    <rect key="frame" x="101" y="0.0" width="95.5" height="70"/>
+                                    <color key="backgroundColor" red="0.070588235289999995" green="0.52941176469999995" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="colorTileTapped:" destination="-1" eventType="touchUpInside" id="kZh-dA-Z32"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mZ-RA-uz9">
+                                    <rect key="frame" x="201.5" y="0.0" width="96" height="70"/>
+                                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="colorTileTapped:" destination="-1" eventType="touchUpInside" id="Uzx-3S-LkU"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEe-fK-gUb">
+                                    <rect key="frame" x="302.5" y="0.0" width="95.5" height="70"/>
+                                    <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="colorPickerTapped:" destination="-1" eventType="touchUpInside" id="zv2-P3-fup"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="70" id="Z5N-vi-qfE"/>
+                            </constraints>
+                        </stackView>
                     </subviews>
                     <constraints>
                         <constraint firstItem="m1p-I6-qdy" firstAttribute="leading" secondItem="TqK-D6-LR4" secondAttribute="trailing" constant="16" id="1xE-ef-dMM"/>
                         <constraint firstItem="gIg-DH-1cx" firstAttribute="centerX" secondItem="aJI-dM-cMr" secondAttribute="centerX" id="3Tk-66-eC2"/>
                         <constraint firstItem="TqK-D6-LR4" firstAttribute="centerY" secondItem="m1p-I6-qdy" secondAttribute="centerY" id="5pb-FW-AkH"/>
+                        <constraint firstAttribute="trailing" secondItem="Kd2-1g-grr" secondAttribute="trailing" constant="8" id="6ho-Z5-at4"/>
+                        <constraint firstItem="Kd2-1g-grr" firstAttribute="leading" secondItem="aJI-dM-cMr" secondAttribute="leading" constant="8" id="IG0-OX-gHP"/>
                         <constraint firstItem="fFC-uk-dk9" firstAttribute="top" secondItem="aJI-dM-cMr" secondAttribute="top" id="Iy4-t1-1Uf"/>
                         <constraint firstItem="7ss-7j-ycQ" firstAttribute="top" secondItem="m1p-I6-qdy" secondAttribute="bottom" constant="16" id="K74-X9-5Wf"/>
                         <constraint firstItem="gIg-DH-1cx" firstAttribute="top" secondItem="fFC-uk-dk9" secondAttribute="bottom" constant="30" id="Nqm-kX-brD"/>
                         <constraint firstItem="7ss-7j-ycQ" firstAttribute="leading" secondItem="aJI-dM-cMr" secondAttribute="leading" id="OHX-9O-mgV"/>
+                        <constraint firstAttribute="bottom" secondItem="Kd2-1g-grr" secondAttribute="bottom" id="ShZ-wx-Eu2"/>
                         <constraint firstItem="gIg-DH-1cx" firstAttribute="leading" secondItem="fFC-uk-dk9" secondAttribute="leading" id="V4H-vq-cpl"/>
                         <constraint firstItem="gIg-DH-1cx" firstAttribute="leading" secondItem="aJI-dM-cMr" secondAttribute="leading" id="Wke-ir-Vay"/>
                         <constraint firstAttribute="trailing" secondItem="fFC-uk-dk9" secondAttribute="trailing" id="a41-Oj-qSz"/>
                         <constraint firstItem="m1p-I6-qdy" firstAttribute="top" secondItem="gIg-DH-1cx" secondAttribute="bottom" constant="16" id="bzU-1v-0sK"/>
                         <constraint firstAttribute="trailing" secondItem="7ss-7j-ycQ" secondAttribute="trailing" id="eQB-OS-1Zr"/>
                         <constraint firstItem="7ss-7j-ycQ" firstAttribute="leading" secondItem="gIg-DH-1cx" secondAttribute="leading" id="o78-Lo-quO"/>
-                        <constraint firstItem="TqK-D6-LR4" firstAttribute="leading" secondItem="aJI-dM-cMr" secondAttribute="leading" constant="17" id="ppk-cg-fPL"/>
+                        <constraint firstItem="TqK-D6-LR4" firstAttribute="leading" secondItem="aJI-dM-cMr" secondAttribute="leading" id="ppk-cg-fPL"/>
                         <constraint firstItem="gIg-DH-1cx" firstAttribute="trailing" secondItem="fFC-uk-dk9" secondAttribute="trailing" id="uWv-vL-uzR"/>
-                        <constraint firstAttribute="bottom" secondItem="m1p-I6-qdy" secondAttribute="bottom" constant="390" id="zfA-qK-yVT"/>
+                        <constraint firstItem="Kd2-1g-grr" firstAttribute="top" secondItem="m1p-I6-qdy" secondAttribute="bottom" constant="16" id="zGa-BW-0gp"/>
                     </constraints>
                 </scrollView>
             </subviews>
