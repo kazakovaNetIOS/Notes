@@ -13,6 +13,7 @@ class EditNote: UIView {
     
     @IBOutlet weak var destroyDateSwitch: UISwitch!
     @IBOutlet weak var destroyDatePicker: UIDatePicker!
+    @IBOutlet weak var colorViews: UIStackView!
     @IBOutlet weak var colorViewsTopConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var firstColorTile: UIButton!
@@ -48,16 +49,23 @@ class EditNote: UIView {
     }
     
     @IBAction func destroyDateSwitchChanged(_ sender: UISwitch) {
-        self.destroyDatePicker.isHidden = !sender.isOn
-        // FIXME: не работает анимация
         if sender.isOn {
-            UIView.animate(withDuration: 1) {
+            self.destroyDatePicker.isHidden = false
+            UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
                 self.colorViewsTopConstraint.constant = 248
-            }
+                self.destroyDatePicker.alpha = 1
+                
+                self.layoutIfNeeded()
+            }, completion: nil)
         } else {
-            UIView.animate(withDuration: 1) {
+            UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
                 self.colorViewsTopConstraint.constant = 16
-            }
+                self.destroyDatePicker.alpha = 0
+                
+                self.layoutIfNeeded()
+            }, completion: { (value: Bool) in
+                self.destroyDatePicker.isHidden = true
+            })
         }
     }
     
