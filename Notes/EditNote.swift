@@ -11,10 +11,9 @@ import UIKit
 @IBDesignable
 class EditNote: UIView {
     
-    @IBOutlet weak var destroyDateSwitch: UISwitch!
     @IBOutlet weak var destroyDatePicker: UIDatePicker!
-    @IBOutlet weak var colorViews: UIStackView!
     @IBOutlet weak var colorViewsTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var firstColorTile: UIButton!
     @IBOutlet weak var secondColorTile: UIButton!
@@ -46,6 +45,20 @@ class EditNote: UIView {
         xibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         self.addSubview(xibView)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShowOrHide),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShowOrHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     @IBAction func destroyDateSwitchChanged(_ sender: UISwitch) {
@@ -75,5 +88,17 @@ class EditNote: UIView {
     
     @IBAction func colorPickerTapped(_ sender: UIButton) {
         print("Color picker")
+    }
+    
+    @objc func keyboardWillShowOrHide(_ notification: Notification) {
+        let keyBoard = notification.userInfo
+        
+        if let keyboardFrame = keyBoard?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            
+            UIView.animate(withDuration: 1.0, animations: {
+                self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+            })
+        }
     }
 }

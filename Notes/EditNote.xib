@@ -13,11 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNote" customModule="Notes" customModuleProvider="target">
             <connections>
                 <outlet property="colorPickerTile" destination="dEe-fK-gUb" id="csw-Ni-SG7"/>
-                <outlet property="colorViews" destination="Kd2-1g-grr" id="dBc-WR-g1C"/>
                 <outlet property="colorViewsTopConstraint" destination="zGa-BW-0gp" id="lTe-FC-Cr5"/>
                 <outlet property="destroyDatePicker" destination="7ss-7j-ycQ" id="Lr2-it-AnX"/>
-                <outlet property="destroyDateSwitch" destination="m1p-I6-qdy" id="csN-iv-jKf"/>
                 <outlet property="firstColorTile" destination="epG-hV-6cY" id="oGH-Hn-nB8"/>
+                <outlet property="scrollView" destination="aJI-dM-cMr" id="pdf-Bd-Yl7"/>
                 <outlet property="secondColorTile" destination="YAP-ty-pn8" id="VKj-cm-y2e"/>
                 <outlet property="thirdColorTile" destination="3mZ-RA-uz9" id="VgP-km-AwW"/>
             </connections>
@@ -49,7 +48,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <datePicker hidden="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7ss-7j-ycQ">
-                            <rect key="frame" x="0.0" y="289.5" width="414" height="216"/>
+                            <rect key="frame" x="0.0" y="290" width="414" height="216"/>
                             <date key="date" timeIntervalSinceReferenceDate="584103734.839059">
                                 <!--2019-07-06 11:02:14 +0000-->
                             </date>
