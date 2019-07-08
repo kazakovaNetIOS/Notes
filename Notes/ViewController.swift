@@ -8,17 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, EditNoteProtocol {
+    func performSegueFromView() {
+        performSegue(withIdentifier: "goToPallete", sender: self)
+    }
+    
 
+    @IBOutlet weak var editNote: EditNote!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        let notebook = FileNotebook()
-        let note = Note(uid: "1", title: "", content: "", color: .white, importance: .important, dateOfSelfDestruction: nil)
-        
-        notebook.add(note)
-        notebook.add(note)
+        editNote.delegate = self
     }
 }
 
