@@ -18,8 +18,7 @@ class EditNote: UIView {
     @IBOutlet weak var firstColorTile: UIButton!
     @IBOutlet weak var secondColorTile: UIButton!
     @IBOutlet weak var thirdColorTile: UIButton!
-    @IBOutlet weak var colorPickerTile: UIButton!
-    
+    @IBOutlet weak var colorPickerTile: UIImageView!
     
     @IBOutlet weak var firstCheck: CheckIcon!
     @IBOutlet weak var secondCheck: CheckIcon!
@@ -115,12 +114,14 @@ class EditNote: UIView {
     }
     
     @IBAction func colorTileTapped(_ sender: UIButton) {
-        showCheckIcon(sender.tag)
+        showCheckIcon(tag: sender.tag)
     }
     
-    @IBAction func colorPickerTapped(_ sender: UIButton) {
-        print("Color picker")
+    
+    @IBAction func colorPickerLongPressed(_ sender: UILongPressGestureRecognizer) {
+        print("PRESS!!!")
     }
+    
     
     @objc func keyboardWillShowOrHide(_ notification: Notification) {
         let keyBoard = notification.userInfo

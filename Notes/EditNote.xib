@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNote" customModule="Notes" customModuleProvider="target">
             <connections>
-                <outlet property="colorPickerTile" destination="dEe-fK-gUb" id="csw-Ni-SG7"/>
+                <outlet property="colorPickerTile" destination="d0N-aD-MAQ" id="Kkw-xR-cgg"/>
                 <outlet property="colorViewsTopConstraint" destination="zGa-BW-0gp" id="lTe-FC-Cr5"/>
                 <outlet property="destroyDatePicker" destination="7ss-7j-ycQ" id="Lr2-it-AnX"/>
                 <outlet property="firstCheck" destination="aNV-Jc-BKm" id="yQZ-7C-B3f"/>
@@ -171,13 +171,13 @@
                                         <constraint firstAttribute="trailing" secondItem="3mZ-RA-uz9" secondAttribute="trailing" id="qNE-Za-mLP"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEe-fK-gUb">
+                                <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="palette" translatesAutoresizingMaskIntoConstraints="NO" id="d0N-aD-MAQ">
                                     <rect key="frame" x="302.5" y="0.0" width="95.5" height="70"/>
-                                    <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <gestureRecognizers/>
                                     <connections>
-                                        <action selector="colorPickerTapped:" destination="-1" eventType="touchUpInside" id="zv2-P3-fup"/>
+                                        <outletCollection property="gestureRecognizers" destination="HcV-x8-wHV" appends="YES" id="rNp-F0-CIL"/>
                                     </connections>
-                                </button>
+                                </imageView>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="height" constant="70" id="Z5N-vi-qfE"/>
@@ -218,5 +218,13 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="140.80000000000001" y="153.82308845577214"/>
         </view>
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="HcV-x8-wHV">
+            <connections>
+                <action selector="colorPickerLongPressed:" destination="-1" id="Smi-hw-XqT"/>
+            </connections>
+        </pongPressGestureRecognizer>
     </objects>
+    <resources>
+        <image name="palette" width="250" height="100"/>
+    </resources>
 </document>
