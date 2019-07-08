@@ -15,9 +15,12 @@
                 <outlet property="colorPickerTile" destination="dEe-fK-gUb" id="csw-Ni-SG7"/>
                 <outlet property="colorViewsTopConstraint" destination="zGa-BW-0gp" id="lTe-FC-Cr5"/>
                 <outlet property="destroyDatePicker" destination="7ss-7j-ycQ" id="Lr2-it-AnX"/>
-                <outlet property="firstColorTile" destination="tPk-8e-MWc" id="eqq-f7-e2Q"/>
+                <outlet property="firstCheck" destination="aNV-Jc-BKm" id="yQZ-7C-B3f"/>
+                <outlet property="firstColorTile" destination="Qi6-N7-HUL" id="vsA-Zv-rd3"/>
                 <outlet property="scrollView" destination="aJI-dM-cMr" id="pdf-Bd-Yl7"/>
+                <outlet property="secondCheck" destination="Xc1-S7-3a4" id="9AR-ie-D56"/>
                 <outlet property="secondColorTile" destination="YAP-ty-pn8" id="VKj-cm-y2e"/>
+                <outlet property="thirdCheck" destination="5Z2-1x-K0N" id="aP5-dg-aca"/>
                 <outlet property="thirdColorTile" destination="3mZ-RA-uz9" id="VgP-km-AwW"/>
             </connections>
         </placeholder>
@@ -62,11 +65,18 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Kd2-1g-grr">
                             <rect key="frame" x="8" y="289.5" width="398" height="70"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPk-8e-MWc">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sod-gw-ifQ">
                                     <rect key="frame" x="0.0" y="0.0" width="96" height="70"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNV-Jc-BKm" customClass="CheckIcon" customModule="Notes" customModuleProvider="target">
-                                            <rect key="frame" x="71" y="5" width="20" height="20"/>
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qi6-N7-HUL">
+                                            <rect key="frame" x="0.0" y="-0.5" width="96" height="70"/>
+                                            <color key="backgroundColor" red="0.1333333333" green="0.43137254899999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="colorTileTapped:" destination="-1" eventType="touchUpInside" id="Znr-1T-O44"/>
+                                            </connections>
+                                        </button>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNV-Jc-BKm" customClass="CheckIcon" customModule="Notes" customModuleProvider="target">
+                                            <rect key="frame" x="66" y="10" width="20" height="20"/>
                                             <color key="backgroundColor" red="0.13333333333333333" green="0.43137254901960786" blue="0.39215686274509803" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="FG9-jU-dOx"/>
@@ -80,26 +90,87 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.3411764706" green="0.85490196080000003" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="aNV-Jc-BKm" firstAttribute="top" secondItem="tPk-8e-MWc" secondAttribute="top" constant="5" id="9hN-W8-AHn"/>
-                                        <constraint firstAttribute="trailing" secondItem="aNV-Jc-BKm" secondAttribute="trailing" constant="5" id="rsC-n4-fdW"/>
+                                        <constraint firstItem="aNV-Jc-BKm" firstAttribute="top" secondItem="Sod-gw-ifQ" secondAttribute="top" constant="10" id="Nnv-yR-BuM"/>
+                                        <constraint firstAttribute="bottom" secondItem="Qi6-N7-HUL" secondAttribute="bottom" constant="0.5" id="UZx-JC-j7w"/>
+                                        <constraint firstItem="Qi6-N7-HUL" firstAttribute="top" secondItem="Sod-gw-ifQ" secondAttribute="top" constant="-0.5" id="XFP-lN-nJL"/>
+                                        <constraint firstAttribute="trailing" secondItem="Qi6-N7-HUL" secondAttribute="trailing" id="ceq-px-gEw"/>
+                                        <constraint firstAttribute="trailing" secondItem="aNV-Jc-BKm" secondAttribute="trailing" constant="10" id="k7G-YQ-wgu"/>
+                                        <constraint firstItem="Qi6-N7-HUL" firstAttribute="leading" secondItem="Sod-gw-ifQ" secondAttribute="leading" id="znv-7d-K0O"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAP-ty-pn8">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fxf-0j-FeD">
                                     <rect key="frame" x="101" y="0.0" width="95.5" height="70"/>
-                                    <color key="backgroundColor" red="0.070588235289999995" green="0.52941176469999995" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <connections>
-                                        <action selector="colorTileTapped:" destination="-1" eventType="touchUpInside" id="kZh-dA-Z32"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mZ-RA-uz9">
+                                    <subviews>
+                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAP-ty-pn8">
+                                            <rect key="frame" x="0.0" y="0.0" width="95.5" height="70"/>
+                                            <color key="backgroundColor" red="0.070588235289999995" green="0.52941176469999995" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="colorTileTapped:" destination="-1" eventType="touchUpInside" id="kZh-dA-Z32"/>
+                                            </connections>
+                                        </button>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xc1-S7-3a4" customClass="CheckIcon" customModule="Notes" customModuleProvider="target">
+                                            <rect key="frame" x="65.5" y="10" width="20" height="20"/>
+                                            <color key="backgroundColor" red="0.1333333333" green="0.43137254899999999" blue="0.3921568627" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="Qfb-gs-aFl"/>
+                                                <constraint firstAttribute="height" constant="20" id="dgL-8y-pzU"/>
+                                                <constraint firstAttribute="width" secondItem="Xc1-S7-3a4" secondAttribute="height" multiplier="1:1" id="zjN-jx-hQ4"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="YAP-ty-pn8" firstAttribute="top" secondItem="Fxf-0j-FeD" secondAttribute="top" id="Lmu-TE-xNp"/>
+                                        <constraint firstItem="YAP-ty-pn8" firstAttribute="leading" secondItem="Fxf-0j-FeD" secondAttribute="leading" id="Nga-he-rwV"/>
+                                        <constraint firstAttribute="trailing" secondItem="Xc1-S7-3a4" secondAttribute="trailing" constant="10" id="Qrj-2f-F0e"/>
+                                        <constraint firstItem="YAP-ty-pn8" firstAttribute="leading" secondItem="Fxf-0j-FeD" secondAttribute="leading" id="Vzi-jo-yWF"/>
+                                        <constraint firstAttribute="bottom" secondItem="YAP-ty-pn8" secondAttribute="bottom" id="hzh-Lx-rg7"/>
+                                        <constraint firstItem="Xc1-S7-3a4" firstAttribute="top" secondItem="Fxf-0j-FeD" secondAttribute="top" constant="10" id="lrY-Or-cty"/>
+                                        <constraint firstAttribute="trailing" secondItem="YAP-ty-pn8" secondAttribute="trailing" id="nMH-54-2NX"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvR-Ic-y93">
                                     <rect key="frame" x="201.5" y="0.0" width="96" height="70"/>
-                                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <connections>
-                                        <action selector="colorTileTapped:" destination="-1" eventType="touchUpInside" id="Uzx-3S-LkU"/>
-                                    </connections>
-                                </button>
+                                    <subviews>
+                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mZ-RA-uz9">
+                                            <rect key="frame" x="0.0" y="0.0" width="96" height="70"/>
+                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="colorTileTapped:" destination="-1" eventType="touchUpInside" id="Uzx-3S-LkU"/>
+                                            </connections>
+                                        </button>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Z2-1x-K0N" customClass="CheckIcon" customModule="Notes" customModuleProvider="target">
+                                            <rect key="frame" x="66" y="10" width="20" height="20"/>
+                                            <color key="backgroundColor" red="0.1333333333" green="0.43137254899999999" blue="0.3921568627" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="5Z2-1x-K0N" secondAttribute="height" multiplier="1:1" id="E2E-Qs-aAr"/>
+                                                <constraint firstAttribute="width" constant="20" id="nfu-iS-d5r"/>
+                                                <constraint firstAttribute="height" constant="20" id="rvZ-xd-XUv"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="5Z2-1x-K0N" secondAttribute="trailing" constant="10" id="9AU-x2-j6F"/>
+                                        <constraint firstItem="3mZ-RA-uz9" firstAttribute="leading" secondItem="VvR-Ic-y93" secondAttribute="leading" id="9Jh-J8-k9J"/>
+                                        <constraint firstItem="3mZ-RA-uz9" firstAttribute="top" secondItem="VvR-Ic-y93" secondAttribute="top" id="9Kv-rQ-XBO"/>
+                                        <constraint firstItem="5Z2-1x-K0N" firstAttribute="top" secondItem="VvR-Ic-y93" secondAttribute="top" constant="10" id="Dav-Il-TaV"/>
+                                        <constraint firstAttribute="bottom" secondItem="3mZ-RA-uz9" secondAttribute="bottom" id="hzT-aI-EZh"/>
+                                        <constraint firstAttribute="trailing" secondItem="3mZ-RA-uz9" secondAttribute="trailing" id="qNE-Za-mLP"/>
+                                    </constraints>
+                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEe-fK-gUb">
                                     <rect key="frame" x="302.5" y="0.0" width="95.5" height="70"/>
                                     <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

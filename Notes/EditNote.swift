@@ -15,10 +15,15 @@ class EditNote: UIView {
     @IBOutlet weak var colorViewsTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    @IBOutlet weak var firstColorTile: UIView!
+    @IBOutlet weak var firstColorTile: UIButton!
     @IBOutlet weak var secondColorTile: UIButton!
     @IBOutlet weak var thirdColorTile: UIButton!
     @IBOutlet weak var colorPickerTile: UIButton!
+    
+    
+    @IBOutlet weak var firstCheck: CheckIcon!
+    @IBOutlet weak var secondCheck: CheckIcon!
+    @IBOutlet weak var thirdCheck: CheckIcon!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -93,8 +98,24 @@ class EditNote: UIView {
         }
     }
     
+    fileprivate func showCheckIcon(tag: Int) {
+        if tag == 1 {
+            firstCheck.isHidden = false
+            secondCheck.isHidden = true
+            thirdCheck.isHidden = true
+        } else if tag == 2 {
+            firstCheck.isHidden = true
+            secondCheck.isHidden = false
+            thirdCheck.isHidden = true
+        } else if tag == 3 {
+            firstCheck.isHidden = true
+            secondCheck.isHidden = true
+            thirdCheck.isHidden = false
+        }
+    }
+    
     @IBAction func colorTileTapped(_ sender: UIButton) {
-        
+        showCheckIcon(sender.tag)
     }
     
     @IBAction func colorPickerTapped(_ sender: UIButton) {
