@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNote" customModule="Notes" customModuleProvider="target">
             <connections>
+                <outlet property="colorPickerCheck" destination="rB3-8C-G9I" id="4TC-gP-Tn6"/>
                 <outlet property="colorPickerTile" destination="d0N-aD-MAQ" id="Kkw-xR-cgg"/>
                 <outlet property="colorViewsTopConstraint" destination="zGa-BW-0gp" id="lTe-FC-Cr5"/>
                 <outlet property="destroyDatePicker" destination="7ss-7j-ycQ" id="Lr2-it-AnX"/>
@@ -171,13 +172,40 @@
                                         <constraint firstAttribute="trailing" secondItem="3mZ-RA-uz9" secondAttribute="trailing" id="qNE-Za-mLP"/>
                                     </constraints>
                                 </view>
-                                <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="palette" translatesAutoresizingMaskIntoConstraints="NO" id="d0N-aD-MAQ">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y9a-eQ-iDx">
                                     <rect key="frame" x="302.5" y="0.0" width="95.5" height="70"/>
-                                    <gestureRecognizers/>
-                                    <connections>
-                                        <outletCollection property="gestureRecognizers" destination="HcV-x8-wHV" appends="YES" id="rNp-F0-CIL"/>
-                                    </connections>
-                                </imageView>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="palette" translatesAutoresizingMaskIntoConstraints="NO" id="d0N-aD-MAQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="95.5" height="70"/>
+                                            <gestureRecognizers/>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="HcV-x8-wHV" appends="YES" id="rNp-F0-CIL"/>
+                                            </connections>
+                                        </imageView>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rB3-8C-G9I" customClass="CheckIcon" customModule="Notes" customModuleProvider="target">
+                                            <rect key="frame" x="65.5" y="10" width="20" height="20"/>
+                                            <color key="backgroundColor" red="0.1333333333" green="0.43137254899999999" blue="0.3921568627" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="kEE-zc-LDj"/>
+                                                <constraint firstAttribute="height" constant="20" id="wXy-5H-Hc9"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="rB3-8C-G9I" firstAttribute="top" secondItem="y9a-eQ-iDx" secondAttribute="top" constant="10" id="1Ds-Op-vND"/>
+                                        <constraint firstItem="d0N-aD-MAQ" firstAttribute="top" secondItem="y9a-eQ-iDx" secondAttribute="top" id="Aq4-yD-TOX"/>
+                                        <constraint firstItem="d0N-aD-MAQ" firstAttribute="leading" secondItem="y9a-eQ-iDx" secondAttribute="leading" id="B6p-vH-GqM"/>
+                                        <constraint firstAttribute="trailing" secondItem="rB3-8C-G9I" secondAttribute="trailing" constant="10" id="DqQ-w7-lgH"/>
+                                        <constraint firstAttribute="trailing" secondItem="d0N-aD-MAQ" secondAttribute="trailing" id="mLu-ZG-hzN"/>
+                                        <constraint firstAttribute="bottom" secondItem="d0N-aD-MAQ" secondAttribute="bottom" id="xog-fE-5Ih"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="height" constant="70" id="Z5N-vi-qfE"/>

@@ -8,18 +8,30 @@
 
 import UIKit
 
-class ViewController: UIViewController, EditNoteProtocol {
-    func performSegueFromView() {
-        performSegue(withIdentifier: "goToPallete", sender: self)
-    }
+class ViewController: UIViewController, EditNoteProtocol, PalleteProtocol {
     
-
     @IBOutlet weak var editNote: EditNote!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         editNote.delegate = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! PalletteViewController
+        
+        destinationVC.delegate = self
+    }
+    
+    func performSegueFromView() {
+        performSegue(withIdentifier: "goToPallete", sender: self)
+    }
+    
+    func onColorSelected(color: UIColor) {
+        editNote.colorPickerTile.image = nil
+        editNote.colorPickerTile.backgroundColor = color
+        editNote.showCheckIcon(tag: 4)
     }
 }
 

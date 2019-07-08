@@ -23,6 +23,7 @@ class EditNote: UIView {
     @IBOutlet weak var firstCheck: CheckIcon!
     @IBOutlet weak var secondCheck: CheckIcon!
     @IBOutlet weak var thirdCheck: CheckIcon!
+    @IBOutlet weak var colorPickerCheck: CheckIcon!
     
     var delegate: EditNoteProtocol?
     
@@ -99,19 +100,27 @@ class EditNote: UIView {
         }
     }
     
-    fileprivate func showCheckIcon(tag: Int) {
+    public func showCheckIcon(tag: Int) {
         if tag == 1 {
             firstCheck.isHidden = false
             secondCheck.isHidden = true
             thirdCheck.isHidden = true
+            colorPickerCheck.isHidden = true
         } else if tag == 2 {
             firstCheck.isHidden = true
             secondCheck.isHidden = false
             thirdCheck.isHidden = true
+            colorPickerCheck.isHidden = true
         } else if tag == 3 {
             firstCheck.isHidden = true
             secondCheck.isHidden = true
             thirdCheck.isHidden = false
+            colorPickerCheck.isHidden = true
+        } else if tag == 4 {
+            firstCheck.isHidden = true
+            secondCheck.isHidden = true
+            thirdCheck.isHidden = true
+            colorPickerCheck.isHidden = false
         }
     }
     
@@ -119,13 +128,13 @@ class EditNote: UIView {
         showCheckIcon(tag: sender.tag)
     }
     
-    
     @IBAction func colorPickerLongPressed(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-        delegate?.performSegueFromView()
+            delegate?.performSegueFromView()
+            
+            print("long press")
         }
     }
-    
     
     @objc func keyboardWillShowOrHide(_ notification: Notification) {
         let keyBoard = notification.userInfo
