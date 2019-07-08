@@ -15,7 +15,7 @@ class EditNote: UIView {
     @IBOutlet weak var colorViewsTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    @IBOutlet weak var firstColorTile: UIButton!
+    @IBOutlet weak var firstColorTile: UIView!
     @IBOutlet weak var secondColorTile: UIButton!
     @IBOutlet weak var thirdColorTile: UIButton!
     @IBOutlet weak var colorPickerTile: UIButton!
@@ -59,6 +59,17 @@ class EditNote: UIView {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+        
+        setBorder(for: firstColorTile)
+        setBorder(for: secondColorTile)
+        setBorder(for: thirdColorTile)
+        setBorder(for: colorPickerTile)
+    }
+    
+    private func setBorder(for view: UIView) {
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.cornerRadius = 10
     }
     
     @IBAction func destroyDateSwitchChanged(_ sender: UISwitch) {

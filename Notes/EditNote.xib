@@ -15,7 +15,7 @@
                 <outlet property="colorPickerTile" destination="dEe-fK-gUb" id="csw-Ni-SG7"/>
                 <outlet property="colorViewsTopConstraint" destination="zGa-BW-0gp" id="lTe-FC-Cr5"/>
                 <outlet property="destroyDatePicker" destination="7ss-7j-ycQ" id="Lr2-it-AnX"/>
-                <outlet property="firstColorTile" destination="epG-hV-6cY" id="oGH-Hn-nB8"/>
+                <outlet property="firstColorTile" destination="tPk-8e-MWc" id="eqq-f7-e2Q"/>
                 <outlet property="scrollView" destination="aJI-dM-cMr" id="pdf-Bd-Yl7"/>
                 <outlet property="secondColorTile" destination="YAP-ty-pn8" id="VKj-cm-y2e"/>
                 <outlet property="thirdColorTile" destination="3mZ-RA-uz9" id="VgP-km-AwW"/>
@@ -48,7 +48,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <datePicker hidden="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7ss-7j-ycQ">
-                            <rect key="frame" x="0.0" y="290" width="414" height="216"/>
+                            <rect key="frame" x="0.0" y="289.5" width="414" height="216"/>
                             <date key="date" timeIntervalSinceReferenceDate="584103734.839059">
                                 <!--2019-07-06 11:02:14 +0000-->
                             </date>
@@ -62,13 +62,30 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Kd2-1g-grr">
                             <rect key="frame" x="8" y="289.5" width="398" height="70"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epG-hV-6cY">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPk-8e-MWc">
                                     <rect key="frame" x="0.0" y="0.0" width="96" height="70"/>
-                                    <color key="backgroundColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <connections>
-                                        <action selector="colorTileTapped:" destination="-1" eventType="touchUpInside" id="cgx-kz-yHU"/>
-                                    </connections>
-                                </button>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNV-Jc-BKm" customClass="CheckIcon" customModule="Notes" customModuleProvider="target">
+                                            <rect key="frame" x="71" y="5" width="20" height="20"/>
+                                            <color key="backgroundColor" red="0.13333333333333333" green="0.43137254901960786" blue="0.39215686274509803" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="FG9-jU-dOx"/>
+                                                <constraint firstAttribute="width" secondItem="aNV-Jc-BKm" secondAttribute="height" multiplier="1:1" id="vVw-Xb-8Ta"/>
+                                                <constraint firstAttribute="width" constant="20" id="yKN-9W-8kK"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.3411764706" green="0.85490196080000003" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="aNV-Jc-BKm" firstAttribute="top" secondItem="tPk-8e-MWc" secondAttribute="top" constant="5" id="9hN-W8-AHn"/>
+                                        <constraint firstAttribute="trailing" secondItem="aNV-Jc-BKm" secondAttribute="trailing" constant="5" id="rsC-n4-fdW"/>
+                                    </constraints>
+                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAP-ty-pn8">
                                     <rect key="frame" x="101" y="0.0" width="95.5" height="70"/>
                                     <color key="backgroundColor" red="0.070588235289999995" green="0.52941176469999995" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
