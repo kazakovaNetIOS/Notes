@@ -30,9 +30,11 @@ class CheckIcon: UIView {
         
         let checkPath = UIBezierPath()
         checkPath.lineWidth = strokeWidth
+        
         checkPath.move(to: CGPoint(x: newRect.width / 2 - 1, y: newRect.height / 2 + 1))
         checkPath.addLine(to: CGPoint(x: newRect.width / 2 + 1, y: newRect.height + newRect.height / 4 - 3))
         checkPath.addLine(to: CGPoint(x: newRect.width + 1, y: 1))
+        
         checkPath.stroke()
     }
 

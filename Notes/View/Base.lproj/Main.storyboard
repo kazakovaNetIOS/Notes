@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h4C-My-32B">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Edit Note Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EditNoteController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWN-V8-AT6" customClass="EditNote" customModule="Notes" customModuleProvider="target">
-                                <rect key="frame" x="16" y="104" width="343" height="555"/>
+                                <rect key="frame" x="16" y="104" width="568" height="488"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -35,23 +31,23 @@
                     <navigationItem key="navigationItem" id="3XL-1P-c8e"/>
                     <connections>
                         <outlet property="editNote" destination="gWN-V8-AT6" id="mS8-xY-ue3"/>
-                        <segue destination="yfh-sS-S1Y" kind="show" identifier="goToPallete" id="aaF-ae-Qrz"/>
+                        <segue destination="yfh-sS-S1Y" kind="show" identifier="goToPalette" id="aaF-ae-Qrz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="992.79999999999995" y="27.436281859070466"/>
         </scene>
-        <!--Pallette View Controller-->
+        <!--Color Picker Controller-->
         <scene sceneID="uqF-BD-Epk">
             <objects>
-                <viewController id="yfh-sS-S1Y" customClass="PalletteViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yfh-sS-S1Y" customClass="ColorPickerController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UBC-be-6Jp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Uju-ql-DYr">
-                                <rect key="frame" x="130" y="136" width="227" height="31"/>
+                                <rect key="frame" x="130" y="136" width="452" height="31"/>
                             </slider>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpe-gF-r0Y">
                                 <rect key="frame" x="16" y="80" width="100" height="100"/>
@@ -62,13 +58,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IG6-Y1-HBM">
-                                <rect key="frame" x="132" y="88" width="227" height="24"/>
+                                <rect key="frame" x="132" y="88" width="452" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2q-wJ-You">
-                                <rect key="frame" x="16" y="610" width="343" height="41"/>
+                                <rect key="frame" x="16" y="543" width="568" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
@@ -76,10 +72,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acN-AH-7nY">
-                                <rect key="frame" x="16" y="196" width="343" height="398"/>
+                                <rect key="frame" x="16" y="196" width="568" height="331"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKS-qU-Drb" customClass="ColorPickerView" customModule="Notes" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="398"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKS-qU-Drb" customClass="ColorPicker" customModule="Notes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="568" height="331"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -114,9 +110,9 @@
                     </view>
                     <connections>
                         <outlet property="brightnessSlider" destination="Uju-ql-DYr" id="zpI-iS-SYr"/>
-                        <outlet property="colorPickerFrame" destination="acN-AH-7nY" id="SB2-sw-Upz"/>
-                        <outlet property="colorPickerView" destination="qKS-qU-Drb" id="T2q-HM-qVj"/>
-                        <outlet property="selectColorTile" destination="bpe-gF-r0Y" id="RPT-nl-Eg2"/>
+                        <outlet property="colorPicker" destination="qKS-qU-Drb" id="T2q-HM-qVj"/>
+                        <outlet property="colorPickerFrameView" destination="acN-AH-7nY" id="SB2-sw-Upz"/>
+                        <outlet property="selectedColorView" destination="bpe-gF-r0Y" id="RPT-nl-Eg2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CFD-vG-pjD" userLabel="First Responder" sceneMemberID="firstResponder"/>

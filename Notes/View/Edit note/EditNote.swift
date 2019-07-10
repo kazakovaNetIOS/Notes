@@ -25,7 +25,7 @@ class EditNote: UIView {
     @IBOutlet weak var thirdCheck: CheckIcon!
     @IBOutlet weak var colorPickerCheck: CheckIcon!
     
-    var delegate: EditNoteProtocol?
+    var delegate: EditNoteColorPickerTileDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -130,7 +130,7 @@ class EditNote: UIView {
     
     @IBAction func colorPickerLongPressed(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-            delegate?.performSegueFromView()
+            delegate?.editNoteColorPickerTileDidLongPress(self)
             
             print("long press")
         }
@@ -149,6 +149,6 @@ class EditNote: UIView {
     }
 }
 
-protocol EditNoteProtocol {
-    func performSegueFromView()
+protocol EditNoteColorPickerTileDelegate {
+    func editNoteColorPickerTileDidLongPress(_ editNote: EditNote)
 }
