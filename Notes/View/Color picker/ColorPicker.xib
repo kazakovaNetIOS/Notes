@@ -56,9 +56,6 @@
                     <rect key="frame" x="16" y="152" width="343" height="442"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="gAR-tu-8Zd" appends="YES" id="G6u-Ix-dMC"/>
-                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,11 +77,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="sn5-1n-gpz" secondAttribute="bottom" constant="16" id="udX-7C-WnJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
-        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="gAR-tu-8Zd">
-            <connections>
-                <action selector="longPress:" destination="-1" id="dON-3h-b2P"/>
-            </connections>
-        </pongPressGestureRecognizer>
     </objects>
 </document>

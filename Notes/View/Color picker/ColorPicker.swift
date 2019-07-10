@@ -17,6 +17,7 @@ class ColorPicker: UIView {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var gradientFrame: UIView!
     
+    var targetImageView: UIImageView!
     var gradientLayer: CAGradientLayer!
     var delegate: ColorPickerDelegate?
     
@@ -83,15 +84,14 @@ class ColorPicker: UIView {
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         
         gradientFrame.layer.addSublayer(gradientLayer)
+        
+        targetImageView = UIImageView(image: UIImage(named: "target"))
+        targetImageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        targetImageView.isHidden = true
+        gradientFrame.addSubview(targetImageView)
     }
-    
-    @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
-        print("loooooong")
-    }
-    
     
     func getColor(at point: CGPoint) -> UIColor{
-        
         let pixel = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: 4)
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
@@ -106,7 +106,26 @@ class ColorPicker: UIView {
                             alpha: CGFloat(pixel[3]) / 255.0)
         pixel.deallocate()
         
-        return color
+        return getColor(withAlpha: color)
+    }
+    
+    func getColor(withAlpha color: UIColor) -> UIColor {
+        guard let slider = brightnessSlider else {
+            return color
+        }
+        
+        return color.withAlphaComponent(CGFloat(slider.value))
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        
+        let location = touch.location(in: gradientFrame)
+        
+        if location.x > 0 && location.y > 0 {
+            selectedColor = getColor(at: location)
+            moveCoursor(at: location)
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -116,6 +135,7 @@ class ColorPicker: UIView {
         
         if location.x > 0 && location.y > 0 {
             selectedColor = getColor(at: location)
+            moveCoursor(at: location)
         }
     }
     
@@ -125,6 +145,12 @@ class ColorPicker: UIView {
     
     @IBAction func brightnessSliderChanged(_ sender: UISlider) {
         selectedColor = selectedColor.withAlphaComponent(CGFloat(sender.value))
+    }
+    
+    private func moveCoursor(at point: CGPoint) {
+        targetImageView.isHidden = false
+        targetImageView.frame.origin.x = point.x - targetImageView.frame.width / 2
+        targetImageView.frame.origin.y = point.y - targetImageView.frame.height / 2
     }
 }
 
