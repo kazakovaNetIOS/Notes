@@ -10,44 +10,22 @@ import UIKit
 
 class ColorPickerController: UIViewController {
     
-    @IBOutlet weak var selectedColorView: UIView!
-    @IBOutlet weak var brightnessSlider: UISlider!
-    @IBOutlet weak var colorPickerFrameView: UIView!
     @IBOutlet weak var colorPicker: ColorPicker!
+    var delegate: ColorPickerControllerDelegate?
     
-    var delegate: ColorPickerViewDelegate?
-    
-    var selectedColor: UIColor = .white {
-        willSet {
-            selectedColorView.backgroundColor = newValue
-        }
-    }
-    
-    override func viewDidLoad() {
-        selectedColorView.layer.borderColor = UIColor.black.cgColor
-        selectedColorView.layer.borderWidth = 1
-        selectedColorView.layer.cornerRadius = 10
-        
-        colorPickerFrameView.layer.borderColor = UIColor.black.cgColor
-        colorPickerFrameView.layer.borderWidth = 1
-        
+    override func viewDidLoad() {        
         colorPicker.delegate = self
-    }
-    
-    @IBAction func doneButtonTapped(_ sender: UIButton) {
-        delegate?.colorPickerView(self, willSelectColor: selectedColor)
-        
-        navigationController?.popToRootViewController(animated: true)
     }
 }
 
 // MARK: - ColorPickerDelegate
 extension ColorPickerController: ColorPickerDelegate {
-    func colorPickerTouched(sender: ColorPicker, color: UIColor, point: CGPoint, state: UIGestureRecognizer.State) {
-        selectedColor = color
+    func colorPicker(_ colorPicker: ColorPicker, willSelectColor color: UIColor) {
+        delegate?.colorPickerController(self, willSelect: color)
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 
-protocol ColorPickerViewDelegate {
-    func colorPickerView(_ colorPickerController: ColorPickerController, willSelectColor color: UIColor)
+protocol ColorPickerControllerDelegate {
+    func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor)
 }

@@ -32,9 +32,9 @@ extension EditNoteController: EditNoteColorPickerTileDelegate {
     }
 }
 
-// MARK: - PalleteDelegate
-extension EditNoteController: ColorPickerViewDelegate {
-    func colorPickerView(_ paletteVC: ColorPickerController, willSelectColor color: UIColor) {
+// MARK: - ColorPickerControllerDelegate
+extension EditNoteController: ColorPickerControllerDelegate {
+    func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor) {
         editNote.colorPickerTile.image = nil
         editNote.colorPickerTile.backgroundColor = color
         editNote.showCheckIcon(tag: 4)

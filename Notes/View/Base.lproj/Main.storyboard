@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h4C-My-32B">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,11 +15,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="EditNoteController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWN-V8-AT6" customClass="EditNote" customModule="Notes" customModuleProvider="target">
-                                <rect key="frame" x="16" y="104" width="568" height="488"/>
+                                <rect key="frame" x="16" y="104" width="343" height="555"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -43,76 +47,25 @@
             <objects>
                 <viewController id="yfh-sS-S1Y" customClass="ColorPickerController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UBC-be-6Jp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Uju-ql-DYr">
-                                <rect key="frame" x="130" y="136" width="452" height="31"/>
-                            </slider>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpe-gF-r0Y">
-                                <rect key="frame" x="16" y="80" width="100" height="100"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdR-Nz-L8b" customClass="ColorPicker" customModule="Notes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="TUh-Wc-OPb"/>
-                                    <constraint firstAttribute="width" constant="100" id="svy-jZ-OqB"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IG6-Y1-HBM">
-                                <rect key="frame" x="132" y="88" width="452" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2q-wJ-You">
-                                <rect key="frame" x="16" y="543" width="568" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="doneButtonTapped:" destination="yfh-sS-S1Y" eventType="touchUpInside" id="nqE-x8-00b"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acN-AH-7nY">
-                                <rect key="frame" x="16" y="196" width="568" height="331"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKS-qU-Drb" customClass="ColorPicker" customModule="Notes" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="568" height="331"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="qKS-qU-Drb" secondAttribute="bottom" id="AeX-E9-itI"/>
-                                    <constraint firstAttribute="trailing" secondItem="qKS-qU-Drb" secondAttribute="trailing" id="dgp-lF-n9l"/>
-                                    <constraint firstItem="qKS-qU-Drb" firstAttribute="top" secondItem="acN-AH-7nY" secondAttribute="top" id="fYp-SV-mjs"/>
-                                    <constraint firstItem="qKS-qU-Drb" firstAttribute="leading" secondItem="acN-AH-7nY" secondAttribute="leading" id="tzg-qP-Ydw"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Fnf-as-bxZ" firstAttribute="trailing" secondItem="IG6-Y1-HBM" secondAttribute="trailing" constant="16" id="6XG-sl-YUS"/>
-                            <constraint firstItem="acN-AH-7nY" firstAttribute="leading" secondItem="Fnf-as-bxZ" secondAttribute="leading" constant="16" id="8cK-uJ-5dG"/>
-                            <constraint firstItem="B2q-wJ-You" firstAttribute="top" secondItem="acN-AH-7nY" secondAttribute="bottom" constant="16" id="AX7-i5-BLj"/>
-                            <constraint firstItem="Fnf-as-bxZ" firstAttribute="trailing" secondItem="B2q-wJ-You" secondAttribute="trailing" constant="16" id="DlO-h6-tXh"/>
-                            <constraint firstItem="B2q-wJ-You" firstAttribute="leading" secondItem="Fnf-as-bxZ" secondAttribute="leading" constant="16" id="LfQ-Pc-FIJ"/>
-                            <constraint firstItem="bpe-gF-r0Y" firstAttribute="leading" secondItem="Fnf-as-bxZ" secondAttribute="leading" constant="16" id="OaE-mj-T7j"/>
-                            <constraint firstItem="IG6-Y1-HBM" firstAttribute="leading" secondItem="bpe-gF-r0Y" secondAttribute="trailing" constant="16" id="PKp-hd-3i4"/>
-                            <constraint firstItem="Fnf-as-bxZ" firstAttribute="bottom" secondItem="B2q-wJ-You" secondAttribute="bottom" constant="16" id="PsB-lG-Hbd"/>
-                            <constraint firstItem="Fnf-as-bxZ" firstAttribute="trailing" secondItem="Uju-ql-DYr" secondAttribute="trailing" constant="20" id="UEn-O9-E9d"/>
-                            <constraint firstItem="IG6-Y1-HBM" firstAttribute="top" secondItem="Fnf-as-bxZ" secondAttribute="top" constant="24" id="Yh3-aD-dmG"/>
-                            <constraint firstItem="acN-AH-7nY" firstAttribute="top" secondItem="bpe-gF-r0Y" secondAttribute="bottom" constant="16" id="crg-hF-NHS"/>
-                            <constraint firstItem="Uju-ql-DYr" firstAttribute="leading" secondItem="bpe-gF-r0Y" secondAttribute="trailing" constant="16" id="hwb-WK-jSz"/>
-                            <constraint firstItem="Fnf-as-bxZ" firstAttribute="trailing" secondItem="acN-AH-7nY" secondAttribute="trailing" constant="16" id="lH6-Jw-a1X"/>
-                            <constraint firstItem="Uju-ql-DYr" firstAttribute="top" secondItem="IG6-Y1-HBM" secondAttribute="bottom" constant="24" id="m9t-ae-Ecu"/>
-                            <constraint firstItem="bpe-gF-r0Y" firstAttribute="top" secondItem="Fnf-as-bxZ" secondAttribute="top" constant="16" id="zxk-YD-cgM"/>
+                            <constraint firstItem="CdR-Nz-L8b" firstAttribute="top" secondItem="Fnf-as-bxZ" secondAttribute="top" id="1Wb-x3-vLG"/>
+                            <constraint firstItem="Fnf-as-bxZ" firstAttribute="bottom" secondItem="CdR-Nz-L8b" secondAttribute="bottom" id="90R-JA-vZ9"/>
+                            <constraint firstItem="Fnf-as-bxZ" firstAttribute="trailing" secondItem="CdR-Nz-L8b" secondAttribute="trailing" id="IAc-qb-ZFc"/>
+                            <constraint firstItem="CdR-Nz-L8b" firstAttribute="leading" secondItem="Fnf-as-bxZ" secondAttribute="leading" id="ysi-28-5r8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fnf-as-bxZ"/>
                     </view>
                     <connections>
-                        <outlet property="brightnessSlider" destination="Uju-ql-DYr" id="zpI-iS-SYr"/>
-                        <outlet property="colorPicker" destination="qKS-qU-Drb" id="T2q-HM-qVj"/>
-                        <outlet property="colorPickerFrameView" destination="acN-AH-7nY" id="SB2-sw-Upz"/>
-                        <outlet property="selectedColorView" destination="bpe-gF-r0Y" id="RPT-nl-Eg2"/>
+                        <outlet property="colorPicker" destination="CdR-Nz-L8b" id="cWC-CD-Ifs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CFD-vG-pjD" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -131,8 +131,6 @@ class EditNote: UIView {
     @IBAction func colorPickerLongPressed(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             delegate?.editNoteColorPickerTileDidLongPress(self)
-            
-            print("long press")
         }
     }
     
