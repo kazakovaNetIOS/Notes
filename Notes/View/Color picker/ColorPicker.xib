@@ -16,6 +16,7 @@
                 <outlet property="colorPickerFrame" destination="70o-iD-NLg" id="TZQ-cY-fHL"/>
                 <outlet property="doneButton" destination="sn5-1n-gpz" id="q3w-L6-qAi"/>
                 <outlet property="hexValueColorLabel" destination="NG7-7p-pBy" id="rC2-Bc-4N1"/>
+                <outlet property="paletteView" destination="Jau-D7-n7A" id="l14-Un-M77"/>
                 <outlet property="selectedColorView" destination="SeW-ia-Pwr" id="Fb8-or-VbD"/>
             </connections>
         </placeholder>
@@ -66,8 +67,25 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70o-iD-NLg">
                     <rect key="frame" x="16" y="152" width="343" height="442"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jau-D7-n7A" customClass="PaletteView" customModule="Notes" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="442"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="brightness">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Jau-D7-n7A" secondAttribute="bottom" id="4Dv-Gq-6Jr"/>
+                        <constraint firstItem="Jau-D7-n7A" firstAttribute="leading" secondItem="70o-iD-NLg" secondAttribute="leading" id="U9G-f6-lim"/>
+                        <constraint firstAttribute="trailing" secondItem="Jau-D7-n7A" secondAttribute="trailing" id="tlL-sZ-Ymj"/>
+                        <constraint firstItem="Jau-D7-n7A" firstAttribute="top" secondItem="70o-iD-NLg" secondAttribute="top" id="zYK-p3-Pyl"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
