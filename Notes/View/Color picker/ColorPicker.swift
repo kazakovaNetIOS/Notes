@@ -15,6 +15,7 @@ class ColorPicker: UIView {
     @IBOutlet weak var brightnessSlider: UISlider!
     @IBOutlet weak var colorPickerFrame: UIView!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var hexValueColorLabel: UILabel!
     
     private var targetImageView: UIImageView!
     private var gradientLayer: CAGradientLayer!
@@ -22,8 +23,8 @@ class ColorPicker: UIView {
     
     private var location: CGPoint = CGPoint(x: 0, y: 0) {
         willSet {
-            if 0...gradientLayer.bounds.size.width ~= location.x,
-                0...gradientLayer.bounds.size.height ~= location.y {
+            if gradientLayer.frame.minX...gradientLayer.frame.maxX ~= newValue.x,
+                gradientLayer.frame.minY...gradientLayer.frame.maxY ~= newValue.y {
                 selectedColor = getColor(at: newValue)
                 moveCoursor(at: newValue)
             }
@@ -34,6 +35,8 @@ class ColorPicker: UIView {
         willSet {
             selectedColorView.backgroundColor = newValue
             brightnessSlider.value = Float(newValue.rgba.alpha)
+            
+            hexValueColorLabel.text = newValue.toHexString()
         }
     }
     

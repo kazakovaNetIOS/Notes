@@ -15,6 +15,7 @@
                 <outlet property="brightnessSlider" destination="z81-qm-FDg" id="Xtv-La-TE4"/>
                 <outlet property="colorPickerFrame" destination="70o-iD-NLg" id="TZQ-cY-fHL"/>
                 <outlet property="doneButton" destination="sn5-1n-gpz" id="q3w-L6-qAi"/>
+                <outlet property="hexValueColorLabel" destination="NG7-7p-pBy" id="rC2-Bc-4N1"/>
                 <outlet property="selectedColorView" destination="SeW-ia-Pwr" id="Fb8-or-VbD"/>
             </connections>
         </placeholder>
@@ -45,10 +46,22 @@
                 </slider>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeW-ia-Pwr">
                     <rect key="frame" x="16" y="36" width="100" height="100"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#ff3467" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NG7-7p-pBy">
+                            <rect key="frame" x="0.0" y="79" width="100" height="21"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.52156862749999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="54t-w3-RlW"/>
                         <constraint firstAttribute="width" constant="100" id="6L0-mf-9MY"/>
+                        <constraint firstAttribute="bottom" secondItem="NG7-7p-pBy" secondAttribute="bottom" id="LC4-Ug-L5P"/>
+                        <constraint firstItem="NG7-7p-pBy" firstAttribute="leading" secondItem="SeW-ia-Pwr" secondAttribute="leading" id="T1I-kw-GiL"/>
+                        <constraint firstAttribute="trailing" secondItem="NG7-7p-pBy" secondAttribute="trailing" id="vsE-It-DuR"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70o-iD-NLg">
