@@ -21,6 +21,15 @@ class ColorPicker: UIView {
     var gradientLayer: CAGradientLayer!
     var delegate: ColorPickerDelegate?
     
+    var location: CGPoint = CGPoint(x: 0, y: 0) {
+        willSet {
+            if location.x > 0 && location.y > 0 {
+                selectedColor = getColor(at: newValue)
+                moveCoursor(at: newValue)
+            }
+        }
+    }
+    
     var selectedColor: UIColor = .white {
         willSet {
             selectedColorView.backgroundColor = newValue
@@ -120,23 +129,13 @@ class ColorPicker: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         
-        let location = touch.location(in: gradientFrame)
-        
-        if location.x > 0 && location.y > 0 {
-            selectedColor = getColor(at: location)
-            moveCoursor(at: location)
-        }
+        location = touch.location(in: gradientFrame)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         
-        let location = touch.location(in: gradientFrame)
-        
-        if location.x > 0 && location.y > 0 {
-            selectedColor = getColor(at: location)
-            moveCoursor(at: location)
-        }
+        location = touch.location(in: gradientFrame)
     }
     
     @IBAction func doneButtonTapped(_ sender: UIButton) {
