@@ -35,7 +35,7 @@
                     <navigationItem key="navigationItem" id="3XL-1P-c8e"/>
                     <connections>
                         <outlet property="editNote" destination="gWN-V8-AT6" id="mS8-xY-ue3"/>
-                        <segue destination="yfh-sS-S1Y" kind="show" identifier="goToPalette" id="aaF-ae-Qrz"/>
+                        <segue destination="yfh-sS-S1Y" kind="show" identifier="goToColorPicker" id="aaF-ae-Qrz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

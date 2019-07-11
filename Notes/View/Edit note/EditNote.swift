@@ -25,7 +25,7 @@ class EditNote: UIView {
     @IBOutlet weak var thirdCheck: CheckIcon!
     @IBOutlet weak var colorPickerCheck: CheckIcon!
     
-    var delegate: EditNoteColorPickerTileDelegate?
+    internal var delegate: EditNoteColorPickerTileDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -100,7 +100,7 @@ class EditNote: UIView {
         }
     }
     
-    public func showCheckIcon(tag: Int) {
+    internal func showCheckIcon(tag: Int) {
         if tag == 1 {
             firstCheck.isHidden = false
             secondCheck.isHidden = true
@@ -134,7 +134,7 @@ class EditNote: UIView {
         }
     }
     
-    @objc func keyboardWillShowOrHide(_ notification: Notification) {
+    @objc private func keyboardWillShowOrHide(_ notification: Notification) {
         let keyBoard = notification.userInfo
         
         if let keyboardFrame = keyBoard?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -147,6 +147,6 @@ class EditNote: UIView {
     }
 }
 
-protocol EditNoteColorPickerTileDelegate {
+internal protocol EditNoteColorPickerTileDelegate {
     func editNoteColorPickerTileDidLongPress(_ editNote: EditNote)
 }

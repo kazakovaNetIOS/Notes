@@ -15,7 +15,6 @@
                 <outlet property="brightnessSlider" destination="z81-qm-FDg" id="Xtv-La-TE4"/>
                 <outlet property="colorPickerFrame" destination="70o-iD-NLg" id="TZQ-cY-fHL"/>
                 <outlet property="doneButton" destination="sn5-1n-gpz" id="q3w-L6-qAi"/>
-                <outlet property="gradientFrame" destination="70o-iD-NLg" id="ZTO-Mv-d49"/>
                 <outlet property="selectedColorView" destination="SeW-ia-Pwr" id="Fb8-or-VbD"/>
             </connections>
         </placeholder>

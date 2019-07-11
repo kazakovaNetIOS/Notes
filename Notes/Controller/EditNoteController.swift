@@ -19,22 +19,23 @@ class EditNoteController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let paletteVC = segue.destination as? ColorPickerController  else { return }
+        guard let colorPickerController = segue.destination as? ColorPickerController  else { return }
         
-        paletteVC.delegate = self
+        colorPickerController.delegate = self
+        colorPickerController.selectedColor = editNote.colorPickerTile.backgroundColor ?? UIColor.white
     }
 }
 
 // MARK: - EditNoteColorPickerTileDelegate
 extension EditNoteController: EditNoteColorPickerTileDelegate {
-    func editNoteColorPickerTileDidLongPress(_ editNote: EditNote) {
-        performSegue(withIdentifier: "goToPalette", sender: self)
+    internal func editNoteColorPickerTileDidLongPress(_ editNote: EditNote) {
+        performSegue(withIdentifier: "goToColorPicker", sender: self)
     }
 }
 
 // MARK: - ColorPickerControllerDelegate
 extension EditNoteController: ColorPickerControllerDelegate {
-    func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor) {
+    internal func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor) {
         editNote.colorPickerTile.image = nil
         editNote.colorPickerTile.backgroundColor = color
         editNote.showCheckIcon(tag: 4)
