@@ -117,3 +117,101 @@ class ColorPicker: UIView {
 internal protocol ColorPickerDelegate {
     func colorPicker(_ colorPicker: ColorPicker, willSelectColor color: UIColor)
 }
+
+@IBDesignable
+class PaletteView: UIView {
+    
+    private var gradientLayer: CAGradientLayer = CAGradientLayer()
+    
+    public var brightness: CGFloat = 1 {
+        willSet {
+            createGradientLayer()
+        }
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        createGradientLayer()
+    }
+    
+    private func createGradientLayer() {
+        let colorSets = [
+            UIColor.red.withAlphaComponent(brightness).cgColor,
+            UIColor.orange.withAlphaComponent(brightness).cgColor,
+            UIColor.yellow.withAlphaComponent(brightness).cgColor,
+            UIColor.green.withAlphaComponent(brightness).cgColor,
+            UIColor.blue.withAlphaComponent(brightness).cgColor,
+            UIColor(red: 66.0/255, green: 170.0/255, blue: 255/255, alpha: brightness).cgColor,
+            UIColor(red: 139.0/255, green: 0/255, blue: 255/255, alpha: brightness).cgColor,
+            UIColor.white.withAlphaComponent(brightness).cgColor,
+            UIColor.black.withAlphaComponent(brightness).cgColor
+        ]
+        
+        gradientLayer.frame = frame
+        gradientLayer.colors = colorSets
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        
+        layer.addSublayer(gradientLayer)
+    }
+    
+    public func getColor(at point: CGPoint) -> UIColor? {
+        let pixel = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: 4)
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+        
+        guard let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue) else {
+            return nil
+        }
+        
+        context.translateBy(x: -point.x, y: -point.y)
+        
+        gradientLayer.render(in: context)
+        
+        let color = UIColor(red:   CGFloat(pixel[0]) / 255.0,
+                            green: CGFloat(pixel[1]) / 255.0,
+                            blue:  CGFloat(pixel[2]) / 255.0,
+                            alpha: CGFloat(pixel[3]) / 255.0)
+        pixel.deallocate()
+        
+        return getColorWithAlpha(with: color)
+    }
+    
+    private func getColorWithAlpha(with color: UIColor) -> UIColor {
+        return color.withAlphaComponent(brightness)
+    }
+    
+    public func rotate() {
+        gradientLayer.frame = bounds
+    }
+}
+
+@IBDesignable
+class TargetImageView: UIView {
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.black.cgColor
+        layer.cornerRadius = max(frame.width / 2, frame.height / 2)
+        layer.masksToBounds = true
+        
+        backgroundColor = UIColor.white.withAlphaComponent(0)
+    }
+    
+    public func move(at point: CGPoint) {
+        isHidden = false
+        frame.origin.x = point.x - frame.width / 2
+        frame.origin.y = point.y - frame.height / 2
+    }
+    
+    public func background(with color: UIColor) {
+        backgroundColor = color
+    }
+    
+    public func hide() {
+        isHidden = true
+    }
+}
