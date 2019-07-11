@@ -17,8 +17,8 @@ class ColorPicker: UIView {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var hexValueColorLabel: UILabel!
     @IBOutlet weak var paletteView: PaletteView!
+    @IBOutlet weak var targetImageView: TargetImageView!
     
-    private var targetImageView: UIImageView!
     internal var delegate: ColorPickerDelegate?
     
     private var location: CGPoint = CGPoint(x: 0, y: 0) {
@@ -27,7 +27,8 @@ class ColorPicker: UIView {
                 colorPickerFrame.bounds.minY...colorPickerFrame.bounds.maxY ~= newValue.y {
                 selectedColor = paletteView.getColor(at: newValue)
                 
-                moveCoursor(at: newValue)
+                targetImageView.move(at: newValue)
+                targetImageView.background(with: selectedColor)
             }
         }
     }
@@ -55,7 +56,7 @@ class ColorPicker: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        createTargetImage()
+        super.draw(rect)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -93,19 +94,10 @@ class ColorPicker: UIView {
         return nib.instantiate(withOwner: self, options: nil).first! as! UIView
     }
     
-    private func createTargetImage() {
-        targetImageView = UIImageView(image: UIImage(named: "target"))
-        
-        targetImageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        targetImageView.isHidden = true
-        
-        colorPickerFrame.addSubview(targetImageView)
-    }
-    
     internal func rotateGradient() {
         colorPickerFrame.alpha = 0
         paletteView.rotate()
-        targetImageView.isHidden = true
+        targetImageView.hide()
         
         UIView.animate(withDuration: 0.7) {
             self.colorPickerFrame.alpha = 1
@@ -118,12 +110,6 @@ class ColorPicker: UIView {
     
     @IBAction func brightnessSliderChanged(_ sender: UISlider) {
         selectedColor = selectedColor.withAlphaComponent(CGFloat(sender.value))
-    }
-    
-    private func moveCoursor(at point: CGPoint) {
-        targetImageView.isHidden = false
-        targetImageView.frame.origin.x = point.x - targetImageView.frame.width / 2
-        targetImageView.frame.origin.y = point.y - targetImageView.frame.height / 2
     }
 }
 

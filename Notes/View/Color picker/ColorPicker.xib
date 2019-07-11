@@ -18,6 +18,7 @@
                 <outlet property="hexValueColorLabel" destination="NG7-7p-pBy" id="rC2-Bc-4N1"/>
                 <outlet property="paletteView" destination="Jau-D7-n7A" id="l14-Un-M77"/>
                 <outlet property="selectedColorView" destination="SeW-ia-Pwr" id="Fb8-or-VbD"/>
+                <outlet property="targetImageView" destination="DSu-o2-DZZ" id="irO-r9-fPY"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -76,6 +77,10 @@
                                     <real key="value" value="0.0"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSu-o2-DZZ" customClass="TargetImageView" customModule="Notes" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

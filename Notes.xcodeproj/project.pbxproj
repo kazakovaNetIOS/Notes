@@ -17,6 +17,7 @@
 		FF2D91AA22C0DFE2001210DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91A922C0DFE2001210DE /* Assets.xcassets */; };
 		FF2D91AD22C0DFE2001210DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91AB22C0DFE2001210DE /* LaunchScreen.storyboard */; };
 		FF4544DB22D799DA0086D5FC /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4544DA22D799DA0086D5FC /* PaletteView.swift */; };
+		FF4544DD22D7B51F0086D5FC /* TargetImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4544DC22D7B51F0086D5FC /* TargetImageView.swift */; };
 		FF6F33F622D257DD008BE828 /* CheckIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6F33F522D257DD008BE828 /* CheckIcon.swift */; };
 		FF80DA8F22CE20DA007CC61D /* EditNote.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF80DA8E22CE20DA007CC61D /* EditNote.xib */; };
 		FF80DA9122CE2B32007CC61D /* EditNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80DA9022CE2B32007CC61D /* EditNote.swift */; };
@@ -66,6 +67,7 @@
 		FF2D91AC22C0DFE2001210DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF2D91AE22C0DFE2001210DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF4544DA22D799DA0086D5FC /* PaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
+		FF4544DC22D7B51F0086D5FC /* TargetImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetImageView.swift; sourceTree = "<group>"; };
 		FF6F33F522D257DD008BE828 /* CheckIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIcon.swift; sourceTree = "<group>"; };
 		FF80DA8E22CE20DA007CC61D /* EditNote.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditNote.xib; sourceTree = "<group>"; };
 		FF80DA9022CE2B32007CC61D /* EditNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNote.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		FF0FD47A22D49EAA002E4D93 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FF4544DC22D7B51F0086D5FC /* TargetImageView.swift */,
 				FF0FD47B22D49EC7002E4D93 /* Edit note */,
 				FF2D91A622C0DFE1001210DE /* Main.storyboard */,
 				FF6F33F522D257DD008BE828 /* CheckIcon.swift */,
@@ -400,6 +403,7 @@
 				FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */,
 				FF80DA9122CE2B32007CC61D /* EditNote.swift in Sources */,
 				FF0FD47D22D61FF3002E4D93 /* ColorPicker.swift in Sources */,
+				FF4544DD22D7B51F0086D5FC /* TargetImageView.swift in Sources */,
 				FF99661222C0E047004299F3 /* Note.swift in Sources */,
 				FF4544DB22D799DA0086D5FC /* PaletteView.swift in Sources */,
 				FF6F33F622D257DD008BE828 /* CheckIcon.swift in Sources */,
