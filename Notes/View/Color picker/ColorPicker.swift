@@ -25,7 +25,7 @@ class ColorPicker: UIView {
         willSet {
             if colorPickerFrame.bounds.minX...colorPickerFrame.bounds.maxX ~= newValue.x,
                 colorPickerFrame.bounds.minY...colorPickerFrame.bounds.maxY ~= newValue.y {
-                selectedColor = paletteView.getColor(at: newValue)
+                selectedColor = paletteView.getColor(at: newValue) ?? UIColor.white
                 
                 targetImageView.move(at: newValue)
                 targetImageView.background(with: selectedColor)
@@ -40,6 +40,7 @@ class ColorPicker: UIView {
             paletteView.brightness = CGFloat(newValue.rgba.alpha)
             
             hexValueColorLabel.text = newValue.toHexString()
+            targetImageView.background(with: newValue)
         }
     }
     

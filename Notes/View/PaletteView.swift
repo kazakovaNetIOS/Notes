@@ -46,13 +46,13 @@ class PaletteView: UIView {
         layer.addSublayer(gradientLayer)
     }
 
-    public func getColor(at point: CGPoint) -> UIColor{
+    public func getColor(at point: CGPoint) -> UIColor? {
         let pixel = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: 4)
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
         
         guard let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue) else {
-            return UIColor.white
+            return nil
         }
         
         context.translateBy(x: -point.x, y: -point.y)
