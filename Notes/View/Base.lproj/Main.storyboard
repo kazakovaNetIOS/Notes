@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h4C-My-32B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nH2-EA-fcZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWN-V8-AT6" customClass="EditNote" customModule="Notes" customModuleProvider="target">
-                                <rect key="frame" x="16" y="104" width="343" height="555"/>
+                                <rect key="frame" x="16" y="104" width="343" height="506"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -51,7 +51,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdR-Nz-L8b" customClass="ColorPicker" customModule="Notes" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -72,10 +72,11 @@
             </objects>
             <point key="canvasLocation" x="1788" y="26.53673163418291"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Заметки-->
         <scene sceneID="wcp-Rx-S9d">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h4C-My-32B" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Заметки" image="edit" id="YZc-I3-NBQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="B88-FU-p4r">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -88,7 +89,45 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bi3-Xq-y2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53.600000000000001" y="27.436281859070466"/>
+            <point key="canvasLocation" x="207" y="-308"/>
+        </scene>
+        <!--Галерея-->
+        <scene sceneID="WV1-0k-kIn">
+            <objects>
+                <viewController id="hVE-dO-qdk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gg7-74-Kj2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="e8w-05-dKR"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Галерея" image="gallery" id="sQZ-Oh-VTE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P0j-jZ-Q4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="206" y="368"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hqQ-jw-aeN">
+            <objects>
+                <tabBarController id="nH2-EA-fcZ" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M7M-9H-eko">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="h4C-My-32B" kind="relationship" relationship="viewControllers" id="xxN-93-kYm"/>
+                        <segue destination="hVE-dO-qdk" kind="relationship" relationship="viewControllers" id="AeV-zZ-CCW"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZIq-65-gi1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-596" y="29"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="edit" width="20" height="20"/>
+        <image name="gallery" width="20" height="20"/>
+    </resources>
 </document>
