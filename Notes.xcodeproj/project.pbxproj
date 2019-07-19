@@ -24,6 +24,7 @@
 		FFCC056222C774A4003E9191 /* NotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056122C774A4003E9191 /* NotesUITests.swift */; };
 		FFCC056E22C77AF4003E9191 /* NotebookTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056D22C77AF4003E9191 /* NotebookTestCase.swift */; };
 		FFCC057022C78BBF003E9191 /* NoteExtensionsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056F22C78BBF003E9191 /* NoteExtensionsTestCase.swift */; };
+		FFFD22BF22E0E64900880908 /* NotesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD22BE22E0E64900880908 /* NotesListController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		FFCC056322C774A4003E9191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFCC056D22C77AF4003E9191 /* NotebookTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookTestCase.swift; sourceTree = "<group>"; };
 		FFCC056F22C78BBF003E9191 /* NoteExtensionsTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteExtensionsTestCase.swift; sourceTree = "<group>"; };
+		FFFD22BE22E0E64900880908 /* NotesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		FF0FD47922D49E79002E4D93 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FFFD22BE22E0E64900880908 /* NotesListController.swift */,
 				FF2D91A422C0DFE1001210DE /* EditNoteController.swift */,
 				FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */,
 			);
@@ -394,6 +397,7 @@
 				FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */,
 				FF80DA9122CE2B32007CC61D /* EditNote.swift in Sources */,
 				FF0FD47D22D61FF3002E4D93 /* ColorPicker.swift in Sources */,
+				FFFD22BF22E0E64900880908 /* NotesListController.swift in Sources */,
 				FF99661222C0E047004299F3 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

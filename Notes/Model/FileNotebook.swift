@@ -95,5 +95,22 @@ class FileNotebook {
         
         return fileUrl
     }
+    
+    public func getDummyData() -> [Note] {
+        var notesList = [Note] ()
+        
+        notesList.append(Note(title: "Л. Толстой", content: "Каждый хочет изменить человечество, но никто не задумывается о том, как изменить себя.", importance: Importance.ordinary, dateOfSelfDestruction: nil))
+        notesList.append(Note(title: "А. Пушкин", content: "Научить человека быть счастливым — нельзя, но воспитать его так, чтобы он был счастливым, можно.", importance: Importance.important, dateOfSelfDestruction: nil))
+        notesList.append(Note(title: "С. Есенин", content: "Времени нет. Серьезно? Это желания нет, а время есть всегда.", importance: Importance.ordinary, dateOfSelfDestruction: nil))
+        notesList.append(Note(title: "В. Маяковский", content: "Красивая женщина — рай для глаз, ад для души и чистилище для кармана.", importance: Importance.unimportant, dateOfSelfDestruction: nil))
+        notesList.append(Note(title: "Б. Пастернак", content: "Надо ставить себе задачи выше своих сил: во-первых, потому, что их всё равно никогда не знаешь, а во-вторых, потому, что силы и появляются по мере выполнения недостижимой задачи.", importance: Importance.important, dateOfSelfDestruction: nil))
+        notesList.append(Note(title: "В. Высоцкий", content: "Я не люблю уверенности сытой, уж лучше пусть откажут тормоза. Досадно мне, коль слово «честь» забыто и коль в чести наветы за глаза.", importance: Importance.unimportant, dateOfSelfDestruction: nil))
+        notesList.append(Note(title: "Ф. Достоевский", content: "Красота спасет мир.", importance: Importance.important, dateOfSelfDestruction: nil))
+        notesList.append(Note(title: "М. Лермонтов", content: "Уважения заслуживают те люди, которые независимо от ситуации, времени и места, остаются такими же, какие они есть на самом деле.", importance: Importance.important, dateOfSelfDestruction: nil))
+        notesList.append(Note(title: "У. Шекспир", content: "Грехи других судить Вы так усердно рвётесь – начните со своих и до чужих не доберётесь.", importance: .important, dateOfSelfDestruction: nil))
+        notesList.append(Note(title: "М. Булгаков", content: "Я полагаю, что ни в каком учебном заведении образованным человеком стать нельзя. Но во всяком хорошо поставленном учебном заведении можно стать дисциплинированным человеком и приобрести навык, который пригодится в будущем, когда человек вне стен учебного заведения станет образовывать сам себя.", importance: .ordinary, dateOfSelfDestruction: nil))
+        
+        return notesList
+    }
 }
 

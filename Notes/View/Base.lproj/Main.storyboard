@@ -10,7 +10,42 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Edit Note Controller-->
+        <!--Заметки-->
+        <scene sceneID="327-IE-c4K">
+            <objects>
+                <viewController id="rdh-Tg-gKv" customClass="NotesListController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z1e-cz-gOd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qXu-5O-XjY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="rdh-Tg-gKv" id="SJf-vo-ln0"/>
+                                    <outlet property="delegate" destination="rdh-Tg-gKv" id="Pie-FR-nwv"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TVP-Lx-FvM" firstAttribute="trailing" secondItem="qXu-5O-XjY" secondAttribute="trailing" id="8Sd-lr-8SX"/>
+                            <constraint firstItem="TVP-Lx-FvM" firstAttribute="bottom" secondItem="qXu-5O-XjY" secondAttribute="bottom" id="QGk-uZ-iBA"/>
+                            <constraint firstItem="qXu-5O-XjY" firstAttribute="top" secondItem="TVP-Lx-FvM" secondAttribute="top" id="SBT-WC-9TC"/>
+                            <constraint firstItem="qXu-5O-XjY" firstAttribute="leading" secondItem="TVP-Lx-FvM" secondAttribute="leading" id="Sjv-yf-D6j"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TVP-Lx-FvM"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Заметки" id="1be-R7-7i5"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToEditNote" id="W3h-dJ-w7L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4gd-vx-MD4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="993" y="-308"/>
+        </scene>
+        <!--Редактирование-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="EditNoteController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,7 +67,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="3XL-1P-c8e"/>
+                    <navigationItem key="navigationItem" title="Редактирование" id="3XL-1P-c8e"/>
                     <connections>
                         <outlet property="editNote" destination="gWN-V8-AT6" id="mS8-xY-ue3"/>
                         <segue destination="yfh-sS-S1Y" kind="show" identifier="goToColorPicker" id="aaF-ae-Qrz"/>
@@ -40,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.79999999999995" y="27.436281859070466"/>
+            <point key="canvasLocation" x="1788" y="-308"/>
         </scene>
         <!--Color Picker Controller-->
         <scene sceneID="uqF-BD-Epk">
@@ -70,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CFD-vG-pjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1788" y="26.53673163418291"/>
+            <point key="canvasLocation" x="2588" y="-308"/>
         </scene>
         <!--Заметки-->
         <scene sceneID="wcp-Rx-S9d">
@@ -84,7 +119,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="rGL-pZ-1Rj"/>
+                        <segue destination="rdh-Tg-gKv" kind="relationship" relationship="rootViewController" id="lZq-s9-VoX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bi3-Xq-y2j" userLabel="First Responder" sceneMemberID="firstResponder"/>

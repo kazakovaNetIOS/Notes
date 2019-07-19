@@ -26,6 +26,7 @@ class EditNote: UIView {
     @IBOutlet weak var colorPickerCheck: CheckIcon!
     
     internal var delegate: EditNoteColorPickerTileDelegate?
+    internal var displayNote: Note?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,6 +48,7 @@ class EditNote: UIView {
     }
     
     private func setupViews() {
+        print(displayNote)
         let xibView = loadViewFromXib()
         xibView.frame = self.bounds
         xibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

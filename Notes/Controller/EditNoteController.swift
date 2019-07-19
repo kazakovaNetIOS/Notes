@@ -12,10 +12,12 @@ class EditNoteController: UIViewController {
     
     @IBOutlet weak var editNote: EditNote!
     
+    var note: Note? 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         editNote.delegate = self
+        editNote.displayNote = note
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
