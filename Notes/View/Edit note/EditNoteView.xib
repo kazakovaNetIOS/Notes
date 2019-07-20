@@ -16,6 +16,7 @@
                 <outlet property="colorPickerTile" destination="d0N-aD-MAQ" id="Kkw-xR-cgg"/>
                 <outlet property="colorViewsTopConstraint" destination="zGa-BW-0gp" id="lTe-FC-Cr5"/>
                 <outlet property="destroyDatePicker" destination="7ss-7j-ycQ" id="Lr2-it-AnX"/>
+                <outlet property="destroyDateSwitch" destination="m1p-I6-qdy" id="UPs-7k-w3X"/>
                 <outlet property="firstCheck" destination="aNV-Jc-BKm" id="yQZ-7C-B3f"/>
                 <outlet property="firstColorTile" destination="Qi6-N7-HUL" id="vsA-Zv-rd3"/>
                 <outlet property="scrollView" destination="aJI-dM-cMr" id="pdf-Bd-Yl7"/>
@@ -35,7 +36,7 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="aJI-dM-cMr">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fFC-uk-dk9">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter title for your note" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fFC-uk-dk9">
                             <rect key="frame" x="8" y="0.0" width="398" height="30"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>

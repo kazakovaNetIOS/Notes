@@ -31,7 +31,15 @@ class EditNoteController: UIViewController {
     }
     
     @objc func saveButtonTapped(_ sender: UIButton) {
-        print("save button tapped")
+        guard let editedNote = editNoteView.editedNote else {
+            return
+        }
+        
+        note = editedNote
+        AppDelegate.noteBook.remove(with: editedNote.uid)
+        AppDelegate.noteBook.add(editedNote)
+        
+        navigationController?.popViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

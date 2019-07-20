@@ -10,17 +10,24 @@ import UIKit
 
 class NotesListController: UIViewController {
     
-    private var notesList: [Note] = []
-    private let notebook = FileNotebook()
+    @IBOutlet weak var notesListTableView: UITableView!
+    
+    private let notebook = AppDelegate.noteBook
     private var newNote: Note?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        notesList = notebook.getDummyData()
+        notebook.loadDummyData()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(addButtonTapped(_:)))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        notesListTableView.reloadData()
     }
     
     @objc func editButtonTapped(_ sender: UIButton) {
@@ -28,9 +35,7 @@ class NotesListController: UIViewController {
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
-        print("add button tapped")
-        
-        newNote = Note(title: "", content: "", importance: .ordinary, dateOfSelfDestruction: nil)
+        newNote = Note(title: "Test title", content: "Test content fsljf skjfhksjfh kdjshf sdfkjhslfkjhs fslkfjhlskf skfjlskjfhlksjfh sdfskjfhlksjdhf js fskjhfl js flkjshfljasf;lkhgliuhew gvbs l;kjs fg;sl", color: .red, importance: .ordinary, dateOfSelfDestruction: Date().addingTimeInterval(60*60*24))
         notebook.add(newNote!)
         
         performSegue(withIdentifier: "goToEditNote", sender: self)
@@ -44,15 +49,15 @@ class NotesListController: UIViewController {
     }
 }
 
-extension NotesListController: UITableViewDataSource, UITableViewDelegate {
+extension NotesListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notesList.count
+        return notebook.notes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
-        let note = notesList[indexPath.row]
+        let note = notebook.notes[indexPath.row]
         
         cell.textLabel?.text = note.title
         cell.textLabel?.numberOfLines = 0
@@ -61,4 +66,8 @@ extension NotesListController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+}
+
+extension NotesListController: UITableViewDelegate {
+    
 }

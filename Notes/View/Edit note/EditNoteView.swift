@@ -9,11 +9,12 @@
 import UIKit
 
 @IBDesignable
-class EditNoteView: UIView, UITextViewDelegate {
+class EditNoteView: UIView {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textTextView: UITextView!
     @IBOutlet weak var destroyDatePicker: UIDatePicker!
+    @IBOutlet weak var destroyDateSwitch: UISwitch!
     @IBOutlet weak var colorViewsTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -29,6 +30,15 @@ class EditNoteView: UIView, UITextViewDelegate {
     
     var delegate: EditNoteColorPickerTileDelegate?
     var displayNote: Note?
+    var editedNote: Note? {
+        get {
+            guard let note = displayNote else {
+                return nil
+            }
+            
+            return Note(uid: note.uid, title: titleTextField.text!, content: textTextView.text, color: .red, importance: note.importance, dateOfSelfDestruction: destroyDatePicker.date)
+        }
+    }
     
     convenience init(frame: CGRect, displayNote: Note?) {
         self.init(frame: frame)
@@ -77,33 +87,23 @@ class EditNoteView: UIView, UITextViewDelegate {
         )
         
         setBorder(for: titleTextField, color: UIColor.gray.withAlphaComponent(0.2), radius: 5)
-        titleTextField.attributedPlaceholder =
-            NSAttributedString(string: "Enter title for your note", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         titleTextField.text = displayNote?.title
         
-        textTextView.delegate = self
-        textTextView.textColor = UIColor.lightGray
         setBorder(for: textTextView, color: UIColor.gray.withAlphaComponent(0.3), radius: 5)
         textTextView.text = displayNote?.content
+        
+        firstColorTile.backgroundColor = displayNote?.color
+        
+        if let dateOfSelfDestruction = displayNote?.dateOfSelfDestruction {
+            destroyDateSwitch.isOn = true
+            switchDestroyDateUse(destroyDateSwitch)
+            destroyDatePicker.date = dateOfSelfDestruction
+        }
         
         setBorder(for: firstColorTile, color: .black, radius: 10)
         setBorder(for: secondColorTile, color: .black, radius: 10)
         setBorder(for: thirdColorTile, color: .black, radius: 10)
         setBorder(for: colorPickerTile, color: .black, radius: 10)
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "Enter text for your note"
-            textView.textColor = UIColor.lightGray
-        }
     }
     
     private func setBorder(for view: UIView, color: UIColor, radius: CGFloat) {
@@ -112,7 +112,7 @@ class EditNoteView: UIView, UITextViewDelegate {
         view.layer.cornerRadius = radius
     }
     
-    @IBAction func destroyDateSwitchChanged(_ sender: UISwitch) {
+    private func switchDestroyDateUse(_ sender: UISwitch) {
         if sender.isOn {
             self.destroyDatePicker.isHidden = false
             UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
@@ -131,6 +131,10 @@ class EditNoteView: UIView, UITextViewDelegate {
                 self.destroyDatePicker.isHidden = true
             })
         }
+    }
+    
+    @IBAction func destroyDateSwitchChanged(_ sender: UISwitch) {
+        switchDestroyDateUse(sender)
     }
     
     func showCheckIcon(tag: Int) {

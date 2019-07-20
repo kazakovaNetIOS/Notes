@@ -38,6 +38,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Заметки" id="1be-R7-7i5"/>
                     <connections>
+                        <outlet property="notesListTableView" destination="qXu-5O-XjY" id="fOR-Ae-Dgw"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToEditNote" id="W3h-dJ-w7L"/>
                     </connections>
                 </viewController>
