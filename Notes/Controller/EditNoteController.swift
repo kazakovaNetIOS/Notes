@@ -10,37 +10,51 @@ import UIKit
 
 class EditNoteController: UIViewController {
     
-    @IBOutlet weak var editNote: EditNote!
+    @IBOutlet weak var editNoteViewContainer: UIView!
     
-    var note: Note? 
+    var note: Note?
+    private weak var editNoteView: EditNoteView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        editNote.delegate = self
-        editNote.displayNote = note
+        
+        let editNoteView = EditNoteView(frame: editNoteViewContainer.frame, displayNote: note)
+        editNoteView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        editNoteView.translatesAutoresizingMaskIntoConstraints = true
+        
+        editNoteViewContainer.addSubview(editNoteView)
+        
+        editNoteView.delegate = self
+        self.editNoteView = editNoteView
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сохранить", style: .plain, target: self, action: #selector(saveButtonTapped(_:)))
+    }
+    
+    @objc func saveButtonTapped(_ sender: UIButton) {
+        print("save button tapped")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let colorPickerController = segue.destination as? ColorPickerController  else { return }
         
         colorPickerController.delegate = self
-        colorPickerController.selectedColor = editNote.colorPickerTile.backgroundColor ?? UIColor.white
+        colorPickerController.selectedColor = editNoteView.colorPickerTile.backgroundColor ?? UIColor.white
     }
 }
 
 // MARK: - EditNoteColorPickerTileDelegate
 extension EditNoteController: EditNoteColorPickerTileDelegate {
-    internal func editNoteColorPickerTileDidLongPress(_ editNote: EditNote) {
+    func editNoteColorPickerTileDidLongPress(_ editNote: EditNoteView) {
         performSegue(withIdentifier: "goToColorPicker", sender: self)
     }
 }
 
 // MARK: - ColorPickerControllerDelegate
 extension EditNoteController: ColorPickerControllerDelegate {
-    internal func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor) {
-        editNote.colorPickerTile.image = nil
-        editNote.colorPickerTile.backgroundColor = color
-        editNote.showCheckIcon(tag: 4)
+    func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor) {
+        editNoteView.colorPickerTile.image = nil
+        editNoteView.colorPickerTile.backgroundColor = color
+        editNoteView.showCheckIcon(tag: 4)
     }
 }
 

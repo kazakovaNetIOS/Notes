@@ -9,8 +9,10 @@
 import UIKit
 
 @IBDesignable
-class EditNote: UIView {
+class EditNoteView: UIView, UITextViewDelegate {
     
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var textTextView: UITextView!
     @IBOutlet weak var destroyDatePicker: UIDatePicker!
     @IBOutlet weak var colorViewsTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -25,13 +27,19 @@ class EditNote: UIView {
     @IBOutlet weak var thirdCheck: CheckIcon!
     @IBOutlet weak var colorPickerCheck: CheckIcon!
     
-    internal var delegate: EditNoteColorPickerTileDelegate?
-    internal var displayNote: Note?
+    var delegate: EditNoteColorPickerTileDelegate?
+    var displayNote: Note?
+    
+    convenience init(frame: CGRect, displayNote: Note?) {
+        self.init(frame: frame)
+        
+        self.displayNote = displayNote
+        
+        setupViews()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,16 +50,15 @@ class EditNote: UIView {
     
     private func loadViewFromXib() -> UIView {
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "EditNote", bundle: bundle)
+        let nib = UINib(nibName: "EditNoteView", bundle: bundle)
         
         return nib.instantiate(withOwner: self, options: nil).first! as! UIView
     }
     
     private func setupViews() {
-        print(displayNote)
         let xibView = loadViewFromXib()
         xibView.frame = self.bounds
-        xibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        xibView.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
         self.addSubview(xibView)
         
@@ -69,16 +76,40 @@ class EditNote: UIView {
             object: nil
         )
         
-        setBorder(for: firstColorTile)
-        setBorder(for: secondColorTile)
-        setBorder(for: thirdColorTile)
-        setBorder(for: colorPickerTile)
+        setBorder(for: titleTextField, color: UIColor.gray.withAlphaComponent(0.2), radius: 5)
+        titleTextField.attributedPlaceholder =
+            NSAttributedString(string: "Enter title for your note", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        titleTextField.text = displayNote?.title
+        
+        textTextView.delegate = self
+        textTextView.textColor = UIColor.lightGray
+        setBorder(for: textTextView, color: UIColor.gray.withAlphaComponent(0.3), radius: 5)
+        textTextView.text = displayNote?.content
+        
+        setBorder(for: firstColorTile, color: .black, radius: 10)
+        setBorder(for: secondColorTile, color: .black, radius: 10)
+        setBorder(for: thirdColorTile, color: .black, radius: 10)
+        setBorder(for: colorPickerTile, color: .black, radius: 10)
     }
     
-    private func setBorder(for view: UIView) {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Enter text for your note"
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
+    private func setBorder(for view: UIView, color: UIColor, radius: CGFloat) {
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.cornerRadius = 10
+        view.layer.borderColor = color.cgColor
+        view.layer.cornerRadius = radius
     }
     
     @IBAction func destroyDateSwitchChanged(_ sender: UISwitch) {
@@ -102,23 +133,24 @@ class EditNote: UIView {
         }
     }
     
-    internal func showCheckIcon(tag: Int) {
-        if tag == 1 {
+    func showCheckIcon(tag: Int) {
+        switch tag {
+        case 1:
             firstCheck.isHidden = false
             secondCheck.isHidden = true
             thirdCheck.isHidden = true
             colorPickerCheck.isHidden = true
-        } else if tag == 2 {
+        case 2:
             firstCheck.isHidden = true
             secondCheck.isHidden = false
             thirdCheck.isHidden = true
             colorPickerCheck.isHidden = true
-        } else if tag == 3 {
+        case 3:
             firstCheck.isHidden = true
             secondCheck.isHidden = true
             thirdCheck.isHidden = false
             colorPickerCheck.isHidden = true
-        } else if tag == 4 {
+        default:
             firstCheck.isHidden = true
             secondCheck.isHidden = true
             thirdCheck.isHidden = true
@@ -149,12 +181,12 @@ class EditNote: UIView {
     }
 }
 
-internal protocol EditNoteColorPickerTileDelegate {
-    func editNoteColorPickerTileDidLongPress(_ editNote: EditNote)
+protocol EditNoteColorPickerTileDelegate {
+    func editNoteColorPickerTileDidLongPress(_ editNote: EditNoteView)
 }
 
 @IBDesignable
-class CheckIcon: UIView {
+class CheckIcon: UIView { 
     
     @IBInspectable var strokeColor: UIColor = .black
     @IBInspectable var strokeWidth: CGFloat = 1.0

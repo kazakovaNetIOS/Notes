@@ -40,8 +40,6 @@ class NotesListController: UIViewController {
         if segue.identifier == "goToEditNote",
             let editNoteVC = segue.destination as? EditNoteController {
             editNoteVC.note = newNote
-            
-            print("New note \(newNote)")
         }
     }
 }

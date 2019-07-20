@@ -11,8 +11,8 @@ import UIKit
 class ColorPickerController: UIViewController {
     
     @IBOutlet weak var colorPicker: ColorPicker!
-    internal var delegate: ColorPickerControllerDelegate?
-    internal var selectedColor: UIColor = UIColor.white
+    var delegate: ColorPickerControllerDelegate?
+    var selectedColor: UIColor = UIColor.white
     
     override func viewDidLoad() {        
         colorPicker.delegate = self
@@ -30,12 +30,12 @@ class ColorPickerController: UIViewController {
 
 // MARK: - ColorPickerDelegate
 extension ColorPickerController: ColorPickerDelegate {
-    internal func colorPicker(_ colorPicker: ColorPicker, willSelectColor color: UIColor) {
+    func colorPicker(_ colorPicker: ColorPicker, willSelectColor color: UIColor) {
         delegate?.colorPickerController(self, willSelect: color)
         navigationController?.popToRootViewController(animated: true)
     }
 }
 
-internal protocol ColorPickerControllerDelegate {
+protocol ColorPickerControllerDelegate {
     func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor)
 }

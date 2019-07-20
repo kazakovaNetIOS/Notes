@@ -19,7 +19,7 @@ class ColorPicker: UIView {
     @IBOutlet weak var paletteView: PaletteView!
     @IBOutlet weak var targetImageView: TargetImageView!
     
-    internal var delegate: ColorPickerDelegate?
+    var delegate: ColorPickerDelegate?
     
     private var location: CGPoint = CGPoint(x: 0, y: 0) {
         willSet {
@@ -33,7 +33,7 @@ class ColorPicker: UIView {
         }
     }
     
-    internal var selectedColor: UIColor = .white {
+    var selectedColor: UIColor = .white {
         willSet {
             selectedColorView.backgroundColor = newValue
             brightnessSlider.value = Float(newValue.rgba.alpha)
@@ -95,7 +95,7 @@ class ColorPicker: UIView {
         return nib.instantiate(withOwner: self, options: nil).first! as! UIView
     }
     
-    internal func rotateGradient() {
+    func rotateGradient() {
         colorPickerFrame.alpha = 0
         paletteView.rotate()
         targetImageView.hide()
@@ -114,7 +114,7 @@ class ColorPicker: UIView {
     }
 }
 
-internal protocol ColorPickerDelegate {
+protocol ColorPickerDelegate {
     func colorPicker(_ colorPicker: ColorPicker, willSelectColor color: UIColor)
 }
 
