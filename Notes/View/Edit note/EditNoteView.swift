@@ -36,9 +36,15 @@ class EditNoteView: UIView {
                 return nil
             }
             
-            return Note(uid: note.uid, title: titleTextField.text!, content: textTextView.text, color: .red, importance: note.importance, dateOfSelfDestruction: destroyDatePicker.date)
+            return Note(uid: note.uid,
+                        title: titleTextField.text!,
+                        content: textTextView.text,
+                        color: selectedColor,
+                        importance: note.importance,
+                        dateOfSelfDestruction: getDateOfSelfDestruction())
         }
     }
+    var selectedColor: UIColor = .white
     
     convenience init(frame: CGRect, displayNote: Note?) {
         self.init(frame: frame)
@@ -58,6 +64,75 @@ class EditNoteView: UIView {
         setupViews()
     }
     
+    private func switchDestroyDateUse(_ sender: UISwitch) {
+        if sender.isOn {
+            self.destroyDatePicker.isHidden = false
+            UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+                self.colorViewsTopConstraint.constant = 248
+                self.destroyDatePicker.alpha = 1
+                
+                self.layoutIfNeeded()
+            }, completion: nil)
+        } else {
+            UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+                self.colorViewsTopConstraint.constant = 16
+                self.destroyDatePicker.alpha = 0
+                
+                self.layoutIfNeeded()
+            }, completion: { (value: Bool) in
+                self.destroyDatePicker.isHidden = true
+            })
+        }
+    }
+    
+    func showCheckIcon(tag: Int) {
+        switch tag {
+        case 1:
+            firstCheck.isHidden = false
+            secondCheck.isHidden = true
+            thirdCheck.isHidden = true
+            colorPickerCheck.isHidden = true
+        case 2:
+            firstCheck.isHidden = true
+            secondCheck.isHidden = false
+            thirdCheck.isHidden = true
+            colorPickerCheck.isHidden = true
+        case 3:
+            firstCheck.isHidden = true
+            secondCheck.isHidden = true
+            thirdCheck.isHidden = false
+            colorPickerCheck.isHidden = true
+        default:
+            firstCheck.isHidden = true
+            secondCheck.isHidden = true
+            thirdCheck.isHidden = true
+            colorPickerCheck.isHidden = false
+        }
+    }
+    
+    @objc private func keyboardWillShowOrHide(_ notification: Notification) {
+        let keyBoard = notification.userInfo
+        
+        if let keyboardFrame = keyBoard?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            
+            UIView.animate(withDuration: 1.0, animations: {
+                self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+            })
+        }
+    }
+    
+    private func getDateOfSelfDestruction() -> Date? {
+        if destroyDateSwitch.isOn {
+            return destroyDatePicker.date
+        } else {
+            return nil
+        }
+    }
+}
+
+//MARK: Setup views
+extension EditNoteView {
     private func loadViewFromXib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "EditNoteView", bundle: bundle)
@@ -111,59 +186,18 @@ class EditNoteView: UIView {
         view.layer.borderColor = color.cgColor
         view.layer.cornerRadius = radius
     }
-    
-    private func switchDestroyDateUse(_ sender: UISwitch) {
-        if sender.isOn {
-            self.destroyDatePicker.isHidden = false
-            UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
-                self.colorViewsTopConstraint.constant = 248
-                self.destroyDatePicker.alpha = 1
-                
-                self.layoutIfNeeded()
-            }, completion: nil)
-        } else {
-            UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
-                self.colorViewsTopConstraint.constant = 16
-                self.destroyDatePicker.alpha = 0
-                
-                self.layoutIfNeeded()
-            }, completion: { (value: Bool) in
-                self.destroyDatePicker.isHidden = true
-            })
-        }
-    }
-    
+}
+
+//MARK: IBAction
+extension EditNoteView {
     @IBAction func destroyDateSwitchChanged(_ sender: UISwitch) {
         switchDestroyDateUse(sender)
     }
     
-    func showCheckIcon(tag: Int) {
-        switch tag {
-        case 1:
-            firstCheck.isHidden = false
-            secondCheck.isHidden = true
-            thirdCheck.isHidden = true
-            colorPickerCheck.isHidden = true
-        case 2:
-            firstCheck.isHidden = true
-            secondCheck.isHidden = false
-            thirdCheck.isHidden = true
-            colorPickerCheck.isHidden = true
-        case 3:
-            firstCheck.isHidden = true
-            secondCheck.isHidden = true
-            thirdCheck.isHidden = false
-            colorPickerCheck.isHidden = true
-        default:
-            firstCheck.isHidden = true
-            secondCheck.isHidden = true
-            thirdCheck.isHidden = true
-            colorPickerCheck.isHidden = false
-        }
-    }
-    
     @IBAction func colorTileTapped(_ sender: UIButton) {
         showCheckIcon(tag: sender.tag)
+        
+        selectedColor = sender.backgroundColor!
     }
     
     @IBAction func colorPickerLongPressed(_ sender: UILongPressGestureRecognizer) {
@@ -171,24 +205,14 @@ class EditNoteView: UIView {
             delegate?.editNoteColorPickerTileDidLongPress(self)
         }
     }
-    
-    @objc private func keyboardWillShowOrHide(_ notification: Notification) {
-        let keyBoard = notification.userInfo
-        
-        if let keyboardFrame = keyBoard?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            
-            UIView.animate(withDuration: 1.0, animations: {
-                self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-            })
-        }
-    }
 }
 
+//MARK: EditNoteColorPickerTileDelegate
 protocol EditNoteColorPickerTileDelegate {
     func editNoteColorPickerTileDidLongPress(_ editNote: EditNoteView)
 }
 
+//MARK: class CheckIcon
 @IBDesignable
 class CheckIcon: UIView { 
     

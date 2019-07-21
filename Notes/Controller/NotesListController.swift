@@ -35,7 +35,7 @@ class NotesListController: UIViewController {
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
-        newNote = Note(title: "Test title", content: "Test content fsljf skjfhksjfh kdjshf sdfkjhslfkjhs fslkfjhlskf skfjlskjfhlksjfh sdfskjfhlksjdhf js fskjhfl js flkjshfljasf;lkhgliuhew gvbs l;kjs fg;sl", color: .red, importance: .ordinary, dateOfSelfDestruction: Date().addingTimeInterval(60*60*24))
+        newNote = Note(title: "", content: "", importance: .ordinary, dateOfSelfDestruction: nil)
         notebook.add(newNote!)
         
         performSegue(withIdentifier: "goToEditNote", sender: self)

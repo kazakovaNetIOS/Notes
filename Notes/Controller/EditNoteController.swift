@@ -62,6 +62,7 @@ extension EditNoteController: ColorPickerControllerDelegate {
     func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor) {
         editNoteView.colorPickerTile.image = nil
         editNoteView.colorPickerTile.backgroundColor = color
+        editNoteView.selectedColor = color
         editNoteView.showCheckIcon(tag: 4)
     }
 }
