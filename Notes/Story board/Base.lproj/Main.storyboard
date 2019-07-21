@@ -130,7 +130,7 @@
         <!--Галерея-->
         <scene sceneID="fJf-1f-FUi">
             <objects>
-                <viewController title="Галерея" id="UkZ-S4-XXr" customClass="GalleryViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Галерея" id="UkZ-S4-XXr" customClass="GalleryController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sxx-LN-UOU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -199,10 +199,43 @@
                         <viewLayoutGuide key="safeArea" id="a0G-3J-j4j"/>
                     </view>
                     <navigationItem key="navigationItem" title="Галерея" id="0e5-VY-F2h"/>
+                    <connections>
+                        <segue destination="FmI-Nx-zyn" kind="show" identifier="goToImage" id="Ccm-Lk-ua2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4i-Lu-tbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="993" y="383"/>
+        </scene>
+        <!--Просмотр-->
+        <scene sceneID="Gyg-zT-4nU">
+            <objects>
+                <viewController title="Просмотр" id="FmI-Nx-zyn" customClass="ImageController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p5x-Ie-7Jo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="puz-VF-iZs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="puz-VF-iZs" firstAttribute="top" secondItem="uIQ-4t-eRF" secondAttribute="top" id="BJu-37-5ND"/>
+                            <constraint firstItem="uIQ-4t-eRF" firstAttribute="trailing" secondItem="puz-VF-iZs" secondAttribute="trailing" id="WA3-YV-sSS"/>
+                            <constraint firstItem="uIQ-4t-eRF" firstAttribute="bottom" secondItem="puz-VF-iZs" secondAttribute="bottom" id="fyZ-uc-xeh"/>
+                            <constraint firstItem="puz-VF-iZs" firstAttribute="leading" secondItem="uIQ-4t-eRF" secondAttribute="leading" id="mQj-Jv-tY9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uIQ-4t-eRF"/>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="puz-VF-iZs" id="sVp-2f-12T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ca1-2O-Wxl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1788" y="383"/>
         </scene>
         <!--Галерея-->
         <scene sceneID="ohY-qL-cMS">

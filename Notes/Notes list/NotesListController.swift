@@ -64,7 +64,7 @@ extension NotesListController {
     }
 }
 
-//MARK: - Overrides methods
+//MARK: - Override methods
 extension NotesListController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToEditNote",

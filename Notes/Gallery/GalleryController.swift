@@ -11,7 +11,7 @@ import CocoaLumberjack
 
 private let reuseIdentifier = "gallery cell"
 
-class GalleryViewController: UIViewController {
+class GalleryController: UIViewController {
     
     private let imageNames = ["photo00001",
                               "photo00002",
@@ -23,10 +23,11 @@ class GalleryViewController: UIViewController {
                               "photo00008",
                               "photo00009",
                               "photo00010"]
+    private var selectedImageIndex: Int?
 }
 
 //MARK: - Lifecycle methods
-extension GalleryViewController {
+extension GalleryController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,15 +36,14 @@ extension GalleryViewController {
 }
 
 //MARK: - Selector methods
-extension GalleryViewController {
+extension GalleryController {
     @objc func addImageButtonTapped(_ sender: UIButton) {
-        DDLogDebug("add button tapped")
-//        performSegue(withIdentifier: "goToEditNote", sender: self)
+//        performSegue(withIdentifier: "goToImage", sender: self)
     }
 }
 
 //MARK: - Collection data source methods
-extension GalleryViewController: UICollectionViewDataSource{
+extension GalleryController: UICollectionViewDataSource{
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageNames.count
@@ -55,5 +55,25 @@ extension GalleryViewController: UICollectionViewDataSource{
         cell.imageView.image = UIImage(named: imageNames[indexPath.row])
         
         return cell
+    }
+}
+
+//MARK: - Collection view delegate methods
+extension GalleryController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedImageIndex = indexPath.row
+        
+        performSegue(withIdentifier: "goToImage", sender: self)
+    }
+}
+
+//MARK: - Override methods
+extension GalleryController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToImage",
+            let imageVC = segue.destination as? ImageController {
+            imageVC.imageNames = imageNames
+            imageVC.selectedImageIndex = selectedImageIndex
+        }
     }
 }
