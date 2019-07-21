@@ -28,7 +28,7 @@ class ColorPickerController: UIViewController {
     }
 }
 
-// MARK: - ColorPickerDelegate
+// MARK: ColorPickerDelegate
 extension ColorPickerController: ColorPickerDelegate {
     func colorPicker(_ colorPicker: ColorPicker, willSelectColor color: UIColor) {
         delegate?.colorPickerController(self, willSelect: color)
@@ -36,6 +36,7 @@ extension ColorPickerController: ColorPickerDelegate {
     }
 }
 
+//MARK: ColorPickerControllerDelegate
 protocol ColorPickerControllerDelegate {
     func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor)
 }

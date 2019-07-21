@@ -30,7 +30,19 @@ class EditNoteController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сохранить", style: .plain, target: self, action: #selector(saveButtonTapped(_:)))
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        saveNote()
+    }
+    
     @objc func saveButtonTapped(_ sender: UIButton) {
+        saveNote()
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func saveNote() {
         guard let editedNote = editNoteView.editedNote else {
             return
         }
@@ -38,8 +50,6 @@ class EditNoteController: UIViewController {
         note = editedNote
         AppDelegate.noteBook.remove(with: editedNote.uid)
         AppDelegate.noteBook.add(editedNote)
-        
-        navigationController?.popViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

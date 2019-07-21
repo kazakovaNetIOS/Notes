@@ -13,11 +13,14 @@ class NotesListController: UIViewController {
     @IBOutlet weak var notesListTableView: UITableView!
     
     private let notebook = AppDelegate.noteBook
-    private var newNote: Note?
+    private var noteForEditing: Note?
+}
 
+//MARK: - Lifecycle methods
+extension NotesListController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         notebook.loadDummyData()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped(_:)))
@@ -29,26 +32,33 @@ class NotesListController: UIViewController {
         
         notesListTableView.reloadData()
     }
-    
+}
+
+//MARK: - Selector methods
+extension NotesListController {
     @objc func editButtonTapped(_ sender: UIButton) {
         print("edit button tapped")
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
-        newNote = Note(title: "", content: "", importance: .ordinary, dateOfSelfDestruction: nil)
-        notebook.add(newNote!)
+        noteForEditing = Note(title: "", content: "", importance: .ordinary, dateOfSelfDestruction: nil)
+        notebook.add(noteForEditing!)
         
         performSegue(withIdentifier: "goToEditNote", sender: self)
     }
-    
+}
+
+//MARK: - Overrides methods
+extension NotesListController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToEditNote",
             let editNoteVC = segue.destination as? EditNoteController {
-            editNoteVC.note = newNote
+            editNoteVC.note = noteForEditing
         }
     }
 }
 
+//MARK: - Table view data source methods
 extension NotesListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notebook.notes.count
@@ -68,6 +78,11 @@ extension NotesListController: UITableViewDataSource {
     }
 }
 
+//MARK: - Table view delegate methods
 extension NotesListController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        noteForEditing = notebook.notes[indexPath.row]
+        
+        performSegue(withIdentifier: "goToEditNote", sender: self)
+    }
 }
