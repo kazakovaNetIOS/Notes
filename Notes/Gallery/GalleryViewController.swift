@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import CocoaLumberjack
 
 private let reuseIdentifier = "gallery cell"
 
-class GalleryViewController: UICollectionViewController {
+class GalleryViewController: UIViewController {
     
     private let imageNames = ["photo00001",
                               "photo00002",
@@ -22,31 +23,37 @@ class GalleryViewController: UICollectionViewController {
                               "photo00008",
                               "photo00009",
                               "photo00010"]
+}
 
+//MARK: - Lifecycle methods
+extension GalleryViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(addImageButtonTapped(_:)))
     }
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+//MARK: - Selector methods
+extension GalleryViewController {
+    @objc func addImageButtonTapped(_ sender: UIButton) {
+        DDLogDebug("add button tapped")
+//        performSegue(withIdentifier: "goToEditNote", sender: self)
     }
-    */
+}
 
+//MARK: - Collection data source methods
+extension GalleryViewController: UICollectionViewDataSource{
     // MARK: UICollectionViewDataSource
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageNames.count
     }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! GalleryCell
-    
+        
         cell.imageView.image = UIImage(named: imageNames[indexPath.row])
-    
+        
         return cell
     }
 }
