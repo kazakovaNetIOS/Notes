@@ -20,34 +20,34 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLG-u5-SgW">
-                        <rect key="frame" x="8" y="8" width="30" height="30"/>
+                        <rect key="frame" x="8" y="9" width="25" height="25"/>
                         <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="KSK-B0-wpU"/>
-                            <constraint firstAttribute="width" constant="30" id="hMQ-Kj-JLz"/>
+                            <constraint firstAttribute="height" constant="25" id="KSK-B0-wpU"/>
+                            <constraint firstAttribute="width" constant="25" id="hMQ-Kj-JLz"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заголовок" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ub-OZ-PKI">
-                        <rect key="frame" x="54" y="10" width="258" height="26.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Заголовок" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ub-OZ-PKI">
+                        <rect key="frame" x="45" y="8" width="267" height="26.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Текст заметки" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sy4-GP-G81">
-                        <rect key="frame" x="8" y="46" width="304" height="44.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Текст заметки" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sy4-GP-G81">
+                        <rect key="frame" x="8" y="42.5" width="304" height="48"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Sy4-GP-G81" firstAttribute="top" secondItem="tLG-u5-SgW" secondAttribute="bottom" constant="8" id="1HL-10-s03"/>
-                    <constraint firstItem="1Ub-OZ-PKI" firstAttribute="leading" secondItem="tLG-u5-SgW" secondAttribute="trailing" constant="16" id="GJU-f1-7cT"/>
-                    <constraint firstItem="1Ub-OZ-PKI" firstAttribute="centerY" secondItem="tLG-u5-SgW" secondAttribute="centerY" id="cOa-ZU-kyv"/>
+                    <constraint firstItem="1Ub-OZ-PKI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="647-cQ-OUg"/>
+                    <constraint firstItem="tLG-u5-SgW" firstAttribute="centerY" secondItem="1Ub-OZ-PKI" secondAttribute="centerY" id="9Q7-V4-bZL"/>
+                    <constraint firstItem="1Ub-OZ-PKI" firstAttribute="leading" secondItem="tLG-u5-SgW" secondAttribute="trailing" constant="12" id="GJU-f1-7cT"/>
+                    <constraint firstItem="Sy4-GP-G81" firstAttribute="top" secondItem="1Ub-OZ-PKI" secondAttribute="bottom" constant="8" id="YRT-wp-LVb"/>
                     <constraint firstAttribute="trailing" secondItem="Sy4-GP-G81" secondAttribute="trailing" constant="8" id="dnc-Mw-pd1"/>
                     <constraint firstItem="Sy4-GP-G81" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="ibU-Rn-fw7"/>
                     <constraint firstItem="tLG-u5-SgW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="m27-e7-PE0"/>
-                    <constraint firstItem="tLG-u5-SgW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="pvI-Sc-8fR"/>
                     <constraint firstAttribute="trailing" secondItem="1Ub-OZ-PKI" secondAttribute="trailing" constant="8" id="t4F-lZ-bRJ"/>
                     <constraint firstAttribute="bottom" secondItem="Sy4-GP-G81" secondAttribute="bottom" constant="8" id="tUK-gj-gUw"/>
                 </constraints>
