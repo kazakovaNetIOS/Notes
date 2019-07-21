@@ -13,7 +13,9 @@ private let reuseIdentifier = "gallery cell"
 
 class GalleryController: UIViewController {
     
-    private let imageNames = ["photo00001",
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    private var imageNames = ["photo00001",
                               "photo00002",
                               "photo00003",
                               "photo00004",
@@ -24,12 +26,17 @@ class GalleryController: UIViewController {
                               "photo00009",
                               "photo00010"]
     private var selectedImageIndex: Int?
+    private let pickerController = UIImagePickerController()
 }
 
 //MARK: - Lifecycle methods
 extension GalleryController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pickerController.delegate = self
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(addImageButtonTapped(_:)))
     }
@@ -38,7 +45,22 @@ extension GalleryController {
 //MARK: - Selector methods
 extension GalleryController {
     @objc func addImageButtonTapped(_ sender: UIButton) {
-//        performSegue(withIdentifier: "goToImage", sender: self)
+        
+        present(pickerController, animated: true, completion: nil)
+    }
+}
+
+//MARK: - Image picker delegate methods
+extension GalleryController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImageURL = info[UIImagePickerController.InfoKey.imageURL] as? NSURL,
+            let path = pickedImageURL.path {
+            imageNames.append(path)
+            
+            collectionView.reloadData()
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -52,7 +74,11 @@ extension GalleryController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! GalleryCell
         
-        cell.imageView.image = UIImage(named: imageNames[indexPath.row])
+        if let imageFromAsset = UIImage(named: imageNames[indexPath.row]) {
+            cell.imageView.image = imageFromAsset
+        } else if let imageFromFile = UIImage(contentsOfFile: imageNames[indexPath.row]) {
+            cell.imageView.image = imageFromFile
+        }
         
         return cell
     }

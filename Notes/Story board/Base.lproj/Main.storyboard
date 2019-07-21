@@ -200,6 +200,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Галерея" id="0e5-VY-F2h"/>
                     <connections>
+                        <outlet property="collectionView" destination="uTE-WQ-qYn" id="EYf-TG-hhd"/>
                         <segue destination="FmI-Nx-zyn" kind="show" identifier="goToImage" id="Ccm-Lk-ua2"/>
                     </connections>
                 </viewController>
