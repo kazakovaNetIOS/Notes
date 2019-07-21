@@ -1,5 +1,5 @@
 //
-//  ColorPicker.swift
+//  ColorPickerView.swift
 //  Notes
 //
 //  Created by Natalia Kazakova on 10/07/2019.
@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class ColorPicker: UIView {
+class ColorPickerView: UIView {
     
     @IBOutlet weak var selectedColorView: UIView!
     @IBOutlet weak var brightnessSlider: UISlider!
@@ -56,22 +56,30 @@ class ColorPicker: UIView {
         setupViews()
     }
     
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
+    func rotateGradient() {
+        colorPickerFrame.alpha = 0
+        paletteView.rotate()
+        targetImageView.hide()
         
-        location = touch.location(in: colorPickerFrame)
+        UIView.animate(withDuration: 0.7) {
+            self.colorPickerFrame.alpha = 1
+        }
+    }
+}
+
+//MARK: - IBAction
+extension ColorPickerView {
+    @IBAction func doneButtonTapped(_ sender: UIButton) {
+        delegate?.colorPicker(self, willSelectColor: selectedColor)
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        
-        location = touch.location(in: colorPickerFrame)
+    @IBAction func brightnessSliderChanged(_ sender: UISlider) {
+        selectedColor = selectedColor.withAlphaComponent(CGFloat(sender.value))
     }
-    
+}
+
+//MARK: - Setup views methods
+extension ColorPickerView {
     private func setupViews() {
         let xibView = loadViewFromXib()
         
@@ -90,34 +98,36 @@ class ColorPicker: UIView {
     
     private func loadViewFromXib() -> UIView {
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "ColorPicker", bundle: bundle)
+        let nib = UINib(nibName: "ColorPickerView", bundle: bundle)
         
         return nib.instantiate(withOwner: self, options: nil).first! as! UIView
     }
+}
+
+//MARK: - Overrides methods
+extension ColorPickerView {
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+    }
     
-    func rotateGradient() {
-        colorPickerFrame.alpha = 0
-        paletteView.rotate()
-        targetImageView.hide()
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
         
-        UIView.animate(withDuration: 0.7) {
-            self.colorPickerFrame.alpha = 1
-        }
+        location = touch.location(in: colorPickerFrame)
     }
     
-    @IBAction func doneButtonTapped(_ sender: UIButton) {
-        delegate?.colorPicker(self, willSelectColor: selectedColor)
-    }
-    
-    @IBAction func brightnessSliderChanged(_ sender: UISlider) {
-        selectedColor = selectedColor.withAlphaComponent(CGFloat(sender.value))
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        
+        location = touch.location(in: colorPickerFrame)
     }
 }
 
 protocol ColorPickerDelegate {
-    func colorPicker(_ colorPicker: ColorPicker, willSelectColor color: UIColor)
+    func colorPicker(_ colorPicker: ColorPickerView, willSelectColor color: UIColor)
 }
 
+//MARK: - PaletteView class
 @IBDesignable
 class PaletteView: UIView {
     
@@ -187,6 +197,7 @@ class PaletteView: UIView {
     }
 }
 
+//MARK: - TargetImageView class
 @IBDesignable
 class TargetImageView: UIView {
     

@@ -78,15 +78,15 @@
             </objects>
             <point key="canvasLocation" x="1788" y="-308"/>
         </scene>
-        <!--Color Picker Controller-->
+        <!--Палитра-->
         <scene sceneID="uqF-BD-Epk">
             <objects>
-                <viewController id="yfh-sS-S1Y" customClass="ColorPickerController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Палитра" id="yfh-sS-S1Y" customClass="ColorPickerController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UBC-be-6Jp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdR-Nz-L8b" customClass="ColorPicker" customModule="Notes" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdR-Nz-L8b" customClass="ColorPickerView" customModule="Notes" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>

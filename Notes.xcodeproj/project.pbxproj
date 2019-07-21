@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		C95A94268AE058029B715AE8 /* libPods-Notes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F3B1B892B3EFDE97F80DAA /* libPods-Notes.a */; };
 		FF0FD47822D36A43002E4D93 /* ColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */; };
-		FF0FD47D22D61FF3002E4D93 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47C22D61FF3002E4D93 /* ColorPicker.swift */; };
-		FF0FD48222D62106002E4D93 /* ColorPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0FD48122D62106002E4D93 /* ColorPicker.xib */; };
+		FF0FD47D22D61FF3002E4D93 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47C22D61FF3002E4D93 /* ColorPickerView.swift */; };
+		FF0FD48222D62106002E4D93 /* ColorPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0FD48122D62106002E4D93 /* ColorPickerView.xib */; };
 		FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D91A222C0DFE1001210DE /* AppDelegate.swift */; };
 		FF2D91A522C0DFE1001210DE /* EditNoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D91A422C0DFE1001210DE /* EditNoteController.swift */; };
 		FF2D91A822C0DFE1001210DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91A622C0DFE1001210DE /* Main.storyboard */; };
@@ -51,8 +51,8 @@
 		8A3039440254E2AD6FFB1FEB /* Pods-Notes.free.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.free.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.free.xcconfig"; sourceTree = "<group>"; };
 		F5F5F8C2AF74A4AC283FF4B7 /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.debug.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerController.swift; sourceTree = "<group>"; };
-		FF0FD47C22D61FF3002E4D93 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
-		FF0FD48122D62106002E4D93 /* ColorPicker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPicker.xib; sourceTree = "<group>"; };
+		FF0FD47C22D61FF3002E4D93 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		FF0FD48122D62106002E4D93 /* ColorPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPickerView.xib; sourceTree = "<group>"; };
 		FF14418E22C22A5E005F5AF8 /* Free.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Free.xcconfig; sourceTree = "<group>"; };
 		FF14419122C22A9C005F5AF8 /* Pay.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Pay.xcconfig; sourceTree = "<group>"; };
 		FF14419222C22B7C005F5AF8 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -124,43 +124,40 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		FF0FD47922D49E79002E4D93 /* Controller */ = {
+		FF0FD47922D49E79002E4D93 /* Color picker */ = {
 			isa = PBXGroup;
 			children = (
-				FFFD22BE22E0E64900880908 /* NotesListController.swift */,
-				FF2D91A422C0DFE1001210DE /* EditNoteController.swift */,
 				FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */,
+				FF0FD47E22D61FFE002E4D93 /* Color picker view */,
 			);
-			path = Controller;
+			path = "Color picker";
 			sourceTree = "<group>";
 		};
-		FF0FD47A22D49EAA002E4D93 /* View */ = {
+		FF0FD47A22D49EAA002E4D93 /* Story board */ = {
 			isa = PBXGroup;
 			children = (
-				FF0FD47E22D61FFE002E4D93 /* Color picker */,
-				FF0FD47B22D49EC7002E4D93 /* Edit note */,
 				FF2D91AB22C0DFE2001210DE /* LaunchScreen.storyboard */,
 				FF2D91A622C0DFE1001210DE /* Main.storyboard */,
 			);
-			path = View;
+			path = "Story board";
 			sourceTree = "<group>";
 		};
-		FF0FD47B22D49EC7002E4D93 /* Edit note */ = {
+		FF0FD47B22D49EC7002E4D93 /* Edit note view */ = {
 			isa = PBXGroup;
 			children = (
 				FF80DA8E22CE20DA007CC61D /* EditNoteView.xib */,
 				FF80DA9022CE2B32007CC61D /* EditNoteView.swift */,
 			);
-			path = "Edit note";
+			path = "Edit note view";
 			sourceTree = "<group>";
 		};
-		FF0FD47E22D61FFE002E4D93 /* Color picker */ = {
+		FF0FD47E22D61FFE002E4D93 /* Color picker view */ = {
 			isa = PBXGroup;
 			children = (
-				FF0FD48122D62106002E4D93 /* ColorPicker.xib */,
-				FF0FD47C22D61FF3002E4D93 /* ColorPicker.swift */,
+				FF0FD48122D62106002E4D93 /* ColorPickerView.xib */,
+				FF0FD47C22D61FF3002E4D93 /* ColorPickerView.swift */,
 			);
-			path = "Color picker";
+			path = "Color picker view";
 			sourceTree = "<group>";
 		};
 		FF2D919622C0DFE1001210DE = {
@@ -192,9 +189,11 @@
 		FF2D91A122C0DFE1001210DE /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				FF0FD47922D49E79002E4D93 /* Controller */,
 				FF99660E22C0E02E004299F3 /* Model */,
-				FF0FD47A22D49EAA002E4D93 /* View */,
+				FF0FD47A22D49EAA002E4D93 /* Story board */,
+				FFFA77A922E45E880043FD1B /* Notes list */,
+				FFFA77AA22E45E9D0043FD1B /* Edit note */,
+				FF0FD47922D49E79002E4D93 /* Color picker */,
 				FF2D91A222C0DFE1001210DE /* AppDelegate.swift */,
 				FF2D91A922C0DFE2001210DE /* Assets.xcassets */,
 				FF2D91AE22C0DFE2001210DE /* Info.plist */,
@@ -229,6 +228,23 @@
 				FFCC056322C774A4003E9191 /* Info.plist */,
 			);
 			path = NotesUITests;
+			sourceTree = "<group>";
+		};
+		FFFA77A922E45E880043FD1B /* Notes list */ = {
+			isa = PBXGroup;
+			children = (
+				FFFD22BE22E0E64900880908 /* NotesListController.swift */,
+			);
+			path = "Notes list";
+			sourceTree = "<group>";
+		};
+		FFFA77AA22E45E9D0043FD1B /* Edit note */ = {
+			isa = PBXGroup;
+			children = (
+				FF2D91A422C0DFE1001210DE /* EditNoteController.swift */,
+				FF0FD47B22D49EC7002E4D93 /* Edit note view */,
+			);
+			path = "Edit note";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,7 +355,7 @@
 				FF2D91AD22C0DFE2001210DE /* LaunchScreen.storyboard in Resources */,
 				FF80DA8F22CE20DA007CC61D /* EditNoteView.xib in Resources */,
 				FF2D91AA22C0DFE2001210DE /* Assets.xcassets in Resources */,
-				FF0FD48222D62106002E4D93 /* ColorPicker.xib in Resources */,
+				FF0FD48222D62106002E4D93 /* ColorPickerView.xib in Resources */,
 				FF2D91A822C0DFE1001210DE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,7 +412,7 @@
 				FF99661322C0E047004299F3 /* NoteExtensions.swift in Sources */,
 				FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */,
 				FF80DA9122CE2B32007CC61D /* EditNoteView.swift in Sources */,
-				FF0FD47D22D61FF3002E4D93 /* ColorPicker.swift in Sources */,
+				FF0FD47D22D61FF3002E4D93 /* ColorPickerView.swift in Sources */,
 				FFFD22BF22E0E64900880908 /* NotesListController.swift in Sources */,
 				FF99661222C0E047004299F3 /* Note.swift in Sources */,
 			);
