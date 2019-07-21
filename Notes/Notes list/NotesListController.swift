@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CocoaLumberjack
 
 class NotesListController: UIViewController {
     
@@ -37,7 +38,17 @@ extension NotesListController {
 //MARK: - Selector methods
 extension NotesListController {
     @objc func editButtonTapped(_ sender: UIButton) {
-        print("edit button tapped")
+        if(notesListTableView.isEditing == true) {
+            notesListTableView.isEditing = false
+            navigationItem.leftBarButtonItem?.title = "Edit"
+            
+            DDLogDebug("Editing table switched to off")
+        } else {
+            notesListTableView.isEditing = true
+            navigationItem.leftBarButtonItem?.title = "Done"
+            
+            DDLogDebug("Editing table switched to on")
+        }
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
@@ -76,6 +87,14 @@ extension NotesListController: UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteNote(at: indexPath)
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
 
 //MARK: - Table view delegate methods
@@ -84,5 +103,15 @@ extension NotesListController: UITableViewDelegate {
         noteForEditing = notebook.notes[indexPath.row]
         
         performSegue(withIdentifier: "goToEditNote", sender: self)
+    }
+}
+
+//MARK: - Model manipulate methods
+extension NotesListController {
+    private func deleteNote(at indexPath: IndexPath) {
+        let deletedNote = notebook.notes[indexPath.row]
+        notebook.remove(with: deletedNote.uid)
+        
+        DDLogDebug("Delete table row at index \(indexPath.row)")
     }
 }
