@@ -15,6 +15,7 @@ class NotesListController: UIViewController {
     
     private let notebook = AppDelegate.noteBook
     private var noteForEditing: Note?
+    private let reuseIdentifier = "note cell"
 }
 
 //MARK: - Lifecycle methods
@@ -26,10 +27,14 @@ extension NotesListController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(addButtonTapped(_:)))
+        
+        notesListTableView.register(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        notebook.sortNotesByTitle()
         
         notesListTableView.reloadData()
     }
@@ -76,14 +81,13 @@ extension NotesListController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! NoteTableViewCell
         
         let note = notebook.notes[indexPath.row]
         
-        cell.textLabel?.text = note.title
-        cell.textLabel?.numberOfLines = 0
-        cell.detailTextLabel?.text = note.content
-        cell.detailTextLabel?.numberOfLines = 0
+        cell.titleLabel?.text = note.title
+        cell.contentLabel?.text = note.content
+        cell.colorTileView?.backgroundColor = note.color
         
         return cell
     }

@@ -16,6 +16,8 @@
 		FF2D91A822C0DFE1001210DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91A622C0DFE1001210DE /* Main.storyboard */; };
 		FF2D91AA22C0DFE2001210DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91A922C0DFE2001210DE /* Assets.xcassets */; };
 		FF2D91AD22C0DFE2001210DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91AB22C0DFE2001210DE /* LaunchScreen.storyboard */; };
+		FF63AE8F22E47BBF00E00720 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF63AE8D22E47BBF00E00720 /* NoteTableViewCell.swift */; };
+		FF63AE9022E47BBF00E00720 /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF63AE8E22E47BBF00E00720 /* NoteTableViewCell.xib */; };
 		FF80DA8F22CE20DA007CC61D /* EditNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF80DA8E22CE20DA007CC61D /* EditNoteView.xib */; };
 		FF80DA9122CE2B32007CC61D /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80DA9022CE2B32007CC61D /* EditNoteView.swift */; };
 		FF99661222C0E047004299F3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99660F22C0E047004299F3 /* Note.swift */; };
@@ -64,6 +66,8 @@
 		FF2D91A922C0DFE2001210DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF2D91AC22C0DFE2001210DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF2D91AE22C0DFE2001210DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF63AE8D22E47BBF00E00720 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		FF63AE8E22E47BBF00E00720 /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
 		FF80DA8E22CE20DA007CC61D /* EditNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditNoteView.xib; sourceTree = "<group>"; };
 		FF80DA9022CE2B32007CC61D /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
 		FF99660F22C0E047004299F3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -201,6 +205,15 @@
 			path = Notes;
 			sourceTree = "<group>";
 		};
+		FF63AE9122E48D9100E00720 /* Note table cell */ = {
+			isa = PBXGroup;
+			children = (
+				FF63AE8D22E47BBF00E00720 /* NoteTableViewCell.swift */,
+				FF63AE8E22E47BBF00E00720 /* NoteTableViewCell.xib */,
+			);
+			path = "Note table cell";
+			sourceTree = "<group>";
+		};
 		FF99660E22C0E02E004299F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				FFFD22BE22E0E64900880908 /* NotesListController.swift */,
+				FF63AE9122E48D9100E00720 /* Note table cell */,
 			);
 			path = "Notes list";
 			sourceTree = "<group>";
@@ -355,6 +369,7 @@
 				FF2D91AD22C0DFE2001210DE /* LaunchScreen.storyboard in Resources */,
 				FF80DA8F22CE20DA007CC61D /* EditNoteView.xib in Resources */,
 				FF2D91AA22C0DFE2001210DE /* Assets.xcassets in Resources */,
+				FF63AE9022E47BBF00E00720 /* NoteTableViewCell.xib in Resources */,
 				FF0FD48222D62106002E4D93 /* ColorPickerView.xib in Resources */,
 				FF2D91A822C0DFE1001210DE /* Main.storyboard in Resources */,
 			);
@@ -409,6 +424,7 @@
 				FF0FD47822D36A43002E4D93 /* ColorPickerController.swift in Sources */,
 				FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */,
 				FF2D91A522C0DFE1001210DE /* EditNoteController.swift in Sources */,
+				FF63AE8F22E47BBF00E00720 /* NoteTableViewCell.swift in Sources */,
 				FF99661322C0E047004299F3 /* NoteExtensions.swift in Sources */,
 				FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */,
 				FF80DA9122CE2B32007CC61D /* EditNoteView.swift in Sources */,

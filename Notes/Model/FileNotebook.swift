@@ -68,6 +68,10 @@ class FileNotebook {
         }
     }
     
+    public func sortNotesByTitle() {
+        notes.sort(by: { $0.title < $1.title })
+    }
+    
     private func getFileNotebookPath() -> URL? {
         guard let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
             return nil
