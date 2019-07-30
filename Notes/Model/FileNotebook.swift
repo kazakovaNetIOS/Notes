@@ -10,16 +10,18 @@ import Foundation
 import CocoaLumberjack
 
 class FileNotebook {
-    public private (set) var notes: [Note] = [Note]()
+    public private(set) var notes: [Note] = [Note]()
     
-    public func add(_ note: Note) {
-        if self.notes.firstIndex(where: { $0.uid == note.uid }) != nil {
-            DDLogWarn("Note already exist")
-            
-            return
+    public func add(note: Note) {
+        if let index = notes.firstIndex(where: { $0.uid == note.uid }) {
+            notes[index] = note
+        } else {
+            notes.append(note)
         }
-        
-        self.notes.append(note)
+    }
+    
+    public func replaceAll(notes: [Note]) {
+        self.notes = notes
     }
     
     public func remove(with uid: String) {
@@ -60,7 +62,7 @@ class FileNotebook {
             
             for item in jsonArrayNotes {
                 if let note = Note.parse(json: item) {
-                    add(note)
+                    add(note: note)
                 }
             }
         } catch {

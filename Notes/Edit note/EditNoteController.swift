@@ -48,8 +48,7 @@ class EditNoteController: UIViewController {
         }
         
         note = editedNote
-        AppDelegate.noteBook.remove(with: editedNote.uid)
-        AppDelegate.noteBook.add(editedNote)
+        AppDelegate.noteBook.add(note: editedNote)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

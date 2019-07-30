@@ -58,7 +58,7 @@ extension NotesListController {
     
     @objc func addButtonTapped(_ sender: UIButton) {
         noteForEditing = Note(title: "", content: "", importance: .ordinary, dateOfSelfDestruction: nil)
-        notebook.add(noteForEditing!)
+        notebook.add(note: noteForEditing!)
         
         performSegue(withIdentifier: "goToEditNote", sender: self)
     }
