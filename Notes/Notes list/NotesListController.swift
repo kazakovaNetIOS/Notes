@@ -50,13 +50,11 @@ extension NotesListController {
             
             self.notes = loadedNotes
             
-            let updateUI = BlockOperation {
+            OperationQueue.main.addOperation {
                 DDLogDebug("Updating the table after loading data")
                 
                 self.notesListTableView.reloadData()
             }
-            
-            OperationQueue.main.addOperation(updateUI)
         }
         
         OperationQueue().addOperation(loadNotes)
@@ -87,13 +85,11 @@ extension NotesListController {
         saveNoteOperation.completionBlock = {
             DDLogDebug("Note saved. Note ID: \(self.noteForEditing!.uid)")
             
-            let updateUI = BlockOperation {
+            OperationQueue.main.addOperation {
                 DDLogDebug("Switch to note editing")
                 
                 self.performSegue(withIdentifier: "goToEditNote", sender: self)
             }
-            
-            OperationQueue.main.addOperation(updateUI)
         }
         
         OperationQueue().addOperation(saveNoteOperation)
@@ -130,9 +126,23 @@ extension NotesListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            deleteNote(at: indexPath)
+            let deletedNoteId = notes[indexPath.row].uid
             
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            let removeNote = RemoveNoteOperation(noteId: deletedNoteId,
+                                                 notebook: notebook,
+                                                 backendQueue: OperationQueue(),
+                                                 dbQueue: OperationQueue())
+            removeNote.completionBlock = {
+                OperationQueue.main.addOperation {
+                    self.notes.remove(at: indexPath.row)
+                    
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                    
+                    DDLogDebug("Removed table row with index \(indexPath.row)")
+                }
+            }
+            
+            OperationQueue().addOperation(removeNote)
         }
     }
 }
@@ -143,15 +153,5 @@ extension NotesListController: UITableViewDelegate {
         noteForEditing = notes[indexPath.row]
         
         performSegue(withIdentifier: "goToEditNote", sender: self)
-    }
-}
-
-//MARK: - Model manipulate methods
-extension NotesListController {
-    private func deleteNote(at indexPath: IndexPath) {
-        let deletedNote = notes[indexPath.row]
-        notebook.remove(with: deletedNote.uid)
-        
-        DDLogDebug("Delete table row at index \(indexPath.row)")
     }
 }
