@@ -47,8 +47,9 @@ class EditNoteController: UIViewController {
             return
         }
         
-        note = editedNote
-        AppDelegate.noteBook.add(note: editedNote)
+        let saveNoteOperation = SaveNoteOperation(note: editedNote, notebook: AppDelegate.noteBook, backendQueue: OperationQueue(), dbQueue: OperationQueue())
+        
+        OperationQueue().addOperation(saveNoteOperation)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
