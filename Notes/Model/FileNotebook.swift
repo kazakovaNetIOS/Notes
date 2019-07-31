@@ -12,6 +12,10 @@ import CocoaLumberjack
 class FileNotebook {
     public private(set) var notes: [Note] = [Note]()
     
+    init() {
+        loadDummyData()
+    }
+    
     public func add(note: Note) {
         if let index = notes.firstIndex(where: { $0.uid == note.uid }) {
             notes[index] = note
@@ -70,10 +74,6 @@ class FileNotebook {
         }
     }
     
-    public func sortNotesByTitle() {
-        notes.sort(by: { $0.title < $1.title })
-    }
-    
     private func getFileNotebookPath() -> URL? {
         guard let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
             return nil
@@ -102,7 +102,7 @@ class FileNotebook {
         return fileUrl
     }
     
-    public func loadDummyData() {        
+    private func loadDummyData() {        
         notes.append(Note(title: "Л. Толстой", content: "Каждый хочет изменить человечество, но никто не задумывается о том, как изменить себя.", importance: Importance.ordinary, dateOfSelfDestruction: nil))
         notes.append(Note(title: "А. Пушкин", content: "Научить человека быть счастливым — нельзя, но воспитать его так, чтобы он был счастливым, можно.", importance: Importance.important, dateOfSelfDestruction: nil))
         notes.append(Note(title: "С. Есенин", content: "Времени нет. Серьезно? Это желания нет, а время есть всегда.", importance: Importance.ordinary, dateOfSelfDestruction: nil))
