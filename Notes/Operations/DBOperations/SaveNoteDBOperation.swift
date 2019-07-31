@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CocoaLumberjack
 
 class SaveNoteDBOperation: BaseDBOperation {
     
@@ -20,6 +21,10 @@ class SaveNoteDBOperation: BaseDBOperation {
     
     override func main() {
         notebook.add(note: note)
+        notebook.saveToFile()
+        
+        DDLogDebug("Save notes to db completed")
+        
         finish()
     }
 }

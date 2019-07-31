@@ -38,8 +38,6 @@ extension NotesListController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
         let loadNotes = LoadNotesOperation(notebook: AppDelegate.noteBook,
                                            backendQueue: OperationQueue(),
                                            dbQueue: OperationQueue())
@@ -54,6 +52,8 @@ extension NotesListController {
                 DDLogDebug("Updating the table after loading data")
                 
                 self.notesListTableView.reloadData()
+                
+                super.viewWillAppear(animated)
             }
         }
         
@@ -80,19 +80,9 @@ extension NotesListController {
     @objc func addButtonTapped(_ sender: UIButton) {
         noteForEditing = Note(title: "", content: "", importance: .ordinary, dateOfSelfDestruction: nil)
         
-        let saveNoteOperation = SaveNoteOperation(note: noteForEditing!, notebook: notebook, backendQueue: OperationQueue(), dbQueue: OperationQueue())
+        DDLogDebug("Switch to note editing")
         
-        saveNoteOperation.completionBlock = {
-            DDLogDebug("Note saved. Note ID: \(self.noteForEditing!.uid)")
-            
-            OperationQueue.main.addOperation {
-                DDLogDebug("Switch to note editing")
-                
-                self.performSegue(withIdentifier: "goToEditNote", sender: self)
-            }
-        }
-        
-        OperationQueue().addOperation(saveNoteOperation)
+        self.performSegue(withIdentifier: "goToEditNote", sender: self)
     }
 }
 

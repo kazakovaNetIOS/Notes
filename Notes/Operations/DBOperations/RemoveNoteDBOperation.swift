@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CocoaLumberjack
 
 class RemoveNoteDBOperation: BaseDBOperation {
     
@@ -20,6 +21,9 @@ class RemoveNoteDBOperation: BaseDBOperation {
     
     override func main() {
         notebook.remove(with: noteId)
+        notebook.saveToFile()
+        
+        DDLogDebug("Remove note from db completed")
         
         finish()
     }

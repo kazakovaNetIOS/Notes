@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CocoaLumberjack
 
 class EditNoteController: UIViewController {
     
@@ -30,16 +31,8 @@ class EditNoteController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сохранить", style: .plain, target: self, action: #selector(saveButtonTapped(_:)))
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        saveNote()
-    }
-    
     @objc func saveButtonTapped(_ sender: UIButton) {
         saveNote()
-        
-        navigationController?.popViewController(animated: true)
     }
     
     private func saveNote() {
@@ -48,6 +41,14 @@ class EditNoteController: UIViewController {
         }
         
         let saveNoteOperation = SaveNoteOperation(note: editedNote, notebook: AppDelegate.noteBook, backendQueue: OperationQueue(), dbQueue: OperationQueue())
+        
+        saveNoteOperation.completionBlock = {
+            OperationQueue.main.addOperation {
+                DDLogDebug("Return to the list of notes")
+                
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
         
         OperationQueue().addOperation(saveNoteOperation)
     }
@@ -72,7 +73,9 @@ extension EditNoteController: ColorPickerControllerDelegate {
     func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor) {
         editNoteView.colorPickerTile.image = nil
         editNoteView.colorPickerTile.backgroundColor = color
+        editNoteView.firstColorTile.backgroundColor = .white
         editNoteView.selectedColor = color
+        editNoteView.isColorChanged = true
         editNoteView.showCheckIcon(tag: 4)
     }
 }

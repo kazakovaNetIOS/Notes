@@ -12,9 +12,9 @@ import CocoaLumberjack
 class FileNotebook {
     public private(set) var notes: [Note] = [Note]()
     
-    init() {
-        loadDummyData()
-    }
+//    init() {
+//        loadDummyData()
+//    }
     
     public func add(note: Note) {
         if let index = notes.firstIndex(where: { $0.uid == note.uid }) {
@@ -63,6 +63,8 @@ class FileNotebook {
             let anyJsonObject = try JSONSerialization.jsonObject(with: jsData, options: [])
             
             guard let jsonArrayNotes = anyJsonObject as? [[String : Any]] else { return }
+            
+            notes = []
             
             for item in jsonArrayNotes {
                 if let note = Note.parse(json: item) {

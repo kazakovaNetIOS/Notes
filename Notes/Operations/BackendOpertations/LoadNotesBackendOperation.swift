@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CocoaLumberjack
 
 enum LoadNotesBackendResult {
     case success([Note])
@@ -18,6 +19,9 @@ class LoadNotesBackendOperation: BaseBackendOperation {
     
     override func main() {
         result = .failure(.unreachable)
+        
+        DDLogDebug("Load notes from backend result: \(String(describing: result))")
+        
         finish()
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CocoaLumberjack
 
 class LoadNotesDBOperation: BaseDBOperation {
     
@@ -17,7 +18,11 @@ class LoadNotesDBOperation: BaseDBOperation {
     }
     
     override func main() {
+        notebook.loadFromFile()
         result = notebook.notes
+        
+        DDLogDebug("Load notes from db completed")
+        
         finish()
     }
 }

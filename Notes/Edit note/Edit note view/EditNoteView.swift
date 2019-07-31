@@ -36,8 +36,12 @@ class EditNoteView: UIView {
                 return nil
             }
             
+            if !isColorChanged {
+                selectedColor = firstColorTile.backgroundColor!
+            }
+            
             return Note(uid: note.uid,
-                        title: titleTextField.text!,
+                        title: titleTextField.text ?? "",
                         content: textTextView.text,
                         color: selectedColor,
                         importance: note.importance,
@@ -45,6 +49,7 @@ class EditNoteView: UIView {
         }
     }
     var selectedColor: UIColor = .white
+    var isColorChanged: Bool = false
     
     convenience init(frame: CGRect, displayNote: Note?) {
         self.init(frame: frame)
@@ -198,6 +203,7 @@ extension EditNoteView {
         showCheckIcon(tag: sender.tag)
         
         selectedColor = sender.backgroundColor!
+        isColorChanged = true
     }
     
     @IBAction func colorPickerLongPressed(_ sender: UILongPressGestureRecognizer) {
