@@ -1,5 +1,12 @@
 # Notes
 
-Проект в рамках прохождения курса "Разработка под iOS. Начинаем" на платформе Stepik  
+Notebook with image gallery.
 
-В разработке.
+## Screenshots
+
+![IPhone8](https://github.com/kazakovaNetIOS/Notes/blob/master/screenshots/IPhone81.png)
+![IPhone8](https://github.com/kazakovaNetIOS/Notes/blob/master/screenshots/IPhone82.png)
+![IPhone8](https://github.com/kazakovaNetIOS/Notes/blob/master/screenshots/IPhone83.png)
+![IPhone8](https://github.com/kazakovaNetIOS/Notes/blob/master/screenshots/IPhone84.png)
+![IPhone8](https://github.com/kazakovaNetIOS/Notes/blob/master/screenshots/IPhone85.png)
+![IPhone8](https://github.com/kazakovaNetIOS/Notes/blob/master/screenshots/IPhone86.png)
