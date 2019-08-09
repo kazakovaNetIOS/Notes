@@ -17,8 +17,8 @@ enum SaveNotesBackendResult {
 class SaveNotesBackendOperation: BaseBackendOperation {
     var result: SaveNotesBackendResult?
     
-    init(notes: [Note]) {
-        super.init()
+    init(notebook: FileNotebook, notes: [Note]) {
+        super.init(notebook: notebook)
     }
     
     override func main() {

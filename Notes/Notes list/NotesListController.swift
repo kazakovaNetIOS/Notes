@@ -28,16 +28,24 @@ class NotesListController: UIViewController {
 
 //MARK: - Lifecycle methods
 extension NotesListController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped(_:)))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(addButtonTapped(_:)))
-        
-        notesListTableView.register(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        loadData {
+            super.viewWillAppear(animated)
+        }
+    }
+}
+
+//MARK: - Load data
+/***************************************************************/
+
+extension NotesListController {
+    private func loadData(completion: @escaping () -> Void) {
         let loadNotes = LoadNotesOperation(notebook: AppDelegate.noteBook,
                                            backendQueue: OperationQueue(),
                                            dbQueue: OperationQueue())
@@ -53,11 +61,23 @@ extension NotesListController {
                 
                 self.notesListTableView.reloadData()
                 
-                super.viewWillAppear(animated)
+                completion()
             }
         }
         
         OperationQueue().addOperation(loadNotes)
+    }
+}
+
+//MARK: - Setup views
+/***************************************************************/
+
+extension NotesListController {
+    private func setupViews() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(addButtonTapped(_:)))
+        
+        notesListTableView.register(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
     }
 }
 
@@ -86,7 +106,7 @@ extension NotesListController {
     }
 }
 
-//MARK: - Override methods
+//MARK: - Prepare for segue
 extension NotesListController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToEditNote",
@@ -96,7 +116,7 @@ extension NotesListController {
     }
 }
 
-//MARK: - Table view data source methods
+//MARK: - UITableViewDataSource
 extension NotesListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notes.count
@@ -137,7 +157,7 @@ extension NotesListController: UITableViewDataSource {
     }
 }
 
-//MARK: - Table view delegate methods
+//MARK: - UITableViewDelegate
 extension NotesListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         noteForEditing = notes[indexPath.row]

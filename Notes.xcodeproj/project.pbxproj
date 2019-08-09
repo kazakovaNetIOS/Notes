@@ -31,6 +31,8 @@
 		FF63AE9022E47BBF00E00720 /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF63AE8E22E47BBF00E00720 /* NoteTableViewCell.xib */; };
 		FF63AE9422E4963D00E00720 /* GalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF63AE9322E4963D00E00720 /* GalleryController.swift */; };
 		FF63AE9622E4973D00E00720 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF63AE9522E4973D00E00720 /* GalleryCell.swift */; };
+		FF70A0C522FD617600025A96 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF70A0C422FD617600025A96 /* Gist.swift */; };
+		FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF70A0C622FD61E900025A96 /* GistFile.swift */; };
 		FF80DA8F22CE20DA007CC61D /* EditNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF80DA8E22CE20DA007CC61D /* EditNoteView.xib */; };
 		FF80DA9122CE2B32007CC61D /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80DA9022CE2B32007CC61D /* EditNoteView.swift */; };
 		FF99661222C0E047004299F3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99660F22C0E047004299F3 /* Note.swift */; };
@@ -95,6 +97,8 @@
 		FF63AE8E22E47BBF00E00720 /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
 		FF63AE9322E4963D00E00720 /* GalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryController.swift; sourceTree = "<group>"; };
 		FF63AE9522E4973D00E00720 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		FF70A0C422FD617600025A96 /* Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
+		FF70A0C622FD61E900025A96 /* GistFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistFile.swift; sourceTree = "<group>"; };
 		FF80DA8E22CE20DA007CC61D /* EditNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditNoteView.xib; sourceTree = "<group>"; };
 		FF80DA9022CE2B32007CC61D /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
 		FF99660F22C0E047004299F3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -294,6 +298,8 @@
 				FF99661122C0E047004299F3 /* FileNotebook.swift */,
 				FF99660F22C0E047004299F3 /* Note.swift */,
 				FF99661022C0E047004299F3 /* NoteExtensions.swift */,
+				FF70A0C422FD617600025A96 /* Gist.swift */,
+				FF70A0C622FD61E900025A96 /* GistFile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -507,6 +513,7 @@
 				FF63AE9422E4963D00E00720 /* GalleryController.swift in Sources */,
 				FF0FD47822D36A43002E4D93 /* ColorPickerController.swift in Sources */,
 				FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */,
+				FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */,
 				FF2D91A522C0DFE1001210DE /* EditNoteController.swift in Sources */,
 				FF63AE8F22E47BBF00E00720 /* NoteTableViewCell.swift in Sources */,
 				FF55EEDC22F0A2730022A55E /* SaveNotesBackendOperation.swift in Sources */,
@@ -523,6 +530,7 @@
 				FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */,
 				FF80DA9122CE2B32007CC61D /* EditNoteView.swift in Sources */,
 				FF55EEE122F0A27E0022A55E /* BaseDBOperation.swift in Sources */,
+				FF70A0C522FD617600025A96 /* Gist.swift in Sources */,
 				FF55EEE522F0BBB30022A55E /* LoadNotesDBOperation.swift in Sources */,
 				FF0FD47D22D61FF3002E4D93 /* ColorPickerView.swift in Sources */,
 				FFFD22BF22E0E64900880908 /* NotesListController.swift in Sources */,

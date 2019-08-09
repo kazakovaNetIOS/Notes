@@ -118,3 +118,17 @@ class FileNotebook {
     }
 }
 
+//MARK: - Load from gist
+/***************************************************************/
+
+extension FileNotebook {
+    public func getNotes(from data: Data) -> [Note] {
+//        try? JSONDecoder().decode(Notebook.self, from: data)
+        return []
+    }
+}
+
+
+
+// 5. Распарсить с помощью try? JSONDecoder().decode(Notebook.self, from: data) в массив заметок
+// 6. Отдать на отображение массив или ошибку

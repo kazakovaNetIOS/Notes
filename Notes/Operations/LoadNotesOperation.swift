@@ -19,7 +19,7 @@ class LoadNotesOperation: AsyncOperation {
          backendQueue: OperationQueue,
          dbQueue: OperationQueue) {
         
-        loadFromBackend = LoadNotesBackendOperation()
+        loadFromBackend = LoadNotesBackendOperation(notebook: notebook)
         loadFromDb = LoadNotesDBOperation(notebook: notebook)
         
         super.init()
@@ -30,8 +30,10 @@ class LoadNotesOperation: AsyncOperation {
                 notebook.replaceAll(notes: notes)
                 
                 self.result = notes
-            case .failure:
+            case .notFound:
                 backendQueue.addOperation(self.loadFromDb)
+            case .failure:
+                self.result = []
             }
         }
         

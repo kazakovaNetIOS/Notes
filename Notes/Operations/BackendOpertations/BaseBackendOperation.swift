@@ -13,7 +13,10 @@ enum NetworkError {
 }
 
 class BaseBackendOperation: AsyncOperation {
-    override init() {
+    let notebook: FileNotebook
+    
+    init(notebook: FileNotebook) {
+        self.notebook = notebook
         super.init()
     }
 }
