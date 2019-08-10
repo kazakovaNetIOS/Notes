@@ -8,7 +8,37 @@
 
 import Foundation
 
-struct GistFile: Codable {
+struct GistFile {
     let filename: String
     let rawUrl: String
+    let content: String?
+    
+    init(content: String?) {
+        self.filename = ""
+        self.rawUrl = ""
+        self.content = content
+    }
+}
+
+//MARK: - Codable
+/***************************************************************/
+
+extension GistFile: Codable {
+    enum CodingKeys: String, CodingKey {
+        case filename
+        case rawUrl
+        case content
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(content, forKey: .content)
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        filename = try container.decode(String.self, forKey: .filename)
+        rawUrl = try container.decode(String.self, forKey: .rawUrl)
+        content = ""
+    }
 }

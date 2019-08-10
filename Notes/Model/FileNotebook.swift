@@ -69,7 +69,6 @@ extension FileNotebook {
         for note in notes {
             jsonArrayNotes.append(note.json)
         }
-        
         do {
             let jsdata = try JSONSerialization.data(withJSONObject: jsonArrayNotes, options: [])
             try jsdata.write(to: fileUrl)
@@ -83,6 +82,21 @@ extension FileNotebook {
 /***************************************************************/
 
 extension FileNotebook {
+    public func toJsonString() -> String? {
+        var json = [[String: Any]]()
+        for note in notes {
+            json.append(note.json)
+        }
+        
+        do {
+            let jsdata = try JSONSerialization.data(withJSONObject: json, options: [])
+            return String(data: jsdata, encoding: .utf8)
+        } catch {
+            DDLogError("Error save notes to file, \(error)")
+        }
+        return nil
+    }
+    
     public func parseNotes(from data: Data) {
         do {
             let anyJsonObject = try JSONSerialization.jsonObject(with: data, options: [])

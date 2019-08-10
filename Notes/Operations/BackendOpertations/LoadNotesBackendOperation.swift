@@ -20,9 +20,6 @@ class LoadNotesBackendOperation: BaseBackendOperation {
     var result: LoadNotesBackendResult?
     var loader: BackendDataLoader!
     
-    private let gistRepositoryUrl = "https://api.github.com/users/kazakovaNetIOS/gists"
-    private let gistFileName = "ios-course-notes-db"
-    
     override init(notebook: FileNotebook) {
         super.init(notebook: notebook)
         loader = BackendDataLoader(delegate: self)
@@ -33,7 +30,7 @@ class LoadNotesBackendOperation: BaseBackendOperation {
     }
 }
 
-//MARK: - text
+//MARK: - BackendDataLoaderDelegate
 /***************************************************************/
 
 extension LoadNotesBackendOperation: BackendDataLoaderDelegate {
