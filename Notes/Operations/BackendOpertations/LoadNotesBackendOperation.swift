@@ -15,6 +15,10 @@ enum LoadNotesBackendResult {
     case failure(NetworkError)
 }
 
+protocol LoadNotesBackendDelegate {
+    func process(result: LoadNotesBackendResult)
+}
+
 class LoadNotesBackendOperation: BaseBackendOperation {
     
     var result: LoadNotesBackendResult?
@@ -23,7 +27,7 @@ class LoadNotesBackendOperation: BaseBackendOperation {
     override init(notebook: FileNotebook) {
         super.init(notebook: notebook)
         loader = BackendDataLoader()
-        loader.delegate = self
+        loader.loadNotesDelegate = self
     }
     
     override func main() {
@@ -34,7 +38,7 @@ class LoadNotesBackendOperation: BaseBackendOperation {
 //MARK: - BackendDataLoaderDelegate
 /***************************************************************/
 
-extension LoadNotesBackendOperation: BackendDataLoaderDelegate {
+extension LoadNotesBackendOperation: LoadNotesBackendDelegate {
     func process(result: LoadNotesBackendResult) {
         self.result = result
         finish()

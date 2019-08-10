@@ -10,7 +10,6 @@
 		C95A94268AE058029B715AE8 /* libPods-Notes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F3B1B892B3EFDE97F80DAA /* libPods-Notes.a */; };
 		FF06914B22FDB5FF00023838 /* GistTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06914A22FDB5FF00023838 /* GistTest.swift */; };
 		FF06919A22FEF14100023838 /* BackendDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06919922FEF14100023838 /* BackendDataLoader.swift */; };
-		FF06919C22FEF2B600023838 /* BackendDataLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06919B22FEF2B600023838 /* BackendDataLoaderDelegate.swift */; };
 		FF06919F22FF1C3D00023838 /* GistPostResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06919E22FF1C3D00023838 /* GistPostResponce.swift */; };
 		FF0FD47822D36A43002E4D93 /* ColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */; };
 		FF0FD47D22D61FF3002E4D93 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47C22D61FF3002E4D93 /* ColorPickerView.swift */; };
@@ -74,7 +73,6 @@
 		F5F5F8C2AF74A4AC283FF4B7 /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.debug.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		FF06914A22FDB5FF00023838 /* GistTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistTest.swift; sourceTree = "<group>"; };
 		FF06919922FEF14100023838 /* BackendDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendDataLoader.swift; sourceTree = "<group>"; };
-		FF06919B22FEF2B600023838 /* BackendDataLoaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendDataLoaderDelegate.swift; sourceTree = "<group>"; };
 		FF06919E22FF1C3D00023838 /* GistPostResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistPostResponce.swift; sourceTree = "<group>"; };
 		FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerController.swift; sourceTree = "<group>"; };
 		FF0FD47C22D61FF3002E4D93 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				FF06919922FEF14100023838 /* BackendDataLoader.swift */,
-				FF06919B22FEF2B600023838 /* BackendDataLoaderDelegate.swift */,
 			);
 			path = DataLoader;
 			sourceTree = "<group>";
@@ -550,7 +547,6 @@
 				FF55EEE022F0A27E0022A55E /* SaveNoteDBOperation.swift in Sources */,
 				FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */,
 				FF80DA9122CE2B32007CC61D /* EditNoteView.swift in Sources */,
-				FF06919C22FEF2B600023838 /* BackendDataLoaderDelegate.swift in Sources */,
 				FF55EEE122F0A27E0022A55E /* BaseDBOperation.swift in Sources */,
 				FF06919A22FEF14100023838 /* BackendDataLoader.swift in Sources */,
 				FF70A0C522FD617600025A96 /* Gist.swift in Sources */,

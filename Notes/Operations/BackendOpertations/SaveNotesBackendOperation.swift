@@ -14,6 +14,10 @@ enum SaveNotesBackendResult {
     case failure(NetworkError)
 }
 
+protocol SaveNotesBackendDelegate {
+    func process(result: SaveNotesBackendResult)
+}
+
 class SaveNotesBackendOperation: BaseBackendOperation {
     
     var result: SaveNotesBackendResult?
@@ -22,7 +26,7 @@ class SaveNotesBackendOperation: BaseBackendOperation {
     override init(notebook: FileNotebook) {
         super.init(notebook: notebook)
         loader = BackendDataLoader()
-        loader.delegate = self
+        loader.saveNotesDelegate = self
     }
     
     override func main() {
@@ -33,39 +37,78 @@ class SaveNotesBackendOperation: BaseBackendOperation {
 //MARK: - BackendDataLoaderDelegate
 /***************************************************************/
 
-extension SaveNotesBackendOperation: BackendDataLoaderDelegate {
-    func process(result: LoadNotesBackendResult) {
-        
+extension SaveNotesBackendOperation: SaveNotesBackendDelegate {
+    func process(result: SaveNotesBackendResult) {
+        self.result = result
+        finish()
     }
 }
 
-//MARK: - Upload
+//MARK: - Create gist
 /***************************************************************/
 
 extension SaveNotesBackendOperation {
-    func upload() {
+    func insertGist() {
+        guard let request = getPostRequest() else { return }
+        
+        loader.upload(with: request) { [weak self] (data, response) in
+            guard let sself = self,
+                let response = response as? HTTPURLResponse else { return }
+            
+            switch response.statusCode {
+            case 200..<300:
+                do {
+                    let gistPostResponce = try JSONDecoder().decode(GistPostResponce.self, from: data)
+                    BaseBackendOperation.gistId = gistPostResponce.id
+                    sself.result = .success
+                    DDLogDebug("Successfully created gist")
+                } catch {
+                    sself.result = .failure(.unreachable)
+                    DDLogError("Error while parsing responce: \(error.localizedDescription)")
+                }
+            default:
+                sself.result = .failure(.unreachable)
+                print("Backend responce status: \(response.statusCode)")
+            }
+            
+            sself.finish()
+        }
+    }
+}
+
+//MARK: - Update gist
+/***************************************************************/
+
+extension SaveNotesBackendOperation {
+    func updateGist() {
         guard let request = getPatchRequest() else { return }
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let response = response as? HTTPURLResponse {
-                switch response.statusCode {
-                case 200..<300:
-                    self.result = .success
-                    print("Success")
-                default:
-                    self.result = .failure(.unreachable)
-                    print("Backend responce status: \(response.statusCode)")
-                }
-                DDLogDebug("Save notes to backend result: \(String(describing: self.result))")
-                self.finish()
+        loader.upload(with: request) { [weak self] (_, response) in
+            guard let sself = self,
+                let response = response as? HTTPURLResponse else { return }
+            
+            switch response.statusCode {
+            case 200..<300:
+                sself.result = .success
+                DDLogDebug("Successfully updated gist")
+            default:
+                sself.result = .failure(.unreachable)
+                print("Backend responce status: \(response.statusCode)")
             }
-            }.resume()
+            
+            sself.finish()
+        }
     }
-    
+}
+
+//MARK: - Check for gist existence
+/***************************************************************/
+
+extension SaveNotesBackendOperation {
     func checkGistId() {
         guard let url = URL(string: gistRepositoryUrl) else { return }
         
-        loader.load(from: url) { [weak self] (data) in
+        loader.load(from: url) { [weak self] (data)  in
             guard let sself = self else { return }
             
             let decoder = JSONDecoder()
@@ -77,9 +120,9 @@ extension SaveNotesBackendOperation {
                 BaseBackendOperation.gistId = listGists.getGistId(by: sself.gistFileName)
                 
                 if BaseBackendOperation.gistId == nil {
-                    sself.createGist()
+                    sself.insertGist()
                 } else {
-                    sself.upload()
+                    sself.updateGist()
                 }
             } catch {
                 DDLogError("Error while parsing list of gists: \(error)")
@@ -88,51 +131,7 @@ extension SaveNotesBackendOperation {
     }
 }
 
-//MARK: - Create gist
-/***************************************************************/
-
-extension SaveNotesBackendOperation {
-    func createGist() {
-        guard let request = getPostRequest() else { return }
-        
-        URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
-            guard let sself = self else { return }
-            
-            guard error == nil else {
-                DDLogError("Error: \(error?.localizedDescription ?? "no description")")
-                //                sself.delegate.process(result: .notFound)
-                return
-            }
-            guard let data = data else {
-                DDLogError("No data")
-                //                sself.delegate.process(result: .notFound)
-                return
-            }
-            guard let response = response as? HTTPURLResponse else {
-                return
-            }
-            
-            switch response.statusCode {
-            case 200..<300:
-                do {
-                    let gistPostResponce = try JSONDecoder().decode(GistPostResponce.self, from: data)
-                    BaseBackendOperation.gistId = gistPostResponce.id
-                    DDLogDebug("Successfully created gist")
-                } catch {
-                    DDLogError("Error while parsing responce: \(error.localizedDescription)")
-//                    sself.process(result: .notFound)
-                }
-            default:
-//                self.result = .failure(.unreachable)
-                print("Backend responce status: \(response.statusCode)")
-            }
-            DDLogDebug("Save notes to backend result: \(String(describing: sself.result))")
-            sself.finish()
-            }.resume()
-    }
-}
-
-//MARK: - Get data
+//MARK: - Get data for upsert
 /***************************************************************/
 
 extension SaveNotesBackendOperation {
@@ -148,7 +147,7 @@ extension SaveNotesBackendOperation {
     }
 }
 
-//MARK: - Get requests
+//MARK: - Get PATCH request
 /***************************************************************/
 
 extension SaveNotesBackendOperation {
@@ -163,7 +162,12 @@ extension SaveNotesBackendOperation {
         
         return request
     }
-    
+}
+
+//MARK: - Get POST request
+/***************************************************************/
+
+extension SaveNotesBackendOperation {
     func getPostRequest() -> URLRequest? {
         guard let url = URL(string: gistPostUrl) else { return nil }
         guard let encodedData = getData() else { return nil }
@@ -176,7 +180,3 @@ extension SaveNotesBackendOperation {
         return request
     }
 }
-
-//Проверить сохранен ли айди гиста
-//Если сохранен то обновить его содержимое
-//Если не сохранен, то создать, залить данные и сохранить айди
