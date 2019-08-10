@@ -11,6 +11,7 @@
 		FF06914B22FDB5FF00023838 /* GistTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06914A22FDB5FF00023838 /* GistTest.swift */; };
 		FF06919A22FEF14100023838 /* BackendDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06919922FEF14100023838 /* BackendDataLoader.swift */; };
 		FF06919C22FEF2B600023838 /* BackendDataLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06919B22FEF2B600023838 /* BackendDataLoaderDelegate.swift */; };
+		FF06919F22FF1C3D00023838 /* GistPostResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06919E22FF1C3D00023838 /* GistPostResponce.swift */; };
 		FF0FD47822D36A43002E4D93 /* ColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */; };
 		FF0FD47D22D61FF3002E4D93 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47C22D61FF3002E4D93 /* ColorPickerView.swift */; };
 		FF0FD48222D62106002E4D93 /* ColorPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0FD48122D62106002E4D93 /* ColorPickerView.xib */; };
@@ -74,6 +75,7 @@
 		FF06914A22FDB5FF00023838 /* GistTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistTest.swift; sourceTree = "<group>"; };
 		FF06919922FEF14100023838 /* BackendDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendDataLoader.swift; sourceTree = "<group>"; };
 		FF06919B22FEF2B600023838 /* BackendDataLoaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendDataLoaderDelegate.swift; sourceTree = "<group>"; };
+		FF06919E22FF1C3D00023838 /* GistPostResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistPostResponce.swift; sourceTree = "<group>"; };
 		FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerController.swift; sourceTree = "<group>"; };
 		FF0FD47C22D61FF3002E4D93 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		FF0FD48122D62106002E4D93 /* ColorPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPickerView.xib; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				FF99661022C0E047004299F3 /* Extensions.swift */,
 				FF70A0C422FD617600025A96 /* Gist.swift */,
 				FF70A0C622FD61E900025A96 /* GistFile.swift */,
+				FF06919E22FF1C3D00023838 /* GistPostResponce.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				FF63AE9422E4963D00E00720 /* GalleryController.swift in Sources */,
 				FF0FD47822D36A43002E4D93 /* ColorPickerController.swift in Sources */,
 				FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */,
+				FF06919F22FF1C3D00023838 /* GistPostResponce.swift in Sources */,
 				FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */,
 				FF2D91A522C0DFE1001210DE /* EditNoteController.swift in Sources */,
 				FF63AE8F22E47BBF00E00720 /* NoteTableViewCell.swift in Sources */,

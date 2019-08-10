@@ -22,7 +22,8 @@ class LoadNotesBackendOperation: BaseBackendOperation {
     
     override init(notebook: FileNotebook) {
         super.init(notebook: notebook)
-        loader = BackendDataLoader(delegate: self)
+        loader = BackendDataLoader()
+        loader.delegate = self
     }
     
     override func main() {

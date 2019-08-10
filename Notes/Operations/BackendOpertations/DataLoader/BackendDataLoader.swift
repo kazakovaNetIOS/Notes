@@ -15,11 +15,7 @@ protocol BackendDataLoaderProtocol {
 
 class BackendDataLoader {
     
-    var delegate: BackendDataLoaderDelegate
-    
-    init(delegate: BackendDataLoaderDelegate) {
-        self.delegate = delegate
-    }
+    var delegate: BackendDataLoaderDelegate!    
 }
 
 //MARK: - BackendDataLoaderProtocol

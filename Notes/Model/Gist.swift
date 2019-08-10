@@ -11,6 +11,7 @@ import Foundation
 typealias GistList = [Gist]
 
 struct Gist {
+    let id: String
     let description: String
     let isPublic: Bool
     let files: [String: GistFile]
@@ -21,6 +22,7 @@ struct Gist {
 
 extension Gist: Codable {
     enum CodingKeys: String, CodingKey {
+        case id
         case description
         case isPublic = "public"
         case files
@@ -35,6 +37,7 @@ extension Gist: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
         description = ""
         isPublic = false
         files = try container.decode([String: GistFile].self, forKey: .files)
@@ -67,7 +70,7 @@ extension GistList {
     }
 }
 
-//MARK: - Get URL by file name
+//MARK: - Get data by file name from list
 /***************************************************************/
 
 extension GistList {
@@ -78,5 +81,13 @@ extension GistList {
         }
         
         return url
+    }
+    
+    func getGistId(by gistFileName: String)  -> String? {
+        guard let gistWithNotebook = self.filter(by: gistFileName) else {
+            return nil
+        }
+        
+        return gistWithNotebook.id
     }
 }

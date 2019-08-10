@@ -16,11 +16,16 @@ enum NetworkError {
 class BaseBackendOperation: AsyncOperation {
     
     let notebook: FileNotebook
-    let gistRepositoryUrl = "https://api.github.com/users/kazakovaNetIOS/gists"
+    
     let gistPostUrl = "https://api.github.com/gists"
-    let gistPatchUrl = "https://api.github.com/gists/c1ed3079055c62741fe5d55edc7abe5f"
+    var gistPatchUrl: String {
+        return "https://api.github.com/gists/\(BaseBackendOperation.gistId!)"
+    }
     let gistFileName = "ios-course-notes-db"
-    let token = "f223029b7af7c531f095b555dc00b030af7252bb"
+    let gistRepositoryUrl = "https://api.github.com/users/kazakovaNetIOS/gists"
+    
+    static var gistId: String?
+    let token = "84083e59d1cdd1190de13f03ee993714612d9596"
     
     init(notebook: FileNotebook) {
         self.notebook = notebook
