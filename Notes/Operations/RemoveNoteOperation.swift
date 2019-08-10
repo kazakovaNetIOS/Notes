@@ -23,7 +23,7 @@ class RemoveNoteOperation: AsyncOperation {
         self.noteId = noteId
         
         removeFromDb = RemoveNoteDBOperation(noteId: noteId, notebook: notebook)
-        saveToBackend = SaveNotesBackendOperation(notebook: notebook, notes: notebook.notes)
+        saveToBackend = SaveNotesBackendOperation(notebook: notebook)
         
         super.init()
         

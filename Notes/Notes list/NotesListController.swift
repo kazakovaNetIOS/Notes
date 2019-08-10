@@ -27,8 +27,9 @@ class NotesListController: UIViewController {
 }
 
 //MARK: - Lifecycle methods
+/***************************************************************/
+
 extension NotesListController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -82,6 +83,8 @@ extension NotesListController {
 }
 
 //MARK: - Selector methods
+/***************************************************************/
+
 extension NotesListController {
     @objc func editButtonTapped(_ sender: UIButton) {
         if(notesListTableView.isEditing == true) {
@@ -107,6 +110,8 @@ extension NotesListController {
 }
 
 //MARK: - Prepare for segue
+/***************************************************************/
+
 extension NotesListController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToEditNote",
@@ -117,6 +122,8 @@ extension NotesListController {
 }
 
 //MARK: - UITableViewDataSource
+/***************************************************************/
+
 extension NotesListController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notes.count
@@ -158,6 +165,8 @@ extension NotesListController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
+/***************************************************************/
+
 extension NotesListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         noteForEditing = notes[indexPath.row]

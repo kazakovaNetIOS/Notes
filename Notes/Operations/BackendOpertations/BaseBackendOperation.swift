@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CocoaLumberjack
 
 enum NetworkError {
     case unreachable

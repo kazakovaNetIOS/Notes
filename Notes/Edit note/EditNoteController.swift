@@ -19,6 +19,14 @@ class EditNoteController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupViews()
+    }
+}
+
+//MARK: - Setup views
+/***************************************************************/
+extension EditNoteController {
+    private func setupViews() {
         let editNoteView = EditNoteView(frame: editNoteViewContainer.frame, displayNote: note)
         editNoteView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         editNoteView.translatesAutoresizingMaskIntoConstraints = true
@@ -30,11 +38,25 @@ class EditNoteController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сохранить", style: .plain, target: self, action: #selector(saveButtonTapped(_:)))
     }
-    
-    @objc func saveButtonTapped(_ sender: UIButton) {
-        saveNote()
+}
+
+
+//MARK: - Prepare for segue
+/***************************************************************/
+
+extension EditNoteController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let colorPickerController = segue.destination as? ColorPickerController  else { return }
+        
+        colorPickerController.delegate = self
+        colorPickerController.selectedColor = editNoteView.colorPickerTile.backgroundColor ?? UIColor.white
     }
-    
+}
+
+//MARK: - Save data
+/***************************************************************/
+
+extension EditNoteController {
     private func saveNote() {
         guard let editedNote = editNoteView.editedNote else {
             return
@@ -52,16 +74,20 @@ class EditNoteController: UIViewController {
         
         OperationQueue().addOperation(saveNoteOperation)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let colorPickerController = segue.destination as? ColorPickerController  else { return }
-        
-        colorPickerController.delegate = self
-        colorPickerController.selectedColor = editNoteView.colorPickerTile.backgroundColor ?? UIColor.white
+}
+
+//MARK: - Selector methods
+/***************************************************************/
+
+extension EditNoteController {
+    @objc func saveButtonTapped(_ sender: UIButton) {
+        saveNote()
     }
 }
 
 // MARK: - EditNoteColorPickerTileDelegate
+/***************************************************************/
+
 extension EditNoteController: EditNoteColorPickerTileDelegate {
     func editNoteColorPickerTileDidLongPress(_ editNote: EditNoteView) {
         performSegue(withIdentifier: "goToColorPicker", sender: self)
@@ -69,6 +95,8 @@ extension EditNoteController: EditNoteColorPickerTileDelegate {
 }
 
 // MARK: - ColorPickerControllerDelegate
+/***************************************************************/
+
 extension EditNoteController: ColorPickerControllerDelegate {
     func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor) {
         editNoteView.colorPickerTile.image = nil

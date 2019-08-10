@@ -15,11 +15,8 @@ enum SaveNotesBackendResult {
 }
 
 class SaveNotesBackendOperation: BaseBackendOperation {
-    var result: SaveNotesBackendResult?
     
-    init(notebook: FileNotebook, notes: [Note]) {
-        super.init(notebook: notebook)
-    }
+    var result: SaveNotesBackendResult?
     
     override func main() {
         result = .failure(.unreachable)

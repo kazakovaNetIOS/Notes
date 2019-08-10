@@ -18,23 +18,31 @@ enum LoadNotesBackendResult {
 class LoadNotesBackendOperation: BaseBackendOperation {
     
     var result: LoadNotesBackendResult?
+    var loader: BackendDataLoader!
     
     private let gistRepositoryUrl = "https://api.github.com/users/kazakovaNetIOS/gists"
     private let gistFileName = "ios-course-notes-db"
     
     override init(notebook: FileNotebook) {
         super.init(notebook: notebook)
+        loader = BackendDataLoader(delegate: self)
     }
     
     override func main() {
         fetchListGists()
     }
-    
-    private func finishLoad(with result: LoadNotesBackendResult) {
+}
+
+//MARK: - text
+/***************************************************************/
+
+extension LoadNotesBackendOperation: BackendDataLoaderDelegate {
+    func process(result: LoadNotesBackendResult) {
         self.result = result
         finish()
     }
 }
+
 
 //MARK: - Fetch data
 /***************************************************************/
@@ -42,8 +50,8 @@ class LoadNotesBackendOperation: BaseBackendOperation {
 extension LoadNotesBackendOperation {
     private func fetchListGists() {
         guard let url = URL(string: gistRepositoryUrl) else { return }
-        
-        load(from: url) { [weak self] (data) in
+
+        loader.load(from: url) { [weak self] (data) in
             guard let sself = self else { return }
             
             let decoder = JSONDecoder()
@@ -55,7 +63,7 @@ extension LoadNotesBackendOperation {
                 sself.fetchNotebookData(from: listGists)
             } catch {
                 DDLogError("Error while parsing list of gists: \(error)")
-                sself.finishLoad(with: .notFound)
+                sself.process(result: .notFound)
             }
         }
     }
@@ -63,40 +71,16 @@ extension LoadNotesBackendOperation {
     private func fetchNotebookData(from listGists: [Gist]) {
         guard let gistUrl = listGists.getGistUrl(by: gistFileName),
             let url = URL(string: gistUrl) else {
-                finishLoad(with: .notFound)
+                process(result: .notFound)
                 return
         }
         
-        load(from: url) { [weak self] (data) in
+        loader.load(from: url) { [weak self] (data) in
             guard let sself = self else { return }
             
             sself.notebook.parseNotes(from: data)
             DDLogDebug("Notes loaded from backend")
-            sself.finishLoad(with: .success(sself.notebook.notes))
+            sself.process(result: .success(sself.notebook.notes))
         }
-    }
-}
-
-//MARK: - Load function
-/***************************************************************/
-
-extension LoadNotesBackendOperation {
-    private func load(from url: URL, completion: @escaping (_ data: Data) -> Void) {
-        URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-            guard let sself = self else { return }
-            
-            guard error == nil else {
-                DDLogError("Error: \(error?.localizedDescription ?? "no description")")
-                sself.finishLoad(with: .notFound)
-                return
-            }
-            guard let data = data else {
-                DDLogError("No data")
-                sself.finishLoad(with: .notFound)
-                return
-            }
-            
-            completion(data)
-            }.resume()
     }
 }
