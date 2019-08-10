@@ -28,13 +28,13 @@ class LoadNotesOperation: AsyncOperation {
         loadFromBackend.completionBlock = {
             switch self.loadFromBackend.result! {
             case .success(let notes):
-                notebook.replaceAll(notes: notes)
-                
                 self.result = notes
+                self.finish()
             case .notFound:
                 backendQueue.addOperation(self.loadFromDb)
             case .failure:
                 self.result = []
+                self.finish()
             }
         }
         

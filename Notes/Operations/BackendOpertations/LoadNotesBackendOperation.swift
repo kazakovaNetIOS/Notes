@@ -70,9 +70,9 @@ extension LoadNotesBackendOperation {
         load(from: url) { [weak self] (data) in
             guard let sself = self else { return }
             
-            let notes = sself.notebook.getNotes(from: data)
+            sself.notebook.parseNotes(from: data)
             DDLogDebug("Notes loaded from backend")
-            sself.finishLoad(with: .success(notes))            
+            sself.finishLoad(with: .success(sself.notebook.notes))
         }
     }
 }

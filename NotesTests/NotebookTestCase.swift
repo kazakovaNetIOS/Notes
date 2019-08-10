@@ -27,7 +27,7 @@ class NotebookTestCase: XCTestCase {
     }
     
     func testNoteAdded() {
-        notebook.add(note)
+        notebook.add(note: note)
         
         XCTAssertGreaterThan(notebook.notes.count, 0)
     }
@@ -35,14 +35,14 @@ class NotebookTestCase: XCTestCase {
     func testDouleNoteNotAdded() {
         let noteDouble = Note(uid: "1", title: "title", content: "content", color: .white, importance: .ordinary, dateOfSelfDestruction: Date())
         
-        notebook.add(note)
-        notebook.add(noteDouble)
+        notebook.add(note: note)
+        notebook.add(note: noteDouble)
         
         XCTAssertEqual(notebook.notes.count, 1)
     }
     
     func testNoteRemoved() {
-        notebook.add(note)
+        notebook.add(note: note)
         
         notebook.remove(with: "2")
         XCTAssertEqual(notebook.notes.count, 1)
@@ -52,7 +52,7 @@ class NotebookTestCase: XCTestCase {
     }
     
     func testNoteSavedToFile() {
-        notebook.add(note)
+        notebook.add(note: note)
         notebook.saveToFile()
         
         let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("notebooks").appendingPathComponent("Filenotebook")
