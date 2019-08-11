@@ -113,6 +113,7 @@ extension AuthViewController {
             
             if let token = components.queryItems?.first(where: { $0.name == "access_token" })?.value {
                 sself.delegate?.handleTokenChanged(token: token)
+                DDLogDebug("Token received: \(token)")
                 sself.dismiss(animated: true, completion: nil)
             }
             }.resume()

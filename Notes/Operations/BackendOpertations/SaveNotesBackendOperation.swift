@@ -108,7 +108,15 @@ extension SaveNotesBackendOperation {
     func checkGistId() {
         guard let url = URL(string: gistRepositoryUrl) else { return }
         
-        loader.load(from: url) { [weak self] (data)  in
+        let userDefaults = UserDefaults.standard
+        guard let token = userDefaults.object(forKey: "token") as? String else {
+            process(result: .failure(.unreachable))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+        loader.upload(with: request) { [weak self] (data, _)  in
             guard let sself = self else { return }
             
             let decoder = JSONDecoder()
@@ -140,7 +148,7 @@ extension SaveNotesBackendOperation {
         
         let gist = Gist(id: BaseBackendOperation.gistId ?? "",
                         description: gistFileName,
-                        isPublic: true,
+                        isPublic: false,
                         files: [gistFileName: file])
         
         return try? JSONEncoder().encode(gist)
@@ -175,7 +183,7 @@ extension SaveNotesBackendOperation {
 
 extension SaveNotesBackendOperation {
     func getPostRequest() -> URLRequest? {
-        guard let url = URL(string: gistPostUrl) else { return nil }
+        guard let url = URL(string: gistRepositoryUrl) else { return nil }
         guard let encodedData = getData() else { return nil }
         
         let userDefaults = UserDefaults.standard

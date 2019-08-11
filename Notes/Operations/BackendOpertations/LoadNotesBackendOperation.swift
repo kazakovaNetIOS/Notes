@@ -52,8 +52,16 @@ extension LoadNotesBackendOperation: LoadNotesBackendDelegate {
 extension LoadNotesBackendOperation {
     private func fetchListGists() {
         guard let url = URL(string: gistRepositoryUrl) else { return }
-
-        loader.load(from: url) { [weak self] (data) in
+        
+        let userDefaults = UserDefaults.standard
+        guard let token = userDefaults.object(forKey: "token") as? String else {
+            process(result: .failure(.unreachable))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+        loader.upload(with: request) { [weak self] (data, _) in
             guard let sself = self else { return }
             
             let decoder = JSONDecoder()

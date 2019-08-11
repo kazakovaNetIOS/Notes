@@ -31,7 +31,7 @@ class LoadNotesOperation: AsyncOperation {
                 self.result = notes
                 self.finish()
             case .notFound:
-                backendQueue.addOperation(self.loadFromDb)
+                dbQueue.addOperation(self.loadFromDb)
             case .failure:
                 self.result = []
                 self.finish()
@@ -41,7 +41,7 @@ class LoadNotesOperation: AsyncOperation {
         addDependency(loadFromBackend)
         addDependency(loadFromDb)
         
-        dbQueue.addOperation(loadFromBackend)
+        backendQueue.addOperation(loadFromBackend)
     }
     
     override func main() {

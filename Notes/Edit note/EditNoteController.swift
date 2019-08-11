@@ -9,9 +9,15 @@
 import UIKit
 import CocoaLumberjack
 
+protocol EditNoteControllerDelegate {
+    func handleDataStorage()
+}
+
 class EditNoteController: UIViewController {
     
     @IBOutlet weak var editNoteViewContainer: UIView!
+    
+    var delegate: EditNoteControllerDelegate?
     
     var note: Note?
     private weak var editNoteView: EditNoteView!
@@ -62,12 +68,14 @@ extension EditNoteController {
             return
         }
         
+        AppDelegate.noteBook.add(note: editedNote)
         let saveNoteOperation = SaveNoteOperation(note: editedNote, notebook: AppDelegate.noteBook, backendQueue: OperationQueue(), dbQueue: OperationQueue())
         
         saveNoteOperation.completionBlock = {
             OperationQueue.main.addOperation {
                 DDLogDebug("Return to the list of notes")
                 
+                self.delegate?.handleDataStorage()
                 self.navigationController?.popViewController(animated: true)
             }
         }

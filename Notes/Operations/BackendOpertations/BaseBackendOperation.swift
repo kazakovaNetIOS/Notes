@@ -17,12 +17,11 @@ class BaseBackendOperation: AsyncOperation {
     
     let notebook: FileNotebook
     
-    let gistPostUrl = "https://api.github.com/gists"
     var gistPatchUrl: String {
-        return "https://api.github.com/gists/\(BaseBackendOperation.gistId!)"
+        return "\(gistRepositoryUrl)/\(BaseBackendOperation.gistId!)"
     }
     let gistFileName = "ios-course-notes-db"
-    let gistRepositoryUrl = "https://api.github.com/users/kazakovaNetIOS/gists"
+    let gistRepositoryUrl = "https://api.github.com/gists"
     
     static var gistId: String?
     static var token: String?

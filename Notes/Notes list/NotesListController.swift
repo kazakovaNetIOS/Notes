@@ -37,14 +37,11 @@ extension NotesListController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if first {
-            requestToken()
-            first = false
-            return
-        }
-        loadData {
-            super.viewWillAppear(animated)
-        }
+        super.viewWillAppear(animated)
+        guard first else { return }
+        
+        requestToken()
+        first = false
     }
 }
 
@@ -52,26 +49,20 @@ extension NotesListController {
 /***************************************************************/
 
 extension NotesListController {
-    private func loadData(completion: @escaping () -> Void) {
+    private func loadData(completion: (() -> Void)? = nil) {
         let loadNotes = LoadNotesOperation(notebook: AppDelegate.noteBook,
                                            backendQueue: OperationQueue(),
                                            dbQueue: OperationQueue())
         loadNotes.completionBlock = {
-            let loadedNotes = loadNotes.result ?? []
-            
-            DDLogDebug("Downloading notes completed. Uploaded \(loadedNotes.count) notes")
-            
-            self.notes = loadedNotes
+            self.notes = loadNotes.result ?? []
             
             OperationQueue.main.addOperation {
+                self.notesListTableView.reloadData()
                 DDLogDebug("Updating the table after loading data")
                 
-                self.notesListTableView.reloadData()
-                
-                completion()
+                completion?()
             }
         }
-        
         OperationQueue().addOperation(loadNotes)
     }
 }
@@ -87,15 +78,16 @@ extension NotesListController {
     }
 }
 
-//MARK: -
+//MARK: - AuthViewControllerDelegate
 /***************************************************************/
 
 extension NotesListController: AuthViewControllerDelegate {
     func handleTokenChanged(token: String) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(token, forKey: "token")
+        
         loadData {
-            DDLogDebug("After request")
+            DDLogDebug("After request token")
         }
     }
 }
@@ -147,7 +139,19 @@ extension NotesListController {
         if segue.identifier == "goToEditNote",
             let editNoteVC = segue.destination as? EditNoteController {
             editNoteVC.note = noteForEditing
+            editNoteVC.delegate = self
         }
+    }
+}
+
+//MARK: - EditNoteControllerDelegate
+/***************************************************************/
+
+extension NotesListController: EditNoteControllerDelegate {
+    func handleDataStorage() {
+        DDLogDebug("Updating data after saving a modified note")
+        notes = AppDelegate.noteBook.notes
+        notesListTableView.reloadData()
     }
 }
 
