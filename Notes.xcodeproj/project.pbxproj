@@ -11,6 +11,8 @@
 		FF06914B22FDB5FF00023838 /* GistTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06914A22FDB5FF00023838 /* GistTest.swift */; };
 		FF06919A22FEF14100023838 /* BackendDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06919922FEF14100023838 /* BackendDataLoader.swift */; };
 		FF06919F22FF1C3D00023838 /* GistPostResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06919E22FF1C3D00023838 /* GistPostResponce.swift */; };
+		FF0691AB230025E600023838 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0691AA230025E600023838 /* AuthViewController.swift */; };
+		FF0691AD23002D6F00023838 /* AuthGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0691AC23002D6F00023838 /* AuthGitHub.swift */; };
 		FF0FD47822D36A43002E4D93 /* ColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */; };
 		FF0FD47D22D61FF3002E4D93 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47C22D61FF3002E4D93 /* ColorPickerView.swift */; };
 		FF0FD48222D62106002E4D93 /* ColorPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0FD48122D62106002E4D93 /* ColorPickerView.xib */; };
@@ -74,6 +76,8 @@
 		FF06914A22FDB5FF00023838 /* GistTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistTest.swift; sourceTree = "<group>"; };
 		FF06919922FEF14100023838 /* BackendDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendDataLoader.swift; sourceTree = "<group>"; };
 		FF06919E22FF1C3D00023838 /* GistPostResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistPostResponce.swift; sourceTree = "<group>"; };
+		FF0691AA230025E600023838 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		FF0691AC23002D6F00023838 /* AuthGitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGitHub.swift; sourceTree = "<group>"; };
 		FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerController.swift; sourceTree = "<group>"; };
 		FF0FD47C22D61FF3002E4D93 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		FF0FD48122D62106002E4D93 /* ColorPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPickerView.xib; sourceTree = "<group>"; };
@@ -174,6 +178,14 @@
 			path = DataLoader;
 			sourceTree = "<group>";
 		};
+		FF0691A9230025BA00023838 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				FF0691AA230025E600023838 /* AuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		FF0FD47922D49E79002E4D93 /* Color picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +251,7 @@
 		FF2D91A122C0DFE1001210DE /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				FF0691A9230025BA00023838 /* Auth */,
 				FF55EECA22F09EBB0022A55E /* Operations */,
 				FF99660E22C0E02E004299F3 /* Model */,
 				FF0FD47A22D49EAA002E4D93 /* Story board */,
@@ -316,6 +329,7 @@
 				FF70A0C422FD617600025A96 /* Gist.swift */,
 				FF70A0C622FD61E900025A96 /* GistFile.swift */,
 				FF06919E22FF1C3D00023838 /* GistPostResponce.swift */,
+				FF0691AC23002D6F00023838 /* AuthGitHub.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -530,8 +544,10 @@
 				FF63AE9422E4963D00E00720 /* GalleryController.swift in Sources */,
 				FF0FD47822D36A43002E4D93 /* ColorPickerController.swift in Sources */,
 				FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */,
+				FF0691AD23002D6F00023838 /* AuthGitHub.swift in Sources */,
 				FF06919F22FF1C3D00023838 /* GistPostResponce.swift in Sources */,
 				FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */,
+				FF0691AB230025E600023838 /* AuthViewController.swift in Sources */,
 				FF2D91A522C0DFE1001210DE /* EditNoteController.swift in Sources */,
 				FF63AE8F22E47BBF00E00720 /* NoteTableViewCell.swift in Sources */,
 				FF55EEDC22F0A2730022A55E /* SaveNotesBackendOperation.swift in Sources */,

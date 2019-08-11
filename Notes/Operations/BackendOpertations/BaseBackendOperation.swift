@@ -25,7 +25,7 @@ class BaseBackendOperation: AsyncOperation {
     let gistRepositoryUrl = "https://api.github.com/users/kazakovaNetIOS/gists"
     
     static var gistId: String?
-    let token = "fa1a1f10387008d0ee7d2b6524162c7dd48ada7e"
+    static var token: String?
     
     init(notebook: FileNotebook) {
         self.notebook = notebook

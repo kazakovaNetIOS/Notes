@@ -157,7 +157,7 @@ extension SaveNotesBackendOperation {
         
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
-        request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("token \(BaseBackendOperation.token)", forHTTPHeaderField: "Authorization")
         request.httpBody = encodedData
         
         return request
@@ -174,7 +174,7 @@ extension SaveNotesBackendOperation {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("token \(BaseBackendOperation.token)", forHTTPHeaderField: "Authorization")
         request.httpBody = encodedData
         
         return request

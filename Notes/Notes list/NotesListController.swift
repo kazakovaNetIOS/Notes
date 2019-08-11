@@ -24,6 +24,7 @@ class NotesListController: UIViewController {
     
     private var noteForEditing: Note?
     private let reuseIdentifier = "note cell"
+    private var first = true
 }
 
 //MARK: - Lifecycle methods
@@ -36,6 +37,11 @@ extension NotesListController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if first {
+            requestToken()
+            first = false
+            return
+        }
         loadData {
             super.viewWillAppear(animated)
         }
@@ -67,6 +73,29 @@ extension NotesListController {
         }
         
         OperationQueue().addOperation(loadNotes)
+    }
+}
+
+//MARK: - Request token
+/***************************************************************/
+
+extension NotesListController {
+    func requestToken() {
+        let requestTokenViewController = AuthViewController()
+        requestTokenViewController.delegate = self
+        present(requestTokenViewController, animated: false, completion: nil)
+    }
+}
+
+//MARK: -
+/***************************************************************/
+
+extension NotesListController: AuthViewControllerDelegate {
+    func handleTokenChanged(token: String) {
+        BaseBackendOperation.token = token
+        loadData {
+            DDLogDebug("After request")
+        }
     }
 }
 
