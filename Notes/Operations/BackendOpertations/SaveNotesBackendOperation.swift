@@ -155,9 +155,15 @@ extension SaveNotesBackendOperation {
         guard let url = URL(string: gistPatchUrl) else { return nil }
         guard let encodedData = getData() else { return nil }
         
+        let userDefaults = UserDefaults.standard
+        guard let token = userDefaults.object(forKey: "token") as? String else {
+            process(result: .failure(.unreachable))
+            return nil
+        }
+        
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
-        request.setValue("token \(BaseBackendOperation.token)", forHTTPHeaderField: "Authorization")
+        request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
         request.httpBody = encodedData
         
         return request
@@ -172,9 +178,15 @@ extension SaveNotesBackendOperation {
         guard let url = URL(string: gistPostUrl) else { return nil }
         guard let encodedData = getData() else { return nil }
         
+        let userDefaults = UserDefaults.standard
+        guard let token = userDefaults.object(forKey: "token") as? String else {
+            process(result: .failure(.unreachable))
+            return nil
+        }
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("token \(BaseBackendOperation.token)", forHTTPHeaderField: "Authorization")
+        request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
         request.httpBody = encodedData
         
         return request

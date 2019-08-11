@@ -92,7 +92,8 @@ extension NotesListController {
 
 extension NotesListController: AuthViewControllerDelegate {
     func handleTokenChanged(token: String) {
-        BaseBackendOperation.token = token
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(token, forKey: "token")
         loadData {
             DDLogDebug("After request")
         }
