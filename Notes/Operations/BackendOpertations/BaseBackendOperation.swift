@@ -17,11 +17,7 @@ class BaseBackendOperation: AsyncOperation {
     
     let notebook: FileNotebook
     
-    var gistPatchUrl: String {
-        return "\(gistRepositoryUrl)/\(BaseBackendOperation.gistId!)"
-    }
     let gistFileName = "ios-course-notes-db"
-    let gistRepositoryUrl = "https://api.github.com/gists"
     
     static var gistId: String?
     static var token: String?

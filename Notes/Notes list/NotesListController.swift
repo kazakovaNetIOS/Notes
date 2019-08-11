@@ -53,11 +53,13 @@ extension NotesListController {
         let loadNotes = LoadNotesOperation(notebook: AppDelegate.noteBook,
                                            backendQueue: OperationQueue(),
                                            dbQueue: OperationQueue())
-        loadNotes.completionBlock = {
-            self.notes = loadNotes.result ?? []
+        loadNotes.completionBlock = { [weak self] in
+            guard let sself = self else { return }
+            
+            sself.notes = loadNotes.result ?? []
             
             OperationQueue.main.addOperation {
-                self.notesListTableView.reloadData()
+                sself.notesListTableView.reloadData()
                 DDLogDebug("Updating the table after loading data")
                 
                 completion?()
@@ -183,9 +185,11 @@ extension NotesListController: UITableViewDataSource {
                                                  notebook: notebook,
                                                  backendQueue: OperationQueue(),
                                                  dbQueue: OperationQueue())
-            removeNote.completionBlock = {
+            removeNote.completionBlock = { [weak self] in
+                guard let sself = self else { return }
+                
                 OperationQueue.main.addOperation {
-                    self.notes.remove(at: indexPath.row)
+                    sself.notes.remove(at: indexPath.row)
                     
                     tableView.deleteRows(at: [indexPath], with: .automatic)
                     

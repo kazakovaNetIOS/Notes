@@ -27,8 +27,10 @@ class RemoveNoteOperation: AsyncOperation {
         
         super.init()
         
-        removeFromDb.completionBlock = {
-            backendQueue.addOperation(self.saveToBackend)
+        removeFromDb.completionBlock = { [weak self] in
+            guard let sself = self else { return }
+            
+            backendQueue.addOperation(sself.saveToBackend)
         }
         
         addDependency(removeFromDb)

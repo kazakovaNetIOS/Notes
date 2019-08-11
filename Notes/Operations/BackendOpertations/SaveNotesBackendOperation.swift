@@ -49,7 +49,8 @@ extension SaveNotesBackendOperation: SaveNotesBackendDelegate {
 
 extension SaveNotesBackendOperation {
     func insertGist() {
-        guard let request = getPostRequest() else { return }
+        guard let encodedData = getData() else { return }
+        guard let request = loader.getPostRequest(with: encodedData) else { return }
         
         loader.upload(with: request) { [weak self] (data, response) in
             guard let sself = self,
@@ -68,7 +69,7 @@ extension SaveNotesBackendOperation {
                 }
             default:
                 sself.result = .failure(.unreachable)
-                print("Backend responce status: \(response.statusCode)")
+                DDLogDebug("Backend responce status: \(response.statusCode)")
             }
             
             sself.finish()
@@ -81,7 +82,8 @@ extension SaveNotesBackendOperation {
 
 extension SaveNotesBackendOperation {
     func updateGist() {
-        guard let request = getPatchRequest() else { return }
+        guard let encodedData = getData() else { return }
+        guard let request = loader.getPatchRequest(with: encodedData) else { return }
         
         loader.upload(with: request) { [weak self] (_, response) in
             guard let sself = self,
@@ -93,7 +95,7 @@ extension SaveNotesBackendOperation {
                 DDLogDebug("Successfully updated gist")
             default:
                 sself.result = .failure(.unreachable)
-                print("Backend responce status: \(response.statusCode)")
+                DDLogDebug("Backend responce status: \(response.statusCode)")
             }
             
             sself.finish()
@@ -106,16 +108,8 @@ extension SaveNotesBackendOperation {
 
 extension SaveNotesBackendOperation {
     func checkGistId() {
-        guard let url = URL(string: gistRepositoryUrl) else { return }
+        guard let request = loader.getRequestWithToken() else { return }
         
-        let userDefaults = UserDefaults.standard
-        guard let token = userDefaults.object(forKey: "token") as? String else {
-            process(result: .failure(.unreachable))
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
         loader.upload(with: request) { [weak self] (data, _)  in
             guard let sself = self else { return }
             
@@ -152,51 +146,5 @@ extension SaveNotesBackendOperation {
                         files: [gistFileName: file])
         
         return try? JSONEncoder().encode(gist)
-    }
-}
-
-//MARK: - Get PATCH request
-/***************************************************************/
-
-extension SaveNotesBackendOperation {
-    func getPatchRequest() -> URLRequest? {
-        guard let url = URL(string: gistPatchUrl) else { return nil }
-        guard let encodedData = getData() else { return nil }
-        
-        let userDefaults = UserDefaults.standard
-        guard let token = userDefaults.object(forKey: "token") as? String else {
-            process(result: .failure(.unreachable))
-            return nil
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "PATCH"
-        request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
-        request.httpBody = encodedData
-        
-        return request
-    }
-}
-
-//MARK: - Get POST request
-/***************************************************************/
-
-extension SaveNotesBackendOperation {
-    func getPostRequest() -> URLRequest? {
-        guard let url = URL(string: gistRepositoryUrl) else { return nil }
-        guard let encodedData = getData() else { return nil }
-        
-        let userDefaults = UserDefaults.standard
-        guard let token = userDefaults.object(forKey: "token") as? String else {
-            process(result: .failure(.unreachable))
-            return nil
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
-        request.httpBody = encodedData
-        
-        return request
     }
 }

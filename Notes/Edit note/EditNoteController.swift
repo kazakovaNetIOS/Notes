@@ -71,12 +71,14 @@ extension EditNoteController {
         AppDelegate.noteBook.add(note: editedNote)
         let saveNoteOperation = SaveNoteOperation(note: editedNote, notebook: AppDelegate.noteBook, backendQueue: OperationQueue(), dbQueue: OperationQueue())
         
-        saveNoteOperation.completionBlock = {
+        saveNoteOperation.completionBlock = { [weak self] in
+            guard let sself = self else { return }
+            
             OperationQueue.main.addOperation {
                 DDLogDebug("Return to the list of notes")
                 
-                self.delegate?.handleDataStorage()
-                self.navigationController?.popViewController(animated: true)
+                sself.delegate?.handleDataStorage()
+                sself.navigationController?.popViewController(animated: true)
             }
         }
         

@@ -18,6 +18,11 @@ class BackendDataLoader {
     
     var loadNotesDelegate: LoadNotesBackendDelegate?
     var saveNotesDelegate: SaveNotesBackendDelegate?
+    
+    var gistPatchUrl: String {
+        return "\(gistRepositoryUrl)/\(BaseBackendOperation.gistId!)"
+    }
+    let gistRepositoryUrl = "https://api.github.com/gists"
 }
 
 //MARK: - BackendDataLoaderProtocol
@@ -60,5 +65,69 @@ extension BackendDataLoader: BackendDataLoaderProtocol {
             
             completion(data)
             }.resume()
+    }
+}
+
+//MARK: - Get PATCH request
+/***************************************************************/
+
+extension BackendDataLoader {
+    func getPatchRequest(with data: Data) -> URLRequest? {
+        guard let url = URL(string: gistPatchUrl) else { return nil }
+        
+        let userDefaults = UserDefaults.standard
+        guard let token = userDefaults.object(forKey: "token") as? String else {
+            saveNotesDelegate?.process(result: .failure(.unreachable))
+            return nil
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = data
+        
+        return request
+    }
+}
+
+//MARK: - Get POST request
+/***************************************************************/
+
+extension BackendDataLoader {
+    func getPostRequest(with data: Data) -> URLRequest? {
+        guard let url = URL(string: gistRepositoryUrl) else { return nil }
+        
+        let userDefaults = UserDefaults.standard
+        guard let token = userDefaults.object(forKey: "token") as? String else {
+            saveNotesDelegate?.process(result: .failure(.unreachable))
+            return nil
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = data
+        
+        return request
+    }
+}
+
+//MARK: - Get request with token
+/***************************************************************/
+
+extension BackendDataLoader {
+    func getRequestWithToken() -> URLRequest? {
+        guard let url = URL(string: gistRepositoryUrl) else { return nil }
+        
+        let userDefaults = UserDefaults.standard
+        guard let token = userDefaults.object(forKey: "token") as? String else {
+            saveNotesDelegate?.process(result: .failure(.unreachable))
+            return nil
+        }
+        
+        var request = URLRequest(url: url)
+        request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+        
+        return request
     }
 }

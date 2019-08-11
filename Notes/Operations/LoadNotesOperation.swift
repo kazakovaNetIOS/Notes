@@ -25,16 +25,18 @@ class LoadNotesOperation: AsyncOperation {
         
         super.init()
         
-        loadFromBackend.completionBlock = {
-            switch self.loadFromBackend.result! {
+        loadFromBackend.completionBlock = { [weak self] in
+            guard let sself = self else { return }
+            
+            switch sself.loadFromBackend.result! {
             case .success(let notes):
-                self.result = notes
-                self.finish()
+                sself.result = notes
+                sself.finish()
             case .notFound:
-                dbQueue.addOperation(self.loadFromDb)
+                dbQueue.addOperation(sself.loadFromDb)
             case .failure:
-                self.result = []
-                self.finish()
+                sself.result = []
+                sself.finish()
             }
         }
         
