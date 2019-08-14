@@ -8,6 +8,7 @@
 
 import UIKit
 import CocoaLumberjack
+import CoreData
 
 protocol EditNoteControllerDelegate {
     func handleDataStorage()
@@ -18,6 +19,7 @@ class EditNoteController: UIViewController {
     @IBOutlet weak var editNoteViewContainer: UIView!
     
     var delegate: EditNoteControllerDelegate?
+    var backgroundContext: NSManagedObjectContext!
     
     var note: Note?
     private weak var editNoteView: EditNoteView!
@@ -69,7 +71,11 @@ extension EditNoteController {
         }
         
         AppDelegate.noteBook.add(note: editedNote)
-        let saveNoteOperation = SaveNoteOperation(note: editedNote, notebook: AppDelegate.noteBook, backendQueue: OperationQueue(), dbQueue: OperationQueue())
+        let saveNoteOperation = SaveNoteOperation(note: editedNote,
+                                                  notebook: AppDelegate.noteBook,
+                                                  backendQueue: OperationQueue(),
+                                                  dbQueue: OperationQueue(),
+                                                  backgroundContext: backgroundContext)
         
         saveNoteOperation.completionBlock = { [weak self] in
             guard let sself = self else { return }

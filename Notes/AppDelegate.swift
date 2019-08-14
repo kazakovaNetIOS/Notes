@@ -8,11 +8,13 @@
 
 import UIKit
 import CocoaLumberjack
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var container: NSPersistentContainer!
 
     static let noteBook = FileNotebook()
     
@@ -26,7 +28,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         fileLogger.logFileManager.maximumNumberOfLogFiles = 7
         DDLog.add(fileLogger)
         
+        createContainer { container in
+            self.container = container
+            if let tc = self.window?.rootViewController as? UITabBarController,
+                let nc = tc.selectedViewController as? UINavigationController,
+                let vc = nc.topViewController as? NotesListController {
+                vc.context = container.viewContext
+                vc.backgroundContext = container.newBackgroundContext()
+            }
+        }
+        
         return true
     }
 }
 
+//MARK: - Core Data stack
+/***************************************************************/
+
+extension AppDelegate {
+    func createContainer(completion: @escaping (NSPersistentContainer) -> ()) {
+        let container = NSPersistentContainer(name: "Model")
+        
+        container.loadPersistentStores(completionHandler: { _, error in
+            guard error == nil else {
+                fatalError("Failed to load store")
+            }
+            DispatchQueue.main.async { completion(container) }
+        })
+    }
+}

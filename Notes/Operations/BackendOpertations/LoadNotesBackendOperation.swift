@@ -40,7 +40,10 @@ class LoadNotesBackendOperation: BaseBackendOperation {
 
 extension LoadNotesBackendOperation: LoadNotesBackendDelegate {
     func process(result: LoadNotesBackendResult) {
-        self.result = result
+        //TODO: - Stub
+        /***************************************************************/
+
+        self.result = .notFound
         finish()
     }
 }

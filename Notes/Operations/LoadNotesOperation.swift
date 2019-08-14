@@ -8,6 +8,7 @@
 
 import Foundation
 import CocoaLumberjack
+import CoreData
 
 class LoadNotesOperation: AsyncOperation {
     
@@ -18,10 +19,14 @@ class LoadNotesOperation: AsyncOperation {
     
     init(notebook: FileNotebook,
          backendQueue: OperationQueue,
-         dbQueue: OperationQueue) {
+         dbQueue: OperationQueue,
+         mainContext: NSManagedObjectContext,
+         backgroundContext: NSManagedObjectContext) {
         
         loadFromBackend = LoadNotesBackendOperation(notebook: notebook)
-        loadFromDb = LoadNotesDBOperation(notebook: notebook)
+        loadFromDb = LoadNotesDBOperation(notebook: notebook,
+                                          mainContext: mainContext,
+                                          backgroundContext: backgroundContext)
         
         super.init()
         

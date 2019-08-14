@@ -8,6 +8,7 @@
 
 import UIKit
 import CocoaLumberjack
+import CoreData
 
 class NotesListController: UIViewController {
     
@@ -21,6 +22,8 @@ class NotesListController: UIViewController {
             DDLogDebug("The list of notes is sorted")
         }
     }
+    var backgroundContext: NSManagedObjectContext!
+    var context: NSManagedObjectContext!
     
     private var noteForEditing: Note?
     private let reuseIdentifier = "note cell"
@@ -52,7 +55,9 @@ extension NotesListController {
     private func loadData(completion: (() -> Void)? = nil) {
         let loadNotes = LoadNotesOperation(notebook: AppDelegate.noteBook,
                                            backendQueue: OperationQueue(),
-                                           dbQueue: OperationQueue())
+                                           dbQueue: OperationQueue(),
+                                           mainContext: context,
+                                           backgroundContext: backgroundContext)
         loadNotes.completionBlock = { [weak self] in
             guard let sself = self else { return }
             
@@ -142,6 +147,7 @@ extension NotesListController {
             let editNoteVC = segue.destination as? EditNoteController {
             editNoteVC.note = noteForEditing
             editNoteVC.delegate = self
+            editNoteVC.backgroundContext = backgroundContext
         }
     }
 }

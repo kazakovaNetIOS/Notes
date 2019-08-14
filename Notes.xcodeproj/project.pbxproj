@@ -40,6 +40,7 @@
 		FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF70A0C622FD61E900025A96 /* GistFile.swift */; };
 		FF80DA8F22CE20DA007CC61D /* EditNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF80DA8E22CE20DA007CC61D /* EditNoteView.xib */; };
 		FF80DA9122CE2B32007CC61D /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80DA9022CE2B32007CC61D /* EditNoteView.swift */; };
+		FF987CB92303F01D001330EC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF987CB72303F01D001330EC /* Model.xcdatamodeld */; };
 		FF99661222C0E047004299F3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99660F22C0E047004299F3 /* Note.swift */; };
 		FF99661322C0E047004299F3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99661022C0E047004299F3 /* Extensions.swift */; };
 		FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99661122C0E047004299F3 /* FileNotebook.swift */; };
@@ -111,6 +112,7 @@
 		FF70A0C622FD61E900025A96 /* GistFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistFile.swift; sourceTree = "<group>"; };
 		FF80DA8E22CE20DA007CC61D /* EditNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditNoteView.xib; sourceTree = "<group>"; };
 		FF80DA9022CE2B32007CC61D /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
+		FF987CB82303F01D001330EC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FF99660F22C0E047004299F3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		FF99661022C0E047004299F3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FF99661122C0E047004299F3 /* FileNotebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileNotebook.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				FF63AE9222E4959300E00720 /* Gallery */,
 				FFA4772D22E4AE2400EF66C4 /* Image */,
 				FF2D91A222C0DFE1001210DE /* AppDelegate.swift */,
+				FF987CB72303F01D001330EC /* Model.xcdatamodeld */,
 				FF2D91A922C0DFE2001210DE /* Assets.xcassets */,
 				FF2D91AE22C0DFE2001210DE /* Info.plist */,
 			);
@@ -560,6 +563,7 @@
 				FF55EEDB22F0A2730022A55E /* BaseBackendOperation.swift in Sources */,
 				FF55EED222F0A08B0022A55E /* SaveNoteOperation.swift in Sources */,
 				FF55EEE322F0A4E40022A55E /* LoadNotesBackendOperation.swift in Sources */,
+				FF987CB92303F01D001330EC /* Model.xcdatamodeld in Sources */,
 				FF55EEE022F0A27E0022A55E /* SaveNoteDBOperation.swift in Sources */,
 				FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */,
 				FF80DA9122CE2B32007CC61D /* EditNoteView.swift in Sources */,
@@ -1140,6 +1144,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FF987CB72303F01D001330EC /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FF987CB82303F01D001330EC /* Model.xcdatamodel */,
+			);
+			currentVersion = FF987CB82303F01D001330EC /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = Model/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FF2D919722C0DFE1001210DE /* Project object */;
 }
