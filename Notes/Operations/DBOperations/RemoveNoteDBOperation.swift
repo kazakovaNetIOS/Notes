@@ -36,12 +36,11 @@ extension RemoveNoteDBOperation {
     private func deleteData() {
         backgroundContext.performAndWait {
             let request: NSFetchRequest<MONote> = MONote.fetchRequest()
-            request.predicate = NSPredicate(format: "uid = %@", noteId)
+            request.predicate = NSPredicate(format: "uid == %@", noteId)
             
             do {
                 let fetchedObjects = try backgroundContext.fetch(request)
-                let objectToDelete = fetchedObjects[0]
-                backgroundContext.delete(objectToDelete)
+                backgroundContext.delete(fetchedObjects[0])
                 
                 try backgroundContext.save()
                 
