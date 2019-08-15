@@ -30,10 +30,7 @@ class SaveNotesBackendOperation: BaseBackendOperation {
     }
     
     override func main() {
-//        checkGistId()
-        //TODO: - stub
-        /***************************************************************/
-        self.result = .success
+        checkGistId()
         finish()
     }
 }

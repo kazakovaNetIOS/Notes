@@ -31,12 +31,18 @@ class RemoveNoteOperation: AsyncOperation {
         
         removeFromDb.completionBlock = { [weak self] in
             guard let sself = self else { return }
+            //TODO: - Offline mode stub
+            /***************************************************************/
             
-            backendQueue.addOperation(sself.saveToBackend)
+//            backendQueue.addOperation(sself.saveToBackend)
         }
         
         addDependency(removeFromDb)
-        addDependency(saveToBackend)
+        
+        //TODO: - Offline mode stub
+        /***************************************************************/
+        
+//        addDependency(saveToBackend)
         
         dbQueue.addOperation(removeFromDb)
     }

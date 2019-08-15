@@ -11,7 +11,7 @@ import CocoaLumberjack
 import CoreData
 
 protocol EditNoteControllerDelegate {
-    func handleDataStorage()
+    func handleNoteEdited()
 }
 
 class EditNoteController: UIViewController {
@@ -22,6 +22,7 @@ class EditNoteController: UIViewController {
     var backgroundContext: NSManagedObjectContext!
     
     var note: Note?
+    var notebook: FileNotebook!
     private weak var editNoteView: EditNoteView!
     
     override func viewDidLoad() {
@@ -70,9 +71,8 @@ extension EditNoteController {
             return
         }
         
-        AppDelegate.noteBook.add(note: editedNote)
         let saveNoteOperation = SaveNoteOperation(note: editedNote,
-                                                  notebook: AppDelegate.noteBook,
+                                                  notebook: notebook,
                                                   backendQueue: OperationQueue(),
                                                   dbQueue: OperationQueue(),
                                                   backgroundContext: backgroundContext)
@@ -83,7 +83,7 @@ extension EditNoteController {
             OperationQueue.main.addOperation {
                 DDLogDebug("Return to the list of notes")
                 
-                sself.delegate?.handleDataStorage()
+                sself.delegate?.handleNoteEdited()
                 sself.navigationController?.popViewController(animated: true)
             }
         }

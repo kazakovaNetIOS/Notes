@@ -20,7 +20,6 @@ class LoadNotesOperation: AsyncOperation {
     init(notebook: FileNotebook,
          backendQueue: OperationQueue,
          dbQueue: OperationQueue,
-         mainContext: NSManagedObjectContext,
          backgroundContext: NSManagedObjectContext) {
         
         loadFromBackend = LoadNotesBackendOperation(notebook: notebook)
@@ -44,10 +43,17 @@ class LoadNotesOperation: AsyncOperation {
             }
         }
         
-        addDependency(loadFromBackend)
+        //TODO: - Offline mode stub
+        /***************************************************************/
+        
+//        addDependency(loadFromBackend)
         addDependency(loadFromDb)
         
-        backendQueue.addOperation(loadFromBackend)
+        //TODO: - Offline mode stub
+        /***************************************************************/
+        
+//        backendQueue.addOperation(loadFromBackend)
+        dbQueue.addOperation(loadFromDb)
     }
     
     override func main() {

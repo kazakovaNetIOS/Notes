@@ -15,8 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var container: NSPersistentContainer!
-
-    static let noteBook = FileNotebook()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -33,12 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let tc = self.window?.rootViewController as? UITabBarController,
                 let nc = tc.selectedViewController as? UINavigationController,
                 let vc = nc.topViewController as? NotesListController {
-                vc.context = container.viewContext
                 vc.backgroundContext = container.newBackgroundContext()
             }
         }
         
-        print(FileNotebook().getFileNotebookPath())
+//        print(FileNotebook().getFileNotebookPath())
         
         return true
     }

@@ -32,12 +32,18 @@ class SaveNoteOperation: AsyncOperation {
         
         saveToDb.completionBlock = { [weak self] in
             guard let sself = self else { return }
-
-            backendQueue.addOperation(sself.saveToBackend)
+            //TODO: - Offline mode stub
+            /***************************************************************/
+            
+//            backendQueue.addOperation(sself.saveToBackend)
         }
         
         addDependency(saveToDb)
-        addDependency(saveToBackend)
+        
+        //TODO: - Offline mode stub
+        /***************************************************************/
+        
+//        addDependency(saveToBackend)
         dbQueue.addOperation(saveToDb)
     }
     

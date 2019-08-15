@@ -14,7 +14,7 @@ class NotesListController: UIViewController {
     
     @IBOutlet weak var notesListTableView: UITableView!
     
-    private let notebook = AppDelegate.noteBook
+    private let notebook = FileNotebook()
     private var notes: [Note] = [] {
         didSet {
             notes.sort(by: { $0.title < $1.title })
@@ -23,7 +23,6 @@ class NotesListController: UIViewController {
         }
     }
     var backgroundContext: NSManagedObjectContext!
-    var context: NSManagedObjectContext!
     
     private var noteForEditing: Note?
     private let reuseIdentifier = "note cell"
@@ -53,10 +52,9 @@ extension NotesListController {
 
 extension NotesListController {
     private func loadData(completion: (() -> Void)? = nil) {
-        let loadNotes = LoadNotesOperation(notebook: AppDelegate.noteBook,
+        let loadNotes = LoadNotesOperation(notebook: notebook,
                                            backendQueue: OperationQueue(),
                                            dbQueue: OperationQueue(),
-                                           mainContext: context,
                                            backgroundContext: backgroundContext)
         loadNotes.completionBlock = { [weak self] in
             guard let sself = self else { return }
@@ -146,6 +144,7 @@ extension NotesListController {
         if segue.identifier == "goToEditNote",
             let editNoteVC = segue.destination as? EditNoteController {
             editNoteVC.note = noteForEditing
+            editNoteVC.notebook = notebook
             editNoteVC.delegate = self
             editNoteVC.backgroundContext = backgroundContext
         }
@@ -156,10 +155,10 @@ extension NotesListController {
 /***************************************************************/
 
 extension NotesListController: EditNoteControllerDelegate {
-    func handleDataStorage() {
-        DDLogDebug("Updating data after saving a modified note")
-        notes = AppDelegate.noteBook.notes
-        notesListTableView.reloadData()
+    func handleNoteEdited() {
+        loadData {
+            DDLogDebug("Updating data after saving a modified note")
+        }
     }
 }
 
