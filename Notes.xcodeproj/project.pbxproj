@@ -21,6 +21,7 @@
 		FF2D91A822C0DFE1001210DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91A622C0DFE1001210DE /* Main.storyboard */; };
 		FF2D91AA22C0DFE2001210DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91A922C0DFE2001210DE /* Assets.xcassets */; };
 		FF2D91AD22C0DFE2001210DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91AB22C0DFE2001210DE /* LaunchScreen.storyboard */; };
+		FF3503D92305ADC20014C2A7 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = FF3503D82305ADC20014C2A7 /* Model.xcmappingmodel */; };
 		FF55EECF22F0A08B0022A55E /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EECB22F0A08B0022A55E /* AsyncOperation.swift */; };
 		FF55EED222F0A08B0022A55E /* SaveNoteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EECE22F0A08B0022A55E /* SaveNoteOperation.swift */; };
 		FF55EEDB22F0A2730022A55E /* BaseBackendOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EED922F0A2730022A55E /* BaseBackendOperation.swift */; };
@@ -93,6 +94,8 @@
 		FF2D91A922C0DFE2001210DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF2D91AC22C0DFE2001210DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF2D91AE22C0DFE2001210DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF3503D72305ACEB0014C2A7 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
+		FF3503D82305ADC20014C2A7 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
 		FF55EECB22F0A08B0022A55E /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		FF55EECE22F0A08B0022A55E /* SaveNoteOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveNoteOperation.swift; sourceTree = "<group>"; };
 		FF55EED922F0A2730022A55E /* BaseBackendOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBackendOperation.swift; sourceTree = "<group>"; };
@@ -326,6 +329,7 @@
 		FF99660E22C0E02E004299F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FF3503D82305ADC20014C2A7 /* Model.xcmappingmodel */,
 				FF99661122C0E047004299F3 /* FileNotebook.swift */,
 				FF99660F22C0E047004299F3 /* Note.swift */,
 				FF99661022C0E047004299F3 /* Extensions.swift */,
@@ -554,6 +558,7 @@
 				FF2D91A522C0DFE1001210DE /* EditNoteController.swift in Sources */,
 				FF63AE8F22E47BBF00E00720 /* NoteTableViewCell.swift in Sources */,
 				FF55EEDC22F0A2730022A55E /* SaveNotesBackendOperation.swift in Sources */,
+				FF3503D92305ADC20014C2A7 /* Model.xcmappingmodel in Sources */,
 				FF55EECF22F0A08B0022A55E /* AsyncOperation.swift in Sources */,
 				FFA4772C22E4AE1A00EF66C4 /* ImageController.swift in Sources */,
 				FF55EEEC22F0FBB90022A55E /* RemoveNoteOperation.swift in Sources */,
@@ -1149,9 +1154,10 @@
 		FF987CB72303F01D001330EC /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FF3503D72305ACEB0014C2A7 /* Model 2.xcdatamodel */,
 				FF987CB82303F01D001330EC /* Model.xcdatamodel */,
 			);
-			currentVersion = FF987CB82303F01D001330EC /* Model.xcdatamodel */;
+			currentVersion = FF3503D72305ACEB0014C2A7 /* Model 2.xcdatamodel */;
 			name = Model.xcdatamodeld;
 			path = Model/Model.xcdatamodeld;
 			sourceTree = "<group>";
