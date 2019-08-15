@@ -38,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        print(FileNotebook().getFileNotebookPath())
+        
         return true
     }
 }

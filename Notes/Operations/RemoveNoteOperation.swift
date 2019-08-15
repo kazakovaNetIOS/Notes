@@ -8,6 +8,7 @@
 
 import Foundation
 import CocoaLumberjack
+import CoreData
 
 class RemoveNoteOperation: AsyncOperation {
     
@@ -18,11 +19,12 @@ class RemoveNoteOperation: AsyncOperation {
     init(noteId: String,
          notebook: FileNotebook,
          backendQueue: OperationQueue,
-         dbQueue: OperationQueue) {
+         dbQueue: OperationQueue,
+         backgroundContext: NSManagedObjectContext) {
         
         self.noteId = noteId
         
-        removeFromDb = RemoveNoteDBOperation(noteId: noteId, notebook: notebook)
+        removeFromDb = RemoveNoteDBOperation(noteId: noteId, notebook: notebook, backgroundContext: backgroundContext)
         saveToBackend = SaveNotesBackendOperation(notebook: notebook)
         
         super.init()

@@ -136,7 +136,7 @@ extension FileNotebook {
 /***************************************************************/
 
 extension FileNotebook {
-    private func getFileNotebookPath() -> URL? {
+    public func getFileNotebookPath() -> URL? {
         guard let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
             return nil
         }

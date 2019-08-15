@@ -190,7 +190,8 @@ extension NotesListController: UITableViewDataSource {
             let removeNote = RemoveNoteOperation(noteId: deletedNoteId,
                                                  notebook: notebook,
                                                  backendQueue: OperationQueue(),
-                                                 dbQueue: OperationQueue())
+                                                 dbQueue: OperationQueue(),
+                                                 backgroundContext: backgroundContext)
             removeNote.completionBlock = { [weak self] in
                 guard let sself = self else { return }
                 

@@ -24,31 +24,72 @@ class SaveNoteDBOperation: BaseDBOperation {
     }
     
     override func main() {
-//        notebook.add(note: note)
-//        notebook.saveToFile()
-        
-        addNote()
-        
-        DDLogDebug("Save notes to db completed")
+        upsertData()
+        finish()
     }
+}
 
-    func addNote() {
-        let moNote = MONote(context: self.backgroundContext)
+
+//MARK: - Upsert data
+/***************************************************************/
+
+extension SaveNoteDBOperation {
+    private func upsertData() {
+        backgroundContext.performAndWait {
+            let request: NSFetchRequest<MONote> = MONote.fetchRequest()
+            request.predicate = NSPredicate(format: "uid == %@", note.uid)
+            
+            do {
+                let fetchedObjects = try backgroundContext.fetch(request)
+                
+                if fetchedObjects.count > 0 {
+                    try updateData(for: fetchedObjects[0])
+                } else {
+                    try insertData()
+                }
+            } catch {
+                DDLogError(error.localizedDescription)
+            }
+        }
+    }
+}
+
+//MARK: - Update data
+/***************************************************************/
+
+extension SaveNoteDBOperation {
+    private func updateData(for moNote: MONote) throws {
+        setValues(moNote)
+        
+        try backgroundContext.save()
+        
+        DDLogDebug("Update note in db completed")
+    }
+}
+
+//MARK: - Insert data
+/***************************************************************/
+
+extension SaveNoteDBOperation {
+    private func insertData() throws {
+        setValues(MONote(context: backgroundContext))
+        
+        try backgroundContext.save()
+        
+        DDLogDebug("Insert note to db completed")
+    }
+}
+
+//MARK: - Set values by MONote object
+/***************************************************************/
+
+extension SaveNoteDBOperation {
+    private func setValues(_ moNote: MONote) {
         moNote.uid = note.uid
         moNote.title = note.title
         moNote.content = note.content
         moNote.color = note.color
         moNote.importance = note.importance.rawValue
         moNote.dateOfSelfDestruction = note.dateOfSelfDestruction
-        
-        self.backgroundContext.performAndWait {
-            do {
-                try self.backgroundContext.save()
-                finish()
-            } catch {
-                print(error)
-            }
-        }
     }
 }
-

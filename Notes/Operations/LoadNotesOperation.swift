@@ -25,7 +25,6 @@ class LoadNotesOperation: AsyncOperation {
         
         loadFromBackend = LoadNotesBackendOperation(notebook: notebook)
         loadFromDb = LoadNotesDBOperation(notebook: notebook,
-                                          mainContext: mainContext,
                                           backgroundContext: backgroundContext)
         
         super.init()
