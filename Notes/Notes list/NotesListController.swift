@@ -14,6 +14,12 @@ class NotesListController: UIViewController {
     
     @IBOutlet weak var notesListTableView: UITableView!
     
+    private lazy var authManager: AuthManager = {
+        let manager = AuthManager()
+        manager.delegate = self
+        return manager
+    }()
+    
     private let notebook = FileNotebook()
     private var notes: [Note] = [] {
         didSet {
@@ -29,6 +35,21 @@ class NotesListController: UIViewController {
     private var first = true
 }
 
+//MARK: - AuthManagerDelegate
+/***************************************************************/
+
+extension NotesListController: AuthManagerDelegate {
+    func authPassed() {
+        loadData {
+            DDLogDebug("After request token")
+        }
+    }
+    
+    func show(_ authController: UIViewController) {
+        present(authController, animated: false, completion: nil)
+    }
+}
+
 //MARK: - Lifecycle methods
 /***************************************************************/
 
@@ -41,8 +62,8 @@ extension NotesListController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard first else { return }
-        
-        requestToken()
+
+        authManager.authCheck()
         first = false
     }
 }
@@ -69,31 +90,6 @@ extension NotesListController {
             }
         }
         OperationQueue().addOperation(loadNotes)
-    }
-}
-
-//MARK: - Request token
-/***************************************************************/
-
-extension NotesListController {
-    func requestToken() {
-        let requestTokenViewController = AuthViewController()
-        requestTokenViewController.delegate = self
-        present(requestTokenViewController, animated: false, completion: nil)
-    }
-}
-
-//MARK: - AuthViewControllerDelegate
-/***************************************************************/
-
-extension NotesListController: AuthViewControllerDelegate {
-    func handleTokenChanged(token: String) {
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(token, forKey: "token")
-        
-        loadData {
-            DDLogDebug("After request token")
-        }
     }
 }
 

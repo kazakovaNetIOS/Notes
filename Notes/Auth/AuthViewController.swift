@@ -11,7 +11,7 @@ import WebKit
 import CocoaLumberjack
 
 protocol AuthViewControllerDelegate: class {
-    func handleTokenChanged(token: String)
+    func handleRecieved(token: String)
 }
 
 final class AuthViewController: UIViewController {
@@ -112,7 +112,7 @@ extension AuthViewController {
             guard let components = URLComponents(string: "\(sself.gitHubDomain)?\(responseString)") else { return }
             
             if let token = components.queryItems?.first(where: { $0.name == "access_token" })?.value {
-                sself.delegate?.handleTokenChanged(token: token)
+                sself.delegate?.handleRecieved(token: token)
                 DDLogDebug("Token received: \(token)")
                 sself.dismiss(animated: true, completion: nil)
             }
