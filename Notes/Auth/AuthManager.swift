@@ -10,14 +10,16 @@ import Foundation
 
 class AuthManager {
     
+    public static let shared = AuthManager()
     private let tokenKey = "token"
-    
     public var delegate: AuthManagerDelegate?
     
-    private var token: String? {
+    public private(set) var token: String? {
         get { return UserDefaults.standard.object(forKey: tokenKey) as? String }
         set { UserDefaults.standard.set(token, forKey: tokenKey) }
     }
+    
+    private init() {}
 }
 
 //MARK: - Authorization check

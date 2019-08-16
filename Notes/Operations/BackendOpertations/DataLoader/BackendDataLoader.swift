@@ -75,8 +75,7 @@ extension BackendDataLoader {
     func getPatchRequest(with data: Data) -> URLRequest? {
         guard let url = URL(string: gistPatchUrl) else { return nil }
         
-        let userDefaults = UserDefaults.standard
-        guard let token = userDefaults.object(forKey: "token") as? String else {
+        guard let token = AuthManager.shared.token else {
             saveNotesDelegate?.process(result: .failure(.unreachable))
             return nil
         }
@@ -97,8 +96,7 @@ extension BackendDataLoader {
     func getPostRequest(with data: Data) -> URLRequest? {
         guard let url = URL(string: gistRepositoryUrl) else { return nil }
         
-        let userDefaults = UserDefaults.standard
-        guard let token = userDefaults.object(forKey: "token") as? String else {
+        guard let token = AuthManager.shared.token else {
             saveNotesDelegate?.process(result: .failure(.unreachable))
             return nil
         }
@@ -119,8 +117,7 @@ extension BackendDataLoader {
     func getRequestWithToken() -> URLRequest? {
         guard let url = URL(string: gistRepositoryUrl) else { return nil }
         
-        let userDefaults = UserDefaults.standard
-        guard let token = userDefaults.object(forKey: "token") as? String else {
+        guard let token = AuthManager.shared.token else {
             saveNotesDelegate?.process(result: .failure(.unreachable))
             return nil
         }

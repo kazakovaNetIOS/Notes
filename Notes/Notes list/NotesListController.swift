@@ -14,12 +14,6 @@ class NotesListController: UIViewController {
     
     @IBOutlet weak var notesListTableView: UITableView!
     
-    private lazy var authManager: AuthManager = {
-        let manager = AuthManager()
-        manager.delegate = self
-        return manager
-    }()
-    
     private let notebook = FileNotebook()
     private var notes: [Note] = [] {
         didSet {
@@ -63,7 +57,8 @@ extension NotesListController {
         super.viewWillAppear(animated)
         guard first else { return }
 
-        authManager.authCheck()
+        AuthManager.shared.delegate = self
+        AuthManager.shared.authCheck()
         first = false
     }
 }
