@@ -25,7 +25,6 @@
 		FF3503DC2305FB560014C2A7 /* Model23.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = FF3503DB2305FB560014C2A7 /* Model23.xcmappingmodel */; };
 		FF3503DE2305FBFF0014C2A7 /* Model13.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = FF3503DD2305FBFF0014C2A7 /* Model13.xcmappingmodel */; };
 		FF3503E02306D3FC0014C2A7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3503DF2306D3FC0014C2A7 /* AuthManager.swift */; };
-		FF3503E22306D49C0014C2A7 /* AuthManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3503E12306D49C0014C2A7 /* AuthManagerDelegate.swift */; };
 		FF55EECF22F0A08B0022A55E /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EECB22F0A08B0022A55E /* AsyncOperation.swift */; };
 		FF55EED222F0A08B0022A55E /* SaveNoteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EECE22F0A08B0022A55E /* SaveNoteOperation.swift */; };
 		FF55EEDB22F0A2730022A55E /* BaseBackendOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EED922F0A2730022A55E /* BaseBackendOperation.swift */; };
@@ -37,6 +36,7 @@
 		FF55EEE722F0CB210022A55E /* RemoveNoteDBOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EEE622F0CB210022A55E /* RemoveNoteDBOperation.swift */; };
 		FF55EEEA22F0CC480022A55E /* LoadNotesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EEE922F0CC480022A55E /* LoadNotesOperation.swift */; };
 		FF55EEEC22F0FBB90022A55E /* RemoveNoteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EEEB22F0FBB90022A55E /* RemoveNoteOperation.swift */; };
+		FF6042D12307094A000E7D52 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6042D02307094A000E7D52 /* NetworkManager.swift */; };
 		FF63AE8F22E47BBF00E00720 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF63AE8D22E47BBF00E00720 /* NoteTableViewCell.swift */; };
 		FF63AE9022E47BBF00E00720 /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF63AE8E22E47BBF00E00720 /* NoteTableViewCell.xib */; };
 		FF63AE9422E4963D00E00720 /* GalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF63AE9322E4963D00E00720 /* GalleryController.swift */; };
@@ -104,7 +104,6 @@
 		FF3503DB2305FB560014C2A7 /* Model23.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model23.xcmappingmodel; sourceTree = "<group>"; };
 		FF3503DD2305FBFF0014C2A7 /* Model13.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model13.xcmappingmodel; sourceTree = "<group>"; };
 		FF3503DF2306D3FC0014C2A7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
-		FF3503E12306D49C0014C2A7 /* AuthManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerDelegate.swift; sourceTree = "<group>"; };
 		FF55EECB22F0A08B0022A55E /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		FF55EECE22F0A08B0022A55E /* SaveNoteOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveNoteOperation.swift; sourceTree = "<group>"; };
 		FF55EED922F0A2730022A55E /* BaseBackendOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBackendOperation.swift; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		FF55EEE622F0CB210022A55E /* RemoveNoteDBOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveNoteDBOperation.swift; sourceTree = "<group>"; };
 		FF55EEE922F0CC480022A55E /* LoadNotesOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadNotesOperation.swift; sourceTree = "<group>"; };
 		FF55EEEB22F0FBB90022A55E /* RemoveNoteOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveNoteOperation.swift; sourceTree = "<group>"; };
+		FF6042D02307094A000E7D52 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FF63AE8D22E47BBF00E00720 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		FF63AE8E22E47BBF00E00720 /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
 		FF63AE9322E4963D00E00720 /* GalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryController.swift; sourceTree = "<group>"; };
@@ -197,7 +197,6 @@
 			children = (
 				FF0691AA230025E600023838 /* AuthViewController.swift */,
 				FF3503DF2306D3FC0014C2A7 /* AuthManager.swift */,
-				FF3503E12306D49C0014C2A7 /* AuthManagerDelegate.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -267,6 +266,7 @@
 		FF2D91A122C0DFE1001210DE /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				FF6042CF23070930000E7D52 /* Network */,
 				FF0691A9230025BA00023838 /* Auth */,
 				FF55EECA22F09EBB0022A55E /* Operations */,
 				FF99660E22C0E02E004299F3 /* Model */,
@@ -317,6 +317,14 @@
 				FF55EEE622F0CB210022A55E /* RemoveNoteDBOperation.swift */,
 			);
 			path = DBOperations;
+			sourceTree = "<group>";
+		};
+		FF6042CF23070930000E7D52 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FF6042D02307094A000E7D52 /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		FF63AE9122E48D9100E00720 /* Note table cell */ = {
@@ -560,7 +568,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF3503E22306D49C0014C2A7 /* AuthManagerDelegate.swift in Sources */,
+				FF6042D12307094A000E7D52 /* NetworkManager.swift in Sources */,
 				FF63AE9622E4973D00E00720 /* GalleryCell.swift in Sources */,
 				FF63AE9422E4963D00E00720 /* GalleryController.swift in Sources */,
 				FF0FD47822D36A43002E4D93 /* ColorPickerController.swift in Sources */,

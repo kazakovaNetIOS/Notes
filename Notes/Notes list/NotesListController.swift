@@ -32,7 +32,7 @@ class NotesListController: UIViewController {
 //MARK: - AuthManagerDelegate
 /***************************************************************/
 
-extension NotesListController: AuthManagerDelegate {
+extension NotesListController: AuthManagerDelegate {    
     func authPassed() {
         loadData {
             DDLogDebug("After request token")
