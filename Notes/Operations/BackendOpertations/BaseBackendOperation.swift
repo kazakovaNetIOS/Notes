@@ -17,11 +17,6 @@ class BaseBackendOperation: AsyncOperation {
     
     let notebook: FileNotebook
     
-    let gistFileName = "ios-course-notes-db"
-    
-    static var gistId: String?
-    static var token: String?
-    
     init(notebook: FileNotebook) {
         self.notebook = notebook
         super.init()

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CocoaLumberjack
 
 enum LoadNotesBackendResult {
     case success([Note])
@@ -15,73 +14,35 @@ enum LoadNotesBackendResult {
     case failure(NetworkError)
 }
 
-protocol LoadNotesBackendDelegate {
-    func process(result: LoadNotesBackendResult)
-}
-
 class LoadNotesBackendOperation: BaseBackendOperation {
     
     var result: LoadNotesBackendResult?
-    var loader: BackendDataLoader!
     
     override init(notebook: FileNotebook) {
         super.init(notebook: notebook)
-        loader = BackendDataLoader()
-        loader.loadNotesDelegate = self
+        GithubManager.shared.delegate = self
     }
     
     override func main() {
-        fetchListGists()
+        GithubManager.shared.fetchGistsData()
     }
 }
 
-//MARK: - BackendDataLoaderDelegate
+//MARK: - GithubManagerDelegate
 /***************************************************************/
 
-extension LoadNotesBackendOperation: LoadNotesBackendDelegate {
-    func process(result: LoadNotesBackendResult) {
-        self.result = result
+extension LoadNotesBackendOperation: GithubManagerDelegate {
+    func process(result: GithubManagerResult) {
+        switch result {
+        case .successLoad(let data):
+            notebook.parseNotes(from: data)
+            self.result = .success(notebook.notes)
+        case .gistNotFound:
+            self.result = .notFound
+        case .successUpsert: break
+        case .error(_):
+            self.result = .failure(.unreachable)
+        }
         finish()
-    }
-}
-
-//MARK: - Fetch data
-/***************************************************************/
-
-extension LoadNotesBackendOperation {
-    private func fetchListGists() {
-        guard let request = loader.getRequestWithToken() else { return }
-        
-        loader.upload(with: request) { [weak self] (data, _) in
-            guard let sself = self else { return }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .iso8601
-            
-            do {
-                let listGists = try decoder.decode([Gist].self, from: data)
-                sself.fetchNotebookData(from: listGists)
-            } catch {
-                DDLogError("Error while parsing list of gists: \(error)")
-                sself.process(result: .notFound)
-            }
-        }
-    }
-    
-    private func fetchNotebookData(from listGists: [Gist]) {
-        guard let gistUrl = listGists.getGistUrl(by: gistFileName),
-            let url = URL(string: gistUrl) else {
-                process(result: .notFound)
-                return
-        }
-        
-        loader.load(from: url) { [weak self] (data) in
-            guard let sself = self else { return }
-            
-            sself.notebook.parseNotes(from: data)
-            DDLogDebug("Notes loaded from backend")
-            sself.process(result: .success(sself.notebook.notes))
-        }
     }
 }

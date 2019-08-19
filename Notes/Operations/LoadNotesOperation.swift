@@ -5,7 +5,6 @@
 //  Created by Natalia Kazakova on 30/07/2019.
 //  Copyright © 2019 Natalia Kazakova. All rights reserved.
 //
-
 import Foundation
 import CocoaLumberjack
 import CoreData
@@ -43,17 +42,10 @@ class LoadNotesOperation: AsyncOperation {
             }
         }
         
-        //TODO: - Offline mode stub
-        /***************************************************************/
-        
-//        addDependency(loadFromBackend)
+        addDependency(loadFromBackend)
         addDependency(loadFromDb)
         
-        //TODO: - Offline mode stub
-        /***************************************************************/
-        
-//        backendQueue.addOperation(loadFromBackend)
-        dbQueue.addOperation(loadFromDb)
+        backendQueue.addOperation(loadFromBackend)
     }
     
     override func main() {

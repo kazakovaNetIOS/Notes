@@ -22,7 +22,13 @@ class NotesListController: UIViewController {
             DDLogDebug("The list of notes is sorted")
         }
     }
-    var backgroundContext: NSManagedObjectContext!
+    var backgroundContext: NSManagedObjectContext! {
+        didSet {
+            guard first else { return }
+            AuthManager.shared.authCheck()
+            first = false
+        }
+    }
     
     private var noteForEditing: Note?
     private let reuseIdentifier = "note cell"
@@ -50,16 +56,8 @@ extension NotesListController: AuthManagerDelegate {
 extension NotesListController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        guard first else { return }
-
         AuthManager.shared.delegate = self
-        AuthManager.shared.authCheck()
-        first = false
+        setupViews()
     }
 }
 

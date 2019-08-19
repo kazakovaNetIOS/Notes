@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C95A94268AE058029B715AE8 /* libPods-Notes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F3B1B892B3EFDE97F80DAA /* libPods-Notes.a */; };
 		FF06914B22FDB5FF00023838 /* GistTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06914A22FDB5FF00023838 /* GistTest.swift */; };
-		FF06919A22FEF14100023838 /* BackendDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06919922FEF14100023838 /* BackendDataLoader.swift */; };
 		FF06919F22FF1C3D00023838 /* GistPostResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06919E22FF1C3D00023838 /* GistPostResponce.swift */; };
 		FF0691AB230025E600023838 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0691AA230025E600023838 /* AuthViewController.swift */; };
 		FF0691AD23002D6F00023838 /* AuthGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0691AC23002D6F00023838 /* AuthGitHub.swift */; };
@@ -53,6 +52,7 @@
 		FFCC056222C774A4003E9191 /* NotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056122C774A4003E9191 /* NotesUITests.swift */; };
 		FFCC056E22C77AF4003E9191 /* NotebookTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056D22C77AF4003E9191 /* NotebookTestCase.swift */; };
 		FFCC057022C78BBF003E9191 /* NoteExtensionsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056F22C78BBF003E9191 /* NoteExtensionsTestCase.swift */; };
+		FFDEC0B1230ABF330036E503 /* GithubManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEC0B0230ABF330036E503 /* GithubManager.swift */; };
 		FFFD22BF22E0E64900880908 /* NotesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD22BE22E0E64900880908 /* NotesListController.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +80,6 @@
 		8A3039440254E2AD6FFB1FEB /* Pods-Notes.free.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.free.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.free.xcconfig"; sourceTree = "<group>"; };
 		F5F5F8C2AF74A4AC283FF4B7 /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.debug.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		FF06914A22FDB5FF00023838 /* GistTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistTest.swift; sourceTree = "<group>"; };
-		FF06919922FEF14100023838 /* BackendDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendDataLoader.swift; sourceTree = "<group>"; };
 		FF06919E22FF1C3D00023838 /* GistPostResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistPostResponce.swift; sourceTree = "<group>"; };
 		FF0691AA230025E600023838 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		FF0691AC23002D6F00023838 /* AuthGitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGitHub.swift; sourceTree = "<group>"; };
@@ -136,6 +135,7 @@
 		FFCC056322C774A4003E9191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFCC056D22C77AF4003E9191 /* NotebookTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookTestCase.swift; sourceTree = "<group>"; };
 		FFCC056F22C78BBF003E9191 /* NoteExtensionsTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteExtensionsTestCase.swift; sourceTree = "<group>"; };
+		FFDEC0B0230ABF330036E503 /* GithubManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubManager.swift; sourceTree = "<group>"; };
 		FFFD22BE22E0E64900880908 /* NotesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,14 +182,6 @@
 				049854DC6AD172AD4571EBCD /* Pods-Notes.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		FF06919D22FEF8A400023838 /* DataLoader */ = {
-			isa = PBXGroup;
-			children = (
-				FF06919922FEF14100023838 /* BackendDataLoader.swift */,
-			);
-			path = DataLoader;
 			sourceTree = "<group>";
 		};
 		FF0691A9230025BA00023838 /* Auth */ = {
@@ -266,6 +258,7 @@
 		FF2D91A122C0DFE1001210DE /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				FF302EEC230ABEDE00C004CF /* GithubManager */,
 				FF6042CF23070930000E7D52 /* Network */,
 				FF0691A9230025BA00023838 /* Auth */,
 				FF55EECA22F09EBB0022A55E /* Operations */,
@@ -282,6 +275,14 @@
 				FF2D91AE22C0DFE2001210DE /* Info.plist */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		FF302EEC230ABEDE00C004CF /* GithubManager */ = {
+			isa = PBXGroup;
+			children = (
+				FFDEC0B0230ABF330036E503 /* GithubManager.swift */,
+			);
+			path = GithubManager;
 			sourceTree = "<group>";
 		};
 		FF55EECA22F09EBB0022A55E /* Operations */ = {
@@ -303,7 +304,6 @@
 				FF55EED922F0A2730022A55E /* BaseBackendOperation.swift */,
 				FF55EEDA22F0A2730022A55E /* SaveNotesBackendOperation.swift */,
 				FF55EEE222F0A4E40022A55E /* LoadNotesBackendOperation.swift */,
-				FF06919D22FEF8A400023838 /* DataLoader */,
 			);
 			path = BackendOpertations;
 			sourceTree = "<group>";
@@ -597,12 +597,12 @@
 				FF3503DC2305FB560014C2A7 /* Model23.xcmappingmodel in Sources */,
 				FF80DA9122CE2B32007CC61D /* EditNoteView.swift in Sources */,
 				FF55EEE122F0A27E0022A55E /* BaseDBOperation.swift in Sources */,
-				FF06919A22FEF14100023838 /* BackendDataLoader.swift in Sources */,
 				FF3503E02306D3FC0014C2A7 /* AuthManager.swift in Sources */,
 				FF70A0C522FD617600025A96 /* Gist.swift in Sources */,
 				FF55EEE522F0BBB30022A55E /* LoadNotesDBOperation.swift in Sources */,
 				FF0FD47D22D61FF3002E4D93 /* ColorPickerView.swift in Sources */,
 				FFFD22BF22E0E64900880908 /* NotesListController.swift in Sources */,
+				FFDEC0B1230ABF330036E503 /* GithubManager.swift in Sources */,
 				FF99661222C0E047004299F3 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

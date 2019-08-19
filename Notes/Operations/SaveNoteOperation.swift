@@ -5,7 +5,6 @@
 //  Created by Natalia Kazakova on 30/07/2019.
 //  Copyright © 2019 Natalia Kazakova. All rights reserved.
 //
-
 import Foundation
 import CoreData
 
@@ -32,18 +31,12 @@ class SaveNoteOperation: AsyncOperation {
         
         saveToDb.completionBlock = { [weak self] in
             guard let sself = self else { return }
-            //TODO: - Offline mode stub
-            /***************************************************************/
             
-//            backendQueue.addOperation(sself.saveToBackend)
+            backendQueue.addOperation(sself.saveToBackend)
         }
         
         addDependency(saveToDb)
-        
-        //TODO: - Offline mode stub
-        /***************************************************************/
-        
-//        addDependency(saveToBackend)
+        addDependency(saveToBackend)
         dbQueue.addOperation(saveToDb)
     }
     

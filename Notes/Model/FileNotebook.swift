@@ -112,6 +112,15 @@ extension FileNotebook {
             DDLogError("Error while parsing notebook: \(error)")
         }
     }
+    
+    public func toGist() -> Gist{
+        let file = GistFile(content: toJsonString())
+        
+        return Gist(id: GithubManager.shared.gistId ?? "",
+                        description: GithubManager.Constants.gistFileName,
+                        isPublic: false,
+                        files: [GithubManager.Constants.gistFileName: file])
+    }
 }
 
 //MARK: - Dummy data
