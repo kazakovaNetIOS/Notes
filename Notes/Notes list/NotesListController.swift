@@ -173,9 +173,9 @@ extension NotesListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let deletedNoteId = notes[indexPath.row].uid
+            let deletedNote = notes[indexPath.row]
             
-            let removeNote = RemoveNoteOperation(noteId: deletedNoteId,
+            let removeNote = RemoveNoteOperation(notes: [deletedNote],
                                                  notebook: notebook,
                                                  backendQueue: OperationQueue(),
                                                  dbQueue: OperationQueue(),

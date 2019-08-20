@@ -12,19 +12,19 @@ import CoreData
 
 class RemoveNoteDBOperation: BaseDBOperation {
     
-    private let noteId: String
+    private let notes: [Note]
     
-    init(noteId: String,
+    init(notes: [Note],
          notebook: FileNotebook,
          backgroundContext: NSManagedObjectContext) {
-        self.noteId = noteId
+        self.notes = notes
         super.init(notebook: notebook)
         CoreDataManager.shared.backgroundContext = backgroundContext
         CoreDataManager.shared.delegate = self
     }
     
     override func main() {
-        CoreDataManager.shared.deleteNote(noteId: noteId)
+        CoreDataManager.shared.delete(notes: notes)
     }
 }
 

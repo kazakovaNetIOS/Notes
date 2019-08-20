@@ -11,19 +11,19 @@ import CoreData
 
 class RemoveNoteOperation: AsyncOperation {
     
-    private let noteId: String
+    private let notes: [Note]
     private var saveToBackend: SaveNotesBackendOperation
     private let removeFromDb: RemoveNoteDBOperation
     
-    init(noteId: String,
+    init(notes: [Note],
          notebook: FileNotebook,
          backendQueue: OperationQueue,
          dbQueue: OperationQueue,
          backgroundContext: NSManagedObjectContext) {
         
-        self.noteId = noteId
+        self.notes = notes
         
-        removeFromDb = RemoveNoteDBOperation(noteId: noteId, notebook: notebook, backgroundContext: backgroundContext)
+        removeFromDb = RemoveNoteDBOperation(notes: notes, notebook: notebook, backgroundContext: backgroundContext)
         saveToBackend = SaveNotesBackendOperation(notebook: notebook)
         
         super.init()
@@ -40,9 +40,7 @@ class RemoveNoteOperation: AsyncOperation {
         dbQueue.addOperation(removeFromDb)
     }
     
-    override func main() {
-        DDLogDebug("Deleted note with ID \(noteId)")
-        
+    override func main() {        
         finish()
     }
 }

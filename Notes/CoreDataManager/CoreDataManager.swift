@@ -66,19 +66,17 @@ extension CoreDataManager {
 /***************************************************************/
 
 extension CoreDataManager {
-    public func deleteNote(noteId: String) {
+    public func delete(notes: [Note]) {
         backgroundContext.performAndWait {
             let request: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
-            request.predicate = NSPredicate(format: "uid == %@", noteId)
+            request.predicate = NSPredicate(format: "uid in %@", notes.compactMap{ $0.uid })
             
             do {
                 let fetchedObjects = try backgroundContext.fetch(request)
-                guard fetchedObjects.count > 0 else {
-                    delegate?.process(result: .error("Note not found"))
-                    return
-                }
-                backgroundContext.delete(fetchedObjects[0])
-                try backgroundContext.save()
+                for object in fetchedObjects {
+                    backgroundContext.delete(object)
+                    try backgroundContext.save()
+                }                
                 
                 delegate?.process(result: .successDelete)
             } catch {
