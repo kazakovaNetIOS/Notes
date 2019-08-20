@@ -156,15 +156,20 @@ extension GithubManager {
 /***************************************************************/
 
 extension GithubManager {
-    private func getRequest(with data: Data, method: String) -> URLRequest? {
-        guard var request = getRequestWithToken() else { return nil }
+    private func getRequest(with data: Data, method: String?) -> URLRequest? {
+        var urlString = Constants.gistRepositoryUrl
+        if method == "PATCH" {
+            urlString = gistPatchUrl
+        }
+        
+        guard var request = getRequestWithToken(urlString: urlString) else { return nil }
         request.httpMethod = method
         request.httpBody = data
         return request
     }
     
-    private func getRequestWithToken() -> URLRequest? {
-        guard let url = URL(string: Constants.gistRepositoryUrl) else { return nil }
+    private func getRequestWithToken(urlString: String = Constants.gistRepositoryUrl) -> URLRequest? {
+        guard let url = URL(string: urlString) else { return nil }
         guard let token = AuthManager.shared.token else {
             fatalError("Token not found")
         }

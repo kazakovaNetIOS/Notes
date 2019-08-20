@@ -40,7 +40,9 @@ extension SaveNotesBackendOperation: GithubManagerDelegate {
         case .successLoad: break
         case .gistNotFound: break
         case .successUpsert: self.result = .success
-        case .error(_): self.result = .failure(.unreachable)
+        case .error(let error):
+            print(error)
+            self.result = .failure(.unreachable)
         }
         finish()
     }
