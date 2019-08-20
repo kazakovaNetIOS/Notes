@@ -49,6 +49,7 @@
 		FF99661322C0E047004299F3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99661022C0E047004299F3 /* Extensions.swift */; };
 		FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99661122C0E047004299F3 /* FileNotebook.swift */; };
 		FFA4772C22E4AE1A00EF66C4 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4772B22E4AE1A00EF66C4 /* ImageController.swift */; };
+		FFC94320230C0EEC00A0EDB2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC9431F230C0EEC00A0EDB2 /* CoreDataManager.swift */; };
 		FFCC056222C774A4003E9191 /* NotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056122C774A4003E9191 /* NotesUITests.swift */; };
 		FFCC056E22C77AF4003E9191 /* NotebookTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056D22C77AF4003E9191 /* NotebookTestCase.swift */; };
 		FFCC057022C78BBF003E9191 /* NoteExtensionsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056F22C78BBF003E9191 /* NoteExtensionsTestCase.swift */; };
@@ -128,6 +129,7 @@
 		FF99661022C0E047004299F3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FF99661122C0E047004299F3 /* FileNotebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileNotebook.swift; sourceTree = "<group>"; };
 		FFA4772B22E4AE1A00EF66C4 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
+		FFC9431F230C0EEC00A0EDB2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FFCC054F22C77481003E9191 /* NotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFCC055322C77481003E9191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFCC055F22C774A4003E9191 /* NotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -258,6 +260,7 @@
 		FF2D91A122C0DFE1001210DE /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				FFC9431E230C0ED800A0EDB2 /* CoreDataManager */,
 				FF302EEC230ABEDE00C004CF /* GithubManager */,
 				FF6042CF23070930000E7D52 /* Network */,
 				FF0691A9230025BA00023838 /* Auth */,
@@ -368,6 +371,14 @@
 				FFA4772B22E4AE1A00EF66C4 /* ImageController.swift */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		FFC9431E230C0ED800A0EDB2 /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				FFC9431F230C0EEC00A0EDB2 /* CoreDataManager.swift */,
+			);
+			path = CoreDataManager;
 			sourceTree = "<group>";
 		};
 		FFCC055022C77481003E9191 /* NotesTests */ = {
@@ -594,6 +605,7 @@
 				FF987CB92303F01D001330EC /* Model.xcdatamodeld in Sources */,
 				FF55EEE022F0A27E0022A55E /* SaveNoteDBOperation.swift in Sources */,
 				FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */,
+				FFC94320230C0EEC00A0EDB2 /* CoreDataManager.swift in Sources */,
 				FF3503DC2305FB560014C2A7 /* Model23.xcmappingmodel in Sources */,
 				FF80DA9122CE2B32007CC61D /* EditNoteView.swift in Sources */,
 				FF55EEE122F0A27E0022A55E /* BaseDBOperation.swift in Sources */,

@@ -36,7 +36,7 @@ class SaveNoteDBOperation: BaseDBOperation {
 extension SaveNoteDBOperation {
     private func upsertData() {
         backgroundContext.performAndWait {
-            let request: NSFetchRequest<MONote> = MONote.fetchRequest()
+            let request: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
             request.predicate = NSPredicate(format: "uid == %@", note.uid)
             
             do {
@@ -58,7 +58,7 @@ extension SaveNoteDBOperation {
 /***************************************************************/
 
 extension SaveNoteDBOperation {
-    private func updateData(for moNote: MONote) throws {
+    private func updateData(for moNote: NoteMO) throws {
         setValues(moNote)
         
         try backgroundContext.save()
@@ -72,7 +72,7 @@ extension SaveNoteDBOperation {
 
 extension SaveNoteDBOperation {
     private func insertData() throws {
-        setValues(MONote(context: backgroundContext))
+        setValues(NoteMO(context: backgroundContext))
         
         try backgroundContext.save()
         
@@ -80,11 +80,11 @@ extension SaveNoteDBOperation {
     }
 }
 
-//MARK: - Set values by MONote object
+//MARK: - Set values by NoteMO object
 /***************************************************************/
 
 extension SaveNoteDBOperation {
-    private func setValues(_ moNote: MONote) {
+    private func setValues(_ moNote: NoteMO) {
         moNote.uid = note.uid
         moNote.title = note.title
         moNote.content = note.content

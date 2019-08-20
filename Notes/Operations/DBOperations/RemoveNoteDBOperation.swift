@@ -35,7 +35,7 @@ class RemoveNoteDBOperation: BaseDBOperation {
 extension RemoveNoteDBOperation {
     private func deleteData() {
         backgroundContext.performAndWait {
-            let request: NSFetchRequest<MONote> = MONote.fetchRequest()
+            let request: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
             request.predicate = NSPredicate(format: "uid == %@", noteId)
             
             do {
