@@ -36,14 +36,15 @@ class SaveNotesBackendOperation: BaseBackendOperation {
 
 extension SaveNotesBackendOperation: GithubManagerDelegate {
     func process(result: GithubManagerResult) {
-        switch result {
-        case .successLoad: break
-        case .gistNotFound: break
-        case .successUpsert: self.result = .success
-        case .error(let error):
-            print(error)
-            self.result = .failure(.unreachable)
-        }
+//        switch result {
+//        case .successLoad: break
+//        case .gistNotFound: break
+//        case .successUpsert: self.result = .success
+//        case .error(let error):
+//            print(error)
+//            self.result = .failure(.unreachable)
+//        }
+        self.result = .failure(.unreachable)
         finish()
     }
 }

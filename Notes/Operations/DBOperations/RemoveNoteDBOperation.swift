@@ -13,41 +13,36 @@ import CoreData
 class RemoveNoteDBOperation: BaseDBOperation {
     
     private let noteId: String
-    private let backgroundContext: NSManagedObjectContext
     
     init(noteId: String,
          notebook: FileNotebook,
          backgroundContext: NSManagedObjectContext) {
         self.noteId = noteId
-        self.backgroundContext = backgroundContext
         super.init(notebook: notebook)
+        CoreDataManager.shared.backgroundContext = backgroundContext
+        CoreDataManager.shared.delegate = self
     }
     
     override func main() {
-        deleteData()
-        finish()
+        CoreDataManager.shared.deleteNote(noteId: noteId)
     }
 }
 
-//MARK: - Delete data
+//MARK: - CoreDataManagerDelegate
 /***************************************************************/
 
-extension RemoveNoteDBOperation {
-    private func deleteData() {
-        backgroundContext.performAndWait {
-            let request: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
-            request.predicate = NSPredicate(format: "uid == %@", noteId)
-            
-            do {
-                let fetchedObjects = try backgroundContext.fetch(request)
-                backgroundContext.delete(fetchedObjects[0])
-                
-                try backgroundContext.save()
-                
-                DDLogDebug("Remove note from db completed")
-            } catch {
-                DDLogError(error.localizedDescription)
-            }
+extension RemoveNoteDBOperation: CoreDataManagerDelegate {
+    func process(result: CoreDataManagerResult) {
+        switch result {
+        case .successLoad:
+            break
+        case .error(let error):
+            DDLogError(error)
+        case .successDelete:
+            break
+        case .successSave:
+            break
         }
+        finish()
     }
 }

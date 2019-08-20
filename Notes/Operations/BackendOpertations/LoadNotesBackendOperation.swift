@@ -33,16 +33,17 @@ class LoadNotesBackendOperation: BaseBackendOperation {
 
 extension LoadNotesBackendOperation: GithubManagerDelegate {
     func process(result: GithubManagerResult) {
-        switch result {
-        case .successLoad(let data):
-            notebook.parseNotes(from: data)
-            self.result = .success(notebook.notes)
-        case .gistNotFound:
-            self.result = .notFound
-        case .successUpsert: break
-        case .error(_):
-            self.result = .failure(.unreachable)
-        }
+//        switch result {
+//        case .successLoad(let data):
+//            notebook.parseNotes(from: data)
+//            self.result = .success(notebook.notes)
+//        case .gistNotFound:
+//            self.result = .notFound
+//        case .successUpsert: break
+//        case .error(_):
+//            self.result = .failure(.unreachable)
+//        }
+        self.result = .notFound
         finish()
     }
 }

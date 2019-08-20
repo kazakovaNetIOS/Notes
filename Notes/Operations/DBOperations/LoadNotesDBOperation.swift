@@ -22,7 +22,7 @@ class LoadNotesDBOperation: BaseDBOperation {
     }
     
     override func main() {
-        CoreDataManager.shared.fetchData()
+        CoreDataManager.shared.fetchNotes()
     }
 }
 
@@ -37,6 +37,10 @@ extension LoadNotesDBOperation: CoreDataManagerDelegate {
         case .error(let error):
             DDLogError(error)
             self.result = []
+        case .successDelete:
+            break
+        case .successSave:
+            break
         }
         finish()
     }

@@ -13,83 +13,36 @@ import CoreData
 class SaveNoteDBOperation: BaseDBOperation {
     
     private let note: Note
-    private let backgroundContext: NSManagedObjectContext
     
     init(note: Note,
          notebook: FileNotebook,
          backgroundContext: NSManagedObjectContext) {
         self.note = note
-        self.backgroundContext = backgroundContext
         super.init(notebook: notebook)
+        CoreDataManager.shared.backgroundContext = backgroundContext
+        CoreDataManager.shared.delegate = self
     }
     
     override func main() {
-        upsertData()
-        finish()
+        CoreDataManager.shared.upsertNote(note: note)
     }
 }
 
-
-//MARK: - Upsert data
+//MARK: - CoreDataManagerDelegate
 /***************************************************************/
 
-extension SaveNoteDBOperation {
-    private func upsertData() {
-        backgroundContext.performAndWait {
-            let request: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
-            request.predicate = NSPredicate(format: "uid == %@", note.uid)
-            
-            do {
-                let fetchedObjects = try backgroundContext.fetch(request)
-                
-                if fetchedObjects.count > 0 {
-                    try updateData(for: fetchedObjects[0])
-                } else {
-                    try insertData()
-                }
-            } catch {
-                DDLogError(error.localizedDescription)
-            }
+extension SaveNoteDBOperation: CoreDataManagerDelegate {
+    func process(result: CoreDataManagerResult) {
+        switch result {
+        case .successLoad:
+            break
+        case .error(let error):
+            DDLogError(error)
+        case .successDelete:
+            break
+        case .successSave:
+            break
         }
-    }
-}
-
-//MARK: - Update data
-/***************************************************************/
-
-extension SaveNoteDBOperation {
-    private func updateData(for moNote: NoteMO) throws {
-        setValues(moNote)
-        
-        try backgroundContext.save()
-        
-        DDLogDebug("Update note in db completed")
-    }
-}
-
-//MARK: - Insert data
-/***************************************************************/
-
-extension SaveNoteDBOperation {
-    private func insertData() throws {
-        setValues(NoteMO(context: backgroundContext))
-        
-        try backgroundContext.save()
-        
-        DDLogDebug("Insert note to db completed")
-    }
-}
-
-//MARK: - Set values by NoteMO object
-/***************************************************************/
-
-extension SaveNoteDBOperation {
-    private func setValues(_ moNote: NoteMO) {
-        moNote.uid = note.uid
-        moNote.title = note.title
-        moNote.content = note.content
-        moNote.color = note.color
-        moNote.importance = note.importance.rawValue
-        moNote.dateOfSelfDestruction = note.dateOfSelfDestruction
+        finish()
     }
 }
