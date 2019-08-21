@@ -16,15 +16,14 @@ class RemoveNoteOperation: AsyncOperation {
     private let removeFromDb: RemoveNoteDBOperation
     
     init(notes: [Note],
-         notebook: FileNotebook,
          backendQueue: OperationQueue,
          dbQueue: OperationQueue,
          backgroundContext: NSManagedObjectContext) {
         
         self.notes = notes
         
-        removeFromDb = RemoveNoteDBOperation(notes: notes, notebook: notebook, backgroundContext: backgroundContext)
-        saveToBackend = SaveNotesBackendOperation(notes: notes, notebook: notebook)
+        removeFromDb = RemoveNoteDBOperation(notes: notes, backgroundContext: backgroundContext)
+        saveToBackend = SaveNotesBackendOperation(notes: notes)
         
         super.init()
         

@@ -18,9 +18,9 @@ class SaveNotesBackendOperation: BaseBackendOperation {
     var result: SaveNotesBackendResult?
     private let notes: [Note]
     
-    init(notes: [Note], notebook: FileNotebook) {
+    init(notes: [Note]) {
         self.notes = notes
-        super.init(notebook: notebook)
+        super.init()
         GithubManager.shared.delegate = self
     }
     

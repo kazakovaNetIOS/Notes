@@ -17,14 +17,12 @@ class LoadNotesOperation: AsyncOperation {
     
     private(set) var result: [Note]? = []
     
-    init(notebook: FileNotebook,
-         backendQueue: OperationQueue,
+    init(backendQueue: OperationQueue,
          dbQueue: OperationQueue,
          backgroundContext: NSManagedObjectContext) {
         
-        loadFromBackend = LoadNotesBackendOperation(notebook: notebook)
-        loadFromDb = LoadNotesDBOperation(notebook: notebook,
-                                          backgroundContext: backgroundContext)
+        loadFromBackend = LoadNotesBackendOperation()
+        loadFromDb = LoadNotesDBOperation(backgroundContext: backgroundContext)
         
         super.init()
         
@@ -34,7 +32,6 @@ class LoadNotesOperation: AsyncOperation {
             switch self.loadFromBackend.result! {
             case .success(let notes):
                 self.saveToDb = SaveNoteDBOperation(notes: notes,
-                                                    notebook: notebook,
                                                     backgroundContext: backgroundContext)
                 self.saveToDb?.completionBlock = { [weak self] in
                     guard let `self` = self else { return }

@@ -97,7 +97,6 @@ extension NotesListController {
             editNoteVC.note = noteForEditing
             editNoteVC.notebook = notebook
             editNoteVC.delegate = self
-            editNoteVC.backgroundContext = backgroundContext
         }
     }
 }
@@ -109,11 +108,19 @@ extension NotesListController: EditNoteControllerDelegate {
     func handleNoteEdited(note: Note) {
         notes.replace(note: note)
         notesListTableView.reloadData()
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        navigationItem.leftBarButtonItem?.isEnabled = false
         let saveNoteOperation = SaveNoteOperation(notes: notes,
-                                                  notebook: notebook,
                                                   backendQueue: OperationQueue(),
                                                   dbQueue: OperationQueue(),
                                                   backgroundContext: backgroundContext)
+        saveNoteOperation.completionBlock = { [weak self] in
+            guard let `self` = self else { return }
+            OperationQueue.main.addOperation {
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+                self.navigationItem.leftBarButtonItem?.isEnabled = true
+            }
+        }
         OperationQueue().addOperation(saveNoteOperation)
     }
 }
@@ -123,8 +130,7 @@ extension NotesListController: EditNoteControllerDelegate {
 
 extension NotesListController {
     private func loadData() {
-        let loadNotes = LoadNotesOperation(notebook: notebook,
-                                           backendQueue: OperationQueue(),
+        let loadNotes = LoadNotesOperation(backendQueue: OperationQueue(),
                                            dbQueue: OperationQueue(),
                                            backgroundContext: backgroundContext)
         loadNotes.completionBlock = { [weak self] in
@@ -159,7 +165,6 @@ extension NotesListController: UITableViewDataSource {
         if editingStyle == .delete {
             notes.remove(at: indexPath.row)
             let removeNote = RemoveNoteOperation(notes: notes,
-                                                 notebook: notebook,
                                                  backendQueue: OperationQueue(),
                                                  dbQueue: OperationQueue(),
                                                  backgroundContext: backgroundContext)

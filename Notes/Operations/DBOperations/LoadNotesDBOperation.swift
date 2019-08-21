@@ -14,9 +14,8 @@ class LoadNotesDBOperation: BaseDBOperation {
     
     var result: [Note]?
     
-    init(notebook: FileNotebook,
-         backgroundContext: NSManagedObjectContext) {
-        super.init(notebook: notebook)
+    init(backgroundContext: NSManagedObjectContext) {
+        super.init()
         CoreDataManager.shared.backgroundContext = backgroundContext
         CoreDataManager.shared.delegate = self
     }

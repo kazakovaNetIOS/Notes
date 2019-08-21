@@ -18,8 +18,8 @@ class LoadNotesBackendOperation: BaseBackendOperation {
     
     var result: LoadNotesBackendResult?
     
-    override init(notebook: FileNotebook) {
-        super.init(notebook: notebook)
+    override init() {
+        super.init()
         GithubManager.shared.delegate = self
     }
     

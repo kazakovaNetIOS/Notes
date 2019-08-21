@@ -15,10 +15,9 @@ class RemoveNoteDBOperation: BaseDBOperation {
     private let notes: [Note]
     
     init(notes: [Note],
-         notebook: FileNotebook,
          backgroundContext: NSManagedObjectContext) {
         self.notes = notes
-        super.init(notebook: notebook)
+        super.init()
         CoreDataManager.shared.backgroundContext = backgroundContext
         CoreDataManager.shared.delegate = self
     }

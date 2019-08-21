@@ -260,8 +260,8 @@
 		FF2D91A122C0DFE1001210DE /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				FFC9431E230C0ED800A0EDB2 /* CoreDataManager */,
-				FF302EEC230ABEDE00C004CF /* GithubManager */,
+				FFC9431E230C0ED800A0EDB2 /* CoreData */,
+				FF302EEC230ABEDE00C004CF /* Github */,
 				FF6042CF23070930000E7D52 /* Network */,
 				FF0691A9230025BA00023838 /* Auth */,
 				FF55EECA22F09EBB0022A55E /* Operations */,
@@ -280,12 +280,12 @@
 			path = Notes;
 			sourceTree = "<group>";
 		};
-		FF302EEC230ABEDE00C004CF /* GithubManager */ = {
+		FF302EEC230ABEDE00C004CF /* Github */ = {
 			isa = PBXGroup;
 			children = (
 				FFDEC0B0230ABF330036E503 /* GithubManager.swift */,
 			);
-			path = GithubManager;
+			path = Github;
 			sourceTree = "<group>";
 		};
 		FF55EECA22F09EBB0022A55E /* Operations */ = {
@@ -373,12 +373,12 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
-		FFC9431E230C0ED800A0EDB2 /* CoreDataManager */ = {
+		FFC9431E230C0ED800A0EDB2 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
 				FFC9431F230C0EEC00A0EDB2 /* CoreDataManager.swift */,
 			);
-			path = CoreDataManager;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		FFCC055022C77481003E9191 /* NotesTests */ = {

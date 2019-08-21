@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import CocoaLumberjack
-import CoreData
 
 protocol EditNoteControllerDelegate {
     func handleNoteEdited(note: Note)
@@ -19,7 +17,6 @@ class EditNoteController: UIViewController {
     @IBOutlet weak var editNoteViewContainer: UIView!
     
     var delegate: EditNoteControllerDelegate?
-    var backgroundContext: NSManagedObjectContext!
     
     var note: Note?
     var notebook: FileNotebook!
@@ -62,26 +59,17 @@ extension EditNoteController {
     }
 }
 
-//MARK: - Save data
+//MARK: - Selector methods
 /***************************************************************/
 
 extension EditNoteController {
-    private func saveNote() {
+    @objc func saveButtonTapped(_ sender: UIButton) {
         guard let editedNote = editNoteView.editedNote else {
             return
         }
         
         delegate?.handleNoteEdited(note: editedNote)
         navigationController?.popViewController(animated: true)
-    }
-}
-
-//MARK: - Selector methods
-/***************************************************************/
-
-extension EditNoteController {
-    @objc func saveButtonTapped(_ sender: UIButton) {
-        saveNote()
     }
 }
 

@@ -16,12 +16,11 @@ class SaveNoteOperation: AsyncOperation {
     private(set) var result: Bool? = false
     
     init(notes: [Note],
-         notebook: FileNotebook,
          backendQueue: OperationQueue,
          dbQueue: OperationQueue,
          backgroundContext: NSManagedObjectContext) {
-        saveToDb = SaveNoteDBOperation(notes: notes, notebook: notebook, backgroundContext: backgroundContext)
-        saveToBackend = SaveNotesBackendOperation(notes: notes, notebook: notebook)
+        saveToDb = SaveNoteDBOperation(notes: notes, backgroundContext: backgroundContext)
+        saveToBackend = SaveNotesBackendOperation(notes: notes)
         
         super.init()
         
