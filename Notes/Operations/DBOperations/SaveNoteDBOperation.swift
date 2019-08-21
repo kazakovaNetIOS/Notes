@@ -12,19 +12,19 @@ import CoreData
 
 class SaveNoteDBOperation: BaseDBOperation {
     
-    private let note: Note
+    private let notes: [Note]
     
-    init(note: Note,
+    init(notes: [Note],
          notebook: FileNotebook,
          backgroundContext: NSManagedObjectContext) {
-        self.note = note
+        self.notes = notes
         super.init(notebook: notebook)
         CoreDataManager.shared.backgroundContext = backgroundContext
         CoreDataManager.shared.delegate = self
     }
     
     override func main() {
-        CoreDataManager.shared.upsertNote(note: note)
+        CoreDataManager.shared.saveAll(notes: notes)
     }
 }
 

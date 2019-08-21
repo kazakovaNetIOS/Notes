@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias NoteList = [Note]
+
 enum Importance: String, Codable {
     case unimportant = "unimportant"
     case ordinary = "ordinary"
@@ -137,5 +139,15 @@ extension Note {
             importance: importance,
             dateOfSelfDestruction: dateOfSelfDestruction
         )
+    }
+}
+
+extension NoteList {
+    mutating func replace(note: Note) {
+        if let index = self.firstIndex(where: { $0.uid == note.uid }) {
+            self[index] = note
+        } else {
+            self.append(note)
+        }
     }
 }

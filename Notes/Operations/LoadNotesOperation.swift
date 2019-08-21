@@ -13,6 +13,7 @@ class LoadNotesOperation: AsyncOperation {
     
     private var loadFromBackend: LoadNotesBackendOperation
     private var loadFromDb: LoadNotesDBOperation
+    private var saveToDb: SaveNoteDBOperation?
     
     private(set) var result: [Note]? = []
     
@@ -28,17 +29,27 @@ class LoadNotesOperation: AsyncOperation {
         super.init()
         
         loadFromBackend.completionBlock = { [weak self] in
-            guard let sself = self else { return }
+            guard let `self` = self else { return }
             
-            switch sself.loadFromBackend.result! {
+            switch self.loadFromBackend.result! {
             case .success(let notes):
-                sself.result = notes
-                sself.finish()
+                self.saveToDb = SaveNoteDBOperation(notes: notes,
+                                                    notebook: notebook,
+                                                    backgroundContext: backgroundContext)
+                self.saveToDb?.completionBlock = { [weak self] in
+                    guard let `self` = self else { return }
+                    
+                    self.finish()
+                }
+                self.addDependency(self.saveToDb!)
+                dbQueue.addOperation(self.saveToDb!)
+                
+                self.result = notes
             case .notFound:
-                dbQueue.addOperation(sself.loadFromDb)
+                dbQueue.addOperation(self.loadFromDb)
             case .failure:
-                sself.result = []
-                sself.finish()
+                self.result = []
+                self.finish()
             }
         }
         

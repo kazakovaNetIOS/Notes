@@ -18,11 +18,9 @@ class NotesListController: UIViewController {
     private var notes: [Note] = [] {
         didSet {
             notes.sort(by: { $0.title < $1.title })
-            
-            DDLogDebug("The list of notes is sorted")
         }
     }
-    var backgroundContext: NSManagedObjectContext! {
+    public var backgroundContext: NSManagedObjectContext! {
         didSet {
             guard first else { return }
             AuthManager.shared.authCheck()
@@ -40,11 +38,8 @@ class NotesListController: UIViewController {
 
 extension NotesListController: AuthManagerDelegate {    
     func authPassed() {
-        loadData {
-            DDLogDebug("After request token")
-        }
+        loadData()
     }
-    
     func show(_ authController: UIViewController) {
         present(authController, animated: false, completion: nil)
     }
@@ -61,31 +56,6 @@ extension NotesListController {
     }
 }
 
-//MARK: - Load data
-/***************************************************************/
-
-extension NotesListController {
-    private func loadData(completion: (() -> Void)? = nil) {
-        let loadNotes = LoadNotesOperation(notebook: notebook,
-                                           backendQueue: OperationQueue(),
-                                           dbQueue: OperationQueue(),
-                                           backgroundContext: backgroundContext)
-        loadNotes.completionBlock = { [weak self] in
-            guard let sself = self else { return }
-            
-            sself.notes = loadNotes.result ?? []
-            
-            OperationQueue.main.addOperation {
-                sself.notesListTableView.reloadData()
-                DDLogDebug("Updating the table after loading data")
-                
-                completion?()
-            }
-        }
-        OperationQueue().addOperation(loadNotes)
-    }
-}
-
 //MARK: - Setup views
 /***************************************************************/
 
@@ -93,7 +63,6 @@ extension NotesListController {
     private func setupViews() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(addButtonTapped(_:)))
-        
         notesListTableView.register(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
     }
 }
@@ -106,21 +75,14 @@ extension NotesListController {
         if(notesListTableView.isEditing == true) {
             notesListTableView.isEditing = false
             navigationItem.leftBarButtonItem?.title = "Edit"
-            
-            DDLogDebug("Editing table switched to off")
         } else {
             notesListTableView.isEditing = true
             navigationItem.leftBarButtonItem?.title = "Done"
-            
-            DDLogDebug("Editing table switched to on")
         }
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
         noteForEditing = Note(title: "", content: "", importance: .ordinary, dateOfSelfDestruction: nil)
-        
-        DDLogDebug("Switch to note editing")
-        
         self.performSegue(withIdentifier: "goToEditNote", sender: self)
     }
 }
@@ -144,10 +106,35 @@ extension NotesListController {
 /***************************************************************/
 
 extension NotesListController: EditNoteControllerDelegate {
-    func handleNoteEdited() {
-        loadData {
-            DDLogDebug("Updating data after saving a modified note")
+    func handleNoteEdited(note: Note) {
+        notes.replace(note: note)
+        notesListTableView.reloadData()
+        let saveNoteOperation = SaveNoteOperation(notes: notes,
+                                                  notebook: notebook,
+                                                  backendQueue: OperationQueue(),
+                                                  dbQueue: OperationQueue(),
+                                                  backgroundContext: backgroundContext)
+        OperationQueue().addOperation(saveNoteOperation)
+    }
+}
+
+//MARK: - Load data
+/***************************************************************/
+
+extension NotesListController {
+    private func loadData() {
+        let loadNotes = LoadNotesOperation(notebook: notebook,
+                                           backendQueue: OperationQueue(),
+                                           dbQueue: OperationQueue(),
+                                           backgroundContext: backgroundContext)
+        loadNotes.completionBlock = { [weak self] in
+            guard let `self` = self else { return }
+            OperationQueue.main.addOperation {
+                self.notes = loadNotes.result ?? []
+                self.notesListTableView.reloadData()
+            }
         }
+        OperationQueue().addOperation(loadNotes)
     }
 }
 
@@ -161,37 +148,26 @@ extension NotesListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! NoteTableViewCell
-        
         let note = notes[indexPath.row]
-        
         cell.titleLabel?.text = note.title
         cell.contentLabel?.text = note.content
         cell.colorTileView?.backgroundColor = note.color
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let deletedNote = notes[indexPath.row]
-            
-            let removeNote = RemoveNoteOperation(notes: [deletedNote],
+            notes.remove(at: indexPath.row)
+            let removeNote = RemoveNoteOperation(notes: notes,
                                                  notebook: notebook,
                                                  backendQueue: OperationQueue(),
                                                  dbQueue: OperationQueue(),
                                                  backgroundContext: backgroundContext)
-            removeNote.completionBlock = { [weak self] in
-                guard let sself = self else { return }
-                
+            removeNote.completionBlock = {
                 OperationQueue.main.addOperation {
-                    sself.notes.remove(at: indexPath.row)
-                    
                     tableView.deleteRows(at: [indexPath], with: .automatic)
-                    
-                    DDLogDebug("Removed table row with index \(indexPath.row)")
                 }
             }
-            
             OperationQueue().addOperation(removeNote)
         }
     }
@@ -203,7 +179,6 @@ extension NotesListController: UITableViewDataSource {
 extension NotesListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         noteForEditing = notes[indexPath.row]
-        
         performSegue(withIdentifier: "goToEditNote", sender: self)
     }
 }

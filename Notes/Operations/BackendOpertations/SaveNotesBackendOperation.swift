@@ -16,14 +16,16 @@ enum SaveNotesBackendResult {
 class SaveNotesBackendOperation: BaseBackendOperation {
     
     var result: SaveNotesBackendResult?
+    private let notes: [Note]
     
-    override init(notebook: FileNotebook) {
+    init(notes: [Note], notebook: FileNotebook) {
+        self.notes = notes
         super.init(notebook: notebook)
         GithubManager.shared.delegate = self
     }
     
     override func main() {
-        guard let data = try? JSONEncoder().encode(notebook.toGist()) else {
+        guard let data = try? JSONEncoder().encode(FileNotebook.toGist(notes: notes)) else {
             finish()
             return
         }
@@ -36,15 +38,15 @@ class SaveNotesBackendOperation: BaseBackendOperation {
 
 extension SaveNotesBackendOperation: GithubManagerDelegate {
     func process(result: GithubManagerResult) {
-//        switch result {
-//        case .successLoad: break
-//        case .gistNotFound: break
-//        case .successUpsert: self.result = .success
-//        case .error(let error):
-//            print(error)
-//            self.result = .failure(.unreachable)
-//        }
-        self.result = .failure(.unreachable)
+        switch result {
+        case .successLoad: break
+        case .gistNotFound: break
+        case .successUpsert: self.result = .success
+        case .error(let error):
+            print(error)
+            self.result = .failure(.unreachable)
+        }
+//        self.result = .failure(.unreachable)
         finish()
     }
 }

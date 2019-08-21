@@ -24,14 +24,14 @@ class RemoveNoteOperation: AsyncOperation {
         self.notes = notes
         
         removeFromDb = RemoveNoteDBOperation(notes: notes, notebook: notebook, backgroundContext: backgroundContext)
-        saveToBackend = SaveNotesBackendOperation(notebook: notebook)
+        saveToBackend = SaveNotesBackendOperation(notes: notes, notebook: notebook)
         
         super.init()
         
         removeFromDb.completionBlock = { [weak self] in
-            guard let sself = self else { return }
+            guard let `self` = self else { return }
             
-            backendQueue.addOperation(sself.saveToBackend)
+            backendQueue.addOperation(self.saveToBackend)
         }
         
         addDependency(removeFromDb)

@@ -9,30 +9,26 @@ import Foundation
 import CoreData
 
 class SaveNoteOperation: AsyncOperation {
-    private let note: Note
-    private let notebook: FileNotebook
+    
     private let saveToDb: SaveNoteDBOperation
     private var saveToBackend: SaveNotesBackendOperation
     
     private(set) var result: Bool? = false
     
-    init(note: Note,
+    init(notes: [Note],
          notebook: FileNotebook,
          backendQueue: OperationQueue,
          dbQueue: OperationQueue,
          backgroundContext: NSManagedObjectContext) {
-        self.note = note
-        self.notebook = notebook
-        
-        saveToDb = SaveNoteDBOperation(note: note, notebook: notebook, backgroundContext: backgroundContext)
-        saveToBackend = SaveNotesBackendOperation(notebook: notebook)
+        saveToDb = SaveNoteDBOperation(notes: notes, notebook: notebook, backgroundContext: backgroundContext)
+        saveToBackend = SaveNotesBackendOperation(notes: notes, notebook: notebook)
         
         super.init()
         
         saveToDb.completionBlock = { [weak self] in
-            guard let sself = self else { return }
+            guard let `self` = self else { return }
             
-            backendQueue.addOperation(sself.saveToBackend)
+            backendQueue.addOperation(self.saveToBackend)
         }
         
         addDependency(saveToDb)

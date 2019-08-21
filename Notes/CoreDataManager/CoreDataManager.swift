@@ -73,15 +73,19 @@ extension CoreDataManager {
             
             do {
                 let fetchedObjects = try backgroundContext.fetch(request)
-                for object in fetchedObjects {
-                    backgroundContext.delete(object)
-                    try backgroundContext.save()
-                }                
+                try deleteList(fetchedObjects)
                 
                 delegate?.process(result: .successDelete)
             } catch {
                 delegate?.process(result: .error(error.localizedDescription))
             }
+        }
+    }
+    
+    private func deleteList(_ fetchedObjects: [NoteMO]) throws {
+        for object in fetchedObjects {
+            backgroundContext.delete(object)
+            try backgroundContext.save()
         }
     }
 }
@@ -123,5 +127,30 @@ extension CoreDataManager {
         moNote.color = note.color
         moNote.importance = note.importance.rawValue
         moNote.dateOfSelfDestruction = note.dateOfSelfDestruction
+    }
+}
+
+//MARK: - Save all notes
+/***************************************************************/
+
+extension CoreDataManager {
+    public func saveAll(notes: [Note]) {
+        backgroundContext.performAndWait {
+            let request: NSFetchRequest<NoteMO> = NoteMO.fetchRequest()
+            
+            do {
+                let fetchedObjects = try backgroundContext.fetch(request)
+                try deleteList(fetchedObjects)
+                
+                for note in notes {
+                    setValues(NoteMO(context: backgroundContext), with: note)
+                    try backgroundContext.save()
+                }
+                
+                delegate?.process(result: .successSave)
+            } catch {
+                delegate?.process(result: .error(error.localizedDescription))
+            }
+        }
     }
 }
