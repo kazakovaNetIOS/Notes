@@ -30,9 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.container = container
             if let tc = self.window?.rootViewController as? UITabBarController,
                 let nc = tc.selectedViewController as? UINavigationController,
-                let vc = nc.topViewController as? NotesListController {
+                let vc = nc.topViewController as? NotesViewController {
                 let manager = NotesManager(context: container.newBackgroundContext())
-                let presenter = NotesListPresenter(manager: manager, view: vc)
+                let router = NotesViewRouterImplementation(notesViewController: vc)
+                let presenter = NotesListPresenterImplementation(manager: manager,
+                                                                 view: vc,
+                                                                 router: router)
                 vc.presenter = presenter
             }
         }

@@ -1,5 +1,5 @@
 //
-//  NotesListViewController.swift
+//  NotesViewController.swift
 //  Notes
 //
 //  Created by Natalia Kazakova on 18/07/2019.
@@ -10,24 +10,13 @@ import UIKit
 import CocoaLumberjack
 import CoreData
 
-protocol NotesListViewProtocol: class {
-    func switchEditingModeOff()
-    func switchEditingModeOn()
-    func goToEditScreen(editedNote: Note)
-    func showNoteList()
-    func showDeletingNote(at index: IndexPath)
-    func disableListEditing()
-    func enableListEditing()
-    func show(authController: AuthControllerProtocol)
-}
-
-class NotesListController: UIViewController {
+class NotesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    public var presenter: NotesListPresenterProtocol? {
+    public var presenter: NotesPresenter? {
         didSet {
-            presenter?.didViewLoad()
+            presenter?.viewDidLoad()
         }
     }
     
@@ -38,7 +27,7 @@ class NotesListController: UIViewController {
 //MARK: - Lifecycle methods
 /***************************************************************/
 
-extension NotesListController {
+extension NotesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -48,19 +37,25 @@ extension NotesListController {
 //MARK: - Setup views
 /***************************************************************/
 
-extension NotesListController {
+extension NotesViewController {
     private func setupViews() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped(_:)))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(addButtonTapped(_:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", //TODO: - FIX
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(editButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(addButtonTapped))
         tableView.register(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
     }
 }
 
-//MARK: - NotesListViewProtocol
+//MARK: - NotesView
 /***************************************************************/
 
-extension NotesListController: NotesListViewProtocol {
-    func showDeletingNote(at index: IndexPath) {
+extension NotesViewController: NotesView {
+    func deleteAnimated(at index: IndexPath) {
         tableView.deleteRows(at: [index], with: .automatic)
     }
     
@@ -69,23 +64,18 @@ extension NotesListController: NotesListViewProtocol {
         present(controller, animated: true, completion: nil)
     }
     
-    func showNoteList() {
+    func refreshNotesView() {
         tableView.reloadData()
-    }
-    
-    func goToEditScreen(editedNote: Note) {
-        noteForEditing = editedNote
-        performSegue(withIdentifier: "goToEditNote", sender: self)
     }
     
     func switchEditingModeOff() {
         tableView.isEditing = false
-        navigationItem.leftBarButtonItem?.title = "Edit"
+        navigationItem.leftBarButtonItem?.title = presenter?.titleForEditButton
     }
     
     func switchEditingModeOn() {
         tableView.isEditing = true
-        navigationItem.leftBarButtonItem?.title = "Done"
+        navigationItem.leftBarButtonItem?.title = presenter?.titleForDoneButton
     }
     
     func disableListEditing() {
@@ -102,7 +92,7 @@ extension NotesListController: NotesListViewProtocol {
 //MARK: - Selector methods
 /***************************************************************/
 
-extension NotesListController {
+extension NotesViewController {
     @objc func editButtonTapped(_ sender: UIButton) {
         presenter?.didTapEditButton()
     }
@@ -115,20 +105,16 @@ extension NotesListController {
 //MARK: - Prepare for segue
 /***************************************************************/
 
-extension NotesListController {
+extension NotesViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToEditNote",
-            let editNoteVC = segue.destination as? EditNoteController {
-            editNoteVC.note = noteForEditing
-            editNoteVC.delegate = self
-        }
+        presenter?.router.prepare(for: segue, sender: sender)
     }
 }
 
 //MARK: - EditNoteControllerDelegate
 /***************************************************************/
 
-extension NotesListController: EditNoteControllerDelegate {
+extension NotesViewController: EditNoteControllerDelegate {
     func handleNoteEdited(note: Note) {
         presenter?.didEndEdit(note: note)
     }
@@ -137,25 +123,24 @@ extension NotesListController: EditNoteControllerDelegate {
 //MARK: - UITableViewDataSource
 /***************************************************************/
 
-extension NotesListController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.numberOfNotes() ?? 0
+extension NotesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return presenter?.numberOfNotes ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! NoteTableViewCell
-        guard let note = presenter?.note(at: indexPath.row) else {
-            return UITableViewCell()
-        }
-        cell.titleLabel?.text = note.title
-        cell.contentLabel?.text = note.content
-        cell.colorTileView?.backgroundColor = note.color
+        presenter?.configure(cell: cell, forRow: indexPath.row)
+        
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            presenter?.didSwipeLeftRow(at: indexPath)
+            presenter?.deleteButtonPressed(at: indexPath)
         }
     }
 }
@@ -163,9 +148,8 @@ extension NotesListController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 /***************************************************************/
 
-extension NotesListController: UITableViewDelegate {
+extension NotesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        noteForEditing = presenter?.note(at: indexPath.row)
-        performSegue(withIdentifier: "goToEditNote", sender: self)
+        presenter?.didSelect(row: indexPath.row)
     }
 }

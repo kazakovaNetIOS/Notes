@@ -15,6 +15,17 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
 }
 
+//MARK: - NoteCellView
+/***************************************************************/
+
+extension NoteTableViewCell: NoteCellView {
+    func display(note: Note) {
+        titleLabel?.text = note.title
+        contentLabel?.text = note.content
+        colorTileView?.backgroundColor = note.color
+    }
+}
+
 //MARK: - Override methods
 extension NoteTableViewCell {
     override func awakeFromNib() {
