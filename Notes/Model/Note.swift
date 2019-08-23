@@ -143,7 +143,7 @@ extension Note {
 }
 
 extension NoteList {
-    mutating func replace(note: Note) {
+    mutating func replace(_ note: Note) {
         if let index = self.firstIndex(where: { $0.uid == note.uid }) {
             self[index] = note
         } else {

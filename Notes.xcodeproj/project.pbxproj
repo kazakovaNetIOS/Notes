@@ -49,6 +49,8 @@
 		FF99661322C0E047004299F3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99661022C0E047004299F3 /* Extensions.swift */; };
 		FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99661122C0E047004299F3 /* FileNotebook.swift */; };
 		FFA4772C22E4AE1A00EF66C4 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4772B22E4AE1A00EF66C4 /* ImageController.swift */; };
+		FFC4D829230D9BB600A32077 /* NotesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4D828230D9BB600A32077 /* NotesListPresenter.swift */; };
+		FFC4D82C230DE58F00A32077 /* NotesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4D82B230DE58F00A32077 /* NotesManager.swift */; };
 		FFC94320230C0EEC00A0EDB2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC9431F230C0EEC00A0EDB2 /* CoreDataManager.swift */; };
 		FFCC056222C774A4003E9191 /* NotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056122C774A4003E9191 /* NotesUITests.swift */; };
 		FFCC056E22C77AF4003E9191 /* NotebookTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056D22C77AF4003E9191 /* NotebookTestCase.swift */; };
@@ -129,6 +131,8 @@
 		FF99661022C0E047004299F3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FF99661122C0E047004299F3 /* FileNotebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileNotebook.swift; sourceTree = "<group>"; };
 		FFA4772B22E4AE1A00EF66C4 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
+		FFC4D828230D9BB600A32077 /* NotesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListPresenter.swift; sourceTree = "<group>"; };
+		FFC4D82B230DE58F00A32077 /* NotesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesManager.swift; sourceTree = "<group>"; };
 		FFC9431F230C0EEC00A0EDB2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FFCC054F22C77481003E9191 /* NotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFCC055322C77481003E9191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 		FF2D91A122C0DFE1001210DE /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				FFC4D82A230DE58000A32077 /* Services */,
 				FFC9431E230C0ED800A0EDB2 /* CoreData */,
 				FF302EEC230ABEDE00C004CF /* Github */,
 				FF6042CF23070930000E7D52 /* Network */,
@@ -373,6 +378,14 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
+		FFC4D82A230DE58000A32077 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FFC4D82B230DE58F00A32077 /* NotesManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		FFC9431E230C0ED800A0EDB2 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				FFFD22BE22E0E64900880908 /* NotesListController.swift */,
+				FFC4D828230D9BB600A32077 /* NotesListPresenter.swift */,
 				FF63AE9122E48D9100E00720 /* Note table cell */,
 			);
 			path = "Notes list";
@@ -588,9 +602,11 @@
 				FF06919F22FF1C3D00023838 /* GistPostResponce.swift in Sources */,
 				FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */,
 				FF0691AB230025E600023838 /* AuthViewController.swift in Sources */,
+				FFC4D82C230DE58F00A32077 /* NotesManager.swift in Sources */,
 				FF2D91A522C0DFE1001210DE /* EditNoteController.swift in Sources */,
 				FF63AE8F22E47BBF00E00720 /* NoteTableViewCell.swift in Sources */,
 				FF55EEDC22F0A2730022A55E /* SaveNotesBackendOperation.swift in Sources */,
+				FFC4D829230D9BB600A32077 /* NotesListPresenter.swift in Sources */,
 				FF3503DE2305FBFF0014C2A7 /* Model13.xcmappingmodel in Sources */,
 				FF3503D92305ADC20014C2A7 /* Model.xcmappingmodel in Sources */,
 				FF55EECF22F0A08B0022A55E /* AsyncOperation.swift in Sources */,

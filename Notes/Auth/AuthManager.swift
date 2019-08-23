@@ -9,7 +9,7 @@
 import WebKit
 
 protocol AuthManagerDelegate {
-    func show(_ authController: UIViewController)
+    func show(_ authController: AuthControllerProtocol)
     func authPassed()
 }
 

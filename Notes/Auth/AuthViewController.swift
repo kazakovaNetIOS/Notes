@@ -8,6 +8,10 @@
 
 import WebKit
 
+protocol AuthControllerProtocol {
+    
+}
+
 final class AuthViewController: UIViewController {
     
     private let webView = WKWebView()
@@ -21,6 +25,13 @@ final class AuthViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+//MARK: - AuthControllerProtocol
+/***************************************************************/
+
+extension AuthViewController: AuthControllerProtocol {
+    
 }
 
 //MARK: - Override methods

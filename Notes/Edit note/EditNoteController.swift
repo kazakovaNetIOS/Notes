@@ -19,7 +19,6 @@ class EditNoteController: UIViewController {
     var delegate: EditNoteControllerDelegate?
     
     var note: Note?
-    var notebook: FileNotebook!
     private weak var editNoteView: EditNoteView!
     
     override func viewDidLoad() {
