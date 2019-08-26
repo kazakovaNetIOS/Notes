@@ -111,15 +111,6 @@ extension NotesViewController {
     }
 }
 
-//MARK: - EditNoteControllerDelegate
-/***************************************************************/
-
-extension NotesViewController: EditNoteControllerDelegate {
-    func handleNoteEdited(note: Note) {
-        presenter?.didEndEdit(note: note)
-    }
-}
-
 //MARK: - UITableViewDataSource
 /***************************************************************/
 

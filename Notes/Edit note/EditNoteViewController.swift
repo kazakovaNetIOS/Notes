@@ -1,5 +1,5 @@
 //
-//  EditNoteController.swift
+//  EditNoteViewController.swift
 //  Notes
 //
 //  Created by Natalia Kazakova on 24/06/2019.
@@ -8,31 +8,36 @@
 
 import UIKit
 
-protocol EditNoteControllerDelegate {
-    func handleNoteEdited(note: Note)
-}
-
-class EditNoteController: UIViewController {
+class EditNoteViewController: UIViewController {
     
     @IBOutlet weak var editNoteViewContainer: UIView!
     
-    var delegate: EditNoteControllerDelegate?
+    var configurator: EditNoteConfigurator!
+    var presenter: EditNotePresenter!
     
     var note: Note?
-    private weak var editNoteView: EditNoteView!
+    private weak var editNoteView: EditNoteXIB!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configurator.configure(editNoteViewController: self)
         setupViews()
     }
 }
 
+//MARK: - EditNoteView
+/***************************************************************/
+
+extension EditNoteViewController: EditNoteView {
+    
+}
+
 //MARK: - Setup views
 /***************************************************************/
-extension EditNoteController {
+extension EditNoteViewController {
     private func setupViews() {
-        let editNoteView = EditNoteView(frame: editNoteViewContainer.frame, displayNote: note)
+        let editNoteView = EditNoteXIB(frame: editNoteViewContainer.frame, displayNote: note)
         editNoteView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         editNoteView.translatesAutoresizingMaskIntoConstraints = true
         
@@ -41,7 +46,7 @@ extension EditNoteController {
         editNoteView.delegate = self
         self.editNoteView = editNoteView
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Сохранить", style: .plain, target: self, action: #selector(saveButtonTapped(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: presenter.titleForSaveButton, style: .plain, target: self, action: #selector(saveButtonTapped))
     }
 }
 
@@ -49,7 +54,7 @@ extension EditNoteController {
 //MARK: - Prepare for segue
 /***************************************************************/
 
-extension EditNoteController {
+extension EditNoteViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let colorPickerController = segue.destination as? ColorPickerController  else { return }
         
@@ -61,22 +66,21 @@ extension EditNoteController {
 //MARK: - Selector methods
 /***************************************************************/
 
-extension EditNoteController {
+extension EditNoteViewController {
     @objc func saveButtonTapped(_ sender: UIButton) {
         guard let editedNote = editNoteView.editedNote else {
             return
         }
         
-        delegate?.handleNoteEdited(note: editedNote)
-        navigationController?.popViewController(animated: true)
+        presenter.saveButtonPressed(note: editedNote)
     }
 }
 
 // MARK: - EditNoteColorPickerTileDelegate
 /***************************************************************/
 
-extension EditNoteController: EditNoteColorPickerTileDelegate {
-    func editNoteColorPickerTileDidLongPress(_ editNote: EditNoteView) {
+extension EditNoteViewController: EditNoteColorPickerTileDelegate {
+    func editNoteColorPickerTileDidLongPress(_ editNote: EditNoteXIB) {
         performSegue(withIdentifier: "goToColorPicker", sender: self)
     }
 }
@@ -84,7 +88,7 @@ extension EditNoteController: EditNoteColorPickerTileDelegate {
 // MARK: - ColorPickerControllerDelegate
 /***************************************************************/
 
-extension EditNoteController: ColorPickerControllerDelegate {
+extension EditNoteViewController: ColorPickerControllerDelegate {
     func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor) {
         editNoteView.colorPickerTile.image = nil
         editNoteView.colorPickerTile.backgroundColor = color

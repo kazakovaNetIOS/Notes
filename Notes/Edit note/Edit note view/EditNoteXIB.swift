@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class EditNoteView: UIView {
+class EditNoteXIB: UIView {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textTextView: UITextView!
@@ -137,10 +137,10 @@ class EditNoteView: UIView {
 }
 
 //MARK: Setup views
-extension EditNoteView {
+extension EditNoteXIB {
     private func loadViewFromXib() -> UIView {
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "EditNoteView", bundle: bundle)
+        let nib = UINib(nibName: "EditNoteXIB", bundle: bundle)
         
         return nib.instantiate(withOwner: self, options: nil).first! as! UIView
     }
@@ -194,7 +194,7 @@ extension EditNoteView {
 }
 
 //MARK: IBAction
-extension EditNoteView {
+extension EditNoteXIB {
     @IBAction func destroyDateSwitchChanged(_ sender: UISwitch) {
         switchDestroyDateUse(sender)
     }
@@ -215,7 +215,7 @@ extension EditNoteView {
 
 //MARK: EditNoteColorPickerTileDelegate
 protocol EditNoteColorPickerTileDelegate {
-    func editNoteColorPickerTileDidLongPress(_ editNote: EditNoteView)
+    func editNoteColorPickerTileDidLongPress(_ editNote: EditNoteXIB)
 }
 
 //MARK: class CheckIcon

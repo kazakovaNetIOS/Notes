@@ -8,15 +8,16 @@
 
 import UIKit
 
-protocol NotesViewRouter {
-    func presentEditNote(for note: Note)
+protocol NotesViewRouter: class {
+    func presentEditNote(for note: Note, editNotePresenterDelegate: EditNotePresenterDelegate)
     func prepare(for segue: UIStoryboardSegue, sender: Any?)
 }
 
-class NotesViewRouterImplementation {
+class NotesViewRouterImpl {
     
-    fileprivate weak var notesViewController: NotesViewController?
-    fileprivate var note: Note!
+    private weak var notesViewController: NotesViewController?
+    private weak var editNotePresenterDelegate: EditNotePresenterDelegate?
+    private var note: Note!
     
     init(notesViewController: NotesViewController) {
         self.notesViewController = notesViewController
@@ -26,19 +27,18 @@ class NotesViewRouterImplementation {
 //MARK: - NotesViewRouter
 /***************************************************************/
 
-extension NotesViewRouterImplementation: NotesViewRouter {
-    func presentEditNote(for note: Note) {
+extension NotesViewRouterImpl: NotesViewRouter {
+    func presentEditNote(for note: Note, editNotePresenterDelegate: EditNotePresenterDelegate) {
+        self.editNotePresenterDelegate = editNotePresenterDelegate
         self.note = note
         notesViewController?.performSegue(withIdentifier: "goToEditNote", sender: nil)
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToEditNote",
-        let editNoteVC = segue.destination as? EditNoteController {
-            editNoteVC.note = note
-            //TODO: - FIX
-            /***************************************************************/
-            editNoteVC.delegate = notesViewController
+            let editNoteVC = segue.destination as? EditNoteViewController {
+            editNoteVC.configurator = EditNoteConfiguratorImpl(note: note,
+                                                               editNotePresenterDelegate: editNotePresenterDelegate)
         }
     }
 }

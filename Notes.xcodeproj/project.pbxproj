@@ -16,7 +16,7 @@
 		FF0FD47D22D61FF3002E4D93 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47C22D61FF3002E4D93 /* ColorPickerView.swift */; };
 		FF0FD48222D62106002E4D93 /* ColorPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0FD48122D62106002E4D93 /* ColorPickerView.xib */; };
 		FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D91A222C0DFE1001210DE /* AppDelegate.swift */; };
-		FF2D91A522C0DFE1001210DE /* EditNoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D91A422C0DFE1001210DE /* EditNoteController.swift */; };
+		FF2D91A522C0DFE1001210DE /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D91A422C0DFE1001210DE /* EditNoteViewController.swift */; };
 		FF2D91A822C0DFE1001210DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91A622C0DFE1001210DE /* Main.storyboard */; };
 		FF2D91AA22C0DFE2001210DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91A922C0DFE2001210DE /* Assets.xcassets */; };
 		FF2D91AD22C0DFE2001210DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF2D91AB22C0DFE2001210DE /* LaunchScreen.storyboard */; };
@@ -43,13 +43,16 @@
 		FF70A0C522FD617600025A96 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF70A0C422FD617600025A96 /* Gist.swift */; };
 		FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF70A0C622FD61E900025A96 /* GistFile.swift */; };
 		FF7AD4722310189700D037D1 /* NotesViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7AD4712310189700D037D1 /* NotesViewRouter.swift */; };
-		FF80DA8F22CE20DA007CC61D /* EditNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF80DA8E22CE20DA007CC61D /* EditNoteView.xib */; };
-		FF80DA9122CE2B32007CC61D /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80DA9022CE2B32007CC61D /* EditNoteView.swift */; };
+		FF80DA8F22CE20DA007CC61D /* EditNoteXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF80DA8E22CE20DA007CC61D /* EditNoteXIB.xib */; };
+		FF80DA9122CE2B32007CC61D /* EditNoteXIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80DA9022CE2B32007CC61D /* EditNoteXIB.swift */; };
 		FF987CB92303F01D001330EC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF987CB72303F01D001330EC /* Model.xcdatamodeld */; };
 		FF99661222C0E047004299F3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99660F22C0E047004299F3 /* Note.swift */; };
 		FF99661322C0E047004299F3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99661022C0E047004299F3 /* Extensions.swift */; };
 		FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99661122C0E047004299F3 /* FileNotebook.swift */; };
 		FFA4772C22E4AE1A00EF66C4 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4772B22E4AE1A00EF66C4 /* ImageController.swift */; };
+		FFA6F2FC2311A72E00AE6F54 /* EditNotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6F2FB2311A72E00AE6F54 /* EditNotePresenter.swift */; };
+		FFA6F2FE2311ACC700AE6F54 /* EditNoteConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6F2FD2311ACC700AE6F54 /* EditNoteConfigurator.swift */; };
+		FFA6F3002311B2ED00AE6F54 /* EditNoteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6F2FF2311B2ED00AE6F54 /* EditNoteRouter.swift */; };
 		FFC4D829230D9BB600A32077 /* NotesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4D828230D9BB600A32077 /* NotesPresenter.swift */; };
 		FFC4D82C230DE58F00A32077 /* NotesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4D82B230DE58F00A32077 /* NotesManager.swift */; };
 		FFC94320230C0EEC00A0EDB2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC9431F230C0EEC00A0EDB2 /* CoreDataManager.swift */; };
@@ -96,7 +99,7 @@
 		FF14419322C22B89005F5AF8 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		FF2D919F22C0DFE1001210DE /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2D91A222C0DFE1001210DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF2D91A422C0DFE1001210DE /* EditNoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteController.swift; sourceTree = "<group>"; };
+		FF2D91A422C0DFE1001210DE /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
 		FF2D91A722C0DFE1001210DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF2D91A922C0DFE2001210DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF2D91AC22C0DFE2001210DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -126,13 +129,16 @@
 		FF70A0C422FD617600025A96 /* Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
 		FF70A0C622FD61E900025A96 /* GistFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistFile.swift; sourceTree = "<group>"; };
 		FF7AD4712310189700D037D1 /* NotesViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewRouter.swift; sourceTree = "<group>"; };
-		FF80DA8E22CE20DA007CC61D /* EditNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditNoteView.xib; sourceTree = "<group>"; };
-		FF80DA9022CE2B32007CC61D /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
+		FF80DA8E22CE20DA007CC61D /* EditNoteXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditNoteXIB.xib; sourceTree = "<group>"; };
+		FF80DA9022CE2B32007CC61D /* EditNoteXIB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteXIB.swift; sourceTree = "<group>"; };
 		FF987CB82303F01D001330EC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FF99660F22C0E047004299F3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		FF99661022C0E047004299F3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FF99661122C0E047004299F3 /* FileNotebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileNotebook.swift; sourceTree = "<group>"; };
 		FFA4772B22E4AE1A00EF66C4 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
+		FFA6F2FB2311A72E00AE6F54 /* EditNotePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotePresenter.swift; sourceTree = "<group>"; };
+		FFA6F2FD2311ACC700AE6F54 /* EditNoteConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteConfigurator.swift; sourceTree = "<group>"; };
+		FFA6F2FF2311B2ED00AE6F54 /* EditNoteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteRouter.swift; sourceTree = "<group>"; };
 		FFC4D828230D9BB600A32077 /* NotesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesPresenter.swift; sourceTree = "<group>"; };
 		FFC4D82B230DE58F00A32077 /* NotesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesManager.swift; sourceTree = "<group>"; };
 		FFC9431F230C0EEC00A0EDB2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -222,8 +228,8 @@
 		FF0FD47B22D49EC7002E4D93 /* Edit note view */ = {
 			isa = PBXGroup;
 			children = (
-				FF80DA8E22CE20DA007CC61D /* EditNoteView.xib */,
-				FF80DA9022CE2B32007CC61D /* EditNoteView.swift */,
+				FF80DA8E22CE20DA007CC61D /* EditNoteXIB.xib */,
+				FF80DA9022CE2B32007CC61D /* EditNoteXIB.swift */,
 			);
 			path = "Edit note view";
 			sourceTree = "<group>";
@@ -430,7 +436,10 @@
 		FFFA77AA22E45E9D0043FD1B /* Edit note */ = {
 			isa = PBXGroup;
 			children = (
-				FF2D91A422C0DFE1001210DE /* EditNoteController.swift */,
+				FF2D91A422C0DFE1001210DE /* EditNoteViewController.swift */,
+				FFA6F2FD2311ACC700AE6F54 /* EditNoteConfigurator.swift */,
+				FFA6F2FB2311A72E00AE6F54 /* EditNotePresenter.swift */,
+				FFA6F2FF2311B2ED00AE6F54 /* EditNoteRouter.swift */,
 				FF0FD47B22D49EC7002E4D93 /* Edit note view */,
 			);
 			path = "Edit note";
@@ -542,7 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF2D91AD22C0DFE2001210DE /* LaunchScreen.storyboard in Resources */,
-				FF80DA8F22CE20DA007CC61D /* EditNoteView.xib in Resources */,
+				FF80DA8F22CE20DA007CC61D /* EditNoteXIB.xib in Resources */,
 				FF2D91AA22C0DFE2001210DE /* Assets.xcassets in Resources */,
 				FF63AE9022E47BBF00E00720 /* NoteTableViewCell.xib in Resources */,
 				FF0FD48222D62106002E4D93 /* ColorPickerView.xib in Resources */,
@@ -596,6 +605,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA6F2FE2311ACC700AE6F54 /* EditNoteConfigurator.swift in Sources */,
 				FF6042D12307094A000E7D52 /* NetworkManager.swift in Sources */,
 				FF63AE9622E4973D00E00720 /* GalleryCell.swift in Sources */,
 				FF63AE9422E4963D00E00720 /* GalleryController.swift in Sources */,
@@ -606,7 +616,7 @@
 				FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */,
 				FF0691AB230025E600023838 /* AuthViewController.swift in Sources */,
 				FFC4D82C230DE58F00A32077 /* NotesManager.swift in Sources */,
-				FF2D91A522C0DFE1001210DE /* EditNoteController.swift in Sources */,
+				FF2D91A522C0DFE1001210DE /* EditNoteViewController.swift in Sources */,
 				FF63AE8F22E47BBF00E00720 /* NoteTableViewCell.swift in Sources */,
 				FF55EEDC22F0A2730022A55E /* SaveNotesBackendOperation.swift in Sources */,
 				FFC4D829230D9BB600A32077 /* NotesPresenter.swift in Sources */,
@@ -627,7 +637,8 @@
 				FFC94320230C0EEC00A0EDB2 /* CoreDataManager.swift in Sources */,
 				FF7AD4722310189700D037D1 /* NotesViewRouter.swift in Sources */,
 				FF3503DC2305FB560014C2A7 /* Model23.xcmappingmodel in Sources */,
-				FF80DA9122CE2B32007CC61D /* EditNoteView.swift in Sources */,
+				FFA6F3002311B2ED00AE6F54 /* EditNoteRouter.swift in Sources */,
+				FF80DA9122CE2B32007CC61D /* EditNoteXIB.swift in Sources */,
 				FF55EEE122F0A27E0022A55E /* BaseDBOperation.swift in Sources */,
 				FF3503E02306D3FC0014C2A7 /* AuthManager.swift in Sources */,
 				FF70A0C522FD617600025A96 /* Gist.swift in Sources */,
@@ -635,6 +646,7 @@
 				FF0FD47D22D61FF3002E4D93 /* ColorPickerView.swift in Sources */,
 				FFFD22BF22E0E64900880908 /* NotesViewController.swift in Sources */,
 				FFDEC0B1230ABF330036E503 /* GithubManager.swift in Sources */,
+				FFA6F2FC2311A72E00AE6F54 /* EditNotePresenter.swift in Sources */,
 				FF99661222C0E047004299F3 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

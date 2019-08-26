@@ -32,7 +32,6 @@ protocol NotesPresenter: class {
     func didTapAddButton()
     func didSelect(row: Int)
     func viewDidLoad()
-    func didEndEdit(note: Note)
     func configure(cell: NoteCellView, forRow row: Int)
     func deleteButtonPressed(at index: IndexPath)
     
@@ -82,18 +81,9 @@ extension NotesListPresenterImplementation: NotesPresenter {
     
     func note(at index: Int) -> Note { return manager.notes[index] }
     
-    func didTapAddButton() { router.presentEditNote(for: manager.newNote()) }
+    func didTapAddButton() { router.presentEditNote(for: manager.newNote(), editNotePresenterDelegate: self) }
     
-    func didSelect(row: Int) { router.presentEditNote(for: manager.notes[row]) }
-    
-    func didEndEdit(note: Note) {
-        view?.disableListEditing()
-        manager.save(note) { [weak self] in
-            guard let `self` = self else { return }
-            self.view?.enableListEditing()
-            self.view?.refreshNotesView()
-        }
-    }
+    func didSelect(row: Int) { router.presentEditNote(for: manager.notes[row], editNotePresenterDelegate: self) }
     
     func deleteButtonPressed(at index: IndexPath) {
         manager.delete(at: index.row) { [weak self] in
@@ -117,4 +107,23 @@ extension NotesListPresenterImplementation: NotesPresenter {
         
         isEditing = !isEditing
     }    
+}
+
+//MARK: - EditNotePresenterDelegate
+/***************************************************************/
+
+extension NotesListPresenterImplementation: EditNotePresenterDelegate {
+    func editNotePresenter(_ presenter: EditNotePresenter, didAdd note: Note) {
+        presenter.router.dismiss()
+        view?.disableListEditing()
+        manager.save(note) { [weak self] in
+            guard let `self` = self else { return }
+            self.view?.enableListEditing()
+            self.view?.refreshNotesView()
+        }
+    }
+    
+    func editNotePresenterCancel(presenter: EditNotePresenter) {
+        presenter.router.dismiss()
+    }
 }

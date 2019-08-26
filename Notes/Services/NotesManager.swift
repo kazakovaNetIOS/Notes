@@ -71,6 +71,10 @@ extension NotesManager {
     public func newNote() -> Note{
         return Note(title: "", content: "", importance: .ordinary, dateOfSelfDestruction: nil)
     }
+    
+    public func replace(_ note: Note) {
+        notes.replace(note)
+    }
 }
 
 //MARK: - AuthManagerDelegate
