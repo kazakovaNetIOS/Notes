@@ -14,9 +14,9 @@ protocol ColorPickerRouter {
 
 class ColorPickerRouterImpl {
     
-    private weak var colorPickerController: ColorPickerController?
+    private weak var colorPickerController: ColorPickerViewController?
     
-    init(colorPickerController: ColorPickerController) {
+    init(colorPickerController: ColorPickerViewController) {
         self.colorPickerController = colorPickerController
     }
 }

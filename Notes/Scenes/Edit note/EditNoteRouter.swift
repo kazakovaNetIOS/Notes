@@ -41,7 +41,7 @@ extension EditNoteViewRouterImpl: EditNoteViewRouter {
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToColorPicker",
-            let colorPickerController = segue.destination as? ColorPickerController {
+            let colorPickerController = segue.destination as? ColorPickerViewController {
             colorPickerController.configurator =
                 ColorPicConfiguratorImpl(color: color,
                                          colorPickerPresenterDelegate: colorPickerPresenterDelegate)

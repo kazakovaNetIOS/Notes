@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ColorPicConfigurator {
-    func configure(colorPickerController: ColorPickerController)
+    func configure(colorPickerController: ColorPickerViewController)
     init(color: UIColor, colorPickerPresenterDelegate: ColorPickerPresenterDelegate?)
 }
 
@@ -28,7 +28,7 @@ class ColorPicConfiguratorImpl {
 /***************************************************************/
 
 extension ColorPicConfiguratorImpl: ColorPicConfigurator {
-    func configure(colorPickerController: ColorPickerController) {
+    func configure(colorPickerController: ColorPickerViewController) {
         let router = ColorPickerRouterImpl(colorPickerController: colorPickerController)
         
         let presenter = ColorPickerPresenterImpl(view: colorPickerController,

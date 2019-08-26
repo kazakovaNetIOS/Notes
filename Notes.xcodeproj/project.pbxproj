@@ -12,7 +12,7 @@
 		FF06919F22FF1C3D00023838 /* GistPostResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF06919E22FF1C3D00023838 /* GistPostResponce.swift */; };
 		FF0691AB230025E600023838 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0691AA230025E600023838 /* AuthViewController.swift */; };
 		FF0691AD23002D6F00023838 /* AuthGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0691AC23002D6F00023838 /* AuthGitHub.swift */; };
-		FF0FD47822D36A43002E4D93 /* ColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */; };
+		FF0FD47822D36A43002E4D93 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47722D36A43002E4D93 /* ColorPickerViewController.swift */; };
 		FF0FD47D22D61FF3002E4D93 /* ColorPickerViewXIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FD47C22D61FF3002E4D93 /* ColorPickerViewXIB.swift */; };
 		FF0FD48222D62106002E4D93 /* ColorPickerViewXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0FD48122D62106002E4D93 /* ColorPickerViewXIB.xib */; };
 		FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D91A222C0DFE1001210DE /* AppDelegate.swift */; };
@@ -92,7 +92,7 @@
 		FF06919E22FF1C3D00023838 /* GistPostResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistPostResponce.swift; sourceTree = "<group>"; };
 		FF0691AA230025E600023838 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		FF0691AC23002D6F00023838 /* AuthGitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGitHub.swift; sourceTree = "<group>"; };
-		FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerController.swift; sourceTree = "<group>"; };
+		FF0FD47722D36A43002E4D93 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		FF0FD47C22D61FF3002E4D93 /* ColorPickerViewXIB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewXIB.swift; sourceTree = "<group>"; };
 		FF0FD48122D62106002E4D93 /* ColorPickerViewXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPickerViewXIB.xib; sourceTree = "<group>"; };
 		FF14418E22C22A5E005F5AF8 /* Free.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Free.xcconfig; sourceTree = "<group>"; };
@@ -214,11 +214,11 @@
 		FF0FD47922D49E79002E4D93 /* Color picker */ = {
 			isa = PBXGroup;
 			children = (
-				FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */,
+				FF0FD47722D36A43002E4D93 /* ColorPickerViewController.swift */,
 				FFD9E18023142066006544FB /* ColorPickerConfigurator.swift */,
 				FF4D273B2313FB6100849061 /* ColorPickerPresenter.swift */,
-				FF0FD47E22D61FFE002E4D93 /* Color picker view */,
 				FFD9E182231421E9006544FB /* ColorPickerRouter.swift */,
+				FF0FD47E22D61FFE002E4D93 /* Color picker view */,
 			);
 			path = "Color picker";
 			sourceTree = "<group>";
@@ -270,19 +270,11 @@
 		FF2D91A122C0DFE1001210DE /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				FFC4D82A230DE58000A32077 /* Services */,
-				FFC9431E230C0ED800A0EDB2 /* CoreData */,
-				FF302EEC230ABEDE00C004CF /* Github */,
-				FF6042CF23070930000E7D52 /* Network */,
-				FF0691A9230025BA00023838 /* Auth */,
+				FFD9E1852314326F006544FB /* Managers */,
 				FF55EECA22F09EBB0022A55E /* Operations */,
 				FF99660E22C0E02E004299F3 /* Model */,
 				FF0FD47A22D49EAA002E4D93 /* Story board */,
-				FFFA77A922E45E880043FD1B /* Notes list */,
-				FFFA77AA22E45E9D0043FD1B /* Edit note */,
-				FF0FD47922D49E79002E4D93 /* Color picker */,
-				FF63AE9222E4959300E00720 /* Gallery */,
-				FFA4772D22E4AE2400EF66C4 /* Image */,
+				FFD9E184231431A1006544FB /* Scenes */,
 				FF2D91A222C0DFE1001210DE /* AppDelegate.swift */,
 				FF987CB72303F01D001330EC /* Model.xcdatamodeld */,
 				FF2D91A922C0DFE2001210DE /* Assets.xcassets */,
@@ -384,12 +376,12 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
-		FFC4D82A230DE58000A32077 /* Services */ = {
+		FFC4D82A230DE58000A32077 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
 				FFC4D82B230DE58F00A32077 /* NotesManager.swift */,
 			);
-			path = Services;
+			path = Notes;
 			sourceTree = "<group>";
 		};
 		FFC9431E230C0ED800A0EDB2 /* CoreData */ = {
@@ -420,7 +412,31 @@
 			path = NotesUITests;
 			sourceTree = "<group>";
 		};
-		FFFA77A922E45E880043FD1B /* Notes list */ = {
+		FFD9E184231431A1006544FB /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				FFFA77A922E45E880043FD1B /* Notes */,
+				FFFA77AA22E45E9D0043FD1B /* Edit note */,
+				FF0FD47922D49E79002E4D93 /* Color picker */,
+				FF63AE9222E4959300E00720 /* Gallery */,
+				FFA4772D22E4AE2400EF66C4 /* Image */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		FFD9E1852314326F006544FB /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FFC4D82A230DE58000A32077 /* Notes */,
+				FFC9431E230C0ED800A0EDB2 /* CoreData */,
+				FF302EEC230ABEDE00C004CF /* Github */,
+				FF6042CF23070930000E7D52 /* Network */,
+				FF0691A9230025BA00023838 /* Auth */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		FFFA77A922E45E880043FD1B /* Notes */ = {
 			isa = PBXGroup;
 			children = (
 				FFFD22BE22E0E64900880908 /* NotesViewController.swift */,
@@ -428,7 +444,7 @@
 				FF7AD4712310189700D037D1 /* NotesViewRouter.swift */,
 				FF63AE9122E48D9100E00720 /* Note table cell */,
 			);
-			path = "Notes list";
+			path = Notes;
 			sourceTree = "<group>";
 		};
 		FFFA77AA22E45E9D0043FD1B /* Edit note */ = {
@@ -607,7 +623,7 @@
 				FF63AE9622E4973D00E00720 /* GalleryCell.swift in Sources */,
 				FF63AE9422E4963D00E00720 /* GalleryController.swift in Sources */,
 				FFD9E183231421E9006544FB /* ColorPickerRouter.swift in Sources */,
-				FF0FD47822D36A43002E4D93 /* ColorPickerController.swift in Sources */,
+				FF0FD47822D36A43002E4D93 /* ColorPickerViewController.swift in Sources */,
 				FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */,
 				FF0691AD23002D6F00023838 /* AuthGitHub.swift in Sources */,
 				FF06919F22FF1C3D00023838 /* GistPostResponce.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  PalletteViewController.swift
+//  ColorPickerViewController.swift
 //  Notes
 //
 //  Created by Natalia Kazakova on 08/07/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ColorPickerController: UIViewController {
+class ColorPickerViewController: UIViewController {
     
     @IBOutlet weak var colorPicker: ColorPickerViewXIB!
     
@@ -19,14 +19,14 @@ class ColorPickerController: UIViewController {
 //MARK: - ColorPickerView
 /***************************************************************/
 
-extension ColorPickerController: ColorPickerView {
+extension ColorPickerViewController: ColorPickerView {
     func showColor(color: UIColor) {
         colorPicker.selectedColor = color
     }
 }
 
 //MARK: - Overrides methods
-extension ColorPickerController {
+extension ColorPickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(colorPickerController: self)

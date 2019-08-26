@@ -297,7 +297,7 @@
         <!--Палитра-->
         <scene sceneID="uqF-BD-Epk">
             <objects>
-                <viewController title="Палитра" id="yfh-sS-S1Y" customClass="ColorPickerController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Палитра" id="yfh-sS-S1Y" customClass="ColorPickerViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UBC-be-6Jp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
