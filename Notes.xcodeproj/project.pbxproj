@@ -24,6 +24,7 @@
 		FF3503DC2305FB560014C2A7 /* Model23.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = FF3503DB2305FB560014C2A7 /* Model23.xcmappingmodel */; };
 		FF3503DE2305FBFF0014C2A7 /* Model13.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = FF3503DD2305FBFF0014C2A7 /* Model13.xcmappingmodel */; };
 		FF3503E02306D3FC0014C2A7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3503DF2306D3FC0014C2A7 /* AuthManager.swift */; };
+		FF4D273C2313FB6100849061 /* ColorPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4D273B2313FB6100849061 /* ColorPickerPresenter.swift */; };
 		FF55EECF22F0A08B0022A55E /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EECB22F0A08B0022A55E /* AsyncOperation.swift */; };
 		FF55EED222F0A08B0022A55E /* SaveNoteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EECE22F0A08B0022A55E /* SaveNoteOperation.swift */; };
 		FF55EEDB22F0A2730022A55E /* BaseBackendOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EED922F0A2730022A55E /* BaseBackendOperation.swift */; };
@@ -43,8 +44,7 @@
 		FF70A0C522FD617600025A96 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF70A0C422FD617600025A96 /* Gist.swift */; };
 		FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF70A0C622FD61E900025A96 /* GistFile.swift */; };
 		FF7AD4722310189700D037D1 /* NotesViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7AD4712310189700D037D1 /* NotesViewRouter.swift */; };
-		FF80DA8F22CE20DA007CC61D /* EditNoteXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF80DA8E22CE20DA007CC61D /* EditNoteXIB.xib */; };
-		FF80DA9122CE2B32007CC61D /* EditNoteXIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80DA9022CE2B32007CC61D /* EditNoteXIB.swift */; };
+		FF80DA9122CE2B32007CC61D /* CheckIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80DA9022CE2B32007CC61D /* CheckIcon.swift */; };
 		FF987CB92303F01D001330EC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF987CB72303F01D001330EC /* Model.xcdatamodeld */; };
 		FF99661222C0E047004299F3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99660F22C0E047004299F3 /* Note.swift */; };
 		FF99661322C0E047004299F3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99661022C0E047004299F3 /* Extensions.swift */; };
@@ -110,6 +110,7 @@
 		FF3503DB2305FB560014C2A7 /* Model23.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model23.xcmappingmodel; sourceTree = "<group>"; };
 		FF3503DD2305FBFF0014C2A7 /* Model13.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model13.xcmappingmodel; sourceTree = "<group>"; };
 		FF3503DF2306D3FC0014C2A7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		FF4D273B2313FB6100849061 /* ColorPickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerPresenter.swift; sourceTree = "<group>"; };
 		FF55EECB22F0A08B0022A55E /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		FF55EECE22F0A08B0022A55E /* SaveNoteOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveNoteOperation.swift; sourceTree = "<group>"; };
 		FF55EED922F0A2730022A55E /* BaseBackendOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBackendOperation.swift; sourceTree = "<group>"; };
@@ -129,8 +130,7 @@
 		FF70A0C422FD617600025A96 /* Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
 		FF70A0C622FD61E900025A96 /* GistFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistFile.swift; sourceTree = "<group>"; };
 		FF7AD4712310189700D037D1 /* NotesViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewRouter.swift; sourceTree = "<group>"; };
-		FF80DA8E22CE20DA007CC61D /* EditNoteXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditNoteXIB.xib; sourceTree = "<group>"; };
-		FF80DA9022CE2B32007CC61D /* EditNoteXIB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteXIB.swift; sourceTree = "<group>"; };
+		FF80DA9022CE2B32007CC61D /* CheckIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIcon.swift; sourceTree = "<group>"; };
 		FF987CB82303F01D001330EC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FF99660F22C0E047004299F3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		FF99661022C0E047004299F3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -211,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				FF0FD47722D36A43002E4D93 /* ColorPickerController.swift */,
+				FF4D273B2313FB6100849061 /* ColorPickerPresenter.swift */,
 				FF0FD47E22D61FFE002E4D93 /* Color picker view */,
 			);
 			path = "Color picker";
@@ -223,15 +224,6 @@
 				FF2D91A622C0DFE1001210DE /* Main.storyboard */,
 			);
 			path = "Story board";
-			sourceTree = "<group>";
-		};
-		FF0FD47B22D49EC7002E4D93 /* Edit note view */ = {
-			isa = PBXGroup;
-			children = (
-				FF80DA8E22CE20DA007CC61D /* EditNoteXIB.xib */,
-				FF80DA9022CE2B32007CC61D /* EditNoteXIB.swift */,
-			);
-			path = "Edit note view";
 			sourceTree = "<group>";
 		};
 		FF0FD47E22D61FFE002E4D93 /* Color picker view */ = {
@@ -440,7 +432,7 @@
 				FFA6F2FD2311ACC700AE6F54 /* EditNoteConfigurator.swift */,
 				FFA6F2FB2311A72E00AE6F54 /* EditNotePresenter.swift */,
 				FFA6F2FF2311B2ED00AE6F54 /* EditNoteRouter.swift */,
-				FF0FD47B22D49EC7002E4D93 /* Edit note view */,
+				FF80DA9022CE2B32007CC61D /* CheckIcon.swift */,
 			);
 			path = "Edit note";
 			sourceTree = "<group>";
@@ -551,7 +543,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF2D91AD22C0DFE2001210DE /* LaunchScreen.storyboard in Resources */,
-				FF80DA8F22CE20DA007CC61D /* EditNoteXIB.xib in Resources */,
 				FF2D91AA22C0DFE2001210DE /* Assets.xcassets in Resources */,
 				FF63AE9022E47BBF00E00720 /* NoteTableViewCell.xib in Resources */,
 				FF0FD48222D62106002E4D93 /* ColorPickerView.xib in Resources */,
@@ -615,6 +606,7 @@
 				FF06919F22FF1C3D00023838 /* GistPostResponce.swift in Sources */,
 				FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */,
 				FF0691AB230025E600023838 /* AuthViewController.swift in Sources */,
+				FF4D273C2313FB6100849061 /* ColorPickerPresenter.swift in Sources */,
 				FFC4D82C230DE58F00A32077 /* NotesManager.swift in Sources */,
 				FF2D91A522C0DFE1001210DE /* EditNoteViewController.swift in Sources */,
 				FF63AE8F22E47BBF00E00720 /* NoteTableViewCell.swift in Sources */,
@@ -638,7 +630,7 @@
 				FF7AD4722310189700D037D1 /* NotesViewRouter.swift in Sources */,
 				FF3503DC2305FB560014C2A7 /* Model23.xcmappingmodel in Sources */,
 				FFA6F3002311B2ED00AE6F54 /* EditNoteRouter.swift in Sources */,
-				FF80DA9122CE2B32007CC61D /* EditNoteXIB.swift in Sources */,
+				FF80DA9122CE2B32007CC61D /* CheckIcon.swift in Sources */,
 				FF55EEE122F0A27E0022A55E /* BaseDBOperation.swift in Sources */,
 				FF3503E02306D3FC0014C2A7 /* AuthManager.swift in Sources */,
 				FF70A0C522FD617600025A96 /* Gist.swift in Sources */,

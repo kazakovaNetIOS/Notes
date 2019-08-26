@@ -6,10 +6,12 @@
 //  Copyright © 2019 Natalia Kazakova. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol EditNoteViewRouter {
     func dismiss()
+    func presentColorPicker(for: UIColor, colorPickerPresenterDelegate: ColorPickerPresenterDelegate)
+    func prepare(for segue: UIStoryboardSegue, sender: Any?)
 }
 
 class EditNoteViewRouterImpl {
@@ -25,7 +27,19 @@ class EditNoteViewRouterImpl {
 /***************************************************************/
 
 extension EditNoteViewRouterImpl: EditNoteViewRouter {
+    func presentColorPicker(for: UIColor, colorPickerPresenterDelegate: ColorPickerPresenterDelegate) {
+        editNoteViewController?.performSegue(withIdentifier: "goToColorPicker", sender: nil)
+    }
+    
     func dismiss() {
         editNoteViewController?.navigationController?.popViewController(animated: true)
+    }
+    
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToEditNote",
+            let colorPickerController = segue.destination as? ColorPickerController {
+//            colorPickerController.delegate = self
+//            colorPickerController.selectedColor = colorPickerTile.backgroundColor ?? UIColor.white
+        }
     }
 }

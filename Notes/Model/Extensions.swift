@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIColor {
-    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+    var rgba: (red: Float, green: Float, blue: Float, alpha: Float) {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
@@ -17,7 +17,7 @@ extension UIColor {
         
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         
-        return (red, green, blue, alpha)
+        return (Float(red), Float(green), Float(blue), Float(alpha))
     }
     
     func toHexString() -> String {

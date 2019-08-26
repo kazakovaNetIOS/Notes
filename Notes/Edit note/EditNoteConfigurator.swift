@@ -31,9 +31,8 @@ extension EditNoteConfiguratorImpl: EditNoteConfigurator {
     func configure(editNoteViewController: EditNoteViewController) {
         let router = EditNoteViewRouterImpl(editNoteViewController: editNoteViewController)
         
-        let presenter = EditNotePresenterImpl(view: editNoteViewController, router: router, delegate: editNotePresenterDelegate)
+        let presenter = EditNotePresenterImpl(view: editNoteViewController, router: router, delegate: editNotePresenterDelegate, note: note)
         
         editNoteViewController.presenter = presenter
-        editNoteViewController.note = note
     }
 }
