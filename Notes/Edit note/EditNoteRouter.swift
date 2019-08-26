@@ -10,13 +10,15 @@ import UIKit
 
 protocol EditNoteViewRouter {
     func dismiss()
-    func presentColorPicker(for: UIColor, colorPickerPresenterDelegate: ColorPickerPresenterDelegate)
+    func presentColorPicker(for color: UIColor, colorPickerPresenterDelegate: ColorPickerPresenterDelegate)
     func prepare(for segue: UIStoryboardSegue, sender: Any?)
 }
 
 class EditNoteViewRouterImpl {
     
     private weak var editNoteViewController: EditNoteViewController?
+    private weak var colorPickerPresenterDelegate: ColorPickerPresenterDelegate?
+    private var color: UIColor!
     
     init(editNoteViewController: EditNoteViewController) {
         self.editNoteViewController = editNoteViewController
@@ -27,7 +29,9 @@ class EditNoteViewRouterImpl {
 /***************************************************************/
 
 extension EditNoteViewRouterImpl: EditNoteViewRouter {
-    func presentColorPicker(for: UIColor, colorPickerPresenterDelegate: ColorPickerPresenterDelegate) {
+    func presentColorPicker(for color: UIColor, colorPickerPresenterDelegate: ColorPickerPresenterDelegate) {
+        self.colorPickerPresenterDelegate = colorPickerPresenterDelegate
+        self.color = color
         editNoteViewController?.performSegue(withIdentifier: "goToColorPicker", sender: nil)
     }
     
@@ -36,10 +40,11 @@ extension EditNoteViewRouterImpl: EditNoteViewRouter {
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToEditNote",
+        if segue.identifier == "goToColorPicker",
             let colorPickerController = segue.destination as? ColorPickerController {
-//            colorPickerController.delegate = self
-//            colorPickerController.selectedColor = colorPickerTile.backgroundColor ?? UIColor.white
+            colorPickerController.configurator =
+                ColorPicConfiguratorImpl(color: color,
+                                         colorPickerPresenterDelegate: colorPickerPresenterDelegate)
         }
     }
 }

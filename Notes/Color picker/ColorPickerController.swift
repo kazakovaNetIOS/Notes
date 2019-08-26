@@ -10,22 +10,29 @@ import UIKit
 
 class ColorPickerController: UIViewController {
     
-    @IBOutlet weak var colorPicker: ColorPickerView!
+    @IBOutlet weak var colorPicker: ColorPickerViewXIB!
     
-    var delegate: ColorPickerControllerDelegate?
-    var selectedColor: UIColor = UIColor.white
+    var configurator: ColorPicConfigurator!
+    var presenter: ColorPickerPresenter!
 }
 
-//MARK: - Lifecycle methods
-extension ColorPickerController {
-    override func viewDidLoad() {
-        colorPicker.delegate = self
-        colorPicker.selectedColor = selectedColor
+//MARK: - ColorPickerView
+/***************************************************************/
+
+extension ColorPickerController: ColorPickerView {
+    func showColor(color: UIColor) {
+        colorPicker.selectedColor = color
     }
 }
 
 //MARK: - Overrides methods
 extension ColorPickerController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configurator.configure(colorPickerController: self)
+        presenter.viewDidLoad()
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
@@ -33,18 +40,4 @@ extension ColorPickerController {
             self.colorPicker.rotateGradient()
         })
     }
-}
-
-// MARK: ColorPickerDelegate methods
-extension ColorPickerController: ColorPickerDelegate {
-    func colorPicker(_ colorPicker: ColorPickerView, willSelectColor color: UIColor) {
-        delegate?.colorPickerController(self, willSelect: color)
-        
-        navigationController?.popViewController(animated: true)
-    }
-}
-
-//MARK: ColorPickerControllerDelegate protocol
-protocol ColorPickerControllerDelegate {
-    func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor)
 }

@@ -122,8 +122,4 @@ extension NotesListPresenterImplementation: EditNotePresenterDelegate {
             self.view?.refreshNotesView()
         }
     }
-    
-    func editNotePresenterCancel(presenter: EditNotePresenter) {
-        presenter.router.dismiss()
-    }
 }

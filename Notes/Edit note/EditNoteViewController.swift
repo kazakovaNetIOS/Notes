@@ -32,13 +32,22 @@ class EditNoteViewController: UIViewController {
     
     var selectedColor: UIColor = .white
     var isColorChanged: Bool = false
-    
+}
+
+//MARK: - Override methods
+/***************************************************************/
+
+extension EditNoteViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configurator.configure(editNoteViewController: self)
         setupViews()
         presenter.viewDidLoad()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        presenter.router.prepare(for: segue, sender: sender)
     }
 }
 
@@ -69,18 +78,18 @@ extension EditNoteViewController: EditNoteView {
         }, completion: nil)
     }
     
-    func showSelectedColorFromTile(tag: Int) {
+    func showSelectedColorFromTile(with tag: Int) {
         showCheckIcon(tag: tag)
+    }
+    
+    func showSelectedColorFromPicker() {
+        colorPickerTile.image = nil
+        colorPickerTile.backgroundColor = presenter.color
+        showCheckIcon(tag: 4)
     }
     
     func resetColorTilesState() {
         firstColorTile.backgroundColor = .white
-    }
-    
-    func showSelectedColorFromPicker(color: UIColor) {
-        colorPickerTile.image = nil
-        colorPickerTile.backgroundColor = color
-        showCheckIcon(tag: 4)
     }
 }
 
@@ -150,7 +159,12 @@ extension EditNoteViewController {
             colorPickerCheck.isHidden = false
         }
     }
-    
+}
+
+//MARK: - Selector methods
+/***************************************************************/
+
+extension EditNoteViewController {
     @objc private func keyboardWillShowOrHide(_ notification: Notification) {
         let keyBoard = notification.userInfo
         
@@ -162,29 +176,15 @@ extension EditNoteViewController {
             })
         }
     }
-}
-
-//MARK: - Selector methods
-/***************************************************************/
-
-extension EditNoteViewController {
+    
     @objc func saveButtonTapped(_ sender: UIButton) {
         var date: Date? = nil
         if destroyDateSwitch.isOn {
             date = destroyDatePicker.date
         }
         presenter.saveButtonPressed(parameters: EditNoteParameters(title: titleTextField.text,
-                                                             content: textTextView.text,
-                                                             dateOfSelfDestruction: date))
-    }
-}
-
-// MARK: - ColorPickerControllerDelegate
-/***************************************************************/
-
-extension EditNoteViewController: ColorPickerControllerDelegate {
-    func colorPickerController(_ controller: ColorPickerController, willSelect color: UIColor) {
-        presenter.colorDidSelectFromPicker(with: color)
+                                                                   content: textTextView.text,
+                                                                   dateOfSelfDestruction: date))
     }
 }
 

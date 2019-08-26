@@ -1,5 +1,5 @@
 //
-//  ColorPickerView.swift
+//  ColorPickerViewXIB.swift
 //  Notes
 //
 //  Created by Natalia Kazakova on 10/07/2019.
@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class ColorPickerView: UIView {
+class ColorPickerViewXIB: UIView {
     
     @IBOutlet weak var selectedColorView: UIView!
     @IBOutlet weak var brightnessSlider: UISlider!
@@ -68,7 +68,7 @@ class ColorPickerView: UIView {
 }
 
 //MARK: - IBAction
-extension ColorPickerView {
+extension ColorPickerViewXIB {
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         delegate?.colorPicker(self, willSelectColor: selectedColor)
     }
@@ -79,7 +79,7 @@ extension ColorPickerView {
 }
 
 //MARK: - Setup views methods
-extension ColorPickerView {
+extension ColorPickerViewXIB {
     private func setupViews() {
         let xibView = loadViewFromXib()
         
@@ -98,14 +98,14 @@ extension ColorPickerView {
     
     private func loadViewFromXib() -> UIView {
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "ColorPickerView", bundle: bundle)
+        let nib = UINib(nibName: "ColorPickerViewXIB", bundle: bundle)
         
         return nib.instantiate(withOwner: self, options: nil).first! as! UIView
     }
 }
 
 //MARK: - Overrides methods
-extension ColorPickerView {
+extension ColorPickerViewXIB {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
     }
@@ -124,7 +124,7 @@ extension ColorPickerView {
 }
 
 protocol ColorPickerDelegate {
-    func colorPicker(_ colorPicker: ColorPickerView, willSelectColor color: UIColor)
+    func colorPicker(_ colorPicker: ColorPickerViewXIB, willSelectColor color: UIColor)
 }
 
 //MARK: - PaletteView class

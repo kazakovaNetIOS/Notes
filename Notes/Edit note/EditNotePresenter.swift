@@ -15,8 +15,8 @@ struct EditNoteParameters {
 }
 
 protocol EditNoteView: class {
-    func showSelectedColorFromPicker(color: UIColor)
-    func showSelectedColorFromTile(tag: Int)
+    func showSelectedColorFromPicker()
+    func showSelectedColorFromTile(with tag: Int)
     func resetColorTilesState()
     func showDestroyDatePicker(with date: Date)
     func hideDestroyDatePicker()
@@ -24,15 +24,14 @@ protocol EditNoteView: class {
 
 protocol EditNotePresenterDelegate: class {
     func editNotePresenter(_ presenter: EditNotePresenter, didAdd note: Note)
-    func editNotePresenterCancel(presenter: EditNotePresenter)
 }
 
 protocol EditNotePresenter {
     var router: EditNoteViewRouter { get }
     var titleForSaveButton: String { get }
     var note: Note { get }
+    var color: UIColor { get }
     func saveButtonPressed(parameters: EditNoteParameters)
-    func colorDidSelectFromPicker(with color: UIColor)
     func colorDidSelectFromTile(with color: UIColor, tag: Int)
     func colorPickerLongPressed()
     func useDestroyDateSwitched(state: Bool)
@@ -48,8 +47,7 @@ class EditNotePresenterImpl {
     public var titleForSaveButton: String {
         return "Сохранить"
     }
-    private var isColorChanged: Bool = false
-    private var selectedColor: UIColor
+    private(set) var color: UIColor
     
     init(
         view: EditNoteView,
@@ -60,7 +58,7 @@ class EditNotePresenterImpl {
         self.router = router
         self.delegate = delegate
         self.note = note
-        self.selectedColor = note.color
+        self.color = note.color
     }
 }
 
@@ -84,27 +82,19 @@ extension EditNotePresenterImpl: EditNotePresenter {
     }
     
     func colorPickerLongPressed() {
-        router.presentColorPicker(for: selectedColor, colorPickerPresenterDelegate: self) 
+        router.presentColorPicker(for: self.color, colorPickerPresenterDelegate: self)
     }
     
     func colorDidSelectFromTile(with color: UIColor, tag: Int) {
-        selectedColor = color
-        isColorChanged = true
-        view?.showSelectedColorFromTile(tag: tag)
-    }
-    
-    func colorDidSelectFromPicker(with color: UIColor) {
-        view?.showSelectedColorFromPicker(color: color)
-        
-        selectedColor = color
-        isColorChanged = true
+        self.color = color
+        view?.showSelectedColorFromTile(with: tag)
     }
     
     func saveButtonPressed(parameters: EditNoteParameters) {
         delegate?.editNotePresenter(self, didAdd: Note(uid: note.uid,
                                                        title: parameters.title ?? "",
                                                        content: parameters.content ?? "",
-                                                       color: selectedColor,
+                                                       color: self.color,
                                                        importance: note.importance,
                                                        dateOfSelfDestruction: parameters.dateOfSelfDestruction))
     }
@@ -114,5 +104,10 @@ extension EditNotePresenterImpl: EditNotePresenter {
 /***************************************************************/
 
 extension EditNotePresenterImpl: ColorPickerPresenterDelegate {
-    
+    func colorPickerPresenter(_ presenter: ColorPickerPresenter, didSelect color: UIColor) {
+        presenter.router.dismiss()
+        self.color = color
+        view?.resetColorTilesState()
+        view?.showSelectedColorFromPicker()
+    }
 }
