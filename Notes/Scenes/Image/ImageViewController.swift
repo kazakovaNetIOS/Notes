@@ -1,5 +1,5 @@
 //
-//  ImageController.swift
+//  ImageViewController.swift
 //  Notes
 //
 //  Created by Natalia Kazakova on 21/07/2019.
@@ -8,26 +8,25 @@
 
 import UIKit
 
-class ImageController: UIViewController {
+class ImageViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
     var presenter: ImagePresenter!
     var configurator: ImageConfigurator!
     
-    var imageViews = [UIImageView]()
-    
+    private var imageViews = [UIImageView]()
     private var contentOffset: CGFloat = 0.0
 }
 
 //MARK: - ImageView
 /***************************************************************/
 
-extension ImageController: ImageView {
+extension ImageViewController: ImageView {
     
 }
 
-extension ImageController {
+extension ImageViewController {
     func setupViews() {
         self.tabBarController?.tabBar.isHidden = true
         
@@ -43,7 +42,9 @@ extension ImageController {
 }
 
 //MARK: - Override methods
-extension ImageController {
+/***************************************************************/
+
+extension ImageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(imageController: self)

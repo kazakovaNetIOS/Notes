@@ -8,7 +8,6 @@
 
 import UIKit
 import CocoaLumberjack
-import CoreData
 
 class NotesViewController: UIViewController {
     
@@ -16,11 +15,10 @@ class NotesViewController: UIViewController {
     
     public var presenter: NotesPresenter? {
         didSet {
-            presenter?.viewDidLoad()
+            presenter?.presenterDidSet()
         }
     }
     
-    private var noteForEditing: Note?
     private let reuseIdentifier = "note cell"
 }
 

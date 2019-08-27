@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let vc = nc.topViewController as? NotesViewController {
                 let manager = NotesManager(context: container.newBackgroundContext())
                 let router = NotesViewRouterImpl(notesViewController: vc)
-                let presenter = NotesListPresenterImplementation(manager: manager,
+                let presenter = NotesPresenterImpl(manager: manager,
                                                                  view: vc,
                                                                  router: router)
                 vc.presenter = presenter

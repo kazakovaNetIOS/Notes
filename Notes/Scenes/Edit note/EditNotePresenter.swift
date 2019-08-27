@@ -31,6 +31,9 @@ protocol EditNotePresenter {
     var titleForSaveButton: String { get }
     var note: Note { get }
     var color: UIColor { get }
+    
+    init(view: EditNoteView, router: EditNoteViewRouter, delegate: EditNotePresenterDelegate?, note: Note)
+    
     func saveButtonPressed(parameters: EditNoteParameters)
     func colorDidSelectFromTile(with color: UIColor, tag: Int)
     func colorPickerLongPressed()
@@ -49,7 +52,7 @@ class EditNotePresenterImpl {
     }
     private(set) var color: UIColor
     
-    init(
+    required init(
         view: EditNoteView,
          router: EditNoteViewRouter,
          delegate: EditNotePresenterDelegate?,

@@ -10,7 +10,7 @@ import Foundation
 
 protocol ImageConfigurator {
     init(imageIndex: Int)
-    func configure(imageController: ImageController)
+    func configure(imageController: ImageViewController)
 }
 
 class ImageConfiguratorImpl {
@@ -26,7 +26,7 @@ class ImageConfiguratorImpl {
 /***************************************************************/
 
 extension ImageConfiguratorImpl: ImageConfigurator {
-    func configure(imageController: ImageController) {
+    func configure(imageController: ImageViewController) {
         let presenter = ImagePresenterImpl(view: imageController, imageIndex: imageIndex, manager: GalleryManager())
         
         imageController.presenter = presenter

@@ -16,16 +16,14 @@ class GalleryConfiguratorImpl {
     
 }
 
-//MARK: - EditNoteConfigurator
+//MARK: - GalleryConfigurator
 /***************************************************************/
 
 extension GalleryConfiguratorImpl: GalleryConfigurator {
     func configure(galleryViewController: GalleryViewController) {
         let router = GalleryRouterImpl(galleryViewController: galleryViewController)
-        
         let presenter = GalleryPresenterImpl(manager: GalleryManager(), view: galleryViewController,
                                              router: router)
-        
         galleryViewController.presenter = presenter
     }
 }

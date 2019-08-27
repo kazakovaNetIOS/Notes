@@ -8,19 +8,20 @@
 
 import Foundation
 
-protocol ImageView {
+protocol ImageView: class {
     
 }
 
 protocol ImagePresenter {
     var imageNames: [String] { get }
     var imageIndex: Int { get }
+    
     init(view: ImageView, imageIndex: Int, manager: GalleryManager)
 }
 
 class ImagePresenterImpl {
     
-    private var view: ImageView
+    private weak var view: ImageView?
     private var manager: GalleryManager
     var imageIndex: Int
     var imageNames: [String] {

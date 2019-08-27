@@ -18,6 +18,9 @@ protocol ColorPickerPresenterDelegate: class {
 
 protocol ColorPickerPresenter {
     var router: ColorPickerRouter { get }
+    
+    init(view: ColorPickerView, router: ColorPickerRouter, delegate: ColorPickerPresenterDelegate?, color: UIColor)
+    
     func viewDidLoad()
 }
 
@@ -28,7 +31,7 @@ class ColorPickerPresenterImpl {
     private weak var delegate: ColorPickerPresenterDelegate?
     private var color: UIColor
     
-    init(
+    required init(
         view: ColorPickerView,
         router: ColorPickerRouter,
         delegate: ColorPickerPresenterDelegate?,

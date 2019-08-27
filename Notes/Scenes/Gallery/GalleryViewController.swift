@@ -14,6 +14,7 @@ private let reuseIdentifier = "gallery cell"
 class GalleryViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var presenter: GalleryPresenter!
 }
 
@@ -26,7 +27,9 @@ extension GalleryViewController: GalleryView {
     }
 }
 
-//MARK: - Lifecycle methods
+//MARK: - Override methods
+/***************************************************************/
+
 extension GalleryViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,10 @@ extension GalleryViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        presenter.router.prepare(for: segue, sender: sender)
+    }
 }
 
 //MARK: - Setup views
@@ -45,23 +52,29 @@ extension GalleryViewController {
 
 extension GalleryViewController {
     private func setupViews() {        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(addImageButtonTapped))
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(image: UIImage(named: "plus"),
+                            style: .plain,
+                            target: self,
+                            action: #selector(addImageButtonTapped))
     }
 }
 
 //MARK: - Selector methods
+/***************************************************************/
+
 extension GalleryViewController {
     @objc func addImageButtonTapped(_ sender: UIButton) {
         presenter.addImageButtonTapped()
     }
 }
 
-//MARK: - Image picker delegate methods
-extension GalleryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//MARK: - UIImagePickerControllerDelegate
+/***************************************************************/
+
+extension GalleryViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImageURL = info[UIImagePickerController.InfoKey.imageURL] as? NSURL,
             let path = pickedImageURL.path {
             presenter.didFinishPickingMediaWithInfo(path: path)            
@@ -69,9 +82,17 @@ extension GalleryViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
 }
 
-//MARK: - Collection data source methods
+//MARK: - UINavigationControllerDelegate
+/***************************************************************/
+
+extension GalleryViewController: UINavigationControllerDelegate {
+    
+}
+
+//MARK: - UICollectionViewDataSource
+/***************************************************************/
+
 extension GalleryViewController: UICollectionViewDataSource{
-    // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.imageCount
     }
@@ -84,16 +105,11 @@ extension GalleryViewController: UICollectionViewDataSource{
     }
 }
 
-//MARK: - Collection view delegate methods
+//MARK: - UICollectionViewDelegate
+/***************************************************************/
+
 extension GalleryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didSelectItemAt(row: indexPath.row)
-    }
-}
-
-//MARK: - Override methods
-extension GalleryViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        presenter.router.prepare(for: segue, sender: sender)
     }
 }

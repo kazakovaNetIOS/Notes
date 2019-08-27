@@ -29,9 +29,6 @@ class EditNoteViewController: UIViewController {
     
     var configurator: EditNoteConfigurator!
     var presenter: EditNotePresenter!
-    
-    var selectedColor: UIColor = .white
-    var isColorChanged: Bool = false
 }
 
 //MARK: - Override methods

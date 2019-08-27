@@ -48,7 +48,7 @@ extension GalleryRouterImpl: GalleryRouter {
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToImage",
-            let imageController = segue.destination as? ImageController {
+            let imageController = segue.destination as? ImageViewController {
             imageController.configurator = ImageConfiguratorImpl(imageIndex: imageIndex)
         }
     }

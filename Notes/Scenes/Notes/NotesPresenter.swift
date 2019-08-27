@@ -31,14 +31,14 @@ protocol NotesPresenter: class {
     func didTapEditButton()
     func didTapAddButton()
     func didSelect(row: Int)
-    func viewDidLoad()
+    func presenterDidSet()
     func configure(cell: NoteCellView, forRow row: Int)
     func deleteButtonPressed(at index: IndexPath)
     
     init(manager: NotesManager, view: NotesView, router: NotesViewRouter)
 }
 
-class NotesListPresenterImplementation {
+class NotesPresenterImpl {
     
     private let manager: NotesManager
     private weak var view: NotesView?
@@ -59,7 +59,7 @@ class NotesListPresenterImplementation {
 //MARK: - NotesManagerDelegate
 /***************************************************************/
 
-extension NotesListPresenterImplementation: NotesManagerDelegate {
+extension NotesPresenterImpl: NotesManagerDelegate {
     func notesManagerDidLoadNotes(_ manager: NotesManager) {
         self.view?.refreshNotesView()
     }
@@ -72,7 +72,7 @@ extension NotesListPresenterImplementation: NotesManagerDelegate {
 //MARK: - NotesPresenter
 /***************************************************************/
 
-extension NotesListPresenterImplementation: NotesPresenter {
+extension NotesPresenterImpl: NotesPresenter {
     var titleForEditButton: String { return "Edit" }
     var titleForDoneButton: String { return "Done" }
     var numberOfNotes: Int { return manager.notes.count }
@@ -92,7 +92,7 @@ extension NotesListPresenterImplementation: NotesPresenter {
         }
     }
     
-    func viewDidLoad() {
+    func presenterDidSet() {
         guard first else { return }
         manager.load()
         first = false
@@ -112,7 +112,7 @@ extension NotesListPresenterImplementation: NotesPresenter {
 //MARK: - EditNotePresenterDelegate
 /***************************************************************/
 
-extension NotesListPresenterImplementation: EditNotePresenterDelegate {
+extension NotesPresenterImpl: EditNotePresenterDelegate {
     func editNotePresenter(_ presenter: EditNotePresenter, didAdd note: Note) {
         presenter.router.dismiss()
         view?.disableListEditing()

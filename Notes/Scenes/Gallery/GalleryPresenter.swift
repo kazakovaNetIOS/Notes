@@ -19,7 +19,9 @@ protocol GalleryCellView {
 protocol GalleryPresenter {
     var imageCount: Int { get }
     var router: GalleryRouter { get }
+    
     init(manager: GalleryManager, view: GalleryView, router: GalleryRouter)
+    
     func configure(cell: GalleryCell, forRow row: Int)
     func didFinishPickingMediaWithInfo(path: String)
     func didSelectItemAt(row: Int)
