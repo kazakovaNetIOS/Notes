@@ -21,3 +21,16 @@ class GalleryCell: UICollectionViewCell {
         imageContainer.layer.cornerRadius = 5
     }
 }
+
+//MARK: - GalleryCellView
+/***************************************************************/
+
+extension GalleryCell: GalleryCellView {
+    func display(image: String) {
+        if let imageFromAsset = UIImage(named: image) {
+            imageView.image = imageFromAsset
+        } else if let imageFromFile = UIImage(contentsOfFile: image) {
+            imageView.image = imageFromFile
+        }
+    }
+}

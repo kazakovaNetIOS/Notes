@@ -346,7 +346,7 @@
         <!--Галерея-->
         <scene sceneID="fJf-1f-FUi">
             <objects>
-                <viewController title="Галерея" id="UkZ-S4-XXr" customClass="GalleryController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Галерея" id="UkZ-S4-XXr" customClass="GalleryViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sxx-LN-UOU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

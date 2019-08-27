@@ -39,7 +39,7 @@
 		FF6042D12307094A000E7D52 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6042D02307094A000E7D52 /* NetworkManager.swift */; };
 		FF63AE8F22E47BBF00E00720 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF63AE8D22E47BBF00E00720 /* NoteTableViewCell.swift */; };
 		FF63AE9022E47BBF00E00720 /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF63AE8E22E47BBF00E00720 /* NoteTableViewCell.xib */; };
-		FF63AE9422E4963D00E00720 /* GalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF63AE9322E4963D00E00720 /* GalleryController.swift */; };
+		FF63AE9422E4963D00E00720 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF63AE9322E4963D00E00720 /* GalleryViewController.swift */; };
 		FF63AE9622E4973D00E00720 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF63AE9522E4973D00E00720 /* GalleryCell.swift */; };
 		FF70A0C522FD617600025A96 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF70A0C422FD617600025A96 /* Gist.swift */; };
 		FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF70A0C622FD61E900025A96 /* GistFile.swift */; };
@@ -61,6 +61,10 @@
 		FFCC057022C78BBF003E9191 /* NoteExtensionsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056F22C78BBF003E9191 /* NoteExtensionsTestCase.swift */; };
 		FFD9E18123142066006544FB /* ColorPickerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18023142066006544FB /* ColorPickerConfigurator.swift */; };
 		FFD9E183231421E9006544FB /* ColorPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E182231421E9006544FB /* ColorPickerRouter.swift */; };
+		FFD9E18723143461006544FB /* GalleryConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18623143461006544FB /* GalleryConfigurator.swift */; };
+		FFD9E18923143558006544FB /* GalleryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18823143558006544FB /* GalleryPresenter.swift */; };
+		FFD9E18B231435EC006544FB /* GalleryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18A231435EC006544FB /* GalleryRouter.swift */; };
+		FFD9E18E23152D06006544FB /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18D23152D06006544FB /* GalleryManager.swift */; };
 		FFDEC0B1230ABF330036E503 /* GithubManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEC0B0230ABF330036E503 /* GithubManager.swift */; };
 		FFFD22BF22E0E64900880908 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD22BE22E0E64900880908 /* NotesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -127,7 +131,7 @@
 		FF6042D02307094A000E7D52 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FF63AE8D22E47BBF00E00720 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		FF63AE8E22E47BBF00E00720 /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
-		FF63AE9322E4963D00E00720 /* GalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryController.swift; sourceTree = "<group>"; };
+		FF63AE9322E4963D00E00720 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		FF63AE9522E4973D00E00720 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		FF70A0C422FD617600025A96 /* Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
 		FF70A0C622FD61E900025A96 /* GistFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistFile.swift; sourceTree = "<group>"; };
@@ -153,6 +157,10 @@
 		FFCC056F22C78BBF003E9191 /* NoteExtensionsTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteExtensionsTestCase.swift; sourceTree = "<group>"; };
 		FFD9E18023142066006544FB /* ColorPickerConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerConfigurator.swift; sourceTree = "<group>"; };
 		FFD9E182231421E9006544FB /* ColorPickerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerRouter.swift; sourceTree = "<group>"; };
+		FFD9E18623143461006544FB /* GalleryConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryConfigurator.swift; sourceTree = "<group>"; };
+		FFD9E18823143558006544FB /* GalleryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPresenter.swift; sourceTree = "<group>"; };
+		FFD9E18A231435EC006544FB /* GalleryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryRouter.swift; sourceTree = "<group>"; };
+		FFD9E18D23152D06006544FB /* GalleryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
 		FFDEC0B0230ABF330036E503 /* GithubManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubManager.swift; sourceTree = "<group>"; };
 		FFFD22BE22E0E64900880908 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -345,8 +353,11 @@
 		FF63AE9222E4959300E00720 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				FF63AE9322E4963D00E00720 /* GalleryViewController.swift */,
+				FFD9E18623143461006544FB /* GalleryConfigurator.swift */,
+				FFD9E18823143558006544FB /* GalleryPresenter.swift */,
+				FFD9E18A231435EC006544FB /* GalleryRouter.swift */,
 				FF63AE9522E4973D00E00720 /* GalleryCell.swift */,
-				FF63AE9322E4963D00E00720 /* GalleryController.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -427,6 +438,7 @@
 		FFD9E1852314326F006544FB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				FFD9E18C23152CEE006544FB /* Gallery */,
 				FFC4D82A230DE58000A32077 /* Notes */,
 				FFC9431E230C0ED800A0EDB2 /* CoreData */,
 				FF302EEC230ABEDE00C004CF /* Github */,
@@ -434,6 +446,14 @@
 				FF0691A9230025BA00023838 /* Auth */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		FFD9E18C23152CEE006544FB /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				FFD9E18D23152D06006544FB /* GalleryManager.swift */,
+			);
+			path = Gallery;
 			sourceTree = "<group>";
 		};
 		FFFA77A922E45E880043FD1B /* Notes */ = {
@@ -621,13 +641,14 @@
 				FFA6F2FE2311ACC700AE6F54 /* EditNoteConfigurator.swift in Sources */,
 				FF6042D12307094A000E7D52 /* NetworkManager.swift in Sources */,
 				FF63AE9622E4973D00E00720 /* GalleryCell.swift in Sources */,
-				FF63AE9422E4963D00E00720 /* GalleryController.swift in Sources */,
+				FF63AE9422E4963D00E00720 /* GalleryViewController.swift in Sources */,
 				FFD9E183231421E9006544FB /* ColorPickerRouter.swift in Sources */,
 				FF0FD47822D36A43002E4D93 /* ColorPickerViewController.swift in Sources */,
 				FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */,
 				FF0691AD23002D6F00023838 /* AuthGitHub.swift in Sources */,
 				FF06919F22FF1C3D00023838 /* GistPostResponce.swift in Sources */,
 				FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */,
+				FFD9E18723143461006544FB /* GalleryConfigurator.swift in Sources */,
 				FF0691AB230025E600023838 /* AuthViewController.swift in Sources */,
 				FF4D273C2313FB6100849061 /* ColorPickerPresenter.swift in Sources */,
 				FFC4D82C230DE58F00A32077 /* NotesManager.swift in Sources */,
@@ -642,6 +663,7 @@
 				FFA4772C22E4AE1A00EF66C4 /* ImageController.swift in Sources */,
 				FF55EEEC22F0FBB90022A55E /* RemoveNoteOperation.swift in Sources */,
 				FF55EEEA22F0CC480022A55E /* LoadNotesOperation.swift in Sources */,
+				FFD9E18923143558006544FB /* GalleryPresenter.swift in Sources */,
 				FF55EEE722F0CB210022A55E /* RemoveNoteDBOperation.swift in Sources */,
 				FF99661322C0E047004299F3 /* Extensions.swift in Sources */,
 				FF55EEDB22F0A2730022A55E /* BaseBackendOperation.swift in Sources */,
@@ -650,11 +672,13 @@
 				FF987CB92303F01D001330EC /* Model.xcdatamodeld in Sources */,
 				FF55EEE022F0A27E0022A55E /* SaveNoteDBOperation.swift in Sources */,
 				FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */,
+				FFD9E18E23152D06006544FB /* GalleryManager.swift in Sources */,
 				FFC94320230C0EEC00A0EDB2 /* CoreDataManager.swift in Sources */,
 				FF7AD4722310189700D037D1 /* NotesViewRouter.swift in Sources */,
 				FF3503DC2305FB560014C2A7 /* Model23.xcmappingmodel in Sources */,
 				FFA6F3002311B2ED00AE6F54 /* EditNoteRouter.swift in Sources */,
 				FF80DA9122CE2B32007CC61D /* CheckIcon.swift in Sources */,
+				FFD9E18B231435EC006544FB /* GalleryRouter.swift in Sources */,
 				FF55EEE122F0A27E0022A55E /* BaseDBOperation.swift in Sources */,
 				FF3503E02306D3FC0014C2A7 /* AuthManager.swift in Sources */,
 				FF70A0C522FD617600025A96 /* Gist.swift in Sources */,
