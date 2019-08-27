@@ -12,20 +12,26 @@ class ImageController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var imageNames: [String]!
+    var presenter: ImagePresenter!
+    var configurator: ImageConfigurator!
+    
     var imageViews = [UIImageView]()
-    var selectedImageIndex: Int!
+    
     private var contentOffset: CGFloat = 0.0
 }
 
-//MARK: - Lifecycle methods
+//MARK: - ImageView
+/***************************************************************/
+
+extension ImageController: ImageView {
+    
+}
+
 extension ImageController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func setupViews() {
         self.tabBarController?.tabBar.isHidden = true
         
-        for name in imageNames {
+        for name in presenter.imageNames {
             let image = UIImage(named: name)
             let imageView = UIImageView(image: image)
             
@@ -38,6 +44,13 @@ extension ImageController {
 
 //MARK: - Override methods
 extension ImageController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configurator.configure(imageController: self)
+        
+        setupViews()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -45,7 +58,7 @@ extension ImageController {
             imageView.frame.size = scrollView.frame.size
             imageView.frame.origin.x = scrollView.frame.width * CGFloat(index)
             imageView.frame.origin.y = 0
-            if index < selectedImageIndex {
+            if index < presenter.imageIndex {
                 contentOffset += imageView.frame.width
             }
         }

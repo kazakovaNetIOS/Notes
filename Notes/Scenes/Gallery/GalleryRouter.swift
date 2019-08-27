@@ -9,7 +9,7 @@
 import UIKit
 
 protocol GalleryRouter {
-    func presentImage(for image: String)
+    func presentImage(for imageIndex: Int)
     func presentImagePicker()
     func dismissImagePicker()
     func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -18,7 +18,7 @@ protocol GalleryRouter {
 class GalleryRouterImpl {
     
     private weak var galleryViewController: GalleryViewController?
-    private var image: String!
+    private var imageIndex: Int!
     
     init(galleryViewController: GalleryViewController?) {
         self.galleryViewController = galleryViewController
@@ -41,16 +41,15 @@ extension GalleryRouterImpl: GalleryRouter {
         galleryViewController?.present(pickerController, animated: true, completion: nil)
     }
     
-    func presentImage(for image: String) {
-        self.image = image
+    func presentImage(for imageIndex: Int) {
+        self.imageIndex = imageIndex
         galleryViewController?.performSegue(withIdentifier: "goToImage", sender: nil)
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToImage",
             let imageController = segue.destination as? ImageController {
-//            imageController.configurator = EditNoteConfiguratorImpl(note: note,
-//                                                               editNotePresenterDelegate: editNotePresenterDelegate)
+            imageController.configurator = ImageConfiguratorImpl(imageIndex: imageIndex)
         }
     }
 }
