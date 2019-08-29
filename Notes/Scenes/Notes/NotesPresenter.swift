@@ -34,6 +34,7 @@ protocol NotesPresenter: class {
     func presenterDidSet()
     func configure(cell: NoteCellView, forRow row: Int)
     func deleteButtonPressed(at index: IndexPath)
+    func passButtonTapped()
     
     init(manager: NotesManager, view: NotesView, router: NotesViewRouter)
 }
@@ -62,6 +63,7 @@ class NotesPresenterImpl {
 extension NotesPresenterImpl: NotesManagerDelegate {
     func notesManagerDidLoadNotes(_ manager: NotesManager) {
         self.view?.refreshNotesView()
+        self.view?.enableListEditing()
     }
     
     func requestAuth(with controller: AuthControllerProtocol) {
@@ -73,6 +75,8 @@ extension NotesPresenterImpl: NotesManagerDelegate {
 /***************************************************************/
 
 extension NotesPresenterImpl: NotesPresenter {
+    func passButtonTapped() { router.presentPasswordChange() }
+    
     var titleForEditButton: String { return "Edit" }
     var titleForDoneButton: String { return "Done" }
     var numberOfNotes: Int { return manager.notes.count }
@@ -94,6 +98,7 @@ extension NotesPresenterImpl: NotesPresenter {
     
     func presenterDidSet() {
         guard first else { return }
+        view?.disableListEditing()
         manager.load()
         first = false
     }

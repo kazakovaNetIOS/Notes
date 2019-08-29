@@ -11,6 +11,7 @@ import UIKit
 protocol NotesViewRouter: class {
     func presentEditNote(for note: Note, editNotePresenterDelegate: EditNotePresenterDelegate)
     func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    func presentPasswordChange()
 }
 
 class NotesViewRouterImpl {
@@ -28,6 +29,10 @@ class NotesViewRouterImpl {
 /***************************************************************/
 
 extension NotesViewRouterImpl: NotesViewRouter {
+    func presentPasswordChange() {
+        notesViewController?.performSegue(withIdentifier: "goToPasswordChange", sender: nil)
+    }
+    
     func presentEditNote(for note: Note, editNotePresenterDelegate: EditNotePresenterDelegate) {
         self.editNotePresenterDelegate = editNotePresenterDelegate
         self.note = note
@@ -39,6 +44,11 @@ extension NotesViewRouterImpl: NotesViewRouter {
             let editNoteVC = segue.destination as? EditNoteViewController {
             editNoteVC.configurator = EditNoteConfiguratorImpl(note: note,
                                                                editNotePresenterDelegate: editNotePresenterDelegate)
+        }
+        
+        if segue.identifier == "goToPasswordChange",
+            let passwordVC = segue.destination as? PasswordViewController {
+            passwordVC.configurator = PasswordConfiguratorImpl()
         }
     }
 }

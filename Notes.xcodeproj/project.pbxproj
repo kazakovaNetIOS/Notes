@@ -45,6 +45,13 @@
 		FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF70A0C622FD61E900025A96 /* GistFile.swift */; };
 		FF7AD4722310189700D037D1 /* NotesViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7AD4712310189700D037D1 /* NotesViewRouter.swift */; };
 		FF80DA9122CE2B32007CC61D /* CheckIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80DA9022CE2B32007CC61D /* CheckIcon.swift */; };
+		FF83381B23169FA80007B779 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83381A23169FA80007B779 /* Box.swift */; };
+		FF83381E2316A1A40007B779 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83381D2316A1A40007B779 /* PasswordViewModel.swift */; };
+		FF8338212316A1CB0007B779 /* PasswordViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8338202316A1CB0007B779 /* PasswordViewModelType.swift */; };
+		FF983BF12316C0B800344DA1 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF983BF02316C0B800344DA1 /* PasswordViewController.swift */; };
+		FF983BF32316C1E600344DA1 /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF983BF22316C1E600344DA1 /* Password.swift */; };
+		FF983BF52316C2CF00344DA1 /* PasswordConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF983BF42316C2CF00344DA1 /* PasswordConfigurator.swift */; };
+		FF983BF72316D6DC00344DA1 /* PasswordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF983BF62316D6DC00344DA1 /* PasswordManager.swift */; };
 		FF987CB92303F01D001330EC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF987CB72303F01D001330EC /* Model.xcdatamodeld */; };
 		FF99661222C0E047004299F3 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99660F22C0E047004299F3 /* Note.swift */; };
 		FF99661322C0E047004299F3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99661022C0E047004299F3 /* Extensions.swift */; };
@@ -139,6 +146,13 @@
 		FF70A0C622FD61E900025A96 /* GistFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistFile.swift; sourceTree = "<group>"; };
 		FF7AD4712310189700D037D1 /* NotesViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewRouter.swift; sourceTree = "<group>"; };
 		FF80DA9022CE2B32007CC61D /* CheckIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIcon.swift; sourceTree = "<group>"; };
+		FF83381A23169FA80007B779 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		FF83381D2316A1A40007B779 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
+		FF8338202316A1CB0007B779 /* PasswordViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModelType.swift; sourceTree = "<group>"; };
+		FF983BF02316C0B800344DA1 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		FF983BF22316C1E600344DA1 /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
+		FF983BF42316C2CF00344DA1 /* PasswordConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordConfigurator.swift; sourceTree = "<group>"; };
+		FF983BF62316D6DC00344DA1 /* PasswordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManager.swift; sourceTree = "<group>"; };
 		FF987CB82303F01D001330EC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FF99660F22C0E047004299F3 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		FF99661022C0E047004299F3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -366,6 +380,42 @@
 			path = Gallery;
 			sourceTree = "<group>";
 		};
+		FF83381C2316A17A0007B779 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FF83381D2316A1A40007B779 /* PasswordViewModel.swift */,
+				FF83381A23169FA80007B779 /* Box.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FF83381F2316A1B00007B779 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FF8338202316A1CB0007B779 /* PasswordViewModelType.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FF983BEF2316C09400344DA1 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				FF983BF02316C0B800344DA1 /* PasswordViewController.swift */,
+				FF983BF42316C2CF00344DA1 /* PasswordConfigurator.swift */,
+				FF83381C2316A17A0007B779 /* ViewModel */,
+				FF83381F2316A1B00007B779 /* Protocols */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		FF983BF82316D6E200344DA1 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				FF983BF62316D6DC00344DA1 /* PasswordManager.swift */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
 		FF99660E22C0E02E004299F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +429,7 @@
 				FF70A0C622FD61E900025A96 /* GistFile.swift */,
 				FF06919E22FF1C3D00023838 /* GistPostResponce.swift */,
 				FF0691AC23002D6F00023838 /* AuthGitHub.swift */,
+				FF983BF22316C1E600344DA1 /* Password.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -432,6 +483,7 @@
 		FFD9E184231431A1006544FB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				FF983BEF2316C09400344DA1 /* Password */,
 				FFFA77A922E45E880043FD1B /* Notes */,
 				FFFA77AA22E45E9D0043FD1B /* Edit note */,
 				FF0FD47922D49E79002E4D93 /* Color picker */,
@@ -450,6 +502,7 @@
 				FF302EEC230ABEDE00C004CF /* Github */,
 				FF6042CF23070930000E7D52 /* Network */,
 				FF0691A9230025BA00023838 /* Auth */,
+				FF983BF82316D6E200344DA1 /* Password */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -661,7 +714,10 @@
 				FFC4D82C230DE58F00A32077 /* NotesManager.swift in Sources */,
 				FF2D91A522C0DFE1001210DE /* EditNoteViewController.swift in Sources */,
 				FF63AE8F22E47BBF00E00720 /* NoteTableViewCell.swift in Sources */,
+				FF983BF52316C2CF00344DA1 /* PasswordConfigurator.swift in Sources */,
+				FF983BF12316C0B800344DA1 /* PasswordViewController.swift in Sources */,
 				FF55EEDC22F0A2730022A55E /* SaveNotesBackendOperation.swift in Sources */,
+				FF83381E2316A1A40007B779 /* PasswordViewModel.swift in Sources */,
 				FFC4D829230D9BB600A32077 /* NotesPresenter.swift in Sources */,
 				FF3503DE2305FBFF0014C2A7 /* Model13.xcmappingmodel in Sources */,
 				FF3503D92305ADC20014C2A7 /* Model.xcmappingmodel in Sources */,
@@ -669,6 +725,7 @@
 				FFD9E18123142066006544FB /* ColorPickerConfigurator.swift in Sources */,
 				FFA4772C22E4AE1A00EF66C4 /* ImageViewController.swift in Sources */,
 				FF55EEEC22F0FBB90022A55E /* RemoveNoteOperation.swift in Sources */,
+				FF83381B23169FA80007B779 /* Box.swift in Sources */,
 				FF55EEEA22F0CC480022A55E /* LoadNotesOperation.swift in Sources */,
 				FFD9E18923143558006544FB /* GalleryPresenter.swift in Sources */,
 				FF55EEE722F0CB210022A55E /* RemoveNoteDBOperation.swift in Sources */,
@@ -677,14 +734,17 @@
 				FF55EEDB22F0A2730022A55E /* BaseBackendOperation.swift in Sources */,
 				FF55EED222F0A08B0022A55E /* SaveNoteOperation.swift in Sources */,
 				FF55EEE322F0A4E40022A55E /* LoadNotesBackendOperation.swift in Sources */,
+				FF8338212316A1CB0007B779 /* PasswordViewModelType.swift in Sources */,
 				FF987CB92303F01D001330EC /* Model.xcdatamodeld in Sources */,
 				FF55EEE022F0A27E0022A55E /* SaveNoteDBOperation.swift in Sources */,
 				FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */,
+				FF983BF72316D6DC00344DA1 /* PasswordManager.swift in Sources */,
 				FFD9E18E23152D06006544FB /* GalleryManager.swift in Sources */,
 				FFC94320230C0EEC00A0EDB2 /* CoreDataManager.swift in Sources */,
 				FF7AD4722310189700D037D1 /* NotesViewRouter.swift in Sources */,
 				FF3503DC2305FB560014C2A7 /* Model23.xcmappingmodel in Sources */,
 				FFA6F3002311B2ED00AE6F54 /* EditNoteRouter.swift in Sources */,
+				FF983BF32316C1E600344DA1 /* Password.swift in Sources */,
 				FF80DA9122CE2B32007CC61D /* CheckIcon.swift in Sources */,
 				FFD9E18B231435EC006544FB /* GalleryRouter.swift in Sources */,
 				FF55EEE122F0A27E0022A55E /* BaseDBOperation.swift in Sources */,

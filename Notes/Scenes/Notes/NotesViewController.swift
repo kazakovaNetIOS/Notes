@@ -12,6 +12,7 @@ import CocoaLumberjack
 class NotesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addBarButton: UIBarButtonItem!
     
     public var presenter: NotesPresenter? {
         didSet {
@@ -41,10 +42,6 @@ extension NotesViewController {
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(editButtonTapped))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(addButtonTapped))
         tableView.register(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
     }
 }
@@ -77,12 +74,12 @@ extension NotesViewController: NotesView {
     }
     
     func disableListEditing() {
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        addBarButton.isEnabled = false
         navigationItem.leftBarButtonItem?.isEnabled = false
     }
     
     func enableListEditing() {
-        navigationItem.rightBarButtonItem?.isEnabled = true
+        addBarButton.isEnabled = true
         navigationItem.leftBarButtonItem?.isEnabled = true
     }
 }
@@ -93,10 +90,6 @@ extension NotesViewController: NotesView {
 extension NotesViewController {
     @objc func editButtonTapped(_ sender: UIButton) {
         presenter?.didTapEditButton()
-    }
-    
-    @objc func addButtonTapped(_ sender: UIButton) {
-        presenter?.didTapAddButton()
     }
 }
 
@@ -140,5 +133,18 @@ extension NotesViewController: UITableViewDataSource {
 extension NotesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.didSelect(row: indexPath.row)
+    }
+}
+
+//MARK: - IBActions
+/***************************************************************/
+
+extension NotesViewController {
+    @IBAction func passButtonTapped(_ sender: UIBarButtonItem) {
+        presenter?.passButtonTapped()
+    }
+    
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        presenter?.didTapAddButton()
     }
 }

@@ -36,15 +36,74 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TVP-Lx-FvM"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Заметки" id="1be-R7-7i5"/>
+                    <navigationItem key="navigationItem" title="Заметки" id="1be-R7-7i5">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="lock" id="0Cy-Tr-mPh">
+                                <connections>
+                                    <action selector="passButtonTapped:" destination="rdh-Tg-gKv" id="ooI-oR-4d5"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="I1N-kB-FBE">
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="rdh-Tg-gKv" id="Mm9-vj-9qR"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addBarButton" destination="I1N-kB-FBE" id="YkE-Q5-152"/>
                         <outlet property="tableView" destination="qXu-5O-XjY" id="fOR-Ae-Dgw"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToEditNote" id="W3h-dJ-w7L"/>
+                        <segue destination="Jul-cW-ho2" kind="show" identifier="goToPasswordChange" id="66V-zK-Jpz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gd-vx-MD4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="993" y="-308"/>
+        </scene>
+        <!--Пароль-->
+        <scene sceneID="oj8-QQ-KLh">
+            <objects>
+                <viewController title="Пароль" id="Jul-cW-ho2" customClass="PasswordViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R7T-7p-3pi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gp2-JR-dCr">
+                                <rect key="frame" x="32" y="120" width="350" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NM2-By-J61">
+                                <rect key="frame" x="32" y="166" width="350" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Jul-cW-ho2" id="DH6-pV-Y8u"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NM2-By-J61" firstAttribute="top" secondItem="gp2-JR-dCr" secondAttribute="bottom" constant="16" id="38A-gd-sdR"/>
+                            <constraint firstItem="gp2-JR-dCr" firstAttribute="leading" secondItem="NfP-fv-sxf" secondAttribute="leading" constant="32" id="3n3-Qb-Fbl"/>
+                            <constraint firstItem="NfP-fv-sxf" firstAttribute="trailing" secondItem="gp2-JR-dCr" secondAttribute="trailing" constant="32" id="5wW-s0-blp"/>
+                            <constraint firstItem="gp2-JR-dCr" firstAttribute="top" secondItem="NfP-fv-sxf" secondAttribute="top" constant="32" id="i4s-Ph-aag"/>
+                            <constraint firstItem="NM2-By-J61" firstAttribute="leading" secondItem="NfP-fv-sxf" secondAttribute="leading" constant="32" id="tg2-GQ-cbH"/>
+                            <constraint firstItem="NfP-fv-sxf" firstAttribute="trailing" secondItem="NM2-By-J61" secondAttribute="trailing" constant="32" id="txq-Ya-1Zh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NfP-fv-sxf"/>
+                    </view>
+                    <connections>
+                        <outlet property="hintTextField" destination="NM2-By-J61" id="duU-CA-cL9"/>
+                        <outlet property="passwordTextField" destination="gp2-JR-dCr" id="5sa-MQ-iZF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zde-Hr-T98" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1787" y="-965"/>
         </scene>
         <!--Редактирование-->
         <scene sceneID="tne-QT-ifu">
@@ -493,6 +552,7 @@
     <resources>
         <image name="edit" width="20" height="20"/>
         <image name="gallery" width="20" height="20"/>
+        <image name="lock" width="20" height="20"/>
         <image name="palette" width="180" height="180"/>
     </resources>
 </document>
