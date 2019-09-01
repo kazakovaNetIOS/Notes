@@ -21,7 +21,7 @@ class ColorPickerRouterImpl {
     }
 }
 
-//MARK: - EditNoteViewRouter
+//MARK: - ColorPickerRouter
 /***************************************************************/
 
 extension ColorPickerRouterImpl: ColorPickerRouter {

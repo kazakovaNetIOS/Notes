@@ -41,3 +41,8 @@ extension ColorPickerViewController {
         })
     }
 }
+
+//MARK: - StoryboardInstantiable
+/***************************************************************/
+
+extension ColorPickerViewController: StoryboardInstantiable { }

@@ -12,12 +12,13 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-    var container: NSPersistentContainer!
+    static var container: NSPersistentContainer!
+    private var appCoordinator: AppCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+        
         DDLog.add(DDOSLogger.sharedInstance) // Uses os_log
         
         // Logger options
@@ -27,20 +28,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DDLog.add(fileLogger)
         
         createContainer { container in
-            self.container = container
-            if let tc = self.window?.rootViewController as? UITabBarController,
-                let nc = tc.selectedViewController as? UINavigationController,
-                let vc = nc.topViewController as? NotesViewController {
-                let manager = NotesManager(context: container.newBackgroundContext())
-                let router = NotesViewRouterImpl(notesViewController: vc)
-                let presenter = NotesPresenterImpl(manager: manager,
-                                                                 view: vc,
-                                                                 router: router)
-                vc.presenter = presenter
-            }
+            AppDelegate.container = container
+            
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            let appCoordinator = AppCoordinator(window: window,
+                                                notesManager: NotesManager(
+                                                    context: container.newBackgroundContext()))
+            
+            self.window = window
+            self.appCoordinator = appCoordinator
+            
+            appCoordinator.start()
         }
-        
-//        print(FileNotebook().getFileNotebookPath())
         
         return true
     }

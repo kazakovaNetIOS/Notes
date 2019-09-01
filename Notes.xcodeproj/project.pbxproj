@@ -25,6 +25,16 @@
 		FF3503DE2305FBFF0014C2A7 /* Model13.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = FF3503DD2305FBFF0014C2A7 /* Model13.xcmappingmodel */; };
 		FF3503E02306D3FC0014C2A7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3503DF2306D3FC0014C2A7 /* AuthManager.swift */; };
 		FF4D273C2313FB6100849061 /* ColorPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4D273B2313FB6100849061 /* ColorPickerPresenter.swift */; };
+		FF50D0F8231969C80010E602 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF50D0F7231969C80010E602 /* Coordinator.swift */; };
+		FF50D0FA23196A070010E602 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF50D0F923196A070010E602 /* AppCoordinator.swift */; };
+		FF50D0FC2319724D0010E602 /* NotesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF50D0FB2319724D0010E602 /* NotesCoordinator.swift */; };
+		FF50D0FF231975410010E602 /* NotesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF50D0FE231975410010E602 /* NotesViewController.storyboard */; };
+		FF50D101231987660010E602 /* PasswordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF50D100231987660010E602 /* PasswordCoordinator.swift */; };
+		FF50D1032319894F0010E602 /* PasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF50D1022319894F0010E602 /* PasswordViewController.storyboard */; };
+		FF50D10523198D8F0010E602 /* ColorPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF50D10423198D8F0010E602 /* ColorPickerCoordinator.swift */; };
+		FF50D1072319908D0010E602 /* ColorPickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF50D1062319908D0010E602 /* ColorPickerViewController.storyboard */; };
+		FF50D109231991700010E602 /* EditNoteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF50D108231991700010E602 /* EditNoteCoordinator.swift */; };
+		FF50D10B231C3B700010E602 /* EditNoteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF50D10A231C3B700010E602 /* EditNoteViewController.storyboard */; };
 		FF55EECF22F0A08B0022A55E /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EECB22F0A08B0022A55E /* AsyncOperation.swift */; };
 		FF55EED222F0A08B0022A55E /* SaveNoteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EECE22F0A08B0022A55E /* SaveNoteOperation.swift */; };
 		FF55EEDB22F0A2730022A55E /* BaseBackendOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF55EED922F0A2730022A55E /* BaseBackendOperation.swift */; };
@@ -43,7 +53,6 @@
 		FF63AE9622E4973D00E00720 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF63AE9522E4973D00E00720 /* GalleryCell.swift */; };
 		FF70A0C522FD617600025A96 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF70A0C422FD617600025A96 /* Gist.swift */; };
 		FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF70A0C622FD61E900025A96 /* GistFile.swift */; };
-		FF7AD4722310189700D037D1 /* NotesViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7AD4712310189700D037D1 /* NotesViewRouter.swift */; };
 		FF80DA9122CE2B32007CC61D /* CheckIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80DA9022CE2B32007CC61D /* CheckIcon.swift */; };
 		FF83381B23169FA80007B779 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83381A23169FA80007B779 /* Box.swift */; };
 		FF83381E2316A1A40007B779 /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83381D2316A1A40007B779 /* PasswordViewModel.swift */; };
@@ -59,7 +68,6 @@
 		FFA4772C22E4AE1A00EF66C4 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4772B22E4AE1A00EF66C4 /* ImageViewController.swift */; };
 		FFA6F2FC2311A72E00AE6F54 /* EditNotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6F2FB2311A72E00AE6F54 /* EditNotePresenter.swift */; };
 		FFA6F2FE2311ACC700AE6F54 /* EditNoteConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6F2FD2311ACC700AE6F54 /* EditNoteConfigurator.swift */; };
-		FFA6F3002311B2ED00AE6F54 /* EditNoteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA6F2FF2311B2ED00AE6F54 /* EditNoteRouter.swift */; };
 		FFC4D829230D9BB600A32077 /* NotesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4D828230D9BB600A32077 /* NotesPresenter.swift */; };
 		FFC4D82C230DE58F00A32077 /* NotesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4D82B230DE58F00A32077 /* NotesManager.swift */; };
 		FFC94320230C0EEC00A0EDB2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC9431F230C0EEC00A0EDB2 /* CoreDataManager.swift */; };
@@ -126,6 +134,16 @@
 		FF3503DD2305FBFF0014C2A7 /* Model13.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model13.xcmappingmodel; sourceTree = "<group>"; };
 		FF3503DF2306D3FC0014C2A7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		FF4D273B2313FB6100849061 /* ColorPickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerPresenter.swift; sourceTree = "<group>"; };
+		FF50D0F7231969C80010E602 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		FF50D0F923196A070010E602 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		FF50D0FB2319724D0010E602 /* NotesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCoordinator.swift; sourceTree = "<group>"; };
+		FF50D0FE231975410010E602 /* NotesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotesViewController.storyboard; sourceTree = "<group>"; };
+		FF50D100231987660010E602 /* PasswordCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCoordinator.swift; sourceTree = "<group>"; };
+		FF50D1022319894F0010E602 /* PasswordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordViewController.storyboard; sourceTree = "<group>"; };
+		FF50D10423198D8F0010E602 /* ColorPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCoordinator.swift; sourceTree = "<group>"; };
+		FF50D1062319908D0010E602 /* ColorPickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorPickerViewController.storyboard; sourceTree = "<group>"; };
+		FF50D108231991700010E602 /* EditNoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteCoordinator.swift; sourceTree = "<group>"; };
+		FF50D10A231C3B700010E602 /* EditNoteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditNoteViewController.storyboard; sourceTree = "<group>"; };
 		FF55EECB22F0A08B0022A55E /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		FF55EECE22F0A08B0022A55E /* SaveNoteOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveNoteOperation.swift; sourceTree = "<group>"; };
 		FF55EED922F0A2730022A55E /* BaseBackendOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBackendOperation.swift; sourceTree = "<group>"; };
@@ -144,7 +162,6 @@
 		FF63AE9522E4973D00E00720 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		FF70A0C422FD617600025A96 /* Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
 		FF70A0C622FD61E900025A96 /* GistFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GistFile.swift; sourceTree = "<group>"; };
-		FF7AD4712310189700D037D1 /* NotesViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewRouter.swift; sourceTree = "<group>"; };
 		FF80DA9022CE2B32007CC61D /* CheckIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIcon.swift; sourceTree = "<group>"; };
 		FF83381A23169FA80007B779 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		FF83381D2316A1A40007B779 /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
@@ -160,7 +177,6 @@
 		FFA4772B22E4AE1A00EF66C4 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		FFA6F2FB2311A72E00AE6F54 /* EditNotePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotePresenter.swift; sourceTree = "<group>"; };
 		FFA6F2FD2311ACC700AE6F54 /* EditNoteConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteConfigurator.swift; sourceTree = "<group>"; };
-		FFA6F2FF2311B2ED00AE6F54 /* EditNoteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteRouter.swift; sourceTree = "<group>"; };
 		FFC4D828230D9BB600A32077 /* NotesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesPresenter.swift; sourceTree = "<group>"; };
 		FFC4D82B230DE58F00A32077 /* NotesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesManager.swift; sourceTree = "<group>"; };
 		FFC9431F230C0EEC00A0EDB2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -241,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				FF0FD47722D36A43002E4D93 /* ColorPickerViewController.swift */,
+				FF50D1062319908D0010E602 /* ColorPickerViewController.storyboard */,
 				FFD9E18023142066006544FB /* ColorPickerConfigurator.swift */,
 				FF4D273B2313FB6100849061 /* ColorPickerPresenter.swift */,
 				FFD9E182231421E9006544FB /* ColorPickerRouter.swift */,
@@ -296,6 +313,8 @@
 		FF2D91A122C0DFE1001210DE /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				FF50D0FD2319740F0010E602 /* Extensions */,
+				FF50D0F6231969B30010E602 /* Coordinators */,
 				FFD9E1852314326F006544FB /* Managers */,
 				FF55EECA22F09EBB0022A55E /* Operations */,
 				FF99660E22C0E02E004299F3 /* Model */,
@@ -315,6 +334,27 @@
 				FFDEC0B0230ABF330036E503 /* GithubManager.swift */,
 			);
 			path = Github;
+			sourceTree = "<group>";
+		};
+		FF50D0F6231969B30010E602 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				FF50D0F7231969C80010E602 /* Coordinator.swift */,
+				FF50D0F923196A070010E602 /* AppCoordinator.swift */,
+				FF50D100231987660010E602 /* PasswordCoordinator.swift */,
+				FF50D10423198D8F0010E602 /* ColorPickerCoordinator.swift */,
+				FF50D108231991700010E602 /* EditNoteCoordinator.swift */,
+				FF50D0FB2319724D0010E602 /* NotesCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		FF50D0FD2319740F0010E602 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FF99661022C0E047004299F3 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FF55EECA22F09EBB0022A55E /* Operations */ = {
@@ -401,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				FF983BF02316C0B800344DA1 /* PasswordViewController.swift */,
+				FF50D1022319894F0010E602 /* PasswordViewController.storyboard */,
 				FF983BF42316C2CF00344DA1 /* PasswordConfigurator.swift */,
 				FF83381C2316A17A0007B779 /* ViewModel */,
 				FF83381F2316A1B00007B779 /* Protocols */,
@@ -424,7 +465,6 @@
 				FF3503D82305ADC20014C2A7 /* Model.xcmappingmodel */,
 				FF99661122C0E047004299F3 /* FileNotebook.swift */,
 				FF99660F22C0E047004299F3 /* Note.swift */,
-				FF99661022C0E047004299F3 /* Extensions.swift */,
 				FF70A0C422FD617600025A96 /* Gist.swift */,
 				FF70A0C622FD61E900025A96 /* GistFile.swift */,
 				FF06919E22FF1C3D00023838 /* GistPostResponce.swift */,
@@ -519,8 +559,8 @@
 			isa = PBXGroup;
 			children = (
 				FFFD22BE22E0E64900880908 /* NotesViewController.swift */,
+				FF50D0FE231975410010E602 /* NotesViewController.storyboard */,
 				FFC4D828230D9BB600A32077 /* NotesPresenter.swift */,
-				FF7AD4712310189700D037D1 /* NotesViewRouter.swift */,
 				FF63AE9122E48D9100E00720 /* Note table cell */,
 			);
 			path = Notes;
@@ -530,9 +570,9 @@
 			isa = PBXGroup;
 			children = (
 				FF2D91A422C0DFE1001210DE /* EditNoteViewController.swift */,
+				FF50D10A231C3B700010E602 /* EditNoteViewController.storyboard */,
 				FFA6F2FD2311ACC700AE6F54 /* EditNoteConfigurator.swift */,
 				FFA6F2FB2311A72E00AE6F54 /* EditNotePresenter.swift */,
-				FFA6F2FF2311B2ED00AE6F54 /* EditNoteRouter.swift */,
 				FF80DA9022CE2B32007CC61D /* CheckIcon.swift */,
 			);
 			path = "Edit note";
@@ -644,10 +684,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF2D91AD22C0DFE2001210DE /* LaunchScreen.storyboard in Resources */,
+				FF50D10B231C3B700010E602 /* EditNoteViewController.storyboard in Resources */,
 				FF2D91AA22C0DFE2001210DE /* Assets.xcassets in Resources */,
 				FF63AE9022E47BBF00E00720 /* NoteTableViewCell.xib in Resources */,
+				FF50D0FF231975410010E602 /* NotesViewController.storyboard in Resources */,
+				FF50D1032319894F0010E602 /* PasswordViewController.storyboard in Resources */,
 				FF0FD48222D62106002E4D93 /* ColorPickerViewXIB.xib in Resources */,
 				FF2D91A822C0DFE1001210DE /* Main.storyboard in Resources */,
+				FF50D1072319908D0010E602 /* ColorPickerViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,6 +751,7 @@
 				FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */,
 				FF0691AD23002D6F00023838 /* AuthGitHub.swift in Sources */,
 				FF06919F22FF1C3D00023838 /* GistPostResponce.swift in Sources */,
+				FF50D101231987660010E602 /* PasswordCoordinator.swift in Sources */,
 				FF70A0C722FD61E900025A96 /* GistFile.swift in Sources */,
 				FFD9E18723143461006544FB /* GalleryConfigurator.swift in Sources */,
 				FF0691AB230025E600023838 /* AuthViewController.swift in Sources */,
@@ -729,6 +774,7 @@
 				FF55EEEA22F0CC480022A55E /* LoadNotesOperation.swift in Sources */,
 				FFD9E18923143558006544FB /* GalleryPresenter.swift in Sources */,
 				FF55EEE722F0CB210022A55E /* RemoveNoteDBOperation.swift in Sources */,
+				FF50D0F8231969C80010E602 /* Coordinator.swift in Sources */,
 				FF99661322C0E047004299F3 /* Extensions.swift in Sources */,
 				FFD9E192231566E6006544FB /* ImagePresenter.swift in Sources */,
 				FF55EEDB22F0A2730022A55E /* BaseBackendOperation.swift in Sources */,
@@ -736,15 +782,16 @@
 				FF55EEE322F0A4E40022A55E /* LoadNotesBackendOperation.swift in Sources */,
 				FF8338212316A1CB0007B779 /* PasswordViewModelType.swift in Sources */,
 				FF987CB92303F01D001330EC /* Model.xcdatamodeld in Sources */,
+				FF50D0FC2319724D0010E602 /* NotesCoordinator.swift in Sources */,
 				FF55EEE022F0A27E0022A55E /* SaveNoteDBOperation.swift in Sources */,
+				FF50D10523198D8F0010E602 /* ColorPickerCoordinator.swift in Sources */,
 				FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */,
 				FF983BF72316D6DC00344DA1 /* PasswordManager.swift in Sources */,
 				FFD9E18E23152D06006544FB /* GalleryManager.swift in Sources */,
 				FFC94320230C0EEC00A0EDB2 /* CoreDataManager.swift in Sources */,
-				FF7AD4722310189700D037D1 /* NotesViewRouter.swift in Sources */,
 				FF3503DC2305FB560014C2A7 /* Model23.xcmappingmodel in Sources */,
-				FFA6F3002311B2ED00AE6F54 /* EditNoteRouter.swift in Sources */,
 				FF983BF32316C1E600344DA1 /* Password.swift in Sources */,
+				FF50D0FA23196A070010E602 /* AppCoordinator.swift in Sources */,
 				FF80DA9122CE2B32007CC61D /* CheckIcon.swift in Sources */,
 				FFD9E18B231435EC006544FB /* GalleryRouter.swift in Sources */,
 				FF55EEE122F0A27E0022A55E /* BaseDBOperation.swift in Sources */,
@@ -756,6 +803,7 @@
 				FFDEC0B1230ABF330036E503 /* GithubManager.swift in Sources */,
 				FFA6F2FC2311A72E00AE6F54 /* EditNotePresenter.swift in Sources */,
 				FF99661222C0E047004299F3 /* Note.swift in Sources */,
+				FF50D109231991700010E602 /* EditNoteCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

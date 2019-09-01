@@ -27,12 +27,11 @@ protocol EditNotePresenterDelegate: class {
 }
 
 protocol EditNotePresenter {
-    var router: EditNoteViewRouter { get }
     var titleForSaveButton: String { get }
     var note: Note { get }
     var color: UIColor { get }
     
-    init(view: EditNoteView, router: EditNoteViewRouter, delegate: EditNotePresenterDelegate?, note: Note)
+    init(view: EditNoteView, note: Note)
     
     func saveButtonPressed(parameters: EditNoteParameters)
     func colorDidSelectFromTile(with color: UIColor, tag: Int)
@@ -44,9 +43,8 @@ protocol EditNotePresenter {
 class EditNotePresenterImpl {
     
     private weak var view: EditNoteView?
-    private(set) var router: EditNoteViewRouter
     private(set) var note: Note
-    private weak var delegate: EditNotePresenterDelegate?
+    weak var delegate: EditNotePresenterDelegate?
     public var titleForSaveButton: String {
         return "Сохранить"
     }
@@ -54,12 +52,8 @@ class EditNotePresenterImpl {
     
     required init(
         view: EditNoteView,
-         router: EditNoteViewRouter,
-         delegate: EditNotePresenterDelegate?,
          note: Note) {
         self.view = view
-        self.router = router
-        self.delegate = delegate
         self.note = note
         self.color = note.color
     }
@@ -85,7 +79,7 @@ extension EditNotePresenterImpl: EditNotePresenter {
     }
     
     func colorPickerLongPressed() {
-        router.presentColorPicker(for: self.color, colorPickerPresenterDelegate: self)
+//        router.presentColorPicker(for: self.color, colorPickerPresenterDelegate: self)
     }
     
     func colorDidSelectFromTile(with color: UIColor, tag: Int) {
@@ -100,17 +94,5 @@ extension EditNotePresenterImpl: EditNotePresenter {
                                                        color: self.color,
                                                        importance: note.importance,
                                                        dateOfSelfDestruction: parameters.dateOfSelfDestruction))
-    }
-}
-
-//MARK: - ColorPickerPresenterDelegate
-/***************************************************************/
-
-extension EditNotePresenterImpl: ColorPickerPresenterDelegate {
-    func colorPickerPresenter(_ presenter: ColorPickerPresenter, didSelect color: UIColor) {
-        presenter.router.dismiss()
-        self.color = color
-        view?.resetColorTilesState()
-        view?.showSelectedColorFromPicker()
     }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IgU-yJ-Hki">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Color Picker View Controller-->
+        <scene sceneID="YzP-uR-fxq">
+            <objects>
+                <viewController id="IgU-yJ-Hki" customClass="ColorPickerViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dfc-Sx-rLJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GHI-Lu-6vX" customClass="ColorPickerViewXIB" customModule="Notes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GHI-Lu-6vX" firstAttribute="leading" secondItem="TAf-sM-TTL" secondAttribute="leading" id="8WY-CT-xh5"/>
+                            <constraint firstItem="GHI-Lu-6vX" firstAttribute="top" secondItem="TAf-sM-TTL" secondAttribute="top" id="DYg-So-3rj"/>
+                            <constraint firstItem="TAf-sM-TTL" firstAttribute="bottom" secondItem="GHI-Lu-6vX" secondAttribute="bottom" id="JJz-v5-nli"/>
+                            <constraint firstItem="TAf-sM-TTL" firstAttribute="trailing" secondItem="GHI-Lu-6vX" secondAttribute="trailing" id="nUq-Lo-5vy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TAf-sM-TTL"/>
+                    </view>
+                    <connections>
+                        <outlet property="colorPicker" destination="GHI-Lu-6vX" id="AjY-Zv-tnD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggG-t4-rz8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

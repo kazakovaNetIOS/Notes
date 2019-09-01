@@ -15,7 +15,6 @@ protocol NotesView: class {
     func deleteAnimated(at index: IndexPath)
     func disableListEditing()
     func enableListEditing()
-    func show(authController: AuthControllerProtocol)
 }
 
 protocol NoteCellView {
@@ -24,19 +23,24 @@ protocol NoteCellView {
 
 protocol NotesPresenter: class {
     var numberOfNotes: Int { get }
-    var router: NotesViewRouter { get }
     var titleForEditButton: String { get }
     var titleForDoneButton: String { get }
     
     func didTapEditButton()
     func didTapAddButton()
     func didSelect(row: Int)
-    func presenterDidSet()
     func configure(cell: NoteCellView, forRow row: Int)
     func deleteButtonPressed(at index: IndexPath)
     func passButtonTapped()
+    func didLoadNotes()
+    func viewWillAppear()
     
-    init(manager: NotesManager, view: NotesView, router: NotesViewRouter)
+    init(manager: NotesManager, view: NotesView)
+}
+
+protocol NotesPresenterDelegate {
+    func notesPresenterDidAddOrEditNote(_ note: Note)
+    func notesPresentDidPasswordButtonTapped()
 }
 
 class NotesPresenterImpl {
@@ -44,30 +48,13 @@ class NotesPresenterImpl {
     private let manager: NotesManager
     private weak var view: NotesView?
     private var isEditing = false
-    private var first = true
-    let router: NotesViewRouter
+    var delegate: NotesPresenterDelegate?
     
     required init(manager: NotesManager,
-                  view: NotesView,
-                  router: NotesViewRouter) {
+                  view: NotesView) {
         self.view = view
-        self.router = router
         self.manager = manager
-        self.manager.delegate = self
-    }
-}
-
-//MARK: - NotesManagerDelegate
-/***************************************************************/
-
-extension NotesPresenterImpl: NotesManagerDelegate {
-    func notesManagerDidLoadNotes(_ manager: NotesManager) {
-        self.view?.refreshNotesView()
-        self.view?.enableListEditing()
-    }
-    
-    func requestAuth(with controller: AuthControllerProtocol) {
-        view?.show(authController: controller)
+        self.view?.disableListEditing()
     }
 }
 
@@ -75,7 +62,17 @@ extension NotesPresenterImpl: NotesManagerDelegate {
 /***************************************************************/
 
 extension NotesPresenterImpl: NotesPresenter {
-    func passButtonTapped() { router.presentPasswordChange() }
+    func viewWillAppear() {
+        view?.enableListEditing()
+        view?.refreshNotesView()
+    }
+    
+    func didLoadNotes() {
+        view?.enableListEditing()
+        view?.refreshNotesView()
+    }
+    
+    func passButtonTapped() { delegate?.notesPresentDidPasswordButtonTapped() }
     
     var titleForEditButton: String { return "Edit" }
     var titleForDoneButton: String { return "Done" }
@@ -85,22 +82,15 @@ extension NotesPresenterImpl: NotesPresenter {
     
     func note(at index: Int) -> Note { return manager.notes[index] }
     
-    func didTapAddButton() { router.presentEditNote(for: manager.newNote(), editNotePresenterDelegate: self) }
+    func didTapAddButton() { delegate?.notesPresenterDidAddOrEditNote(manager.newNote()) }
     
-    func didSelect(row: Int) { router.presentEditNote(for: manager.notes[row], editNotePresenterDelegate: self) }
+    func didSelect(row: Int) { delegate?.notesPresenterDidAddOrEditNote(manager.notes[row]) }
     
     func deleteButtonPressed(at index: IndexPath) {
         manager.delete(at: index.row) { [weak self] in
             guard let `self` = self else { return }
             self.view?.deleteAnimated(at: index)
         }
-    }
-    
-    func presenterDidSet() {
-        guard first else { return }
-        view?.disableListEditing()
-        manager.load()
-        first = false
     }
     
     func didTapEditButton() {
@@ -112,19 +102,4 @@ extension NotesPresenterImpl: NotesPresenter {
         
         isEditing = !isEditing
     }    
-}
-
-//MARK: - EditNotePresenterDelegate
-/***************************************************************/
-
-extension NotesPresenterImpl: EditNotePresenterDelegate {
-    func editNotePresenter(_ presenter: EditNotePresenter, didAdd note: Note) {
-        presenter.router.dismiss()
-        view?.disableListEditing()
-        manager.save(note) { [weak self] in
-            guard let `self` = self else { return }
-            self.view?.enableListEditing()
-            self.view?.refreshNotesView()
-        }
-    }
 }

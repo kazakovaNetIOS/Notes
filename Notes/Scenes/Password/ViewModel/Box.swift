@@ -16,7 +16,6 @@ class Box<T> {
     
     var value: T {
         didSet {
-            print("Set new value: \(value)")
             listener?(value)
         }
     }

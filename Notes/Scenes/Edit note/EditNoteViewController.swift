@@ -42,10 +42,6 @@ extension EditNoteViewController {
         setupViews()
         presenter.viewDidLoad()
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        presenter.router.prepare(for: segue, sender: sender)
-    }
 }
 
 //MARK: - EditNoteView
@@ -203,3 +199,8 @@ extension EditNoteViewController {
         }
     }
 }
+
+//MARK: - StoryboardInstantiable
+/***************************************************************/
+
+extension EditNoteViewController: StoryboardInstantiable { }

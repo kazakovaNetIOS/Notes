@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vL1-Cp-UfG">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Заметки-->
+        <scene sceneID="XTK-6I-MiS">
+            <objects>
+                <viewController id="vL1-Cp-UfG" customClass="NotesViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qbq-ee-BI6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gTV-zF-Rkl">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vL1-Cp-UfG" id="R9v-gp-wps"/>
+                                    <outlet property="delegate" destination="vL1-Cp-UfG" id="UnT-CV-gTB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9nL-OK-tfe" firstAttribute="trailing" secondItem="gTV-zF-Rkl" secondAttribute="trailing" id="0zQ-Sb-ff7"/>
+                            <constraint firstItem="gTV-zF-Rkl" firstAttribute="leading" secondItem="9nL-OK-tfe" secondAttribute="leading" id="DQ4-4C-STE"/>
+                            <constraint firstItem="9nL-OK-tfe" firstAttribute="bottom" secondItem="gTV-zF-Rkl" secondAttribute="bottom" id="LH8-u3-1zb"/>
+                            <constraint firstItem="gTV-zF-Rkl" firstAttribute="top" secondItem="9nL-OK-tfe" secondAttribute="top" id="zng-f7-23s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9nL-OK-tfe"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Заметки" id="ira-Dm-ZCh">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="lock" id="mYr-lD-sLb">
+                                <connections>
+                                    <action selector="passButtonTapped:" destination="vL1-Cp-UfG" id="aWC-e1-rUa"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="tqT-4Q-98E">
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="vL1-Cp-UfG" id="pk1-za-H0z"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addBarButton" destination="tqT-4Q-98E" id="OW4-D2-tzX"/>
+                        <outlet property="tableView" destination="gTV-zF-Rkl" id="d3y-w6-RIe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PB2-0t-Qu5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="lock" width="20" height="20"/>
+    </resources>
+</document>

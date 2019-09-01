@@ -14,11 +14,7 @@ class NotesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addBarButton: UIBarButtonItem!
     
-    public var presenter: NotesPresenter? {
-        didSet {
-            presenter?.presenterDidSet()
-        }
-    }
+    public var presenter: NotesPresenter? 
     
     private let reuseIdentifier = "note cell"
 }
@@ -30,6 +26,11 @@ extension NotesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.viewWillAppear()
     }
 }
 
@@ -52,11 +53,6 @@ extension NotesViewController {
 extension NotesViewController: NotesView {
     func deleteAnimated(at index: IndexPath) {
         tableView.deleteRows(at: [index], with: .automatic)
-    }
-    
-    func show(authController: AuthControllerProtocol) {
-        guard let controller = authController as? UIViewController else { return }
-        present(controller, animated: true, completion: nil)
     }
     
     func refreshNotesView() {
@@ -90,15 +86,6 @@ extension NotesViewController: NotesView {
 extension NotesViewController {
     @objc func editButtonTapped(_ sender: UIButton) {
         presenter?.didTapEditButton()
-    }
-}
-
-//MARK: - Prepare for segue
-/***************************************************************/
-
-extension NotesViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        presenter?.router.prepare(for: segue, sender: sender)
     }
 }
 
@@ -148,3 +135,8 @@ extension NotesViewController {
         presenter?.didTapAddButton()
     }
 }
+
+//MARK: - StoryboardInstantiable
+/***************************************************************/
+
+extension NotesViewController: StoryboardInstantiable { }

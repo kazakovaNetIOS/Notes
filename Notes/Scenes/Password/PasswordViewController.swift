@@ -71,3 +71,8 @@ extension PasswordViewController {
         }
     }
 }
+
+//MARK: - StoryboardInstantiable
+/***************************************************************/
+
+extension PasswordViewController: StoryboardInstantiable { }
