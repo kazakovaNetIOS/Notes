@@ -56,7 +56,7 @@ extension GalleryPresenterImpl: GalleryPresenter {
     }
     
     func didSelectItemAt(row: Int) {
-        router.presentImage(for: row)
+//        router.presentImage(for: row)
     }
     
     func didFinishPickingMediaWithInfo(path: String) {

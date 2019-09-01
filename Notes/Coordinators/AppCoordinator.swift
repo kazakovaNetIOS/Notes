@@ -14,6 +14,7 @@ class AppCoordinator {
     let rootViewController: UITabBarController
     
     let notesCoordinator: NotesCoordinator
+    let galleryCoordinator: GalleryCoordinator
     
     init(window: UIWindow,
          notesManager: NotesManager) {
@@ -33,6 +34,8 @@ class AppCoordinator {
         
         notesCoordinator = NotesCoordinator(presenter: notesRootController,
                                             notesManager: notesManager)
+        galleryCoordinator = GalleryCoordinator(presenter: galleryRootController)
+        
     }
 }
 
@@ -43,6 +46,7 @@ extension AppCoordinator: Coordinator {
     func start() {
         window.rootViewController = rootViewController
         notesCoordinator.start()
+        galleryCoordinator.start()
         window.makeKeyAndVisible()
     }
 }

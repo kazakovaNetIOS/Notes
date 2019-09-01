@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rDt-58-QhE">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Просмотр-->
+        <scene sceneID="FL0-oH-3qb">
+            <objects>
+                <viewController title="Просмотр" id="rDt-58-QhE" customClass="ImageViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wuR-rX-dIo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQP-F7-p1O">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="76a-Wt-4q6" firstAttribute="bottom" secondItem="RQP-F7-p1O" secondAttribute="bottom" id="Cho-2w-lCe"/>
+                            <constraint firstItem="76a-Wt-4q6" firstAttribute="trailing" secondItem="RQP-F7-p1O" secondAttribute="trailing" id="Q8O-eA-2BG"/>
+                            <constraint firstItem="RQP-F7-p1O" firstAttribute="leading" secondItem="76a-Wt-4q6" secondAttribute="leading" id="e8u-gq-6IG"/>
+                            <constraint firstItem="RQP-F7-p1O" firstAttribute="top" secondItem="76a-Wt-4q6" secondAttribute="top" id="pw4-UM-8rX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="76a-Wt-4q6"/>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="RQP-F7-p1O" id="opT-Zr-DAt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mcg-aj-deD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1788" y="383"/>
+        </scene>
+    </scenes>
+</document>

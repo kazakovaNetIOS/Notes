@@ -75,3 +75,8 @@ extension ImageViewController {
         contentOffset = 0
     }
 }
+
+//MARK: - StoryboardInstantiable
+/***************************************************************/
+
+extension ImageViewController: StoryboardInstantiable { }

@@ -16,6 +16,7 @@ class GalleryViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var presenter: GalleryPresenter!
+    var configurator: GalleryConfigurator!
 }
 
 //MARK: - GalleryView
@@ -33,7 +34,7 @@ extension GalleryViewController: GalleryView {
 extension GalleryViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        GalleryConfiguratorImpl().configure(galleryViewController: self)
+        configurator.configure(galleryViewController: self)
         setupViews()
     }
     
@@ -113,3 +114,8 @@ extension GalleryViewController: UICollectionViewDelegate {
         presenter.didSelectItemAt(row: indexPath.row)
     }
 }
+
+//MARK: - StoryboardInstantiable
+/***************************************************************/
+
+extension GalleryViewController: StoryboardInstantiable { }
