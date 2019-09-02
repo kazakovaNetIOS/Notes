@@ -31,10 +31,7 @@ class NotesCoordinator {
 extension NotesCoordinator: Coordinator {
     func start() {
         let notesViewController = NotesViewController.instantiateViewController()
-        let notesPresenter = NotesPresenterImpl(manager: notesManager,
-                                                view: notesViewController)
-        notesPresenter.delegate = self
-        notesViewController.presenter = notesPresenter
+        notesViewController.configurator = NotesConfiguratorImpl(notesManager: notesManager, notesPresenterDelegate: self)
         self.notesViewController = notesViewController
         presenter.pushViewController(notesViewController, animated: true)
         notesManager.load()

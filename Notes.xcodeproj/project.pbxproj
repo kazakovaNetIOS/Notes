@@ -84,6 +84,7 @@
 		FFDEC0B1230ABF330036E503 /* GithubManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEC0B0230ABF330036E503 /* GithubManager.swift */; };
 		FFF6296F231C6BB80073D8DE /* GalleryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF6296E231C6BB70073D8DE /* GalleryCoordinator.swift */; };
 		FFF62971231D532B0073D8DE /* ImageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF62970231D532B0073D8DE /* ImageCoordinator.swift */; };
+		FFF62978231D6A530073D8DE /* NotesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF62977231D6A530073D8DE /* NotesConfigurator.swift */; };
 		FFFD22BF22E0E64900880908 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD22BE22E0E64900880908 /* NotesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -198,6 +199,7 @@
 		FFDEC0B0230ABF330036E503 /* GithubManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubManager.swift; sourceTree = "<group>"; };
 		FFF6296E231C6BB70073D8DE /* GalleryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCoordinator.swift; sourceTree = "<group>"; };
 		FFF62970231D532B0073D8DE /* ImageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCoordinator.swift; sourceTree = "<group>"; };
+		FFF62977231D6A530073D8DE /* NotesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesConfigurator.swift; sourceTree = "<group>"; };
 		FFFD22BE22E0E64900880908 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -258,22 +260,22 @@
 		FF0FD47922D49E79002E4D93 /* Color picker */ = {
 			isa = PBXGroup;
 			children = (
-				FF0FD47722D36A43002E4D93 /* ColorPickerViewController.swift */,
-				FF50D1062319908D0010E602 /* ColorPickerViewController.storyboard */,
+				FF0FD47E22D61FFE002E4D93 /* View */,
 				FFD9E18023142066006544FB /* ColorPickerConfigurator.swift */,
 				FF4D273B2313FB6100849061 /* ColorPickerPresenter.swift */,
-				FF0FD47E22D61FFE002E4D93 /* Color picker view XIB */,
 			);
 			path = "Color picker";
 			sourceTree = "<group>";
 		};
-		FF0FD47E22D61FFE002E4D93 /* Color picker view XIB */ = {
+		FF0FD47E22D61FFE002E4D93 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FF0FD47722D36A43002E4D93 /* ColorPickerViewController.swift */,
+				FF50D1062319908D0010E602 /* ColorPickerViewController.storyboard */,
 				FF0FD47C22D61FF3002E4D93 /* ColorPickerViewXIB.swift */,
 				FF0FD48122D62106002E4D93 /* ColorPickerViewXIB.xib */,
 			);
-			path = "Color picker view XIB";
+			path = View;
 			sourceTree = "<group>";
 		};
 		FF2D919622C0DFE1001210DE = {
@@ -387,23 +389,12 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		FF63AE9122E48D9100E00720 /* Note table cell */ = {
-			isa = PBXGroup;
-			children = (
-				FF63AE8D22E47BBF00E00720 /* NoteTableViewCell.swift */,
-				FF63AE8E22E47BBF00E00720 /* NoteTableViewCell.xib */,
-			);
-			path = "Note table cell";
-			sourceTree = "<group>";
-		};
 		FF63AE9222E4959300E00720 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
-				FF63AE9322E4963D00E00720 /* GalleryViewController.swift */,
-				FF9F83DD231C693A0020EDFE /* GalleryViewController.storyboard */,
+				FFF62975231D69A00073D8DE /* View */,
 				FFD9E18623143461006544FB /* GalleryConfigurator.swift */,
 				FFD9E18823143558006544FB /* GalleryPresenter.swift */,
-				FF63AE9522E4973D00E00720 /* GalleryCell.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -428,8 +419,7 @@
 		FF983BEF2316C09400344DA1 /* Password */ = {
 			isa = PBXGroup;
 			children = (
-				FF983BF02316C0B800344DA1 /* PasswordViewController.swift */,
-				FF50D1022319894F0010E602 /* PasswordViewController.storyboard */,
+				FFF62972231D694A0073D8DE /* View */,
 				FF983BF42316C2CF00344DA1 /* PasswordConfigurator.swift */,
 				FF83381C2316A17A0007B779 /* ViewModel */,
 				FF83381F2316A1B00007B779 /* Protocols */,
@@ -465,8 +455,7 @@
 		FFA4772D22E4AE2400EF66C4 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				FFA4772B22E4AE1A00EF66C4 /* ImageViewController.swift */,
-				FF9F83DF231C69BF0020EDFE /* ImageViewController.storyboard */,
+				FFF62976231D69AC0073D8DE /* View */,
 				FFD9E19323156787006544FB /* ImageConfigurator.swift */,
 				FFD9E191231566E6006544FB /* ImagePresenter.swift */,
 			);
@@ -558,13 +547,61 @@
 			path = "Supporting files";
 			sourceTree = "<group>";
 		};
-		FFFA77A922E45E880043FD1B /* Notes */ = {
+		FFF62972231D694A0073D8DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FF983BF02316C0B800344DA1 /* PasswordViewController.swift */,
+				FF50D1022319894F0010E602 /* PasswordViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFF62973231D69650073D8DE /* View */ = {
 			isa = PBXGroup;
 			children = (
 				FFFD22BE22E0E64900880908 /* NotesViewController.swift */,
 				FF50D0FE231975410010E602 /* NotesViewController.storyboard */,
+				FF63AE8D22E47BBF00E00720 /* NoteTableViewCell.swift */,
+				FF63AE8E22E47BBF00E00720 /* NoteTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFF62974231D69740073D8DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FF2D91A422C0DFE1001210DE /* EditNoteViewController.swift */,
+				FF50D10A231C3B700010E602 /* EditNoteViewController.storyboard */,
+				FF80DA9022CE2B32007CC61D /* CheckIcon.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFF62975231D69A00073D8DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FF63AE9322E4963D00E00720 /* GalleryViewController.swift */,
+				FF9F83DD231C693A0020EDFE /* GalleryViewController.storyboard */,
+				FF63AE9522E4973D00E00720 /* GalleryCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFF62976231D69AC0073D8DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFA4772B22E4AE1A00EF66C4 /* ImageViewController.swift */,
+				FF9F83DF231C69BF0020EDFE /* ImageViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFFA77A922E45E880043FD1B /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				FFF62973231D69650073D8DE /* View */,
+				FFF62977231D6A530073D8DE /* NotesConfigurator.swift */,
 				FFC4D828230D9BB600A32077 /* NotesPresenter.swift */,
-				FF63AE9122E48D9100E00720 /* Note table cell */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -572,11 +609,9 @@
 		FFFA77AA22E45E9D0043FD1B /* Edit note */ = {
 			isa = PBXGroup;
 			children = (
-				FF2D91A422C0DFE1001210DE /* EditNoteViewController.swift */,
-				FF50D10A231C3B700010E602 /* EditNoteViewController.storyboard */,
+				FFF62974231D69740073D8DE /* View */,
 				FFA6F2FD2311ACC700AE6F54 /* EditNoteConfigurator.swift */,
 				FFA6F2FB2311A72E00AE6F54 /* EditNotePresenter.swift */,
-				FF80DA9022CE2B32007CC61D /* CheckIcon.swift */,
 			);
 			path = "Edit note";
 			sourceTree = "<group>";
@@ -791,6 +826,7 @@
 				FF55EEE022F0A27E0022A55E /* SaveNoteDBOperation.swift in Sources */,
 				FF50D10523198D8F0010E602 /* ColorPickerCoordinator.swift in Sources */,
 				FF2D91A322C0DFE1001210DE /* AppDelegate.swift in Sources */,
+				FFF62978231D6A530073D8DE /* NotesConfigurator.swift in Sources */,
 				FF983BF72316D6DC00344DA1 /* PasswordManager.swift in Sources */,
 				FFD9E18E23152D06006544FB /* GalleryManager.swift in Sources */,
 				FFC94320230C0EEC00A0EDB2 /* CoreDataManager.swift in Sources */,

@@ -14,7 +14,8 @@ class NotesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addBarButton: UIBarButtonItem!
     
-    public var presenter: NotesPresenter? 
+    public var presenter: NotesPresenter!
+    public var configurator: NotesConfigurator!
     
     private let reuseIdentifier = "note cell"
 }
@@ -25,12 +26,13 @@ class NotesViewController: UIViewController {
 extension NotesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        configurator.configure(notesViewController: self)
         setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter?.viewWillAppear()
+        presenter.viewWillAppear()
     }
 }
 
@@ -39,7 +41,7 @@ extension NotesViewController {
 
 extension NotesViewController {
     private func setupViews() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", //TODO: - FIX
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: presenter.titleForEditButton,
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(editButtonTapped))
@@ -61,12 +63,12 @@ extension NotesViewController: NotesView {
     
     func switchEditingModeOff() {
         tableView.isEditing = false
-        navigationItem.leftBarButtonItem?.title = presenter?.titleForEditButton
+        navigationItem.leftBarButtonItem?.title = presenter.titleForEditButton
     }
     
     func switchEditingModeOn() {
         tableView.isEditing = true
-        navigationItem.leftBarButtonItem?.title = presenter?.titleForDoneButton
+        navigationItem.leftBarButtonItem?.title = presenter.titleForDoneButton
     }
     
     func disableListEditing() {
@@ -85,7 +87,7 @@ extension NotesViewController: NotesView {
 
 extension NotesViewController {
     @objc func editButtonTapped(_ sender: UIButton) {
-        presenter?.didTapEditButton()
+        presenter.didTapEditButton()
     }
 }
 
@@ -95,13 +97,13 @@ extension NotesViewController {
 extension NotesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return presenter?.numberOfNotes ?? 0
+        return presenter.numberOfNotes ?? 0
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! NoteTableViewCell
-        presenter?.configure(cell: cell, forRow: indexPath.row)
+        presenter.configure(cell: cell, forRow: indexPath.row)
         
         return cell
     }
@@ -109,7 +111,7 @@ extension NotesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            presenter?.deleteButtonPressed(at: indexPath)
+            presenter.deleteButtonPressed(at: indexPath)
         }
     }
 }
@@ -119,7 +121,7 @@ extension NotesViewController: UITableViewDataSource {
 
 extension NotesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.didSelect(row: indexPath.row)
+        presenter.didSelect(row: indexPath.row)
     }
 }
 
@@ -128,11 +130,11 @@ extension NotesViewController: UITableViewDelegate {
 
 extension NotesViewController {
     @IBAction func passButtonTapped(_ sender: UIBarButtonItem) {
-        presenter?.passButtonTapped()
+        presenter.passButtonTapped()
     }
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
-        presenter?.didTapAddButton()
+        presenter.didTapAddButton()
     }
 }
 
