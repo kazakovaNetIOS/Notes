@@ -29,13 +29,9 @@ class ColorPicConfiguratorImpl {
 
 extension ColorPicConfiguratorImpl: ColorPicConfigurator {
     func configure(colorPickerController: ColorPickerViewController) {
-        let router = ColorPickerRouterImpl(colorPickerController: colorPickerController)
-        //TODO: - сделать делегат свойством
-        /***************************************************************/
         let presenter = ColorPickerPresenterImpl(view: colorPickerController,
-                                                 router: router,
-                                                 delegate: colorPickerPresenterDelegate,
                                                  color: color)
+        presenter.delegate = colorPickerPresenterDelegate
         colorPickerController.presenter = presenter
         colorPickerController.colorPicker.delegate = presenter
     }

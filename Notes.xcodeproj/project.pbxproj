@@ -76,7 +76,6 @@
 		FFCC056E22C77AF4003E9191 /* NotebookTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056D22C77AF4003E9191 /* NotebookTestCase.swift */; };
 		FFCC057022C78BBF003E9191 /* NoteExtensionsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCC056F22C78BBF003E9191 /* NoteExtensionsTestCase.swift */; };
 		FFD9E18123142066006544FB /* ColorPickerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18023142066006544FB /* ColorPickerConfigurator.swift */; };
-		FFD9E183231421E9006544FB /* ColorPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E182231421E9006544FB /* ColorPickerRouter.swift */; };
 		FFD9E18723143461006544FB /* GalleryConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18623143461006544FB /* GalleryConfigurator.swift */; };
 		FFD9E18923143558006544FB /* GalleryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18823143558006544FB /* GalleryPresenter.swift */; };
 		FFD9E18B231435EC006544FB /* GalleryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18A231435EC006544FB /* GalleryRouter.swift */; };
@@ -191,7 +190,6 @@
 		FFCC056D22C77AF4003E9191 /* NotebookTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookTestCase.swift; sourceTree = "<group>"; };
 		FFCC056F22C78BBF003E9191 /* NoteExtensionsTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteExtensionsTestCase.swift; sourceTree = "<group>"; };
 		FFD9E18023142066006544FB /* ColorPickerConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerConfigurator.swift; sourceTree = "<group>"; };
-		FFD9E182231421E9006544FB /* ColorPickerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerRouter.swift; sourceTree = "<group>"; };
 		FFD9E18623143461006544FB /* GalleryConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryConfigurator.swift; sourceTree = "<group>"; };
 		FFD9E18823143558006544FB /* GalleryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPresenter.swift; sourceTree = "<group>"; };
 		FFD9E18A231435EC006544FB /* GalleryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryRouter.swift; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 				FF50D1062319908D0010E602 /* ColorPickerViewController.storyboard */,
 				FFD9E18023142066006544FB /* ColorPickerConfigurator.swift */,
 				FF4D273B2313FB6100849061 /* ColorPickerPresenter.swift */,
-				FFD9E182231421E9006544FB /* ColorPickerRouter.swift */,
 				FF0FD47E22D61FFE002E4D93 /* Color picker view XIB */,
 			);
 			path = "Color picker";
@@ -753,7 +750,6 @@
 				FF63AE9622E4973D00E00720 /* GalleryCell.swift in Sources */,
 				FF63AE9422E4963D00E00720 /* GalleryViewController.swift in Sources */,
 				FFD9E19423156787006544FB /* ImageConfigurator.swift in Sources */,
-				FFD9E183231421E9006544FB /* ColorPickerRouter.swift in Sources */,
 				FF0FD47822D36A43002E4D93 /* ColorPickerViewController.swift in Sources */,
 				FF99661422C0E047004299F3 /* FileNotebook.swift in Sources */,
 				FF0691AD23002D6F00023838 /* AuthGitHub.swift in Sources */,

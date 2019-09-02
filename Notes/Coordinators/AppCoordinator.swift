@@ -13,8 +13,8 @@ class AppCoordinator {
     let window: UIWindow
     let rootViewController: UITabBarController
     
-    let notesCoordinator: NotesCoordinator
-    let galleryCoordinator: GalleryCoordinator
+    let notesCoordinator: Coordinator
+    let galleryCoordinator: Coordinator
     
     init(window: UIWindow,
          notesManager: NotesManager) {

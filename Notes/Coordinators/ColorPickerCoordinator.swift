@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol ColorPickerCoordinatorDelegate: class {
+    func colorPicker(_ colorPicker: ColorPickerCoordinator, didSelect color: UIColor)
+}
+
 class ColorPickerCoordinator {
     
     private let presenter: UINavigationController
     private var colorPickerViewController: ColorPickerViewController?
     private var color: UIColor
+    weak var delegate: ColorPickerCoordinatorDelegate?
     
     init(presenter: UINavigationController,
          color: UIColor) {
@@ -42,9 +47,7 @@ extension ColorPickerCoordinator: Coordinator {
 
 extension ColorPickerCoordinator: ColorPickerPresenterDelegate {
     func colorPickerPresenter(_ presenter: ColorPickerPresenter, didSelect color: UIColor) {
-        colorPickerViewController?.dismiss(animated: true, completion: nil)
-        self.color = color
-//        view?.resetColorTilesState()
-//        view?.showSelectedColorFromPicker()
+        self.presenter.popViewController(animated: true)
+        delegate?.colorPicker(self, didSelect: color)
     }
 }

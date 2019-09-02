@@ -24,6 +24,7 @@ protocol EditNoteView: class {
 
 protocol EditNotePresenterDelegate: class {
     func editNotePresenter(_ presenter: EditNotePresenter, didAdd note: Note)
+    func showColorPicker(for: UIColor)
 }
 
 protocol EditNotePresenter {
@@ -35,6 +36,7 @@ protocol EditNotePresenter {
     
     func saveButtonPressed(parameters: EditNoteParameters)
     func colorDidSelectFromTile(with color: UIColor, tag: Int)
+    func colorDidSelectFromPicker(with color: UIColor)
     func colorPickerLongPressed()
     func useDestroyDateSwitched(state: Bool)
     func viewDidLoad()
@@ -63,6 +65,12 @@ class EditNotePresenterImpl {
 /***************************************************************/
 
 extension EditNotePresenterImpl: EditNotePresenter {
+    func colorDidSelectFromPicker(with color: UIColor) {
+        view?.resetColorTilesState()
+        self.color = color
+        view?.showSelectedColorFromPicker()
+    }
+    
     func viewDidLoad() {
         if let date = note.dateOfSelfDestruction {
             view?.showDestroyDatePicker(with: date)
@@ -79,7 +87,7 @@ extension EditNotePresenterImpl: EditNotePresenter {
     }
     
     func colorPickerLongPressed() {
-//        router.presentColorPicker(for: self.color, colorPickerPresenterDelegate: self)
+        delegate?.showColorPicker(for: self.color)
     }
     
     func colorDidSelectFromTile(with color: UIColor, tag: Int) {

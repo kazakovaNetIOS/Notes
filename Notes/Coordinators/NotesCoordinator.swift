@@ -14,8 +14,8 @@ class NotesCoordinator {
     private var notesViewController: NotesViewController?
     private let notesManager: NotesManager
     
-    private var passwordCoordinator: PasswordCoordinator?
-    private var editNoteCoordinator: EditNoteCoordinator?
+    private var passwordCoordinator: Coordinator?
+    private var editNoteCoordinator: Coordinator?
     
     init(presenter: UINavigationController,
          notesManager: NotesManager) {
