@@ -11,10 +11,14 @@ import UIKit
 class GalleryCoordinator {
     
     private let presenter: UINavigationController
+    private let galleryManager: GalleryManager
     private var galleryViewController: GalleryViewController?
+    private var pickerController: UIImagePickerController?
+    private var imageCoordinator: ImageCoordinator?
     
-    init(presenter: UINavigationController) {
+    init(presenter: UINavigationController, galleryManager: GalleryManager) {
         self.presenter = presenter
+        self.galleryManager = galleryManager
     }
 }
 
@@ -24,8 +28,32 @@ class GalleryCoordinator {
 extension GalleryCoordinator: Coordinator {
     func start() {
         let galleryViewController = GalleryViewController.instantiateViewController()
-        galleryViewController.configurator = GalleryConfiguratorImpl()
+        galleryViewController.configurator = GalleryConfiguratorImpl(galleryManager: galleryManager, galleryPresenterDelegate: self)
         self.galleryViewController = galleryViewController
         presenter.pushViewController(galleryViewController, animated: true)
+    }
+}
+
+//MARK: - GalleryPresenterDelegate
+/***************************************************************/
+
+extension GalleryCoordinator: GalleryPresenterDelegate {
+    func presentImage(for imageIndex: Int) {
+        let imageCoordinator = ImageCoordinator(presenter: presenter, galleryManager: galleryManager, imageIndex: imageIndex)
+        imageCoordinator.start()
+        self.imageCoordinator = imageCoordinator
+    }
+    
+    func presentImagePicker() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = galleryViewController
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        galleryViewController?.present(pickerController, animated: true, completion: nil)
+        self.pickerController = pickerController
+    }
+    
+    func dismissImagePicker() {
+        galleryViewController?.dismiss(animated: true, completion: nil)
     }
 }

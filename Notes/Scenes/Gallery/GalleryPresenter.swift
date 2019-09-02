@@ -18,9 +18,8 @@ protocol GalleryCellView {
 
 protocol GalleryPresenter {
     var imageCount: Int { get }
-    var router: GalleryRouter { get }
     
-    init(manager: GalleryManager, view: GalleryView, router: GalleryRouter)
+    init(manager: GalleryManager, view: GalleryView)
     
     func configure(cell: GalleryCell, forRow row: Int)
     func didFinishPickingMediaWithInfo(path: String)
@@ -28,22 +27,26 @@ protocol GalleryPresenter {
     func addImageButtonTapped()
 }
 
+protocol GalleryPresenterDelegate: class {
+    func presentImage(for imageIndex: Int)
+    func presentImagePicker()
+    func dismissImagePicker()
+}
+
 class GalleryPresenterImpl {
     
     private var manager: GalleryManager
     private weak var view: GalleryView?
-    private(set) var router: GalleryRouter
+    weak var delegate: GalleryPresenterDelegate?
     public var imageCount: Int {
         return manager.imageNames.count
     }
     
     required init(
         manager: GalleryManager,
-        view: GalleryView,
-        router: GalleryRouter) {
+        view: GalleryView) {
         self.manager = manager
         self.view = view
-        self.router = router
     }
 }
 
@@ -52,16 +55,16 @@ class GalleryPresenterImpl {
 
 extension GalleryPresenterImpl: GalleryPresenter {
     func addImageButtonTapped() {
-        router.presentImagePicker()
+        delegate?.presentImagePicker()
     }
     
     func didSelectItemAt(row: Int) {
-//        router.presentImage(for: row)
+        delegate?.presentImage(for: row)
     }
     
     func didFinishPickingMediaWithInfo(path: String) {
         manager.append(path: path)
-        router.dismissImagePicker()
+        delegate?.dismissImagePicker()
         view?.refreshGalleryView()
     }
     

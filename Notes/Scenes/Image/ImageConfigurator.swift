@@ -9,16 +9,18 @@
 import Foundation
 
 protocol ImageConfigurator {
-    init(imageIndex: Int)
+    init(imageIndex: Int, galleryManager: GalleryManager)
     func configure(imageController: ImageViewController)
 }
 
 class ImageConfiguratorImpl {
     
     private var imageIndex: Int
+    private var galleryManager: GalleryManager
     
-    required init(imageIndex: Int) {
+    required init(imageIndex: Int, galleryManager: GalleryManager) {
         self.imageIndex = imageIndex
+        self.galleryManager = galleryManager
     }
 }
 
@@ -27,7 +29,7 @@ class ImageConfiguratorImpl {
 
 extension ImageConfiguratorImpl: ImageConfigurator {
     func configure(imageController: ImageViewController) {
-        let presenter = ImagePresenterImpl(view: imageController, imageIndex: imageIndex, manager: GalleryManager())
+        let presenter = ImagePresenterImpl(view: imageController, imageIndex: imageIndex, manager: galleryManager)
         
         imageController.presenter = presenter
     }

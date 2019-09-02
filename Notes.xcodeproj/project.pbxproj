@@ -78,12 +78,12 @@
 		FFD9E18123142066006544FB /* ColorPickerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18023142066006544FB /* ColorPickerConfigurator.swift */; };
 		FFD9E18723143461006544FB /* GalleryConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18623143461006544FB /* GalleryConfigurator.swift */; };
 		FFD9E18923143558006544FB /* GalleryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18823143558006544FB /* GalleryPresenter.swift */; };
-		FFD9E18B231435EC006544FB /* GalleryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18A231435EC006544FB /* GalleryRouter.swift */; };
 		FFD9E18E23152D06006544FB /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E18D23152D06006544FB /* GalleryManager.swift */; };
 		FFD9E192231566E6006544FB /* ImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E191231566E6006544FB /* ImagePresenter.swift */; };
 		FFD9E19423156787006544FB /* ImageConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9E19323156787006544FB /* ImageConfigurator.swift */; };
 		FFDEC0B1230ABF330036E503 /* GithubManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEC0B0230ABF330036E503 /* GithubManager.swift */; };
 		FFF6296F231C6BB80073D8DE /* GalleryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF6296E231C6BB70073D8DE /* GalleryCoordinator.swift */; };
+		FFF62971231D532B0073D8DE /* ImageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF62970231D532B0073D8DE /* ImageCoordinator.swift */; };
 		FFFD22BF22E0E64900880908 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD22BE22E0E64900880908 /* NotesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -192,12 +192,12 @@
 		FFD9E18023142066006544FB /* ColorPickerConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerConfigurator.swift; sourceTree = "<group>"; };
 		FFD9E18623143461006544FB /* GalleryConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryConfigurator.swift; sourceTree = "<group>"; };
 		FFD9E18823143558006544FB /* GalleryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPresenter.swift; sourceTree = "<group>"; };
-		FFD9E18A231435EC006544FB /* GalleryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryRouter.swift; sourceTree = "<group>"; };
 		FFD9E18D23152D06006544FB /* GalleryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
 		FFD9E191231566E6006544FB /* ImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePresenter.swift; sourceTree = "<group>"; };
 		FFD9E19323156787006544FB /* ImageConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConfigurator.swift; sourceTree = "<group>"; };
 		FFDEC0B0230ABF330036E503 /* GithubManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubManager.swift; sourceTree = "<group>"; };
 		FFF6296E231C6BB70073D8DE /* GalleryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCoordinator.swift; sourceTree = "<group>"; };
+		FFF62970231D532B0073D8DE /* ImageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCoordinator.swift; sourceTree = "<group>"; };
 		FFFD22BE22E0E64900880908 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -331,6 +331,7 @@
 				FF50D10423198D8F0010E602 /* ColorPickerCoordinator.swift */,
 				FF50D108231991700010E602 /* EditNoteCoordinator.swift */,
 				FF50D0FB2319724D0010E602 /* NotesCoordinator.swift */,
+				FFF62970231D532B0073D8DE /* ImageCoordinator.swift */,
 				FFF6296E231C6BB70073D8DE /* GalleryCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -402,7 +403,6 @@
 				FF9F83DD231C693A0020EDFE /* GalleryViewController.storyboard */,
 				FFD9E18623143461006544FB /* GalleryConfigurator.swift */,
 				FFD9E18823143558006544FB /* GalleryPresenter.swift */,
-				FFD9E18A231435EC006544FB /* GalleryRouter.swift */,
 				FF63AE9522E4973D00E00720 /* GalleryCell.swift */,
 			);
 			path = Gallery;
@@ -784,6 +784,7 @@
 				FF55EED222F0A08B0022A55E /* SaveNoteOperation.swift in Sources */,
 				FFF6296F231C6BB80073D8DE /* GalleryCoordinator.swift in Sources */,
 				FF55EEE322F0A4E40022A55E /* LoadNotesBackendOperation.swift in Sources */,
+				FFF62971231D532B0073D8DE /* ImageCoordinator.swift in Sources */,
 				FF8338212316A1CB0007B779 /* PasswordViewModelType.swift in Sources */,
 				FF987CB92303F01D001330EC /* Model.xcdatamodeld in Sources */,
 				FF50D0FC2319724D0010E602 /* NotesCoordinator.swift in Sources */,
@@ -797,7 +798,6 @@
 				FF983BF32316C1E600344DA1 /* Password.swift in Sources */,
 				FF50D0FA23196A070010E602 /* AppCoordinator.swift in Sources */,
 				FF80DA9122CE2B32007CC61D /* CheckIcon.swift in Sources */,
-				FFD9E18B231435EC006544FB /* GalleryRouter.swift in Sources */,
 				FF55EEE122F0A27E0022A55E /* BaseDBOperation.swift in Sources */,
 				FF3503E02306D3FC0014C2A7 /* AuthManager.swift in Sources */,
 				FF70A0C522FD617600025A96 /* Gist.swift in Sources */,

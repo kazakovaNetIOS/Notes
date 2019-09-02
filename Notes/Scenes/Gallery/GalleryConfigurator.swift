@@ -10,10 +10,18 @@ import Foundation
 
 protocol GalleryConfigurator {
     func configure(galleryViewController: GalleryViewController)
+    init(galleryManager: GalleryManager, galleryPresenterDelegate: GalleryPresenterDelegate)
 }
 
 class GalleryConfiguratorImpl {
     
+    var galleryManager: GalleryManager
+    var galleryPresenterDelegate: GalleryPresenterDelegate
+    
+    required init(galleryManager: GalleryManager, galleryPresenterDelegate: GalleryPresenterDelegate) {
+        self.galleryManager = galleryManager
+        self.galleryPresenterDelegate = galleryPresenterDelegate
+    }
 }
 
 //MARK: - GalleryConfigurator
@@ -21,9 +29,8 @@ class GalleryConfiguratorImpl {
 
 extension GalleryConfiguratorImpl: GalleryConfigurator {
     func configure(galleryViewController: GalleryViewController) {
-        let router = GalleryRouterImpl(galleryViewController: galleryViewController)
-        let presenter = GalleryPresenterImpl(manager: GalleryManager(), view: galleryViewController,
-                                             router: router)
+        let presenter = GalleryPresenterImpl(manager: galleryManager, view: galleryViewController)
+        presenter.delegate = galleryPresenterDelegate
         galleryViewController.presenter = presenter
     }
 }

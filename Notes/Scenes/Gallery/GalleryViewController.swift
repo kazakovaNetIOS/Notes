@@ -43,9 +43,7 @@ extension GalleryViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        presenter.router.prepare(for: segue, sender: sender)
-    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { }
 }
 
 //MARK: - Setup views

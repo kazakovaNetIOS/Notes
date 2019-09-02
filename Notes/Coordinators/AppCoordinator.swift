@@ -34,7 +34,7 @@ class AppCoordinator {
         
         notesCoordinator = NotesCoordinator(presenter: notesRootController,
                                             notesManager: notesManager)
-        galleryCoordinator = GalleryCoordinator(presenter: galleryRootController)
+        galleryCoordinator = GalleryCoordinator(presenter: galleryRootController, galleryManager: GalleryManager())
         
     }
 }
